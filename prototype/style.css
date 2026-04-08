@@ -1,0 +1,79 @@
+@font-face {
+  font-family: "FuentePrincipal";
+  src: url("fonts/NeueMontreal-Medium.otf");
+}
+
+@font-face {
+  font-family: "FuenteTitulos";
+  src: url("fonts/Monoton-Regular.ttf");
+}
+
+:root {
+  --bg-color: #f4efea; /* Color crema / papel viejo */
+  --text-color: #0f3740; /* Gris muy oscuro, cansa menos la vista que el negro */
+  --accent-color: #0f3740; /* Rojo/Naranja tipo etiqueta de vinilo clásico */
+  --card-bg: #ebe4da; /* Un tono un poco más oscuro para las tarjetas/reviews */
+}
+
+/* =========================================
+   3. RESETEO Y ESTILOS GLOBALES
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: 100;
+}
+
+h1 {
+  font-family: "FuenteTitulos";
+  font-size: 8rem;
+  font-weight: 500;
+  color: var(--accent-color);
+}
+
+body {
+  /* Aquí aplicamos la fuente que cargamos arriba */
+  font-family: "FuentePrincipal", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* =========================================
+   4. NAVBAR Y ELEMENTOS BÁSICOS
+   ========================================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background-color: var(--bg-color);
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 10px 24px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px; /* O 50px si lo quieres redondeado */
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #b94b36;
+}
