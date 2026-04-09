@@ -40,7 +40,7 @@ export default function Home() {
     <div className="flex-1" />
 
     <div className="flex-[1.8] relative">
-      <h1 className="text-5xl font-black text-gray-900 leading-none break-words">
+      <h1 className="text-5xl font-[family-name:var(--font-bayon)] font-black text-gray-900 leading-none break-words text-center mx-auto">
         Dark Side of The Moon
       </h1>
       
