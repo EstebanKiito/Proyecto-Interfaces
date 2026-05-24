@@ -1,175 +1,101 @@
-"use client"; // Necesario para usar interactividad (botones, estados)
-
-import React, { useState } from "react";
+"use client";
+import Spline from '@splinetool/react-spline';
+import { useState } from 'react';
 
 export default function Home() {
-  // Estados para la interactividad
-  const [rating, setRating] = useState(0);
-  const [activeActions, setActiveActions] = useState({
-    reviewed: false,
-    liked: false,
-    watchlist: false,
-  });
 
-  // Función para alternar los iconos superiores
-  const toggleAction = (action: keyof typeof activeActions) => {
-    setActiveActions((prev) => ({ ...prev, [action]: !prev[action] }));
-  };
-
-  // Imagenes //
-  // --- URLs de ejemplo (Reemplázalas por las tuyas reales) ---
-  // Puedes usar rutas relativas si las imágenes están en la carpeta /public (ej: '/cover.jpg')
-  const bandCoverUrl = "pink.jpg";
-  const albumCoverUrl = "darkside.svg.png";
-  const reviewsBgUrl =
-    "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1000";
+  const [isSearchActive, setIsSearchActive] = useState(false);
 
   return (
-    <main className="min-h-screen bg-[oklch(0.9546_0.0086_67.72)] flex flex-col">
-      {/* 1. Barra superior (Igual que antes) */}
-      <header
-        className="w-full h-100 bg-[#257180] text-white flex items-center justify-center text-2xl font-light uppercase bg-cover bg-center bg-no-repeat border-b-4 border-black/20"
-        style={{ backgroundImage: `url(${bandCoverUrl})` }}
-      >
-        {/*Band cover*/}
-      </header>
-
-      {/* 2. Título centrado con Subtítulos absolutos */}
-      {/* 2. Título (Fuera de las columnas de abajo, pero imitando su estructura) */}
-      <div className="w-full bg-[#F4EFEA] border-b border-gray-100">
-        {/* Usamos el mismo padding (px-10) y gap (gap-10) que el contenedor de abajo */}
-        <div className="flex px-10 py-12 gap-10 items-end">
-          {/* COLUMNA IZQUIERDA INVISIBLE (flex-1)
-        Sirve para empujar el título y que empiece justo donde empieza la columna central
-    */}
-          <div className="flex-1" />
-
-          <div className="flex-[1.8] relative">
-            <h1 className="text-5xl font-[family-name:var(--font-bayon)] font-black text-gray-900 leading-none break-words text-center mx-auto">
-              Dark Side of The Moon
-            </h1>
-
-            {/* Subtítulos a la derecha del título */}
-            <nav className="absolute left-full ml-6 bottom-0 hidden lg:flex gap-6 whitespace-nowrap">
-              {["Pink Floyd", "1973"].map((t, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="text-black hover:text-blue-700 font-bold"
-                >
-                  {t}
-                </a>
-              ))}
-            </nav>
-          </div>
-
-          {/* COLUMNA DERECHA INVISIBLE (flex-1)
-        Mantiene el equilibrio para que la columna de al medio no se desplace
-    */}
-          <div className="flex-1" />
+    // Contenedor principal: pantalla completa, fondo oscuro, sin barras de scroll
+    <main className="relative w-full min-h-screen bg-[#050505] text-white font-sans">
+      <section className="relative w-full h-screen overflow-hidden">
+      {/* ---------------- CAPA 1: FONDO 3D ---------------- */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-full h-full">
+          <Spline
+            scene="https://prod.spline.design/d4AyP6PVdmmGLKzX/scene.splinecode"
+            style={{ pointerEvents: 'none', width: '100%', height: '100%' }} 
+          />
         </div>
       </div>
-      {/* 3. Contenedor de 3 Columnas */}
-      <div className="flex-1 flex px-10 py-10 gap-10 items-start">
-        {/* COLUMNA IZQUIERDA */}
-        <aside className="flex-1 flex justify-center">
-          <div className="flex-column">
-            <div
-              className="relative -mt-100 z-20 w-60 h-60 bg-[#CB6040] text-white flex items-center justify-center font-bold rounded-xl shadow-xl bg-cover bg-center"
-              style={{ backgroundImage: `url(${albumCoverUrl})` }}
+
+      {/* ---------------- CAPA 1.5: EFECTO BLUR (OVERLAY) ---------------- */}
+      {/* Esta capa está entre el modelo 3D y el Header. Solo se ve si isSearchActive es true */}
+      <div 
+        className={`absolute inset-0 z-20 transition-all duration-500 ease-in-out ${
+          isSearchActive 
+            ? 'backdrop-blur-md bg-black/40 opacity-100 pointer-events-auto' 
+            : 'backdrop-blur-none bg-transparent opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setIsSearchActive(false)} // Cierra el buscador si haces clic fuera de él
+      />
+
+      {/* ---------------- CAPA 2: INTERFAZ (UI) ---------------- */}
+      
+      {/* Header con Grid de 3 columnas para centrado perfecto (z-30 para estar sobre el blur) */}
+      <header className="absolute top-0 w-full grid grid-cols-3 items-center px-12 py-10 z-30 text-sm tracking-[0.15em] text-gray-400">
+        
+        {/* Espacio vacío a la izquierda para equilibrar el grid */}
+        <div></div>
+
+        {/* Centro: Lógica del buscador */}
+        <div className="flex justify-center items-center w-full">
+          {!isSearchActive ? (
+            <button 
+              onClick={() => setIsSearchActive(true)}
+              className="hover:text-white cursor-pointer transition-colors uppercase tracking-[0.15em]"
             >
-              {/* Album Cover */}
-            </div>
+              Search
+            </button>
+          ) : (
+            <input 
+              type="text" 
+              autoFocus // Se selecciona automáticamente al aparecer
+              placeholder="¿Qué estás buscando?" 
+              className="bg-transparent border-b border-gray-400 text-white placeholder-gray-500 outline-none px-4 py-2 w-[250px] focus:w-[350px] transition-all duration-300 text-center"
+            />
+          )}
+        </div>
 
-            <div className="relative mt-40 w-80 h-80 bg-[#CB6040] text-white flex items-center justify-center font-bold rounded-2xl shadow-xl">
-              Where to listen
-            </div>
-          </div>
-        </aside>
+        {/* Derecha: Botones de sesión */}
+        <div className="flex justify-end gap-8">
+          <span className="hover:text-white cursor-pointer transition-colors">LOGIN</span>
+          <span className="text-white cursor-pointer">SIGN IN</span>
+        </div>
+      </header>
 
-        {/* COLUMNA CENTRAL */}
-        <section className="flex-[1.8] flex flex-col items-center gap-6">
-          <div className="w-full h-150 bg-[#FD8B51] text-white flex items-center justify-center rounded-2xl shadow-lg">
-            Tracklist
-          </div>
-
-          <div className="w-full h-[150px] bg-[#FD8B51] text-white flex items-center justify-center rounded-2xl shadow-lg">
-            Reseñas
-          </div>
-        </section>
-
-        {/* --- COLUMNA DERECHA (Componente tipo Letterboxd) --- */}
-        <aside className="flex-1 flex justify-center">
-          <div className="w-64 bg-[oklch(0.9_0.01_67.72)] text-[#0f3740] rounded-md shadow-2xl overflow-hidden flex flex-col">
-            {/* Opciones Superiores */}
-            <div className="flex justify-around p-4 border-b border-gray-700">
-              <button
-                onClick={() => toggleAction("reviewed")}
-                className={`flex flex-col items-center gap-1 transition-colors ${activeActions.reviewed ? "text-[#FD8B51]" : "hover:text-white"}`}
-              >
-                <div className="w-6 h-6 bg-current rounded-full" />{" "}
-                {/* Simulando icono */}
-                <span className="text-[10px] uppercase font-bold tracking-tighter">
-                  Reviewed
-                </span>
-              </button>
-
-              <button
-                onClick={() => toggleAction("liked")}
-                className={`flex flex-col items-center gap-1 transition-colors ${activeActions.liked ? "text-[#257180]" : "hover:text-white"}`}
-              >
-                <div className="w-6 h-6 bg-current rounded-full" />{" "}
-                {/* Simulando icono */}
-                <span className="text-[10px] uppercase font-bold tracking-tighter">
-                  Liked
-                </span>
-              </button>
-
-              <button
-                onClick={() => toggleAction("watchlist")}
-                className={`flex flex-col items-center gap-1 transition-colors ${activeActions.watchlist ? "text-[#CB6040]" : "hover:text-white"}`}
-              >
-                <div className="w-6 h-6 bg-current rounded-full" />{" "}
-                {/* Simulando icono */}
-                <span className="text-[10px] uppercase font-bold tracking-tighter">
-                  Watchlist
-                </span>
-              </button>
-            </div>
-
-            {/* Sistema de Rating (Estrellas) */}
-            <div className="p-6 flex flex-col items-center gap-2">
-              <span className="text-xs uppercase font-bold tracking-widest text-gray-500">
-                Rated
-              </span>
-              <div className="flex gap-1">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <button
-                    key={star}
-                    onClick={() => setRating(star)}
-                    className={`text-3xl transition-transform active:scale-90 ${star <= rating ? "text-[#257180]" : "text-gray-600 hover:text-gray-400"}`}
-                  >
-                    ★
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Opciones extra de la imagen (Solo visual por ahora) */}
-            <div className="flex flex-col text-sm border-t border-gray-700">
-              <button className="py-3 hover:bg-[#38424e] border-b border-gray-700/50">
-                Show your activity
-              </button>
-              <button className="py-3 hover:bg-[#38424e] border-b border-gray-700/50">
-                Log again / edit review...
-              </button>
-              <button className="py-3 hover:bg-[#38424e]">
-                Add to lists...
-              </button>
-            </div>
-          </div>
-        </aside>
+      {/* Textos Izquierdos */}
+      <div className="absolute left-12 top-1/2 -translate-y-1/2 z-10 flex flex-col gap-6">
+        
+        {/* ¡Aquí aplicamos font-biscuit! */}
+        <h1 className="text-8xl font-biscuit tracking-wider uppercase text-white">
+          BISCUIT
+        </h1>
+        
+        <p className="text-2xl max-w-[280px] font-light tracking-widest leading-snug">
+          MADE FOR TRUE MUSIC LOVERS
+        </p>
       </div>
+
+      {/* Indicador de Scroll Inferior */}
+      <div className="absolute bottom-10 w-full text-center z-10">
+        <p className="text-sm tracking-[0.2em] text-gray-300">
+          SCROLL TO CONTINUE
+        </p>
+      </div>
+</section>
+
+
+      {/* --- ESTA ES LA NUEVA SECCIÓN DE ABAJO --- */}
+      {/* Al agregar esto, el navegador automáticamente habilita el scroll */}
+      <section className="w-full min-h-screen bg-[#0a0a0a] flex items-center justify-center border-t border-white/10">
+        <h2 className="text-4xl tracking-widest text-gray-500 font-light">
+          AQUÍ VA TU PRÓXIMA SECCIÓN
+        </h2>
+      </section>
+
+
     </main>
   );
 }
