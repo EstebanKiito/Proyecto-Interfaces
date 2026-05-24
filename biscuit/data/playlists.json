@@ -1,0 +1,22 @@
+{
+  "playlists": [
+    {
+      "id": "pl_101",
+      "owner_id": "usr_01",
+      "title": "To-Listen",
+      "description": "Discos que cambiaron la forma de entender la producción musical.",
+      "is_public": true,
+      "type": "tier_list",
+      "items": ["mock01_whatsgoingon", "mock02_petsounds"]
+    },
+    {
+      "id": "pl_102",
+      "owner_id": "usr_01",
+      "title": "Beatles Essentials",
+      "description": "Mi rotación personal para sesiones largas de programación.",
+      "is_public": false,
+      "type": "collection",
+      "items": ["mock05_abbeyroad", "mock06_nevermind"]
+    }
+  ]
+}
