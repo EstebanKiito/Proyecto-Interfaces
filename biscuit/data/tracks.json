@@ -1,0 +1,1664 @@
+{
+  "mock01_whatsgoingon": {
+    "items": [
+      {
+        "id": "t01_1",
+        "track_number": 1,
+        "name": "What's Going On",
+        "duration_ms": 233000,
+        "artists": [{ "name": "Marvin Gaye" }]
+      },
+      {
+        "id": "t01_2",
+        "track_number": 2,
+        "name": "What's Happening Brother",
+        "duration_ms": 163000,
+        "artists": [{ "name": "Marvin Gaye" }]
+      },
+      {
+        "id": "t01_3",
+        "track_number": 3,
+        "name": "Flyin' High (In the Friendly Sky)",
+        "duration_ms": 229000,
+        "artists": [{ "name": "Marvin Gaye" }]
+      },
+      {
+        "id": "t01_4",
+        "track_number": 4,
+        "name": "Save the Children",
+        "duration_ms": 243000,
+        "artists": [{ "name": "Marvin Gaye" }]
+      },
+      {
+        "id": "t01_5",
+        "track_number": 5,
+        "name": "God Is Love",
+        "duration_ms": 101000,
+        "artists": [{ "name": "Marvin Gaye" }]
+      },
+      {
+        "id": "t01_6",
+        "track_number": 6,
+        "name": "Mercy Mercy Me (The Ecology)",
+        "duration_ms": 194000,
+        "artists": [{ "name": "Marvin Gaye" }]
+      },
+      {
+        "id": "t01_7",
+        "track_number": 7,
+        "name": "Right On",
+        "duration_ms": 453000,
+        "artists": [{ "name": "Marvin Gaye" }]
+      },
+      {
+        "id": "t01_8",
+        "track_number": 8,
+        "name": "Wholy Holy",
+        "duration_ms": 188000,
+        "artists": [{ "name": "Marvin Gaye" }]
+      },
+      {
+        "id": "t01_9",
+        "track_number": 9,
+        "name": "Inner City Blues (Make Me Wanna Holler)",
+        "duration_ms": 326000,
+        "artists": [{ "name": "Marvin Gaye" }]
+      }
+    ]
+  },
+  "mock02_petsounds": {
+    "items": [
+      {
+        "id": "t02_1",
+        "track_number": 1,
+        "name": "Wouldn't It Be Nice",
+        "duration_ms": 142000,
+        "artists": [{ "name": "The Beach Boys" }]
+      },
+      {
+        "id": "t02_2",
+        "track_number": 2,
+        "name": "You Still Believe in Me",
+        "duration_ms": 150000,
+        "artists": [{ "name": "The Beach Boys" }]
+      },
+      {
+        "id": "t02_3",
+        "track_number": 3,
+        "name": "That's Not Me",
+        "duration_ms": 147000,
+        "artists": [{ "name": "The Beach Boys" }]
+      },
+      {
+        "id": "t02_4",
+        "track_number": 4,
+        "name": "Don't Talk (Put Your Head on My Shoulder)",
+        "duration_ms": 171000,
+        "artists": [{ "name": "The Beach Boys" }]
+      },
+      {
+        "id": "t02_5",
+        "track_number": 5,
+        "name": "I'm Waiting for the Day",
+        "duration_ms": 183000,
+        "artists": [{ "name": "The Beach Boys" }]
+      },
+      {
+        "id": "t02_6",
+        "track_number": 6,
+        "name": "Let's Go Away for Awhile",
+        "duration_ms": 138000,
+        "artists": [{ "name": "The Beach Boys" }]
+      },
+      {
+        "id": "t02_7",
+        "track_number": 7,
+        "name": "Sloop John B",
+        "duration_ms": 176000,
+        "artists": [{ "name": "The Beach Boys" }]
+      },
+      {
+        "id": "t02_8",
+        "track_number": 8,
+        "name": "God Only Knows",
+        "duration_ms": 169000,
+        "artists": [{ "name": "The Beach Boys" }]
+      },
+      {
+        "id": "t02_9",
+        "track_number": 9,
+        "name": "I Know There's an Answer",
+        "duration_ms": 188000,
+        "artists": [{ "name": "The Beach Boys" }]
+      },
+      {
+        "id": "t02_10",
+        "track_number": 10,
+        "name": "Here Today",
+        "duration_ms": 172000,
+        "artists": [{ "name": "The Beach Boys" }]
+      },
+      {
+        "id": "t02_11",
+        "track_number": 11,
+        "name": "I Just Wasn't Made for These Times",
+        "duration_ms": 191000,
+        "artists": [{ "name": "The Beach Boys" }]
+      },
+      {
+        "id": "t02_12",
+        "track_number": 12,
+        "name": "Pet Sounds",
+        "duration_ms": 140000,
+        "artists": [{ "name": "The Beach Boys" }]
+      },
+      {
+        "id": "t02_13",
+        "track_number": 13,
+        "name": "Caroline, No",
+        "duration_ms": 166000,
+        "artists": [{ "name": "The Beach Boys" }]
+      }
+    ]
+  },
+  "mock03_blue": {
+    "items": [
+      {
+        "id": "t03_1",
+        "track_number": 1,
+        "name": "All I Want",
+        "duration_ms": 212000,
+        "artists": [{ "name": "Joni Mitchell" }]
+      },
+      {
+        "id": "t03_2",
+        "track_number": 2,
+        "name": "My Old Man",
+        "duration_ms": 213000,
+        "artists": [{ "name": "Joni Mitchell" }]
+      },
+      {
+        "id": "t03_3",
+        "track_number": 3,
+        "name": "Little Green",
+        "duration_ms": 205000,
+        "artists": [{ "name": "Joni Mitchell" }]
+      },
+      {
+        "id": "t03_4",
+        "track_number": 4,
+        "name": "Carey",
+        "duration_ms": 182000,
+        "artists": [{ "name": "Joni Mitchell" }]
+      },
+      {
+        "id": "t03_5",
+        "track_number": 5,
+        "name": "Blue",
+        "duration_ms": 180000,
+        "artists": [{ "name": "Joni Mitchell" }]
+      },
+      {
+        "id": "t03_6",
+        "track_number": 6,
+        "name": "California",
+        "duration_ms": 228000,
+        "artists": [{ "name": "Joni Mitchell" }]
+      },
+      {
+        "id": "t03_7",
+        "track_number": 7,
+        "name": "This Flight Tonight",
+        "duration_ms": 170000,
+        "artists": [{ "name": "Joni Mitchell" }]
+      },
+      {
+        "id": "t03_8",
+        "track_number": 8,
+        "name": "River",
+        "duration_ms": 240000,
+        "artists": [{ "name": "Joni Mitchell" }]
+      },
+      {
+        "id": "t03_9",
+        "track_number": 9,
+        "name": "A Case of You",
+        "duration_ms": 260000,
+        "artists": [{ "name": "Joni Mitchell" }]
+      },
+      {
+        "id": "t03_10",
+        "track_number": 10,
+        "name": "The Last Time I Saw Richard",
+        "duration_ms": 253000,
+        "artists": [{ "name": "Joni Mitchell" }]
+      }
+    ]
+  },
+  "mock04_songsinthekey": {
+    "items": [
+      {
+        "id": "t04_1",
+        "track_number": 1,
+        "name": "Love's In Need Of Love Today",
+        "duration_ms": 425000,
+        "artists": [{ "name": "Stevie Wonder" }]
+      },
+      {
+        "id": "t04_2",
+        "track_number": 2,
+        "name": "Have A Talk With God",
+        "duration_ms": 162000,
+        "artists": [{ "name": "Stevie Wonder" }]
+      },
+      {
+        "id": "t04_3",
+        "track_number": 3,
+        "name": "Village Ghetto Land",
+        "duration_ms": 205000,
+        "artists": [{ "name": "Stevie Wonder" }]
+      },
+      {
+        "id": "t04_4",
+        "track_number": 4,
+        "name": "Contusion",
+        "duration_ms": 225000,
+        "artists": [{ "name": "Stevie Wonder" }]
+      },
+      {
+        "id": "t04_5",
+        "track_number": 5,
+        "name": "Sir Duke",
+        "duration_ms": 232000,
+        "artists": [{ "name": "Stevie Wonder" }]
+      },
+      {
+        "id": "t04_6",
+        "track_number": 6,
+        "name": "I Wish",
+        "duration_ms": 252000,
+        "artists": [{ "name": "Stevie Wonder" }]
+      }
+    ]
+  },
+  "mock05_abbeyroad": {
+    "items": [
+      {
+        "id": "t05_1",
+        "track_number": 1,
+        "name": "Come Together",
+        "duration_ms": 259000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t05_2",
+        "track_number": 2,
+        "name": "Something",
+        "duration_ms": 182000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t05_3",
+        "track_number": 3,
+        "name": "Maxwell's Silver Hammer",
+        "duration_ms": 207000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t05_4",
+        "track_number": 4,
+        "name": "Oh! Darling",
+        "duration_ms": 206000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t05_5",
+        "track_number": 5,
+        "name": "Octopus's Garden",
+        "duration_ms": 170000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t05_6",
+        "track_number": 6,
+        "name": "I Want You (She's So Heavy)",
+        "duration_ms": 467000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t05_7",
+        "track_number": 7,
+        "name": "Here Comes The Sun",
+        "duration_ms": 185000,
+        "artists": [{ "name": "The Beatles" }]
+      }
+    ]
+  },
+  "mock06_nevermind": {
+    "items": [
+      {
+        "id": "t06_1",
+        "track_number": 1,
+        "name": "Smells Like Teen Spirit",
+        "duration_ms": 301000,
+        "artists": [{ "name": "Nirvana" }]
+      },
+      {
+        "id": "t06_2",
+        "track_number": 2,
+        "name": "In Bloom",
+        "duration_ms": 254000,
+        "artists": [{ "name": "Nirvana" }]
+      },
+      {
+        "id": "t06_3",
+        "track_number": 3,
+        "name": "Come As You Are",
+        "duration_ms": 219000,
+        "artists": [{ "name": "Nirvana" }]
+      },
+      {
+        "id": "t06_4",
+        "track_number": 4,
+        "name": "Breed",
+        "duration_ms": 183000,
+        "artists": [{ "name": "Nirvana" }]
+      },
+      {
+        "id": "t06_5",
+        "track_number": 5,
+        "name": "Lithium",
+        "duration_ms": 257000,
+        "artists": [{ "name": "Nirvana" }]
+      },
+      {
+        "id": "t06_6",
+        "track_number": 6,
+        "name": "Polly",
+        "duration_ms": 177000,
+        "artists": [{ "name": "Nirvana" }]
+      },
+      {
+        "id": "t06_7",
+        "track_number": 7,
+        "name": "Territorial Pissings",
+        "duration_ms": 142000,
+        "artists": [{ "name": "Nirvana" }]
+      },
+      {
+        "id": "t06_8",
+        "track_number": 8,
+        "name": "Drain You",
+        "duration_ms": 223000,
+        "artists": [{ "name": "Nirvana" }]
+      },
+      {
+        "id": "t06_9",
+        "track_number": 9,
+        "name": "Lounge Act",
+        "duration_ms": 156000,
+        "artists": [{ "name": "Nirvana" }]
+      },
+      {
+        "id": "t06_10",
+        "track_number": 10,
+        "name": "Stay Away",
+        "duration_ms": 212000,
+        "artists": [{ "name": "Nirvana" }]
+      },
+      {
+        "id": "t06_11",
+        "track_number": 11,
+        "name": "On a Plain",
+        "duration_ms": 196000,
+        "artists": [{ "name": "Nirvana" }]
+      },
+      {
+        "id": "t06_12",
+        "track_number": 12,
+        "name": "Something in the Way",
+        "duration_ms": 232000,
+        "artists": [{ "name": "Nirvana" }]
+      }
+    ]
+  },
+  "mock07_rumours": {
+    "items": [
+      {
+        "id": "t07_1",
+        "track_number": 1,
+        "name": "Second Hand News",
+        "duration_ms": 163000,
+        "artists": [{ "name": "Fleetwood Mac" }]
+      },
+      {
+        "id": "t07_2",
+        "track_number": 2,
+        "name": "Dreams",
+        "duration_ms": 254000,
+        "artists": [{ "name": "Fleetwood Mac" }]
+      },
+      {
+        "id": "t07_3",
+        "track_number": 3,
+        "name": "Never Going Back Again",
+        "duration_ms": 122000,
+        "artists": [{ "name": "Fleetwood Mac" }]
+      },
+      {
+        "id": "t07_4",
+        "track_number": 4,
+        "name": "Don't Stop",
+        "duration_ms": 191000,
+        "artists": [{ "name": "Fleetwood Mac" }]
+      },
+      {
+        "id": "t07_5",
+        "track_number": 5,
+        "name": "Go Your Own Way",
+        "duration_ms": 218000,
+        "artists": [{ "name": "Fleetwood Mac" }]
+      },
+      {
+        "id": "t07_6",
+        "track_number": 6,
+        "name": "Songbird",
+        "duration_ms": 200000,
+        "artists": [{ "name": "Fleetwood Mac" }]
+      },
+      {
+        "id": "t07_7",
+        "track_number": 7,
+        "name": "The Chain",
+        "duration_ms": 268000,
+        "artists": [{ "name": "Fleetwood Mac" }]
+      },
+      {
+        "id": "t07_8",
+        "track_number": 8,
+        "name": "You Make Loving Fun",
+        "duration_ms": 211000,
+        "artists": [{ "name": "Fleetwood Mac" }]
+      },
+      {
+        "id": "t07_9",
+        "track_number": 9,
+        "name": "I Don't Want to Know",
+        "duration_ms": 191000,
+        "artists": [{ "name": "Fleetwood Mac" }]
+      },
+      {
+        "id": "t07_10",
+        "track_number": 10,
+        "name": "Oh Daddy",
+        "duration_ms": 234000,
+        "artists": [{ "name": "Fleetwood Mac" }]
+      },
+      {
+        "id": "t07_11",
+        "track_number": 11,
+        "name": "Gold Dust Woman",
+        "duration_ms": 291000,
+        "artists": [{ "name": "Fleetwood Mac" }]
+      }
+    ]
+  },
+  "mock08_purplerain": {
+    "items": [
+      {
+        "id": "t08_1",
+        "track_number": 1,
+        "name": "Let's Go Crazy",
+        "duration_ms": 279000,
+        "artists": [{ "name": "Prince and the Revolution" }]
+      },
+      {
+        "id": "t08_2",
+        "track_number": 2,
+        "name": "Take Me With U",
+        "duration_ms": 234000,
+        "artists": [{ "name": "Prince and the Revolution" }]
+      },
+      {
+        "id": "t08_3",
+        "track_number": 3,
+        "name": "The Beautiful Ones",
+        "duration_ms": 313000,
+        "artists": [{ "name": "Prince and the Revolution" }]
+      },
+      {
+        "id": "t08_4",
+        "track_number": 4,
+        "name": "Computer Blue",
+        "duration_ms": 239000,
+        "artists": [{ "name": "Prince and the Revolution" }]
+      },
+      {
+        "id": "t08_5",
+        "track_number": 5,
+        "name": "Darling Nikki",
+        "duration_ms": 254000,
+        "artists": [{ "name": "Prince and the Revolution" }]
+      },
+      {
+        "id": "t08_6",
+        "track_number": 6,
+        "name": "When Doves Cry",
+        "duration_ms": 352000,
+        "artists": [{ "name": "Prince and the Revolution" }]
+      },
+      {
+        "id": "t08_7",
+        "track_number": 7,
+        "name": "I Would Die 4 U",
+        "duration_ms": 169000,
+        "artists": [{ "name": "Prince and the Revolution" }]
+      },
+      {
+        "id": "t08_8",
+        "track_number": 8,
+        "name": "Baby I'm a Star",
+        "duration_ms": 264000,
+        "artists": [{ "name": "Prince and the Revolution" }]
+      },
+      {
+        "id": "t08_9",
+        "track_number": 9,
+        "name": "Purple Rain",
+        "duration_ms": 521000,
+        "artists": [{ "name": "Prince and the Revolution" }]
+      }
+    ]
+  },
+  "mock09_bloodonthetracks": {
+    "items": [
+      {
+        "id": "t09_1",
+        "track_number": 1,
+        "name": "Tangled Up in Blue",
+        "duration_ms": 341000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t09_2",
+        "track_number": 2,
+        "name": "Simple Twist of Fate",
+        "duration_ms": 258000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t09_3",
+        "track_number": 3,
+        "name": "You're a Big Girl Now",
+        "duration_ms": 272000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t09_4",
+        "track_number": 4,
+        "name": "Idiot Wind",
+        "duration_ms": 468000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t09_5",
+        "track_number": 5,
+        "name": "You're Gonna Make Me Lonesome When You Go",
+        "duration_ms": 174000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t09_6",
+        "track_number": 6,
+        "name": "Meet Me in the Morning",
+        "duration_ms": 261000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t09_7",
+        "track_number": 7,
+        "name": "Lily, Rosemary and the Jack of Hearts",
+        "duration_ms": 531000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t09_8",
+        "track_number": 8,
+        "name": "If You See Her, Say Hello",
+        "duration_ms": 288000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t09_9",
+        "track_number": 9,
+        "name": "Shelter from the Storm",
+        "duration_ms": 302000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t09_10",
+        "track_number": 10,
+        "name": "Buckets of Rain",
+        "duration_ms": 202000,
+        "artists": [{ "name": "Bob Dylan" }]
+      }
+    ]
+  },
+  "mock10_miseducation": {
+    "items": [
+      {
+        "id": "t10_1",
+        "track_number": 1,
+        "name": "Intro",
+        "duration_ms": 47000,
+        "artists": [{ "name": "Lauryn Hill" }]
+      },
+      {
+        "id": "t10_2",
+        "track_number": 2,
+        "name": "Lost Ones",
+        "duration_ms": 333000,
+        "artists": [{ "name": "Lauryn Hill" }]
+      },
+      {
+        "id": "t10_3",
+        "track_number": 3,
+        "name": "Ex-Factor",
+        "duration_ms": 326000,
+        "artists": [{ "name": "Lauryn Hill" }]
+      },
+      {
+        "id": "t10_4",
+        "track_number": 4,
+        "name": "To Zion",
+        "duration_ms": 368000,
+        "artists": [{ "name": "Lauryn Hill" }]
+      },
+      {
+        "id": "t10_5",
+        "track_number": 5,
+        "name": "Doo Wop (That Thing)",
+        "duration_ms": 320000,
+        "artists": [{ "name": "Lauryn Hill" }]
+      },
+      {
+        "id": "t10_6",
+        "track_number": 6,
+        "name": "Superstar",
+        "duration_ms": 296000,
+        "artists": [{ "name": "Lauryn Hill" }]
+      },
+      {
+        "id": "t10_7",
+        "track_number": 7,
+        "name": "Final Hour",
+        "duration_ms": 255000,
+        "artists": [{ "name": "Lauryn Hill" }]
+      },
+      {
+        "id": "t10_8",
+        "track_number": 8,
+        "name": "When It Hurts So Bad",
+        "duration_ms": 342000,
+        "artists": [{ "name": "Lauryn Hill" }]
+      },
+      {
+        "id": "t10_9",
+        "track_number": 9,
+        "name": "I Used to Love Him",
+        "duration_ms": 339000,
+        "artists": [{ "name": "Lauryn Hill" }]
+      },
+      {
+        "id": "t10_10",
+        "track_number": 10,
+        "name": "Forgive Them Father",
+        "duration_ms": 315000,
+        "artists": [{ "name": "Lauryn Hill" }]
+      },
+      {
+        "id": "t10_11",
+        "track_number": 11,
+        "name": "Every Ghetto, Every City",
+        "duration_ms": 314000,
+        "artists": [{ "name": "Lauryn Hill" }]
+      },
+      {
+        "id": "t10_12",
+        "track_number": 12,
+        "name": "Nothing Even Matters",
+        "duration_ms": 349000,
+        "artists": [{ "name": "Lauryn Hill" }]
+      },
+      {
+        "id": "t10_13",
+        "track_number": 13,
+        "name": "Everything Is Everything",
+        "duration_ms": 293000,
+        "artists": [{ "name": "Lauryn Hill" }]
+      },
+      {
+        "id": "t10_14",
+        "track_number": 14,
+        "name": "The Miseducation of Lauryn Hill",
+        "duration_ms": 257000,
+        "artists": [{ "name": "Lauryn Hill" }]
+      }
+    ]
+  },
+  "mock11_revolver": {
+    "items": [
+      {
+        "id": "t11_1",
+        "track_number": 1,
+        "name": "Taxman",
+        "duration_ms": 158000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t11_2",
+        "track_number": 2,
+        "name": "Eleanor Rigby",
+        "duration_ms": 126000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t11_3",
+        "track_number": 3,
+        "name": "I'm Only Sleeping",
+        "duration_ms": 180000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t11_4",
+        "track_number": 4,
+        "name": "Love You To",
+        "duration_ms": 179000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t11_5",
+        "track_number": 5,
+        "name": "Here, There and Everywhere",
+        "duration_ms": 144000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t11_6",
+        "track_number": 6,
+        "name": "Yellow Submarine",
+        "duration_ms": 158000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t11_7",
+        "track_number": 7,
+        "name": "She Said She Said",
+        "duration_ms": 156000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t11_8",
+        "track_number": 8,
+        "name": "Good Day Sunshine",
+        "duration_ms": 129000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t11_9",
+        "track_number": 9,
+        "name": "And Your Bird Can Sing",
+        "duration_ms": 120000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t11_10",
+        "track_number": 10,
+        "name": "For No One",
+        "duration_ms": 119000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t11_11",
+        "track_number": 11,
+        "name": "Doctor Robert",
+        "duration_ms": 134000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t11_12",
+        "track_number": 12,
+        "name": "I Want to Tell You",
+        "duration_ms": 147000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t11_13",
+        "track_number": 13,
+        "name": "Got to Get You into My Life",
+        "duration_ms": 149000,
+        "artists": [{ "name": "The Beatles" }]
+      },
+      {
+        "id": "t11_14",
+        "track_number": 14,
+        "name": "Tomorrow Never Knows",
+        "duration_ms": 179000,
+        "artists": [{ "name": "The Beatles" }]
+      }
+    ]
+  },
+  "mock12_thriller": {
+    "items": [
+      {
+        "id": "t12_1",
+        "track_number": 1,
+        "name": "Wanna Be Startin' Somethin'",
+        "duration_ms": 363000,
+        "artists": [{ "name": "Michael Jackson" }]
+      },
+      {
+        "id": "t12_2",
+        "track_number": 2,
+        "name": "Baby Be Mine",
+        "duration_ms": 260000,
+        "artists": [{ "name": "Michael Jackson" }]
+      },
+      {
+        "id": "t12_3",
+        "track_number": 3,
+        "name": "The Girl Is Mine",
+        "duration_ms": 222000,
+        "artists": [{ "name": "Michael Jackson" }]
+      },
+      {
+        "id": "t12_4",
+        "track_number": 4,
+        "name": "Thriller",
+        "duration_ms": 357000,
+        "artists": [{ "name": "Michael Jackson" }]
+      },
+      {
+        "id": "t12_5",
+        "track_number": 5,
+        "name": "Beat It",
+        "duration_ms": 258000,
+        "artists": [{ "name": "Michael Jackson" }]
+      },
+      {
+        "id": "t12_6",
+        "track_number": 6,
+        "name": "Billie Jean",
+        "duration_ms": 294000,
+        "artists": [{ "name": "Michael Jackson" }]
+      },
+      {
+        "id": "t12_7",
+        "track_number": 7,
+        "name": "Human Nature",
+        "duration_ms": 245000,
+        "artists": [{ "name": "Michael Jackson" }]
+      },
+      {
+        "id": "t12_8",
+        "track_number": 8,
+        "name": "P.Y.T. (Pretty Young Thing)",
+        "duration_ms": 238000,
+        "artists": [{ "name": "Michael Jackson" }]
+      },
+      {
+        "id": "t12_9",
+        "track_number": 9,
+        "name": "The Lady in My Life",
+        "duration_ms": 299000,
+        "artists": [{ "name": "Michael Jackson" }]
+      }
+    ]
+  },
+  "mock13_exile": {
+    "items": [
+      {
+        "id": "t13_1",
+        "track_number": 1,
+        "name": "Rocks Off",
+        "duration_ms": 271000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_2",
+        "track_number": 2,
+        "name": "Rip This Joint",
+        "duration_ms": 142000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_3",
+        "track_number": 3,
+        "name": "Shake Your Hips",
+        "duration_ms": 179000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_4",
+        "track_number": 4,
+        "name": "Casino Boogie",
+        "duration_ms": 213000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_5",
+        "track_number": 5,
+        "name": "Tumbling Dice",
+        "duration_ms": 225000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_6",
+        "track_number": 6,
+        "name": "Sweet Virginia",
+        "duration_ms": 265000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_7",
+        "track_number": 7,
+        "name": "Torn and Frayed",
+        "duration_ms": 257000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_8",
+        "track_number": 8,
+        "name": "Sweet Black Angel",
+        "duration_ms": 174000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_9",
+        "track_number": 9,
+        "name": "Loving Cup",
+        "duration_ms": 265000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_10",
+        "track_number": 10,
+        "name": "Happy",
+        "duration_ms": 184000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_11",
+        "track_number": 11,
+        "name": "Turd on the Run",
+        "duration_ms": 156000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_12",
+        "track_number": 12,
+        "name": "Ventilator Blues",
+        "duration_ms": 204000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_13",
+        "track_number": 13,
+        "name": "I Just Want to See His Face",
+        "duration_ms": 172000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_14",
+        "track_number": 14,
+        "name": "Let It Loose",
+        "duration_ms": 316000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_15",
+        "track_number": 15,
+        "name": "All Down the Line",
+        "duration_ms": 229000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_16",
+        "track_number": 16,
+        "name": "Stop Breaking Down",
+        "duration_ms": 274000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_17",
+        "track_number": 17,
+        "name": "Shine a Light",
+        "duration_ms": 254000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t13_18",
+        "track_number": 18,
+        "name": "Soul Survivor",
+        "duration_ms": 206000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      }
+    ]
+  },
+  "mock14_letitbleed": {
+    "items": [
+      {
+        "id": "t14_1",
+        "track_number": 1,
+        "name": "Gimme Shelter",
+        "duration_ms": 271000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t14_2",
+        "track_number": 2,
+        "name": "Love in Vain",
+        "duration_ms": 259000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t14_3",
+        "track_number": 3,
+        "name": "Country Honk",
+        "duration_ms": 189000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t14_4",
+        "track_number": 4,
+        "name": "Live with Me",
+        "duration_ms": 213000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t14_5",
+        "track_number": 5,
+        "name": "Let It Bleed",
+        "duration_ms": 326000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t14_6",
+        "track_number": 6,
+        "name": "Midnight Rambler",
+        "duration_ms": 412000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t14_7",
+        "track_number": 7,
+        "name": "You Got the Silver",
+        "duration_ms": 171000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t14_8",
+        "track_number": 8,
+        "name": "Monkey Man",
+        "duration_ms": 251000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      },
+      {
+        "id": "t14_9",
+        "track_number": 9,
+        "name": "You Can't Always Get What You Want",
+        "duration_ms": 448000,
+        "artists": [{ "name": "The Rolling Stones" }]
+      }
+    ]
+  },
+  "mock15_borntorun": {
+    "items": [
+      {
+        "id": "t15_1",
+        "track_number": 1,
+        "name": "Thunder Road",
+        "duration_ms": 289000,
+        "artists": [{ "name": "Bruce Springsteen" }]
+      },
+      {
+        "id": "t15_2",
+        "track_number": 2,
+        "name": "Tenth Avenue Freeze-Out",
+        "duration_ms": 191000,
+        "artists": [{ "name": "Bruce Springsteen" }]
+      },
+      {
+        "id": "t15_3",
+        "track_number": 3,
+        "name": "Night",
+        "duration_ms": 180000,
+        "artists": [{ "name": "Bruce Springsteen" }]
+      },
+      {
+        "id": "t15_4",
+        "track_number": 4,
+        "name": "Backstreets",
+        "duration_ms": 390000,
+        "artists": [{ "name": "Bruce Springsteen" }]
+      },
+      {
+        "id": "t15_5",
+        "track_number": 5,
+        "name": "Born to Run",
+        "duration_ms": 270000,
+        "artists": [{ "name": "Bruce Springsteen" }]
+      },
+      {
+        "id": "t15_6",
+        "track_number": 6,
+        "name": "She's the One",
+        "duration_ms": 270000,
+        "artists": [{ "name": "Bruce Springsteen" }]
+      },
+      {
+        "id": "t15_7",
+        "track_number": 7,
+        "name": "Meeting Across the River",
+        "duration_ms": 198000,
+        "artists": [{ "name": "Bruce Springsteen" }]
+      },
+      {
+        "id": "t15_8",
+        "track_number": 8,
+        "name": "Jungleland",
+        "duration_ms": 574000,
+        "artists": [{ "name": "Bruce Springsteen" }]
+      }
+    ]
+  },
+  "mock16_londoncalling": {
+    "items": [
+      {
+        "id": "t16_1",
+        "track_number": 1,
+        "name": "London Calling",
+        "duration_ms": 200000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_2",
+        "track_number": 2,
+        "name": "Brand New Cadillac",
+        "duration_ms": 128000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_3",
+        "track_number": 3,
+        "name": "Jimmy Jazz",
+        "duration_ms": 234000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_4",
+        "track_number": 4,
+        "name": "Hateful",
+        "duration_ms": 164000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_5",
+        "track_number": 5,
+        "name": "Rudie Can't Fail",
+        "duration_ms": 209000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_6",
+        "track_number": 6,
+        "name": "Spanish Bombs",
+        "duration_ms": 198000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_7",
+        "track_number": 7,
+        "name": "The Right Profile",
+        "duration_ms": 234000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_8",
+        "track_number": 8,
+        "name": "Lost in the Supermarket",
+        "duration_ms": 227000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_9",
+        "track_number": 9,
+        "name": "Clampdown",
+        "duration_ms": 229000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_10",
+        "track_number": 10,
+        "name": "The Guns of Brixton",
+        "duration_ms": 189000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_11",
+        "track_number": 11,
+        "name": "Wrong 'Em Boyo",
+        "duration_ms": 190000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_12",
+        "track_number": 12,
+        "name": "Death or Glory",
+        "duration_ms": 235000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_13",
+        "track_number": 13,
+        "name": "Koka Kola",
+        "duration_ms": 107000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_14",
+        "track_number": 14,
+        "name": "The Card Cheat",
+        "duration_ms": 229000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_15",
+        "track_number": 15,
+        "name": "Lover's Rock",
+        "duration_ms": 243000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_16",
+        "track_number": 16,
+        "name": "Four Horsemen",
+        "duration_ms": 175000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_17",
+        "track_number": 17,
+        "name": "I'm Not Down",
+        "duration_ms": 186000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_18",
+        "track_number": 18,
+        "name": "Revolution Rock",
+        "duration_ms": 333000,
+        "artists": [{ "name": "The Clash" }]
+      },
+      {
+        "id": "t16_19",
+        "track_number": 19,
+        "name": "Train in Vain",
+        "duration_ms": 189000,
+        "artists": [{ "name": "The Clash" }]
+      }
+    ]
+  },
+  "mock17_mbdtf": {
+    "items": [
+      {
+        "id": "t17_1",
+        "track_number": 1,
+        "name": "Dark Fantasy",
+        "duration_ms": 280000,
+        "artists": [{ "name": "Kanye West" }]
+      },
+      {
+        "id": "t17_2",
+        "track_number": 2,
+        "name": "Gorgeous",
+        "duration_ms": 357000,
+        "artists": [{ "name": "Kanye West" }]
+      },
+      {
+        "id": "t17_3",
+        "track_number": 3,
+        "name": "POWER",
+        "duration_ms": 292000,
+        "artists": [{ "name": "Kanye West" }]
+      },
+      {
+        "id": "t17_4",
+        "track_number": 4,
+        "name": "All of the Lights (Interlude)",
+        "duration_ms": 62000,
+        "artists": [{ "name": "Kanye West" }]
+      },
+      {
+        "id": "t17_5",
+        "track_number": 5,
+        "name": "All of the Lights",
+        "duration_ms": 299000,
+        "artists": [{ "name": "Kanye West" }]
+      },
+      {
+        "id": "t17_6",
+        "track_number": 6,
+        "name": "Monster",
+        "duration_ms": 378000,
+        "artists": [{ "name": "Kanye West" }]
+      },
+      {
+        "id": "t17_7",
+        "track_number": 7,
+        "name": "So Appalled",
+        "duration_ms": 398000,
+        "artists": [{ "name": "Kanye West" }]
+      },
+      {
+        "id": "t17_8",
+        "track_number": 8,
+        "name": "Devil in a New Dress",
+        "duration_ms": 351000,
+        "artists": [{ "name": "Kanye West" }]
+      },
+      {
+        "id": "t17_9",
+        "track_number": 9,
+        "name": "Runaway",
+        "duration_ms": 547000,
+        "artists": [{ "name": "Kanye West" }]
+      },
+      {
+        "id": "t17_10",
+        "track_number": 10,
+        "name": "Hell of a Life",
+        "duration_ms": 327000,
+        "artists": [{ "name": "Kanye West" }]
+      },
+      {
+        "id": "t17_11",
+        "track_number": 11,
+        "name": "Blame Game",
+        "duration_ms": 469000,
+        "artists": [{ "name": "Kanye West" }]
+      },
+      {
+        "id": "t17_12",
+        "track_number": 12,
+        "name": "Lost in the World",
+        "duration_ms": 256000,
+        "artists": [{ "name": "Kanye West" }]
+      },
+      {
+        "id": "t17_13",
+        "track_number": 13,
+        "name": "Who Will Survive in America",
+        "duration_ms": 98000,
+        "artists": [{ "name": "Kanye West" }]
+      }
+    ]
+  },
+  "mock18_highway61": {
+    "items": [
+      {
+        "id": "t18_1",
+        "track_number": 1,
+        "name": "Like a Rolling Stone",
+        "duration_ms": 369000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t18_2",
+        "track_number": 2,
+        "name": "Tombstone Blues",
+        "duration_ms": 359000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t18_3",
+        "track_number": 3,
+        "name": "It Takes a Lot to Laugh, It Takes a Train to Cry",
+        "duration_ms": 209000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t18_4",
+        "track_number": 4,
+        "name": "From a Buick 6",
+        "duration_ms": 199000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t18_5",
+        "track_number": 5,
+        "name": "Ballad of a Thin Man",
+        "duration_ms": 358000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t18_6",
+        "track_number": 6,
+        "name": "Queen Jane Approximately",
+        "duration_ms": 331000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t18_7",
+        "track_number": 7,
+        "name": "Highway 61 Revisited",
+        "duration_ms": 210000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t18_8",
+        "track_number": 8,
+        "name": "Just Like Tom Thumb's Blues",
+        "duration_ms": 331000,
+        "artists": [{ "name": "Bob Dylan" }]
+      },
+      {
+        "id": "t18_9",
+        "track_number": 9,
+        "name": "Desolation Row",
+        "duration_ms": 681000,
+        "artists": [{ "name": "Bob Dylan" }]
+      }
+    ]
+  },
+  "mock19_tpab": {
+    "items": [
+      {
+        "id": "t19_1",
+        "track_number": 1,
+        "name": "Wesley's Theory",
+        "duration_ms": 287000,
+        "artists": [{ "name": "Kendrick Lamar" }]
+      },
+      {
+        "id": "t19_2",
+        "track_number": 2,
+        "name": "For Free? (Interlude)",
+        "duration_ms": 130000,
+        "artists": [{ "name": "Kendrick Lamar" }]
+      },
+      {
+        "id": "t19_3",
+        "track_number": 3,
+        "name": "King Kunta",
+        "duration_ms": 234000,
+        "artists": [{ "name": "Kendrick Lamar" }]
+      },
+      {
+        "id": "t19_4",
+        "track_number": 4,
+        "name": "Institutionalized",
+        "duration_ms": 271000,
+        "artists": [{ "name": "Kendrick Lamar" }]
+      },
+      {
+        "id": "t19_5",
+        "track_number": 5,
+        "name": "These Walls",
+        "duration_ms": 300000,
+        "artists": [{ "name": "Kendrick Lamar" }]
+      },
+      {
+        "id": "t19_6",
+        "track_number": 6,
+        "name": "u",
+        "duration_ms": 268000,
+        "artists": [{ "name": "Kendrick Lamar" }]
+      },
+      {
+        "id": "t19_7",
+        "track_number": 7,
+        "name": "Alright",
+        "duration_ms": 219000,
+        "artists": [{ "name": "Kendrick Lamar" }]
+      },
+      {
+        "id": "t19_8",
+        "track_number": 8,
+        "name": "For Sale? (Interlude)",
+        "duration_ms": 291000,
+        "artists": [{ "name": "Kendrick Lamar" }]
+      },
+      {
+        "id": "t19_9",
+        "track_number": 9,
+        "name": "Momma",
+        "duration_ms": 283000,
+        "artists": [{ "name": "Kendrick Lamar" }]
+      },
+      {
+        "id": "t19_10",
+        "track_number": 10,
+        "name": "Hood Politics",
+        "duration_ms": 292000,
+        "artists": [{ "name": "Kendrick Lamar" }]
+      },
+      {
+        "id": "t19_11",
+        "track_number": 11,
+        "name": "How Much a Dollar Cost",
+        "duration_ms": 261000,
+        "artists": [{ "name": "Kendrick Lamar" }]
+      },
+      {
+        "id": "t19_12",
+        "track_number": 12,
+        "name": "Complexion (A Zulu Love)",
+        "duration_ms": 263000,
+        "artists": [{ "name": "Kendrick Lamar" }]
+      },
+      {
+        "id": "t19_13",
+        "track_number": 13,
+        "name": "The Blacker the Berry",
+        "duration_ms": 328000,
+        "artists": [{ "name": "Kendrick Lamar" }]
+      },
+      {
+        "id": "t19_14",
+        "track_number": 14,
+        "name": "You Ain't Gotta Lie (Momma Said)",
+        "duration_ms": 241000,
+        "artists": [{ "name": "Kendrick Lamar" }]
+      },
+      {
+        "id": "t19_15",
+        "track_number": 15,
+        "name": "i",
+        "duration_ms": 336000,
+        "artists": [{ "name": "Kendrick Lamar" }]
+      },
+      {
+        "id": "t19_16",
+        "track_number": 16,
+        "name": "Mortal Man",
+        "duration_ms": 727000,
+        "artists": [{ "name": "Kendrick Lamar" }]
+      }
+    ]
+  },
+  "mock20_kida": {
+    "items": [
+      {
+        "id": "t20_1",
+        "track_number": 1,
+        "name": "Everything In Its Right Place",
+        "duration_ms": 251000,
+        "artists": [{ "name": "Radiohead" }]
+      },
+      {
+        "id": "t20_2",
+        "track_number": 2,
+        "name": "Kid A",
+        "duration_ms": 284000,
+        "artists": [{ "name": "Radiohead" }]
+      },
+      {
+        "id": "t20_3",
+        "track_number": 3,
+        "name": "The National Anthem",
+        "duration_ms": 351000,
+        "artists": [{ "name": "Radiohead" }]
+      },
+      {
+        "id": "t20_4",
+        "track_number": 4,
+        "name": "How to Disappear Completely",
+        "duration_ms": 356000,
+        "artists": [{ "name": "Radiohead" }]
+      },
+      {
+        "id": "t20_5",
+        "track_number": 5,
+        "name": "Treefingers",
+        "duration_ms": 222000,
+        "artists": [{ "name": "Radiohead" }]
+      },
+      {
+        "id": "t20_6",
+        "track_number": 6,
+        "name": "Optimistic",
+        "duration_ms": 316000,
+        "artists": [{ "name": "Radiohead" }]
+      },
+      {
+        "id": "t20_7",
+        "track_number": 7,
+        "name": "In Limbo",
+        "duration_ms": 211000,
+        "artists": [{ "name": "Radiohead" }]
+      },
+      {
+        "id": "t20_8",
+        "track_number": 8,
+        "name": "Idioteque",
+        "duration_ms": 309000,
+        "artists": [{ "name": "Radiohead" }]
+      },
+      {
+        "id": "t20_9",
+        "track_number": 9,
+        "name": "Morning Bell",
+        "duration_ms": 275000,
+        "artists": [{ "name": "Radiohead" }]
+      },
+      {
+        "id": "t20_10",
+        "track_number": 10,
+        "name": "Motion Picture Soundtrack",
+        "duration_ms": 421000,
+        "artists": [{ "name": "Radiohead" }]
+      }
+    ]
+  }
+}
