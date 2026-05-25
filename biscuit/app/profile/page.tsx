@@ -30,10 +30,10 @@ export default function ProfilePage() {
   return (
     <main className="bg-[#000000] min-h-screen text-white pt-28 pb-12 px-6 md:px-12 lg:px-24 selection:bg-[#E23C3C] selection:text-black">
       {/* GRILLA PRINCIPAL DE 2 COLUMNAS (IZQUIERDA Y DERECHA) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 max-w-7xl mx-auto items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 max-w-7xl mx-auto items-start">
         {/* COLUMNA IZQUIERDA: TITULO Y TOP RANKED     */}
-        <div className="flex flex-col w-full mt-25">
-          <h1 className="font-biscuit text-5xl xl:text-7xl text-[#ffffff] tracking-tighter uppercase m-0 p-0 leading-tight">
+        <div className="flex flex-col w-full mt-32 ">
+          <h1 className="font-biscuit text-5xl xl:text-7xl text-[#ffffff]  uppercase m-0 p-0 leading-tight">
             {user.username}'s
           </h1>
           <h2 className="font-biscuit text-4xl xl:text-7xl text-[#E23C3C] tracking-wide uppercase leading-none mb-5">
@@ -41,10 +41,10 @@ export default function ProfilePage() {
           </h2>
 
           {/* Caja contenedora rojo oscuro (#8E0B0B) de los álbumes con más ranking */}
-          <div className="bg-[#8E0B0B] px-3 rounded-[2rem] flex flex-col h-[24rem] overflow-hidden w-[32rem] ">
+          <div className="bg-[#8E0B0B] px-3 rounded-[2rem] flex flex-col h-[26rem] overflow-hidden w-[32rem] ">
             {/* Header: Etiqueta TOP RATED alineada a la derecha */}
             <div className="flex justify-end pt-3">
-              <span className="bg-[#470808] text-[#fdfdfd] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner fixed">
+              <span className="bg-[#470808] text-[#fdfdfd] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner ">
                 TOP RATED
               </span>
             </div>
@@ -80,8 +80,8 @@ export default function ProfilePage() {
                       />
 
                       {/* Textos: Título y Artista */}
-                      <div className="flex flex-col justify-center truncate">
-                        <p className="font-[family-name:var(--font-bayon)] text-sm text-[#fdfdfd]/70 truncate">
+                      <div className="flex flex-col justify-center truncate mt-0 ">
+                        <p className="font-[family-name:var(--font-bayon)] text-lg text-[#fdfdfd]/70 truncate">
                           {albumDetail?.artists[0]?.name || "Unknown Artist"}
                         </p>
                         <p className="font-[family-name:var(--font-bayon)] text-3xl text-[#fdfdfd] uppercase tracking-wide truncate leading-tight">
@@ -92,7 +92,7 @@ export default function ProfilePage() {
 
                     {/* LADO DERECHO: Calificación (Rating) */}
                     <div className="flex items-center gap-1 pl-4 flex-shrink-0">
-                      <span className="font-[family:var(--font-bayon)] text-4xl text-white mr-8 w-4 text-center group-hover:text-white transition-colors">
+                      <span className="font-[family:var(--font-bayon)] text-3xl text-white mr-8 w-4 text-center group-hover:text-white transition-colors">
                         #{index + 1}
                       </span>
                       <span className="font-[family:var(--font-bayon)] text-lg text-[#939090] tracking-wider">
@@ -109,10 +109,10 @@ export default function ProfilePage() {
         {/* ========================================== */}
         {/* COLUMNA DERECHA: AVATAR, BIO Y ESTADÍSTICAS*/}
         {/* ========================================== */}
-        <div className="flex flex-col gap-6 w-full mt-14">
+        <div className="flex flex-col gap-6 w-full mt-16">
           {/* Fila del Avatar (Imagen de Perfil superior con borde rojo) */}
           <div className="w-full flex justify-center lg:justify-center">
-            <div className="w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-6 border-[#a39999] shadow-xl bg-[#111112]">
+            <div className="w-72 h-72 xl:w-90 xl:h-90 rounded-full overflow-hidden border-6 border-[#a39999] shadow-xl bg-[#111112]">
               <img
                 src={user.avatar_url}
                 alt={user.name}
@@ -128,9 +128,9 @@ export default function ProfilePage() {
           {/* Sub-grilla intermedia: 2 columnas (Biography a la izquierda, Stats arriba a la derecha) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Caja de Biografía */}
-            <div className="bg-[#111112] p-5 border border-zinc-900 flex flex-col justify-between">
+            <div className="bg-[#111112] p-5 rounded-3xl flex flex-col justify-between">
               <div>
-                <h3 className="font-[family-name:var(--font-bayon)] text-lg text-[#E23C3C] tracking-widest mb-2">
+                <h3 className="font-[family-name:var(--font-bayon)] text-lg text-[#ffffff] tracking-widest mb-2">
                   BIOGRAPHY
                 </h3>
                 <p className="font-[family-name:var(--font-neue)] text-sm font-medium text-zinc-400 leading-relaxed">
@@ -143,9 +143,9 @@ export default function ProfilePage() {
             </div>
 
             {/* Caja de Stats Superiores (Reviews escritas y Favoritos en JSON) */}
-            <div className="bg-[#111112] p-5 border border-zinc-900 grid grid-cols-2 gap-2 items-center text-center">
+            <div className="bg-[#111112] p-5 rounded-3xl grid grid-cols-2 gap-2 items-center text-center">
               <div className="border-r border-zinc-800 py-2">
-                <p className="font-[family:var(--font-biscuit)] text-4xl text-[#E23C3C] leading-none mb-1">
+                <p className="font-[family:var(--font-biscuit)] text-4xl text-[#ffffff] leading-none mb-1">
                   {userReviews.length}
                 </p>
                 <p className="font-[family:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase">
@@ -153,10 +153,10 @@ export default function ProfilePage() {
                 </p>
               </div>
               <div className="py-2">
-                <p className="font-[family:var(--font-biscuit)] text-4xl text-[#E23C3C] leading-none mb-1">
+                <p className="text-4xl text-[#ffffff] leading-none mb-1">
                   {user.favorite_albums.length}
                 </p>
-                <p className="font-[family:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase">
+                <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase">
                   FAVORITES
                 </p>
               </div>
@@ -164,28 +164,28 @@ export default function ProfilePage() {
           </div>
 
           {/* Caja inferior ancha: Estadísticas globales de listas, followers y following */}
-          <div className="bg-[#111112] p-4 border border-zinc-900 grid grid-cols-3 text-center shadow-md">
+          <div className=" p-2  grid grid-cols-3 text-center shadow-md px-30">
             <div className="border-r border-zinc-800">
-              <p className="font-[family:var(--font-bayon)] text-2xl text-white tracking-wider">
+              <p className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-wider">
                 {totalPlaylists}
               </p>
-              <p className="font-[family:var(--font-bayon)] text-xs text-[#E23C3C] tracking-widest">
+              <p className="font-[family-name:var(--font-bayon)] text-xs text-[#ffffff] tracking-widest">
                 LISTS
               </p>
             </div>
             <div className="border-r border-zinc-800">
-              <p className="font-[family:var(--font-bayon)] text-2xl text-white tracking-wider">
+              <p className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-wider">
                 {user.stats.followers}
               </p>
-              <p className="font-[family:var(--font-bayon)] text-xs text-[#E23C3C] tracking-widest">
+              <p className="font-[family-name:var(--font-bayon)] text-xs text-[#ffffff] tracking-widest">
                 FOLLOWERS
               </p>
             </div>
             <div>
-              <p className="font-[family:var(--font-bayon)] text-2xl text-white tracking-wider">
+              <p className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-wider">
                 {user.stats.following}
               </p>
-              <p className="font-[family:var(--font-bayon)] text-xs text-[#E23C3C] tracking-widest">
+              <p className="font-[family-name:var(--font-bayon)] text-xs text-[#ffffff] tracking-widest">
                 FOLLOWING
               </p>
             </div>
