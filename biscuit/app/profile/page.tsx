@@ -28,11 +28,11 @@ export default function ProfilePage() {
   ).length;
 
   return (
-    <main className="bg-[#000000] min-h-screen text-white pt-28 pb-12 px-6 md:px-12 lg:px-24 selection:bg-[#E23C3C] selection:text-black">
+    <main className="bg-[#000000] min-h-screen text-white pt-24 pb-12 px-6 md:px-12 lg:px-24 selection:bg-[#E23C3C] selection:text-black">
       {/* GRILLA PRINCIPAL DE 2 COLUMNAS (IZQUIERDA Y DERECHA) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 max-w-7xl mx-auto items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-30 max-w-6xl mx-auto items-start">
         {/* COLUMNA IZQUIERDA: TITULO Y TOP RANKED     */}
-        <div className="flex flex-col w-full mt-32 ">
+        <div className="flex flex-col w-full mt-10">
           <h1 className="font-biscuit text-5xl xl:text-7xl text-[#ffffff]  uppercase m-0 p-0 leading-tight">
             {user.username}'s
           </h1>
@@ -41,16 +41,11 @@ export default function ProfilePage() {
           </h2>
 
           {/* Caja contenedora rojo oscuro (#8E0B0B) de los álbumes con más ranking */}
-          <div className="bg-[#8E0B0B] px-3 rounded-[2rem] flex flex-col h-[26rem] overflow-hidden w-[32rem] ">
+          <div className="bg-[#8E0B0B] px-3 rounded-[2rem] flex flex-col h-[24rem] overflow-hidden w-[30rem] ">
             {/* Header: Etiqueta TOP RATED alineada a la derecha */}
-            <div className="flex justify-end pt-3">
-              <span className="bg-[#470808] text-[#fdfdfd] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner ">
-                TOP RATED
-              </span>
-            </div>
 
             {/* CONTENEDOR DE LA LISTA: Flex Columna */}
-            <div className="flex flex-col w-full font-[family-name:var(--font-bayon)] px-6 py-2">
+            <div className="flex flex-col w-full font-[family-name:var(--font-bayon)] px-4 py-2">
               {/* Tomamos solo los top 3 para que calce con tu idea de 3 filas */}
               {topRankedReviews.slice(0, 3).map((review, index) => {
                 const albumDetail = albumsData.albums.items.find(
@@ -76,15 +71,15 @@ export default function ProfilePage() {
                           "https://via.placeholder.com/150"
                         }
                         alt={albumDetail?.name || "Album Cover"}
-                        className="w-24 h-24 object-cover  flex-shrink-0 shadow-md"
+                        className="w-22 h-22 object-cover  flex-shrink-0 shadow-md"
                       />
 
                       {/* Textos: Título y Artista */}
-                      <div className="flex flex-col justify-center truncate mt-0 ">
-                        <p className="font-[family-name:var(--font-bayon)] text-lg text-[#fdfdfd]/70 truncate">
+                      <div className="flex flex-col justify-center truncate">
+                        <p className="font-[family-name:var(--font-bayon)] text-sm text-[#fdfdfd]/70 truncate">
                           {albumDetail?.artists[0]?.name || "Unknown Artist"}
                         </p>
-                        <p className="font-[family-name:var(--font-bayon)] text-3xl text-[#fdfdfd] uppercase tracking-wide truncate leading-tight">
+                        <p className="font-[family-name:var(--font-bayon)] text-[1.5rem] text-[#fdfdfd] uppercase tracking-wide truncate leading-tight">
                           {albumDetail?.name || "Unknown Album"}
                         </p>
                       </div>
@@ -92,7 +87,7 @@ export default function ProfilePage() {
 
                     {/* LADO DERECHO: Calificación (Rating) */}
                     <div className="flex items-center gap-1 pl-4 flex-shrink-0">
-                      <span className="font-[family:var(--font-bayon)] text-3xl text-white mr-8 w-4 text-center group-hover:text-white transition-colors">
+                      <span className="font-[family:var(--font-bayon)] text-2xl text-white mr-8 w-4 text-center group-hover:text-white transition-colors">
                         #{index + 1}
                       </span>
                       <span className="font-[family:var(--font-bayon)] text-lg text-[#939090] tracking-wider">
@@ -103,16 +98,21 @@ export default function ProfilePage() {
                 );
               })}
             </div>
+            <div className="flex justify-end pr-4 pb-3">
+              <button className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] transition-colors cursor-pointer">
+                VIEW ALL
+              </button>
+            </div>
           </div>
         </div>
 
         {/* ========================================== */}
         {/* COLUMNA DERECHA: AVATAR, BIO Y ESTADÍSTICAS*/}
         {/* ========================================== */}
-        <div className="flex flex-col gap-6 w-full mt-16">
+        <div className="flex flex-col gap-4">
           {/* Fila del Avatar (Imagen de Perfil superior con borde rojo) */}
           <div className="w-full flex justify-center lg:justify-center">
-            <div className="w-72 h-72 xl:w-90 xl:h-90 rounded-full overflow-hidden border-6 border-[#a39999] shadow-xl bg-[#111112]">
+            <div className="w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-6 border-[#a39999] shadow-xl bg-[#111112]">
               <img
                 src={user.avatar_url}
                 alt={user.name}
