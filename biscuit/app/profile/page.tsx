@@ -30,31 +30,29 @@ export default function ProfilePage() {
   return (
     <main className="bg-[#000000] min-h-screen text-white pt-28 pb-12 px-6 md:px-12 lg:px-24 selection:bg-[#E23C3C] selection:text-black">
       {/* GRILLA PRINCIPAL DE 2 COLUMNAS (IZQUIERDA Y DERECHA) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto items-start">
-        {/* ========================================== */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 max-w-7xl mx-auto items-start">
         {/* COLUMNA IZQUIERDA: TITULO Y TOP RANKED     */}
-        {/* ========================================== */}
-        <div className="flex flex-col gap-6 w-full">
-          {/* Título Principal usando la fuente Monoton (var(--font-biscuit)) */}
-          <h1 className="font-biscuit text-4xl xl:text-6xl text-[#E23C3C] tracking-wide uppercase leading-none break-words">
-            {user.username} COLLECTIONS
+        <div className="flex flex-col w-full mt-25">
+          <h1 className="font-biscuit text-5xl xl:text-7xl text-[#ffffff] tracking-tighter uppercase m-0 p-0 leading-tight">
+            {user.username}'s
           </h1>
+          <h2 className="font-biscuit text-4xl xl:text-7xl text-[#E23C3C] tracking-wide uppercase leading-none mb-5">
+            COLLECTION
+          </h2>
 
-          {/* Caja contenedora gris oscuro (#111112) de los álbumes con más ranking */}
-          <div className="bg-[#111112] p-6 rounded-none border border-zinc-900 shadow-2xl">
-            <div className="flex justify-between items-center mb-6 border-b border-zinc-800 pb-3">
-              <h2 className="font-[family-name:var(--font-bayon)] text-2xl text-[#E23C3C] tracking-widest">
-                TOP RATED ALBUMS
-              </h2>
-              <span className="bg-[#8E0B0B] text-black font-[family-name:var(--font-bayon)] text-xs px-3 py-1 uppercase tracking-wider">
-                HIGHEST RANK
+          {/* Caja contenedora rojo oscuro (#8E0B0B) de los álbumes con más ranking */}
+          <div className="bg-[#8E0B0B] px-3 rounded-[2rem] flex flex-col h-[24rem] overflow-hidden w-[32rem] ">
+            {/* Header: Etiqueta TOP RATED alineada a la derecha */}
+            <div className="flex justify-end pt-3">
+              <span className="bg-[#470808] text-[#fdfdfd] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner fixed">
+                TOP RATED
               </span>
             </div>
 
-            {/* GRILLA INTERNA: 3 FILAS Y 2 COLUMNAS (Para los 6 elementos mapeados) */}
-            <div className="grid grid-cols-2 grid-rows-3 gap-4">
-              {topRankedReviews.map((review, index) => {
-                // Buscamos los detalles visuales del álbum coincidiendo el ID
+            {/* CONTENEDOR DE LA LISTA: Flex Columna */}
+            <div className="flex flex-col w-full font-[family-name:var(--font-bayon)] px-6 py-2">
+              {/* Tomamos solo los top 3 para que calce con tu idea de 3 filas */}
+              {topRankedReviews.slice(0, 3).map((review, index) => {
                 const albumDetail = albumsData.albums.items.find(
                   (item) => item.id === review.album_id,
                 );
@@ -62,34 +60,44 @@ export default function ProfilePage() {
                 return (
                   <div
                     key={review.id}
-                    className="bg-black/50 border border-zinc-800 p-3 flex gap-3 items-center hover:border-[#E23C3C] transition-colors group"
+                    // flex-row, justify-between separa la info del álbum a la izquierda y el rating a la derecha.
+                    // border-b y border-white/10 crean la línea separadora sutil.
+                    // last:border-0 quita la línea del último elemento.
+                    className="flex flex-row items-center justify-between py-2  last:border-0 hover:bg-black/10 transition-colors px-2 rounded-lg group"
                   >
-                    {/* Indicador numérico de posición */}
-                    <span className="font-[family:var(--font-biscuit)] text-xl text-[#8E0B0B] group-hover:text-[#E23C3C] transition-colors w-6 text-center">
-                      {index + 1}
-                    </span>
+                    {/* LADO IZQUIERDO: Posición, Portada, Título y Artista */}
+                    <div className="flex items-center gap-4 overflow-hidden ">
+                      {/* Indicador numérico */}
 
-                    {/* Portada del Álbum */}
-                    <img
-                      src={
-                        albumDetail?.images[0]?.url ||
-                        "https://via.placeholder.com/150"
-                      }
-                      alt={albumDetail?.name || "Album Cover"}
-                      className="w-16 h-16 object-cover flex-shrink-0 grayscale group-hover:grayscale-0 transition-all duration-300"
-                    />
+                      {/* Portada del Álbum (Cuadrada pequeña) */}
+                      <img
+                        src={
+                          albumDetail?.images[0]?.url ||
+                          "https://via.placeholder.com/150"
+                        }
+                        alt={albumDetail?.name || "Album Cover"}
+                        className="w-24 h-24 object-cover  flex-shrink-0 shadow-md"
+                      />
 
-                    {/* Información del Álbum y Nota */}
-                    <div className="overflow-hidden flex flex-col justify-center">
-                      <p className="font-[family:var(--font-bayon)] text-base text-zinc-100 truncate tracking-wider leading-tight">
-                        {albumDetail?.name || "Unknown Album"}
-                      </p>
-                      <p className="font-sans text-xs text-zinc-500 truncate mb-1">
-                        {albumDetail?.artists[0]?.name || "Unknown Artist"}
-                      </p>
-                      <p className="font-[family:var(--font-bayon)] text-xs text-[#E23C3C] tracking-widest">
-                        RATING: {review.rating} / 10
-                      </p>
+                      {/* Textos: Título y Artista */}
+                      <div className="flex flex-col justify-center truncate">
+                        <p className="font-[family-name:var(--font-bayon)] text-sm text-[#fdfdfd]/70 truncate">
+                          {albumDetail?.artists[0]?.name || "Unknown Artist"}
+                        </p>
+                        <p className="font-[family-name:var(--font-bayon)] text-3xl text-[#fdfdfd] uppercase tracking-wide truncate leading-tight">
+                          {albumDetail?.name || "Unknown Album"}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* LADO DERECHO: Calificación (Rating) */}
+                    <div className="flex items-center gap-1 pl-4 flex-shrink-0">
+                      <span className="font-[family:var(--font-bayon)] text-4xl text-white mr-8 w-4 text-center group-hover:text-white transition-colors">
+                        #{index + 1}
+                      </span>
+                      <span className="font-[family:var(--font-bayon)] text-lg text-[#939090] tracking-wider">
+                        {review.rating.toFixed(1)}
+                      </span>
                     </div>
                   </div>
                 );
@@ -101,7 +109,7 @@ export default function ProfilePage() {
         {/* ========================================== */}
         {/* COLUMNA DERECHA: AVATAR, BIO Y ESTADÍSTICAS*/}
         {/* ========================================== */}
-        <div className="flex flex-col gap-6 w-full">
+        <div className="flex flex-col gap-6 w-full mt-14">
           {/* Fila del Avatar (Imagen de Perfil superior con borde rojo) */}
           <div className="w-full flex justify-center lg:justify-center">
             <div className="w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-6 border-[#a39999] shadow-xl bg-[#111112]">
@@ -122,10 +130,10 @@ export default function ProfilePage() {
             {/* Caja de Biografía */}
             <div className="bg-[#111112] p-5 border border-zinc-900 flex flex-col justify-between">
               <div>
-                <h3 className="font-[family:var(--font-bayon)] text-lg text-[#E23C3C] tracking-widest mb-2">
+                <h3 className="font-[family-name:var(--font-bayon)] text-lg text-[#E23C3C] tracking-widest mb-2">
                   BIOGRAPHY
                 </h3>
-                <p className="font-sans text-sm font-medium text-zinc-400 leading-relaxed">
+                <p className="font-[family-name:var(--font-neue)] text-sm font-medium text-zinc-400 leading-relaxed">
                   {user.bio}
                 </p>
               </div>
