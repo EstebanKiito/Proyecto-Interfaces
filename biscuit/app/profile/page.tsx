@@ -33,73 +33,72 @@ export default function ProfilePage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-30 max-w-6xl mx-auto items-start">
         {/* COLUMNA IZQUIERDA: TITULO Y TOP RANKED     */}
         <div className="flex flex-col w-full mt-10">
-          <h1 className="font-biscuit text-5xl xl:text-7xl text-[#ffffff]  uppercase m-0 p-0 leading-tight">
+          <h1 className="font-biscuit text-5xl xl:text-7xl text-[#ffffff] uppercase m-0 p-0 leading-tight">
             {user.username}'s
           </h1>
           <h2 className="font-biscuit text-4xl xl:text-7xl text-[#E23C3C] tracking-wide uppercase leading-none mb-5">
             COLLECTION
           </h2>
 
-          {/* Caja contenedora rojo oscuro (#8E0B0B) de los álbumes con más ranking */}
-          <div className="bg-[#8E0B0B] px-3 rounded-[2rem] flex flex-col h-[24rem] overflow-hidden w-[30rem] ">
-            {/* Header: Etiqueta TOP RATED alineada a la derecha */}
+          {/* NUEVO ENVOLTORIO: Agrupa la caja y el botón. Fija el ancho a 30rem aquí */}
+          <div className="flex flex-col w-[30rem]">
+            {/* Caja contenedora rojo oscuro (#8E0B0B) */}
+            {/* Nota: Cambié w-[30rem] a w-full, porque ahora hereda el tamaño del envoltorio padre */}
+            <div className="relative bg-[#8E0B0B] px-3 rounded-[1.5rem] flex flex-col h-[22rem] overflow-hidden w-full">
+              <span className="absolute top-2 right-2 z-10 bg-[#470808] text-[#fdfdfd] font-[family-name:var(--font-bayon)] text-sm px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner">
+                TOP RATED
+              </span>
+              {/* CONTENEDOR DE LA LISTA: Flex Columna */}
+              <div className="flex flex-col w-full font-[family-name:var(--font-bayon)] px-4 py-4">
+                {topRankedReviews.slice(0, 3).map((review, index) => {
+                  const albumDetail = albumsData.albums.items.find(
+                    (item) => item.id === review.album_id,
+                  );
 
-            {/* CONTENEDOR DE LA LISTA: Flex Columna */}
-            <div className="flex flex-col w-full font-[family-name:var(--font-bayon)] px-4 py-2">
-              {/* Tomamos solo los top 3 para que calce con tu idea de 3 filas */}
-              {topRankedReviews.slice(0, 3).map((review, index) => {
-                const albumDetail = albumsData.albums.items.find(
-                  (item) => item.id === review.album_id,
-                );
+                  return (
+                    <div
+                      key={review.id}
+                      className="flex flex-row items-center justify-between py-2 last:border-0 hover:bg-black/10 transition-colors px-2 rounded-lg group"
+                    >
+                      {/* LADO IZQUIERDO: Posición, Portada, Título y Artista */}
+                      <div className="flex items-center gap-4 overflow-hidden ">
+                        <img
+                          src={
+                            albumDetail?.images[0]?.url ||
+                            "https://via.placeholder.com/150"
+                          }
+                          alt={albumDetail?.name || "Album Cover"}
+                          className="w-22 h-22 object-cover flex-shrink-0 shadow-md"
+                        />
 
-                return (
-                  <div
-                    key={review.id}
-                    // flex-row, justify-between separa la info del álbum a la izquierda y el rating a la derecha.
-                    // border-b y border-white/10 crean la línea separadora sutil.
-                    // last:border-0 quita la línea del último elemento.
-                    className="flex flex-row items-center justify-between py-2  last:border-0 hover:bg-black/10 transition-colors px-2 rounded-lg group"
-                  >
-                    {/* LADO IZQUIERDO: Posición, Portada, Título y Artista */}
-                    <div className="flex items-center gap-4 overflow-hidden ">
-                      {/* Indicador numérico */}
+                        <div className="flex flex-col justify-center truncate">
+                          <p className="font-[family-name:var(--font-bayon)] text-sm text-[#fdfdfd]/70 truncate">
+                            {albumDetail?.artists[0]?.name || "Unknown Artist"}
+                          </p>
+                          <p className="font-[family-name:var(--font-bayon)] text-[1.5rem] text-[#fdfdfd] uppercase tracking-wide truncate leading-tight">
+                            {albumDetail?.name || "Unknown Album"}
+                          </p>
+                        </div>
+                      </div>
 
-                      {/* Portada del Álbum (Cuadrada pequeña) */}
-                      <img
-                        src={
-                          albumDetail?.images[0]?.url ||
-                          "https://via.placeholder.com/150"
-                        }
-                        alt={albumDetail?.name || "Album Cover"}
-                        className="w-22 h-22 object-cover  flex-shrink-0 shadow-md"
-                      />
-
-                      {/* Textos: Título y Artista */}
-                      <div className="flex flex-col justify-center truncate">
-                        <p className="font-[family-name:var(--font-bayon)] text-sm text-[#fdfdfd]/70 truncate">
-                          {albumDetail?.artists[0]?.name || "Unknown Artist"}
-                        </p>
-                        <p className="font-[family-name:var(--font-bayon)] text-[1.5rem] text-[#fdfdfd] uppercase tracking-wide truncate leading-tight">
-                          {albumDetail?.name || "Unknown Album"}
-                        </p>
+                      {/* LADO DERECHO: Calificación (Rating) */}
+                      <div className="flex items-center gap-1 pl-4 flex-shrink-0">
+                        <span className="font-[family:var(--font-bayon)] text-2xl text-white mr-8 w-4 text-center group-hover:text-white transition-colors">
+                          #{index + 1}
+                        </span>
+                        <span className="font-[family:var(--font-bayon)] text-lg text-[#939090] tracking-wider">
+                          {review.rating.toFixed(1)}
+                        </span>
                       </div>
                     </div>
-
-                    {/* LADO DERECHO: Calificación (Rating) */}
-                    <div className="flex items-center gap-1 pl-4 flex-shrink-0">
-                      <span className="font-[family:var(--font-bayon)] text-2xl text-white mr-8 w-4 text-center group-hover:text-white transition-colors">
-                        #{index + 1}
-                      </span>
-                      <span className="font-[family:var(--font-bayon)] text-lg text-[#939090] tracking-wider">
-                        {review.rating.toFixed(1)}
-                      </span>
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
-            <div className="flex justify-end pr-4 pb-3">
-              <button className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] transition-colors cursor-pointer">
+
+            {/* BOTÓN VIEW ALL: Ahora vive afuera de la caja roja, centrado con mt-4 (margen superior) */}
+            <div className="flex justify-center mt-4">
+              <button className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer">
                 VIEW ALL
               </button>
             </div>
@@ -192,6 +191,70 @@ export default function ProfilePage() {
           </div>
         </div>
       </div>
+      <div className="flex flex-col items-center font-[family-name:var(--font-bayon)] text-sm text-[#939090] tracking-widest mt-2 uppercase">
+        <div>DISCOVER COLLECTION</div>
+        <button
+          className="mt-1 bg-[#8E0B0B] hover:bg-[#470808] text-[#000000] font-[family-name:var(--font-bayon)] text-sm px-2 py-2 rounded-full uppercase tracking-widest shadow-inner mb-5 hover:text-white transition-colors cursor-pointer"
+          onClick={() => {
+            const section = document.getElementById("discover-section");
+            if (section) section.scrollIntoView({ behavior: "smooth" });
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+            />
+          </svg>
+        </button>
+      </div>
+
+      {/* NUEVA SECCIÓN DE PANTALLA COMPLETA CON FONDO BLANCO */}
+      <section
+        id="discover-section"
+        className=" min-h-screen bg-[#111112] flex   mt-20 rounded-3xl shadow-lg"
+      >
+        <div className="mt-20 bg-[#40404b]  rounded-3xl shadow-lg flex flex-col  w-full">
+          <div className="font-biscuit text-5xl text-[#ffffff] tracking-wide uppercase leading-none ">
+            MY
+          </div>
+          <div className="flex items-center gap-6 ">
+            <div className="font-biscuit text-6xl text-[#E23C3C] tracking-wide uppercase leading-none ">
+              COLLECTION
+            </div>
+            <div className=" w-16 h-16 xl:w-20 xl:h-20 rounded-full overflow-hidden border-3 border-[#a39999] shadow-xl bg-[#111112] ">
+              <img
+                src={user.avatar_url}
+                alt={user.name}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.src =
+                    "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500";
+                }}
+              />
+            </div>
+          </div>
+          <div className="bg-[#525287] rounded-3xl shadow-lg  h-[24rem] w-full flex items-center ">
+            Seccion de los albums favoritos
+          </div>
+          <div>
+            <div className="font-biscuit text-6xl mt-4 mb-4 text-[#E23C3C] tracking-wide uppercase leading-none justify-end flex">
+              PLAYLISTS
+            </div>
+          </div>
+          <div className="bg-[#525287] rounded-3xl shadow-lg  h-full w-full flex items-center justify-center">
+            Seccion de las playlists favoritas
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
