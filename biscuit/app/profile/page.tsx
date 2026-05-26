@@ -27,6 +27,11 @@ export default function ProfilePage() {
     (p) => p.owner_id === user.id,
   ).length;
 
+  // Playlist del user
+  const userPlaylists = playlistsData.playlists.filter(
+    (p) => p.owner_id === user.id,
+  );
+
   return (
     <main className="bg-[#000000] min-h-screen text-white pt-24 pb-12 px-6 md:px-12 lg:px-24 selection:bg-[#E23C3C] selection:text-black">
       {/* GRILLA PRINCIPAL DE 2 COLUMNAS (IZQUIERDA Y DERECHA) */}
@@ -220,17 +225,17 @@ export default function ProfilePage() {
       {/* NUEVA SECCIÓN DE PANTALLA COMPLETA CON FONDO BLANCO */}
       <section
         id="discover-section"
-        className=" min-h-screen bg-[#111112] flex   mt-20 rounded-3xl shadow-lg"
+        className="min-h-screen bg-[#111112] flex mt-20  shadow-lg w-full"
       >
-        <div className="mt-20 bg-[#40404b]  rounded-3xl shadow-lg flex flex-col  w-full">
-          <div className="font-biscuit text-5xl text-[#ffffff] tracking-wide uppercase leading-none ">
+        <div className="mt-15 rounded-3xl shadow-lg flex flex-col w-full ">
+          <div className="font-[family-name:var(--font-biscuit)] text-5xl text-[#ffffff] tracking-wide uppercase leading-none ">
             MY
           </div>
-          <div className="flex items-center gap-6 ">
-            <div className="font-biscuit text-6xl text-[#E23C3C] tracking-wide uppercase leading-none ">
+          <div className="flex items-center gap-6 mb-6">
+            <div className="font-[family-name:var(--font-biscuit)] text-6xl text-[#E23C3C] tracking-wide uppercase leading-none ">
               COLLECTION
             </div>
-            <div className=" w-16 h-16 xl:w-20 xl:h-20 rounded-full overflow-hidden border-3 border-[#a39999] shadow-xl bg-[#111112] ">
+            <div className="w-16 h-16 xl:w-20 xl:h-20 rounded-full overflow-hidden border-3 border-[#a39999] shadow-xl bg-[#111112]">
               <img
                 src={user.avatar_url}
                 alt={user.name}
@@ -242,16 +247,88 @@ export default function ProfilePage() {
               />
             </div>
           </div>
-          <div className="bg-[#525287] rounded-3xl shadow-lg  h-[24rem] w-full flex items-center ">
-            Seccion de los albums favoritos
+
+          {/* SECCIÓN DE LOS ALBUMES FAVORITOS */}
+          {/* Agregué overflow-x-auto para que si tienes muchos favoritos, puedas scrollear hacia el lado como un carrusel */}
+          <div className="  h-[28rem] w-full flex items-center overflow-x-auto gap-6  ">
+            {user.favorite_albums.map((albumId) => {
+              // Buscamos los datos completos del álbum usando el ID
+              const album = albumsData.albums.items.find(
+                (item) => item.id === albumId,
+              );
+
+              if (!album) return null; // Evita errores si el ID no existe
+
+              return (
+                <div
+                  key={albumId}
+                  className=" w-36 group cursor-pointer shrink-0"
+                >
+                  {/* Portada */}
+                  <div className="w-36 h-36 overflow-hidden shadow-lg border-2 border-transparent group-hover:border-[#9c9c9c] transition-colors">
+                    <img
+                      src={
+                        album.images[0]?.url ||
+                        "https://via.placeholder.com/150"
+                      }
+                      alt={album.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  {/* Título y Artista */}
+                  <div className="mt-3 text-center">
+                    <p className="font-[family-name:var(--font-bayon)] text-xl text-white tracking-wide truncate ">
+                      {album.name}
+                    </p>
+                    <p className="font-sans text-sm text-zinc-300 truncate">
+                      {album.artists[0]?.name}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
+
           <div>
-            <div className="font-biscuit text-6xl mt-4 mb-4 text-[#E23C3C] tracking-wide uppercase leading-none justify-end flex">
+            <div className="font-[family-name:var(--font-biscuit)] text-6xl  mt-4 mb-4 text-[#E23C3C] tracking-wide uppercase leading-none justify-end flex">
+              <div className="text-[#ffffff] mr-4">MY </div>
               PLAYLISTS
             </div>
           </div>
-          <div className="bg-[#525287] rounded-3xl shadow-lg  h-full w-full flex items-center justify-center">
-            Seccion de las playlists favoritas
+
+          {/* SECCIÓN DE LAS PLAYLISTS FAVORITAS */}
+          <div className=" shadow-lg h-full w-full flex flex-col p-6 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-[16rem]">
+              {userPlaylists.map((playlist) => (
+                <div
+                  key={playlist.id}
+                  className="bg-[#111112]/40 p-5 rounded-2xl border border-[#111112]/20 hover:border-[#E23C3C]/50 transition-colors flex flex-col justify-between cursor-pointer"
+                >
+                  <div>
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-widest truncate">
+                        {playlist.title}
+                      </h3>
+                      {/* Etiqueta visual para distinguir listas públicas de privadas */}
+                      <span
+                        className={`text-xs font-sans px-2 py-1 rounded uppercase tracking-wider ${playlist.is_public ? "bg-green-500/20 text-green-300" : "bg-red-500/20 text-red-300"}`}
+                      >
+                        {playlist.is_public ? "PUBLIC" : "PRIVATE"}
+                      </span>
+                    </div>
+                    <p className="text-sm text-zinc-300 font-sans mb-4 line-clamp-2">
+                      {playlist.description}
+                    </p>
+                  </div>
+
+                  <div className="flex justify-end">
+                    <span className="font-[family-name:var(--font-bayon)] text-sm text-[#E23C3C] bg-black/40 px-4 py-1.5 rounded-full tracking-widest">
+                      {playlist.items.length} TRACKS
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
