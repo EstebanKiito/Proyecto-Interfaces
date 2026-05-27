@@ -17,6 +17,24 @@
       "review_text": "Kurt Cobain mi padre, este disco es la viva muestra de la revolución grunge. 'Smells Like Teen Spirit' es un himno generacional.",
       "created_at": "2026-06-01T14:45:00Z",
       "likes": 0
+    },
+    {
+      "id": "rev_503",
+      "user_id": "usr_01",
+      "album_id": "mock01_whatsgoingon",
+      "rating": 9.0,
+      "review_text": "Marvin Gaye nos regala una obra maestra atemporal. 'What's Going On' es un llamado a la conciencia social envuelto en soul puro.",
+      "created_at": "2026-06-10T09:20:00Z",
+      "likes": 2
+    },
+    {
+      "id": "rev_504",
+      "user_id": "usr_01",
+      "album_id": "mock02_petsounds",
+      "rating": 7,
+      "review_text": "Brian Wilson y los Beach Boys nos regalan un álbum icónico que define la esencia del surf y el rock. 'Pet Sounds' es una obra maestra de la producción musical.",
+      "created_at": "2026-06-15T16:30:00Z",
+      "likes": 3
     }
   ]
 }

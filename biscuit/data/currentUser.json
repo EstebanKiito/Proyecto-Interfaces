@@ -3,7 +3,7 @@
     {
       "id": "usr_01",
       "name": "Esteban Ortega",
-      "username": "Estebankiito",
+      "username": "Estebankito",
       "avatar_url": "/images/spike.png",
       "bio": "Estudiante de CS en Santiago. Coleccionista de vinilos, fan del rock clásico y obsesionado con el buen diseño.",
       "location": "Chile",
@@ -16,7 +16,21 @@
       "favorite_albums": [
         "mock01_whatsgoingon",
         "mock02_petsounds",
-        "mock05_abbeyroad"
+        "mock05_abbeyroad",
+        "mock06_nevermind",
+        "mock07_rumours",
+        "mock08_purplerain",
+        "mock09_bloodonthetracks",
+        "mock10_miseducation",
+        "mock11_revolver",
+        "mock12_thriller",
+        "mock13_exile",
+        "mock14_letitbleed",
+        "mock15_borntorun",
+        "mock16_londoncalling",
+        "mock17_mbdtf",
+        "mock18_highway61",
+        "mock20_kida"
       ]
     }
   ]

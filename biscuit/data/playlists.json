@@ -7,16 +7,42 @@
       "description": "Discos que cambiaron la forma de entender la producción musical.",
       "is_public": true,
       "type": "tier_list",
-      "items": ["mock01_whatsgoingon", "mock02_petsounds"]
+      "items": [
+        "mock01_whatsgoingon",
+        "mock02_petsounds",
+        "mock05_abbeyroad",
+        "mock06_nevermind",
+        "mock12_thriller"
+      ]
     },
     {
       "id": "pl_102",
       "owner_id": "usr_01",
-      "title": "Beatles Essentials",
-      "description": "Mi rotación personal para sesiones largas de programación.",
+      "title": "Favorites",
+      "description": "Mis discos favoritos de todos los tiempos.",
       "is_public": false,
-      "type": "collection",
-      "items": ["mock05_abbeyroad", "mock06_nevermind"]
+      "type": "standard",
+      "items": ["mock20_kida", "mock05_abbeyroad"]
+    },
+
+    {
+      "id": "pl_104",
+      "owner_id": "usr_01",
+      "title": "Rock Classics",
+      "description": "Los mejores álbumes de rock de todos los tiempos.",
+      "is_public": true,
+      "type": "standard",
+      "items": ["mock05_abbeyroad", "mock06_nevermind", "mock11_revolver"]
+    },
+
+    {
+      "id": "pl_105",
+      "owner_id": "usr_01",
+      "title": "Soul & R&B Gems",
+      "description": "Una colección de joyas del soul y R&B que no puedes perderte.",
+      "is_public": true,
+      "type": "standard",
+      "items": ["mock01_whatsgoingon"]
     }
   ]
 }
