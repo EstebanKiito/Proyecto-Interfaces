@@ -6,23 +6,19 @@ import currentUserData from "@/data/currentUser.json";
 import reviewsData from "@/data/reviews.json";
 import albumsData from "@/data/albums.json";
 import playlistsData from "@/data/playlists.json";
+import noPhoto from "../../public/images/no-photo.jpg";
 
 export default function ProfilePage() {
-  // Obtenemos el usuario principal del archivo JSON
+  // Simulación de datos reales
   const user = currentUserData.users[0];
-
-  // Filtramos las reviews que pertenecen a este usuario específico
   const userReviews = reviewsData.reviews.filter(
     (review) => review.user_id === user.id,
   );
 
-  // Ordenamos las reviews de mayor a menor puntuación (Ranking) para la sección izquierda
+  // Ordenamos las reviews de mayor a menor  -> TOP RATED
   const sortedReviews = [...userReviews].sort((a, b) => b.rating - a.rating);
-
-  // Tomamos los 6 elementos con mayor ranking para la grilla de 3 filas x 2 columnas
   const topRankedReviews = sortedReviews.slice(0, 6);
 
-  // Calculamos la cantidad total de playlists de este usuario
   const totalPlaylists = playlistsData.playlists.filter(
     (p) => p.owner_id === user.id,
   ).length;
@@ -31,6 +27,31 @@ export default function ProfilePage() {
   const userPlaylists = playlistsData.playlists.filter(
     (p) => p.owner_id === user.id,
   );
+
+  // Calculo carusel de Albumes
+  // Crea la referencia para apuntar directamente al div que contiene los álbumes
+  const carouselRef = React.useRef<HTMLDivElement>(null);
+
+  // Función para desplazar el contenedor de forma suave
+  const handleCarouselScroll = (direction: "left" | "right") => {
+    if (carouselRef.current) {
+      const { scrollLeft, clientWidth } = carouselRef.current;
+
+      // Calculamos el desplazamiento basado en el 75% del ancho de la pantalla actual
+      // para mantener siempre el contexto visual del último álbum visto
+      const scrollAmount = clientWidth * 0.75;
+
+      const targetScroll =
+        direction === "left"
+          ? scrollLeft - scrollAmount
+          : scrollLeft + scrollAmount;
+
+      carouselRef.current.scrollTo({
+        left: targetScroll,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <main className="bg-[#000000] min-h-screen text-white pt-24 pb-12 px-6 md:px-12 lg:px-24 selection:bg-[#E23C3C] selection:text-black">
@@ -66,10 +87,7 @@ export default function ProfilePage() {
                       {/* LADO IZQUIERDO: Posición, Portada, Título y Artista */}
                       <div className="flex items-center gap-4 overflow-hidden ">
                         <img
-                          src={
-                            albumDetail?.images[0]?.url ||
-                            "https://via.placeholder.com/150"
-                          }
+                          src={albumDetail?.images[0]?.url || noPhoto.src}
                           alt={albumDetail?.name || "Album Cover"}
                           className="w-22 h-22 object-cover flex-shrink-0 shadow-md"
                         />
@@ -114,14 +132,14 @@ export default function ProfilePage() {
         <div className="flex flex-col gap-4">
           {/* Fila del Avatar (Imagen de Perfil superior con borde rojo) */}
           <div className="w-full flex justify-center lg:justify-center">
-            <div className="w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-6 border-[#a39999] shadow-xl bg-[#111112]">
+            <div className="w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-6 border-[#111112] shadow-xl bg-[#111112]">
               <img
                 src={user.avatar_url}
                 alt={user.name}
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   e.currentTarget.src =
-                    "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500";
+                    "https://upload.wikimedia.org/wikipedia/commons/b/b5/Windows_10_Default_Profile_Picture.svg";
                 }}
               />
             </div>
@@ -135,11 +153,11 @@ export default function ProfilePage() {
                 <h3 className="font-[family-name:var(--font-bayon)] text-lg text-[#ffffff] tracking-widest mb-2">
                   BIOGRAPHY
                 </h3>
-                <p className="font-[family-name:var(--font-neue)] text-sm font-medium text-zinc-400 leading-relaxed">
+                <p className=" text-sm font-medium text-zinc-400 leading-relaxed">
                   {user.bio}
                 </p>
               </div>
-              <span className="text-[10px] text-zinc-600 font-mono tracking-wider block mt-4 uppercase">
+              <span className="text-xs text-zinc-600 font-[family-name:var(--font-bayon)] tracking-wider block mt-4 uppercase">
                 LOCATION: {user.location}
               </span>
             </div>
@@ -147,15 +165,15 @@ export default function ProfilePage() {
             {/* Caja de Stats Superiores (Reviews escritas y Favoritos en JSON) */}
             <div className="bg-[#111112] p-5 rounded-3xl grid grid-cols-2 gap-2 items-center text-center">
               <div className="border-r border-zinc-800 py-2">
-                <p className="font-[family:var(--font-biscuit)] text-4xl text-[#ffffff] leading-none mb-1">
+                <p className="font-[family-name:var(--font-biscuit)] text-4xl text-[#E23C3C] leading-none mb-1">
                   {userReviews.length}
                 </p>
-                <p className="font-[family:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase">
+                <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase">
                   REVIEWS
                 </p>
               </div>
               <div className="py-2">
-                <p className="text-4xl text-[#ffffff] leading-none mb-1">
+                <p className="font-[family-name:var(--font-biscuit)] text-4xl text-[#ffffff] leading-none mb-1">
                   {user.favorite_albums.length}
                 </p>
                 <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase">
@@ -223,13 +241,13 @@ export default function ProfilePage() {
       {/* SECCIÓN DE DESCUBRIMIENTO: Favoritos del usuario y Playlists */}
       <section
         id="discover-section"
-        className="min-h-screen  flex mt-10  shadow-lg w-full"
+        className="min-h-screen flex mt-10 shadow-lg w-full"
       >
-        <div className="mt-15 rounded-3xl shadow-lg flex flex-col w-full ">
+        <div className="mt-15 rounded-3xl shadow-lg flex flex-col w-full">
           <div className="font-[family-name:var(--font-biscuit)] text-6xl text-[#ffffff] tracking-wide uppercase leading-none ">
             MY
           </div>
-          <div className="flex items-center gap-6 ">
+          <div className="flex items-center gap-6 mb-4">
             <div className="font-[family-name:var(--font-biscuit)] text-6xl text-[#E23C3C] tracking-wide uppercase leading-none ">
               COLLECTION
             </div>
@@ -246,45 +264,93 @@ export default function ProfilePage() {
             </div>
           </div>
 
-          {/* SECCIÓN DE LOS ALBUMES FAVORITOS */}
-          {/* Agregué overflow-x-auto para que si tienes muchos favoritos, puedas scrollear hacia el lado como un carrusel */}
-          <div className="  h-[15rem] w-full flex items-center overflow-x-auto gap-6  ">
-            {user.favorite_albums.map((albumId) => {
-              // Buscamos los datos completos del álbum usando el ID
-              const album = albumsData.albums.items.find(
-                (item) => item.id === albumId,
-              );
+          {/* CONTENEDOR RELATIVO MAESTRO DEL CARRUSEL (Permite fijar los botones encima) */}
+          {/* La clase 'group' sirve para que las flechas solo aparezcan o brillen cuando el cursor entra aquí */}
+          <div className="relative w-full group">
+            {/* BOTÓN IZQUIERDO (Retroceder) */}
+            <button
+              onClick={() => handleCarouselScroll("left")}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#111112] border border-[#962828] text-[#E23C3C] hover:bg-[#E23C3C] hover:text-black hover:border-[#E23C3C] transition-all flex items-center justify-center shadow-2xl cursor-pointer"
+              title="Retroceder"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={3}
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 19.5L8.25 12l7.5-7.5"
+                />
+              </svg>
+            </button>
 
-              if (!album) return null; // Evita errores si el ID no existe
+            {/* SECCIÓN DE LOS ALBUMES FAVORITOS CON LA REFERENCIA ASIGNADA */}
+            {/* Agregamos 'ref={carouselRef}' y 'scroll-smooth'. Eliminamos barras toscas de navegación */}
+            <div
+              ref={carouselRef}
+              className="h-[13rem] w-full flex items-center overflow-x-auto gap-6 scroll-smooth px-14 no-scrollbar"
+              style={{ scrollbarWidth: "none" }} // Oculta la barra nativa en Firefox para mantener estética vintage
+            >
+              {user.favorite_albums.map((albumId) => {
+                const album = albumsData.albums.items.find(
+                  (item) => item.id === albumId,
+                );
 
-              return (
-                <div
-                  key={albumId}
-                  className="w-36 group cursor-pointer shrink-0"
-                >
-                  {/* Portada */}
-                  <div className="w-36 h-36 overflow-hidden shadow-lg border-2 border-transparent group-hover:border-[#9c9c9c] transition-colors relative">
-                    <img
-                      src={
-                        album.images[0]?.url ||
-                        "https://via.placeholder.com/150"
-                      }
-                      alt={album.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    {/* Título y Artista solo en hover */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <p className="font-[family-name:var(--font-bayon)] text-lg text-white tracking-wide truncate px-2">
-                        {album.name}
-                      </p>
-                      <p className="font-sans text-xs text-zinc-300 truncate px-2">
-                        {album.artists[0]?.name}
-                      </p>
+                if (!album) return null;
+
+                return (
+                  <div
+                    key={albumId}
+                    className="w-36 group/item cursor-pointer shrink-0"
+                  >
+                    {/* Portada */}
+                    <div className="w-36 h-36 overflow-hidden shadow-lg border-2 border-transparent group-hover/item:border-[#9c9c9c] transition-colors relative">
+                      <img
+                        src={album.images[0]?.url || noPhoto.src}
+                        alt={album.name}
+                        className="w-full h-full object-cover group-hover/item:scale-105 transition-transform duration-300"
+                      />
+                      {/* Título y Artista solo en hover */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300">
+                        <p className="font-[family-name:var(--font-bayon)] text-lg text-white tracking-wide truncate px-2 text-center w-full">
+                          {album.name}
+                        </p>
+                        <p className="font-sans text-xs text-zinc-300 truncate px-2 text-center w-full">
+                          {album.artists[0]?.name}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+
+            {/* BOTÓN DERECHO (Avanzar) */}
+            <button
+              onClick={() => handleCarouselScroll("right")}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#111112] border border-[#962828] text-[#E23C3C] hover:bg-[#E23C3C] hover:text-black hover:border-[#E23C3C] transition-all flex items-center justify-center shadow-2xl cursor-pointer"
+              title="Avanzar"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={3}
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                />
+              </svg>
+            </button>
           </div>
 
           <div>
@@ -351,10 +417,7 @@ export default function ProfilePage() {
                           className="w-14 h-14 xl:w-16 xl:h-16 flex-shrink-0 overflow-hidden shadow-md transition-transform duration-300 group-hover:-translate-y-1"
                         >
                           <img
-                            src={
-                              albumDetail?.images[0]?.url ||
-                              "https://via.placeholder.com/150"
-                            }
+                            src={albumDetail?.images[0]?.url || noPhoto.src}
                             alt={albumDetail?.name || "Album cover"}
                             className="w-full h-full object-cover"
                           />
