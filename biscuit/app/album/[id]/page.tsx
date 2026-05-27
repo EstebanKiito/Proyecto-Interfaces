@@ -2,6 +2,8 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
+import Navbar from '@/components/navbar';
+
 
 // Importamos ambos JSON desde tu carpeta de datos
 import albumsJson from "@/data/albums.json";
@@ -111,21 +113,15 @@ export default function Album() {
   return (
     <main className="relative min-h-screen bg-[#141414] text-white font-sans selection:bg-gray-700">
       
-      {/* LOGO BISCUIT */}
-      <div className="absolute top-6 left-6 md:top-10 md:left-12 z-30">
-        <Link 
-          href="/" 
-          className="text-4xl md:text-5xl text-white hover:opacity-80 transition-opacity font-biscuit drop-shadow-lg"
-        >
-          BISCUIT
-        </Link>
-      </div>
 
       {/* HEADER */}
       <header
         className="w-full h-64 md:h-80 bg-cover bg-center grayscale-[80%] opacity-50 border-b border-white/5"
         style={{ backgroundImage: `url(${bandBannerUrl})` }}
       />
+
+      <Navbar />
+      
 
       {/* CONTENEDOR PRINCIPAL */}
       <div className="max-w-7xl mx-auto px-6 md:px-12">
