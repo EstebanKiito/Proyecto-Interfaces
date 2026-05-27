@@ -220,7 +220,7 @@ export default function ProfilePage() {
         </button>
       </div>
 
-      {/* NUEVA SECCIÓN DE PANTALLA COMPLETA CON FONDO BLANCO */}
+      {/* SECCIÓN DE DESCUBRIMIENTO: Favoritos del usuario y Playlists */}
       <section
         id="discover-section"
         className="min-h-screen  flex mt-10  shadow-lg w-full"
@@ -298,14 +298,42 @@ export default function ProfilePage() {
           <div className="shadow-lg w-full flex flex-col p-6 gap-4">
             {/* ELIMINADO el h-full de aquí para que las filas se junten */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div
+                key="1"
+                className="relative bg-[#111112] p-6 rounded-[2rem] border border-[#111112] hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-[24rem] shadow-xl group cursor-pointer justify-center items-center"
+              >
+                <div className="flex flex-col items-center justify-center h-full w-full gap-2">
+                  <button
+                    className="w-12 h-12 bg-[#962828] hover:bg-[#E23C3C] transition-colors rounded-full flex items-center justify-center shadow-md z-10 cursor-pointer"
+                    title="Añadir álbum a la playlist"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={3.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 text-black"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 4.5v15m7.5-7.5h-15"
+                      />
+                    </svg>
+                  </button>
+                  <h3 className="font-[family-name:var(--font-bayon)] text-2xl  uppercase truncate leading-none text-center text-sm text-[#939090] tracking-widest mt-2 uppercase">
+                    ADD PLAYLIST
+                  </h3>
+                </div>
+              </div>
               {userPlaylists.map((playlist) => (
                 <div
                   key={playlist.id}
                   className="relative bg-[#111112] p-6 rounded-[2rem] border border-[#111112] hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-[24rem] shadow-xl group cursor-pointer"
                 >
-                  {/* TITULO: Arriba a la izquierda */}
                   <div className="w-full text-left">
-                    <h3 className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-widest uppercase truncate leading-none text-center">
+                    <h3 className="font-[family-name:var(--font-bayon)] text-xl text-white   uppercase  leading-none text-center">
                       {playlist.title}
                     </h3>
                   </div>
