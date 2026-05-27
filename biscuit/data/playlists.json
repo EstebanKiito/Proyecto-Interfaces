@@ -25,17 +25,9 @@
       "description": "Mis discos favoritos de todos los tiempos.",
       "is_public": false,
       "type": "standard",
-      "items": ["mock01_whatsgoingon", "mock05_abbeyroad", "mock08_illmatic"]
+      "items": ["mock01_whatsgoingon", "mock05_abbeyroad"]
     },
-    {
-      "id": "pl_103",
-      "owner_id": "usr_01",
-      "title": "Chill Vibes",
-      "description": "Música para relajarse y desconectar.",
-      "is_public": true,
-      "type": "standard",
-      "items": ["mock02_petsounds", "mock07_okcomputer", "mock10_blue"]
-    },
+
     {
       "id": "pl_104",
       "owner_id": "usr_01",
@@ -44,6 +36,16 @@
       "is_public": true,
       "type": "standard",
       "items": ["mock05_abbeyroad", "mock06_nevermind", "mock20_kida"]
+    },
+
+    {
+      "id": "pl_105",
+      "owner_id": "usr_01",
+      "title": "Soul & R&B Gems",
+      "description": "Una colección de joyas del soul y R&B que no puedes perderte.",
+      "is_public": true,
+      "type": "standard",
+      "items": ["mock01_whatsgoingon", "mock03_soul", "mock04_rnb"]
     }
   ]
 }

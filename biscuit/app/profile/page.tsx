@@ -248,7 +248,7 @@ export default function ProfilePage() {
 
           {/* SECCIÓN DE LOS ALBUMES FAVORITOS */}
           {/* Agregué overflow-x-auto para que si tienes muchos favoritos, puedas scrollear hacia el lado como un carrusel */}
-          <div className="  h-[18rem] w-full flex items-center overflow-x-auto gap-6 mt-4 ">
+          <div className="  h-[15rem] w-full flex items-center overflow-x-auto gap-6  ">
             {user.favorite_albums.map((albumId) => {
               // Buscamos los datos completos del álbum usando el ID
               const album = albumsData.albums.items.find(
@@ -288,19 +288,19 @@ export default function ProfilePage() {
           </div>
 
           <div>
-            <div className="font-[family-name:var(--font-biscuit)] text-6xl text-[#E23C3C] tracking-wide uppercase leading-none justify-end flex mt-10 ">
+            <div className="font-[family-name:var(--font-biscuit)] text-6xl text-[#E23C3C] tracking-wide uppercase leading-none justify-end flex  ">
               <div className="text-[#ffffff] mr-4">MY </div>
               PLAYLISTS
             </div>
           </div>
 
           {/* SECCIÓN DE LAS PLAYLISTS FAVORITAS */}
-          <div className="shadow-lg h-full w-full flex flex-col p-6 gap-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-full ">
+          <div className="shadow-lg w-full flex flex-col p-6 gap-4">
+            {/* ELIMINADO el h-full de aquí para que las filas se junten */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {userPlaylists.map((playlist) => (
                 <div
                   key={playlist.id}
-                  // Usamos 'relative' para poder fijar el botón abajo a la derecha de forma absoluta sin mover el resto
                   className="relative bg-[#111112] p-6 rounded-[2rem] border border-[#111112] hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-[24rem] shadow-xl group cursor-pointer"
                 >
                   {/* TITULO: Arriba a la izquierda */}
@@ -313,7 +313,6 @@ export default function ProfilePage() {
                   {/* FOTOS AL MEDIO: Alineadas al centro vertical y horizontal con un máximo de 6 */}
                   <div className="flex flex-wrap items-center justify-center gap-4 my-auto max-w-[70%] mx-auto">
                     {playlist.items.slice(0, 6).map((albumId, index) => {
-                      // Pasamos directamente la variable albumId (que ya es el string) al buscador
                       const albumDetail = albumsData.albums.items.find(
                         (a) => a.id === albumId,
                       );
@@ -321,7 +320,7 @@ export default function ProfilePage() {
                       return (
                         <div
                           key={index}
-                          className="w-14 h-14 xl:w-16 xl:h-16 flex-shrink-0  overflow-hidden shadow-md transition-transform duration-300 group-hover:-translate-y-1"
+                          className="w-14 h-14 xl:w-16 xl:h-16 flex-shrink-0 overflow-hidden shadow-md transition-transform duration-300 group-hover:-translate-y-1"
                         >
                           <img
                             src={
