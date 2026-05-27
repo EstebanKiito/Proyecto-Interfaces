@@ -1,14 +1,16 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 
 // 1. IMPORTACIÓN DE DATOS REALES DESDE TUS ARCHIVOS JSON
 import currentUserData from "@/data/currentUser.json";
 import reviewsData from "@/data/reviews.json";
 import albumsData from "@/data/albums.json";
 import playlistsData from "@/data/playlists.json";
+import RankingModal from "@/components/rankingModal";
 import noPhoto from "../../public/images/no-photo.jpg";
 
 export default function ProfilePage() {
+  const [isRankingModalOpen, setIsRankingModalOpen] = useState(false);
   // Simulación de datos reales
   const user = currentUserData.users[0];
   const userReviews = reviewsData.reviews.filter(
@@ -122,7 +124,10 @@ export default function ProfilePage() {
 
             {/* BOTÓN VIEW ALL: Ahora vive afuera de la caja roja, centrado con mt-4 (margen superior) */}
             <div className="flex justify-center mt-4">
-              <button className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer">
+              <button
+                onClick={() => setIsRankingModalOpen(true)}
+                className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer"
+              >
                 VIEW ALL
               </button>
             </div>
@@ -168,10 +173,16 @@ export default function ProfilePage() {
             {/* Caja de Stats Superiores (Reviews escritas y Favoritos en JSON) */}
             <div className="bg-[#111112] p-5 rounded-3xl grid grid-cols-2 gap-2 items-center text-center">
               <div className="border-r border-zinc-800 py-2">
-                <p className="font-[family-name:var(--font-biscuit)] text-4xl text-[#E23C3C] leading-none mb-1 cursor-pointer">
+                <p
+                  onClick={() => setIsRankingModalOpen(true)}
+                  className="font-[family-name:var(--font-biscuit)] text-4xl text-[#E23C3C] leading-none mb-1 cursor-pointer"
+                >
                   {userReviews.length}
                 </p>
-                <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase cursor-pointer">
+                <p
+                  onClick={() => setIsRankingModalOpen(true)}
+                  className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase cursor-pointer"
+                >
                   REVIEWS
                 </p>
               </div>
@@ -485,6 +496,15 @@ export default function ProfilePage() {
           </div>
         </div>
       </section>
+      {/* MODAL DE RANKING COMPLETO */}
+      {isRankingModalOpen && (
+        <RankingModal
+          isOpen={isRankingModalOpen}
+          reviews={userReviews}
+          albumsData={albumsData.albums.items}
+          onClose={() => setIsRankingModalOpen(false)}
+        />
+      )}
     </main>
   );
 }
