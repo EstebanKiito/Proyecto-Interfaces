@@ -54,7 +54,10 @@ export default function ProfilePage() {
   };
 
   return (
-    <main className="bg-[#000000] min-h-screen text-white pt-24 pb-12 px-6 md:px-12 lg:px-24 selection:bg-[#E23C3C] selection:text-black">
+    <main
+      id="main-page"
+      className="bg-[#000000] min-h-screen text-white pt-24 pb-12 px-6 md:px-12 lg:px-24 selection:bg-[#E23C3C] selection:text-black"
+    >
       {/* GRILLA PRINCIPAL DE 2 COLUMNAS (IZQUIERDA Y DERECHA) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-30 max-w-6xl mx-auto items-start">
         {/* COLUMNA IZQUIERDA: TITULO Y TOP RANKED     */}
@@ -132,7 +135,7 @@ export default function ProfilePage() {
         <div className="flex flex-col gap-4">
           {/* Fila del Avatar (Imagen de Perfil superior con borde rojo) */}
           <div className="w-full flex justify-center lg:justify-center">
-            <div className="w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-6 border-[#111112] shadow-xl bg-[#111112]">
+            <div className="w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-6 border-[#c9c9d2] shadow-xl bg-[#111112]">
               <img
                 src={user.avatar_url}
                 alt={user.name}
@@ -165,18 +168,30 @@ export default function ProfilePage() {
             {/* Caja de Stats Superiores (Reviews escritas y Favoritos en JSON) */}
             <div className="bg-[#111112] p-5 rounded-3xl grid grid-cols-2 gap-2 items-center text-center">
               <div className="border-r border-zinc-800 py-2">
-                <p className="font-[family-name:var(--font-biscuit)] text-4xl text-[#E23C3C] leading-none mb-1">
+                <p className="font-[family-name:var(--font-biscuit)] text-4xl text-[#E23C3C] leading-none mb-1 cursor-pointer">
                   {userReviews.length}
                 </p>
-                <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase">
+                <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase cursor-pointer">
                   REVIEWS
                 </p>
               </div>
               <div className="py-2">
-                <p className="font-[family-name:var(--font-biscuit)] text-4xl text-[#ffffff] leading-none mb-1">
+                <p
+                  className="font-biscuit text-4xl text-[#ffffff] leading-none mb-1 cursor-pointer"
+                  onClick={() => {
+                    const section = document.getElementById("discover-section");
+                    if (section) section.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
                   {user.favorite_albums.length}
                 </p>
-                <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase">
+                <p
+                  className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase cursor-pointer"
+                  onClick={() => {
+                    const section = document.getElementById("discover-section");
+                    if (section) section.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
                   FAVORITES
                 </p>
               </div>
@@ -186,10 +201,22 @@ export default function ProfilePage() {
           {/* Caja inferior ancha: Estadísticas globales de listas, followers y following */}
           <div className=" p-2  grid grid-cols-3 text-center shadow-md px-30">
             <div className="border-r border-zinc-800">
-              <p className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-wider">
+              <p
+                className="font-(family-name:--font-bayon) text-2xl text-white tracking-wider cursor-pointer"
+                onClick={() => {
+                  const section = document.getElementById("discover-section");
+                  if (section) section.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
                 {totalPlaylists}
               </p>
-              <p className="font-[family-name:var(--font-bayon)] text-xs text-[#ffffff] tracking-widest">
+              <p
+                className="font-(family-name:--font-bayon) text-xs text-[#ffffff] tracking-widest cursor-pointer"
+                onClick={() => {
+                  const section = document.getElementById("discover-section");
+                  if (section) section.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
                 LISTS
               </p>
             </div>
@@ -212,7 +239,7 @@ export default function ProfilePage() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center font-[family-name:var(--font-bayon)] text-sm text-[#939090] tracking-widest mt-2 uppercase">
+      <div className="flex flex-col items-center font-(family-name:--font-bayon) text-sm text-[#939090] tracking-widest mt-2 uppercase">
         <div>DISCOVER COLLECTION</div>
         <button
           className="mt-1 bg-[#962828] hover:bg-[#470808] text-[#000000] font-[family-name:var(--font-bayon)] text-sm px-2 py-2 rounded-full uppercase tracking-widest shadow-inner mb-5 hover:text-white transition-colors cursor-pointer"
@@ -244,14 +271,20 @@ export default function ProfilePage() {
         className="min-h-screen flex mt-10 shadow-lg w-full"
       >
         <div className="mt-15 rounded-3xl shadow-lg flex flex-col w-full">
-          <div className="font-[family-name:var(--font-biscuit)] text-6xl text-[#ffffff] tracking-wide uppercase leading-none ">
+          <div className="font-biscuit text-6xl text-[#ffffff] tracking-wide uppercase leading-none ">
             MY
           </div>
           <div className="flex items-center gap-6 mb-4">
-            <div className="font-[family-name:var(--font-biscuit)] text-6xl text-[#E23C3C] tracking-wide uppercase leading-none ">
+            <div className="font-biscuit text-6xl text-[#E23C3C] tracking-wide uppercase leading-none ">
               COLLECTION
             </div>
-            <div className="w-16 h-16 xl:w-20 xl:h-20 rounded-full overflow-hidden border-3 border-[#a39999] shadow-xl bg-[#111112]">
+            <div
+              className="w-16 h-16 xl:w-20 xl:h-20 rounded-full overflow-hidden border-2 border-[#c9c9d2] shadow-xl bg-[#111112] cursor-pointer hover:border-[#5f5656] transition-colors"
+              onClick={() => {
+                const section = document.getElementById("main-page");
+                if (section) section.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
               <img
                 src={user.avatar_url}
                 alt={user.name}
@@ -309,7 +342,7 @@ export default function ProfilePage() {
                     className="w-36 group/item cursor-pointer shrink-0"
                   >
                     {/* Portada */}
-                    <div className="w-36 h-36 overflow-hidden shadow-lg border-2 border-transparent group-hover/item:border-[#9c9c9c] transition-colors relative">
+                    <div className="w-36 h-36 overflow-hidden shadow-lg border-3 border-transparent group-hover/item:border-[#9c9c9c] transition-colors relative">
                       <img
                         src={album.images[0]?.url || noPhoto.src}
                         alt={album.name}
@@ -388,7 +421,7 @@ export default function ProfilePage() {
                       />
                     </svg>
                   </button>
-                  <h3 className="font-[family-name:var(--font-bayon)] text-2xl  uppercase truncate leading-none text-center text-sm text-[#939090] tracking-widest mt-2 uppercase">
+                  <h3 className="font-[family-name:var(--font-bayon)] uppercase truncate leading-none text-center text-sm text-[#939090] tracking-widest mt-2 uppercase">
                     ADD PLAYLIST
                   </h3>
                 </div>

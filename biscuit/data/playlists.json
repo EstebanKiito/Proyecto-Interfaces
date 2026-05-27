@@ -12,10 +12,7 @@
         "mock02_petsounds",
         "mock05_abbeyroad",
         "mock06_nevermind",
-        "mock07_okcomputer",
-        "mock08_illmatic",
-        "mock09_legend",
-        "mock10_blue"
+        "mock12_thriller"
       ]
     },
     {
@@ -25,7 +22,7 @@
       "description": "Mis discos favoritos de todos los tiempos.",
       "is_public": false,
       "type": "standard",
-      "items": ["mock01_whatsgoingon", "mock05_abbeyroad"]
+      "items": ["mock20_kida", "mock05_abbeyroad"]
     },
 
     {
@@ -35,7 +32,7 @@
       "description": "Los mejores álbumes de rock de todos los tiempos.",
       "is_public": true,
       "type": "standard",
-      "items": ["mock05_abbeyroad", "mock06_nevermind", "mock20_kida"]
+      "items": ["mock05_abbeyroad", "mock06_nevermind", "mock11_revolver"]
     },
 
     {
@@ -45,7 +42,7 @@
       "description": "Una colección de joyas del soul y R&B que no puedes perderte.",
       "is_public": true,
       "type": "standard",
-      "items": ["mock01_whatsgoingon", "mock03_soul", "mock04_rnb"]
+      "items": ["mock01_whatsgoingon"]
     }
   ]
 }
