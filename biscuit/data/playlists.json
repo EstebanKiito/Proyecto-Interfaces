@@ -7,131 +7,43 @@
       "description": "Discos que cambiaron la forma de entender la producción musical.",
       "is_public": true,
       "type": "tier_list",
-      "items": ["mock01_whatsgoingon", "mock02_petsounds"]
+      "items": [
+        "mock01_whatsgoingon",
+        "mock02_petsounds",
+        "mock05_abbeyroad",
+        "mock06_nevermind",
+        "mock07_okcomputer",
+        "mock08_illmatic",
+        "mock09_legend",
+        "mock10_blue"
+      ]
     },
     {
       "id": "pl_102",
       "owner_id": "usr_01",
-      "title": "Beatles Essentials",
-      "description": "Mi rotación personal para sesiones largas de programación.",
+      "title": "Favorites",
+      "description": "Mis discos favoritos de todos los tiempos.",
       "is_public": false,
-      "type": "collection",
-      "items": ["mock05_abbeyroad", "mock06_nevermind"]
+      "type": "standard",
+      "items": ["mock01_whatsgoingon", "mock05_abbeyroad", "mock08_illmatic"]
     },
     {
       "id": "pl_103",
       "owner_id": "usr_01",
-      "title": "Experimental Vibes",
-      "description": "Explorando los límites de la música con sonidos poco convencionales.",
+      "title": "Chill Vibes",
+      "description": "Música para relajarse y desconectar.",
       "is_public": true,
-      "type": "collection",
-      "items": ["mock03_bitchesbrew", "mock04_ambient1"]
+      "type": "standard",
+      "items": ["mock02_petsounds", "mock07_okcomputer", "mock10_blue"]
     },
     {
       "id": "pl_104",
       "owner_id": "usr_01",
-      "title": "Jazz Classics",
-      "description": "Una selección de los álbumes más influyentes del jazz.",
+      "title": "Rock Classics",
+      "description": "Los mejores álbumes de rock de todos los tiempos.",
       "is_public": true,
-      "type": "collection",
-      "items": ["mock07_kindofblue", "mock08_aLoveSupreme"]
-    },
-    {
-      "id": "pl_105",
-      "owner_id": "usr_01",
-      "title": "Indie Gems",
-      "description": "Descubriendo joyas ocultas del indie rock.",
-      "is_public": false,
-      "type": "collection",
-      "items": ["mock09_fleetfoxes", "mock10_vampireweekend"]
-    },
-    {
-      "id": "pl_106",
-      "owner_id": "usr_01",
-      "title": "Electronic Explorations",
-      "description": "Sumérgete en el mundo de la música electrónica experimental.",
-      "is_public": true,
-      "type": "collection",
-      "items": ["mock11_aphexTwin", "mock12_autechre"]
-    },
-    {
-      "id": "pl_107",
-      "owner_id": "usr_01",
-      "title": "Hip-Hop Legends",
-      "description": "Una mirada a los álbumes más influyentes del hip-hop.",
-      "is_public": true,
-      "type": "collection",
-      "items": ["mock13_illmatic", "mock14_madvillainy"]
-    },
-    {
-      "id": "pl_108",
-      "owner_id": "usr_01",
-      "title": "Classical Masterpieces",
-      "description": "Una selección de las obras maestras de la música clásica.",
-      "is_public": true,
-      "type": "collection",
-      "items": ["mock15_beethoven9th", "mock16_mozart40th"]
-    },
-    {
-      "id": "pl_109",
-      "owner_id": "usr_01",
-      "title": "World Music Wonders",
-      "description": "Explorando la diversidad musical de diferentes culturas alrededor del mundo.",
-      "is_public": true,
-      "type": "collection",
-      "items": ["mock17_felaKuti", "mock18_bobMarley"]
-    },
-    {
-      "id": "pl_110",
-      "owner_id": "usr_01",
-      "title": "Chillout Sessions",
-      "description": "Perfecto para relajarse y desconectar después de un largo día.",
-      "is_public": true,
-      "type": "collection",
-      "items": ["mock19_tycho", "mock20_zero7"]
-    },
-    {
-      "id": "pl_111",
-      "owner_id": "usr_01",
-      "title": "My Top 10 Albums",
-      "description": "Una lista de mis álbumes favoritos de todos los tiempos.",
-      "is_public": false,
-      "type": "tier_list",
-      "items": [
-        "mock01_whatsgoingon",
-        "mock02_petsounds",
-        "mock03_bitchesbrew",
-        "mock04_ambient1",
-        "mock05_abbeyroad",
-        "mock06_nevermind",
-        "mock07_kindofblue",
-        "mock08_aLoveSupreme",
-        "mock09_fleetfoxes",
-        "mock10_vampireweekend"
-      ]
-    },
-    {
-      "id": "pl_112",
-      "owner_id": "usr_01",
-      "title": "Experimental Tier List",
-      "description": "Clasificación de mis álbumes experimentales favoritos.",
-      "is_public": false,
-      "type": "tier_list",
-      "items": [
-        "mock03_bitchesbrew",
-        "mock04_ambient1",
-        "mock11_aphexTwin",
-        "mock12_autechre"
-      ]
-    },
-    {
-      "id": "pl_113",
-      "owner_id": "usr_01",
-      "title": "Jazz Tier List",
-      "description": "Clasificación de mis álbumes de jazz favoritos.",
-      "is_public": false,
-      "type": "tier_list",
-      "items": ["mock07_kindofblue", "mock08_aLoveSupreme"]
+      "type": "standard",
+      "items": ["mock05_abbeyroad", "mock06_nevermind", "mock20_kida"]
     }
   ]
 }

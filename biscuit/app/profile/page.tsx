@@ -47,8 +47,6 @@ export default function ProfilePage() {
 
           {/* NUEVO ENVOLTORIO: Agrupa la caja y el botón. Fija el ancho a 30rem aquí */}
           <div className="flex flex-col w-[30rem]">
-            {/* Caja contenedora rojo oscuro (#8E0B0B) */}
-            {/* Nota: Cambié w-[30rem] a w-full, porque ahora hereda el tamaño del envoltorio padre */}
             <div className="relative bg-[#8E0B0B] px-3 rounded-[1.5rem] flex flex-col h-[22rem] overflow-hidden w-full">
               <span className="absolute top-2 right-2 z-10 bg-[#470808] text-[#fdfdfd] font-[family-name:var(--font-bayon)] text-sm px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner">
                 TOP RATED
@@ -199,7 +197,7 @@ export default function ProfilePage() {
       <div className="flex flex-col items-center font-[family-name:var(--font-bayon)] text-sm text-[#939090] tracking-widest mt-2 uppercase">
         <div>DISCOVER COLLECTION</div>
         <button
-          className="mt-1 bg-[#8E0B0B] hover:bg-[#470808] text-[#000000] font-[family-name:var(--font-bayon)] text-sm px-2 py-2 rounded-full uppercase tracking-widest shadow-inner mb-5 hover:text-white transition-colors cursor-pointer"
+          className="mt-1 bg-[#962828] hover:bg-[#470808] text-[#000000] font-[family-name:var(--font-bayon)] text-sm px-2 py-2 rounded-full uppercase tracking-widest shadow-inner mb-5 hover:text-white transition-colors cursor-pointer"
           onClick={() => {
             const section = document.getElementById("discover-section");
             if (section) section.scrollIntoView({ behavior: "smooth" });
@@ -225,13 +223,13 @@ export default function ProfilePage() {
       {/* NUEVA SECCIÓN DE PANTALLA COMPLETA CON FONDO BLANCO */}
       <section
         id="discover-section"
-        className="min-h-screen bg-[#111112] flex mt-20  shadow-lg w-full"
+        className="min-h-screen  flex mt-10  shadow-lg w-full"
       >
         <div className="mt-15 rounded-3xl shadow-lg flex flex-col w-full ">
-          <div className="font-[family-name:var(--font-biscuit)] text-5xl text-[#ffffff] tracking-wide uppercase leading-none ">
+          <div className="font-[family-name:var(--font-biscuit)] text-6xl text-[#ffffff] tracking-wide uppercase leading-none ">
             MY
           </div>
-          <div className="flex items-center gap-6 mb-6">
+          <div className="flex items-center gap-6 ">
             <div className="font-[family-name:var(--font-biscuit)] text-6xl text-[#E23C3C] tracking-wide uppercase leading-none ">
               COLLECTION
             </div>
@@ -250,7 +248,7 @@ export default function ProfilePage() {
 
           {/* SECCIÓN DE LOS ALBUMES FAVORITOS */}
           {/* Agregué overflow-x-auto para que si tienes muchos favoritos, puedas scrollear hacia el lado como un carrusel */}
-          <div className="  h-[28rem] w-full flex items-center overflow-x-auto gap-6  ">
+          <div className="  h-[18rem] w-full flex items-center overflow-x-auto gap-6 mt-4 ">
             {user.favorite_albums.map((albumId) => {
               // Buscamos los datos completos del álbum usando el ID
               const album = albumsData.albums.items.find(
@@ -262,10 +260,10 @@ export default function ProfilePage() {
               return (
                 <div
                   key={albumId}
-                  className=" w-36 group cursor-pointer shrink-0"
+                  className="w-36 group cursor-pointer shrink-0"
                 >
                   {/* Portada */}
-                  <div className="w-36 h-36 overflow-hidden shadow-lg border-2 border-transparent group-hover:border-[#9c9c9c] transition-colors">
+                  <div className="w-36 h-36 overflow-hidden shadow-lg border-2 border-transparent group-hover:border-[#9c9c9c] transition-colors relative">
                     <img
                       src={
                         album.images[0]?.url ||
@@ -274,15 +272,15 @@ export default function ProfilePage() {
                       alt={album.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                  </div>
-                  {/* Título y Artista */}
-                  <div className="mt-3 text-center">
-                    <p className="font-[family-name:var(--font-bayon)] text-xl text-white tracking-wide truncate ">
-                      {album.name}
-                    </p>
-                    <p className="font-sans text-sm text-zinc-300 truncate">
-                      {album.artists[0]?.name}
-                    </p>
+                    {/* Título y Artista solo en hover */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <p className="font-[family-name:var(--font-bayon)] text-lg text-white tracking-wide truncate px-2">
+                        {album.name}
+                      </p>
+                      <p className="font-sans text-xs text-zinc-300 truncate px-2">
+                        {album.artists[0]?.name}
+                      </p>
+                    </div>
                   </div>
                 </div>
               );
@@ -290,42 +288,74 @@ export default function ProfilePage() {
           </div>
 
           <div>
-            <div className="font-[family-name:var(--font-biscuit)] text-6xl  mt-4 mb-4 text-[#E23C3C] tracking-wide uppercase leading-none justify-end flex">
+            <div className="font-[family-name:var(--font-biscuit)] text-6xl text-[#E23C3C] tracking-wide uppercase leading-none justify-end flex mt-10 ">
               <div className="text-[#ffffff] mr-4">MY </div>
               PLAYLISTS
             </div>
           </div>
 
           {/* SECCIÓN DE LAS PLAYLISTS FAVORITAS */}
-          <div className=" shadow-lg h-full w-full flex flex-col p-6 gap-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-[16rem]">
+          <div className="shadow-lg h-full w-full flex flex-col p-6 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-full ">
               {userPlaylists.map((playlist) => (
                 <div
                   key={playlist.id}
-                  className="bg-[#111112]/40 p-5 rounded-2xl border border-[#111112]/20 hover:border-[#E23C3C]/50 transition-colors flex flex-col justify-between cursor-pointer"
+                  // Usamos 'relative' para poder fijar el botón abajo a la derecha de forma absoluta sin mover el resto
+                  className="relative bg-[#111112] p-6 rounded-[2rem] border border-[#111112] hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-[24rem] shadow-xl group cursor-pointer"
                 >
-                  <div>
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-widest truncate">
-                        {playlist.title}
-                      </h3>
-                      {/* Etiqueta visual para distinguir listas públicas de privadas */}
-                      <span
-                        className={`text-xs font-sans px-2 py-1 rounded uppercase tracking-wider ${playlist.is_public ? "bg-green-500/20 text-green-300" : "bg-red-500/20 text-red-300"}`}
-                      >
-                        {playlist.is_public ? "PUBLIC" : "PRIVATE"}
-                      </span>
-                    </div>
-                    <p className="text-sm text-zinc-300 font-sans mb-4 line-clamp-2">
-                      {playlist.description}
-                    </p>
+                  {/* TITULO: Arriba a la izquierda */}
+                  <div className="w-full text-left">
+                    <h3 className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-widest uppercase truncate leading-none text-center">
+                      {playlist.title}
+                    </h3>
                   </div>
 
-                  <div className="flex justify-end">
-                    <span className="font-[family-name:var(--font-bayon)] text-sm text-[#E23C3C] bg-black/40 px-4 py-1.5 rounded-full tracking-widest">
-                      {playlist.items.length} TRACKS
-                    </span>
+                  {/* FOTOS AL MEDIO: Alineadas al centro vertical y horizontal con un máximo de 6 */}
+                  <div className="flex flex-wrap items-center justify-center gap-4 my-auto max-w-[70%] mx-auto">
+                    {playlist.items.slice(0, 6).map((albumId, index) => {
+                      // Pasamos directamente la variable albumId (que ya es el string) al buscador
+                      const albumDetail = albumsData.albums.items.find(
+                        (a) => a.id === albumId,
+                      );
+
+                      return (
+                        <div
+                          key={index}
+                          className="w-14 h-14 xl:w-16 xl:h-16 flex-shrink-0  overflow-hidden shadow-md transition-transform duration-300 group-hover:-translate-y-1"
+                        >
+                          <img
+                            src={
+                              albumDetail?.images[0]?.url ||
+                              "https://via.placeholder.com/150"
+                            }
+                            alt={albumDetail?.name || "Album cover"}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      );
+                    })}
                   </div>
+
+                  {/* BOTÓN + : Circular y posicionado de forma fija en la esquina inferior derecha */}
+                  <button
+                    className="absolute bottom-6 right-6 w-12 h-12 bg-[#962828] hover:bg-[#E23C3C] transition-colors rounded-full flex items-center justify-center shadow-md z-10 cursor-pointer"
+                    title="Añadir álbum a la playlist"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={3.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 text-black"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 4.5v15m7.5-7.5h-15"
+                      />
+                    </svg>
+                  </button>
                 </div>
               ))}
             </div>
