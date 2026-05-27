@@ -23,9 +23,15 @@ export default function RankingModal({
   return (
     // CONTENEDOR OVERLAY: Fondo oscuro semitransparente que cubre toda la pantalla
     // El z-50 asegura que quede por encima del Navbar y todo lo demás
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+    >
       {/* CAJA DEL MODAL */}
-      <div className="relative bg-[#111112] w-full max-w-3xl rounded-[2rem] border border-zinc-800 shadow-2xl flex flex-col max-h-[85vh] overflow-hidden">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative bg-[#111112] w-full max-w-3xl rounded-[2rem] border border-zinc-800 shadow-2xl flex flex-col max-h-[85vh] overflow-hidden"
+      >
         {/* HEADER DEL MODAL */}
         <div className="flex justify-between items-center p-6 border-b border-zinc-900 bg-[#8E0B0B]/20">
           <h2 className="font-[family-name:var(--font-biscuit)] text-4xl text-[#E23C3C] tracking-wide uppercase leading-none mt-2">
