@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 
 // 1. IMPORTACIÓN DE DATOS REALES DESDE TUS ARCHIVOS JSON
 import currentUserData from "@/data/currentUser.json";
@@ -348,9 +349,10 @@ export default function ProfilePage() {
                 if (!album) return null;
 
                 return (
-                  <div
+                  <Link
                     key={albumId}
                     className="w-36 group/item cursor-pointer shrink-0"
+                    href={`/album/${albumId}`}
                   >
                     {/* Portada */}
                     <div className="w-36 h-36 overflow-hidden shadow-lg border-3 border-transparent group-hover/item:border-[#9c9c9c] transition-colors relative">
@@ -369,7 +371,7 @@ export default function ProfilePage() {
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>
