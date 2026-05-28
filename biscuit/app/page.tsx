@@ -1,11 +1,9 @@
 "use client";
 import Spline from '@splinetool/react-spline';
 import { useEffect, useRef } from 'react';
-import Navbar, { NavbarHandle } from '@/components/navbar';
 
 export default function Home() {
 
-  const navbarRef = useRef<NavbarHandle>(null);
 
 
   useEffect(() => {
@@ -58,18 +56,6 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleStartNow = () => {
-    // 1. Scroll al inicio
-    window.scrollTo({ top: 0, behavior: 'smooth' });
- 
-    // 2. Esperar a que termine el scroll y abrir el buscador de la navbar
-    setTimeout(() => {
-      navbarRef.current?.openSearch();
-    }, 800);
-  };
-
-
-
   return (
     <main className="relative w-full min-h-screen bg-[#050505] text-white font-sans">
       <section className="relative w-full h-screen overflow-hidden">
@@ -84,12 +70,10 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ---------------- NAVBAR ---------------- */}
-        <Navbar ref={navbarRef} />
 
         {/* ---------------- HERO TEXT ---------------- */}
         <div className="absolute left-12 top-1/2 -translate-y-1/2 z-10 flex flex-col gap-6">
-          <h1 className="text-8xl font-biscuit tracking-wider uppercase text-white drop-shadow-lg">
+          <h1 className="text-8xl font-biscuit tracking-wider uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             BISCUIT
           </h1>
           <p className="text-2xl max-w-[280px] font-light tracking-widest leading-snug">
@@ -119,7 +103,7 @@ export default function Home() {
               id="vinyl-element"
               src="images/pngegg.png"
               alt="Vinilo rodando"
-              className="w-100 h-100 md:w-[5000px] md:h-[5000px] object-contain z-10"
+              className="w-100 h-100 md:w-[800px] md:h-[5000px] object-contain z-10"
               style={{
                 willChange: "transform",
                 transform: "translateX(100vw) rotate(0deg)"
@@ -136,8 +120,8 @@ export default function Home() {
                 transform: "translate(-50%, calc(-50% + 100px))"
               }}
             >
-              <h2 className="text-6xl md:text-8xl font-black uppercase tracking-[0.1em] text-[#E23C3C] drop-shadow-2xl text-center">
-                TU NUEVA FORMA DE REGISTRAR TU MUSICA
+              <h2 className="text-6xl md:text-8xl font-black font-[family-name:var(--font-bayon)] uppercase tracking-[0.1em] text-[#E23C3C] drop-shadow-2xl text-center">
+                YOUR NEW WAY OF COLLECTING MUSIC
               </h2>
             </div>
 
@@ -148,7 +132,7 @@ export default function Home() {
       {/* ---------------- SECCIÓN FINAL: START NOW ---------------- */}
       <section className="relative w-full h-screen bg-[#050505] flex items-center justify-center">
         <button
-          onClick={handleStartNow}
+          onClick={() => window.dispatchEvent(new Event("openSearchModal"))}
           className="group relative flex flex-col items-center gap-4 cursor-pointer"
         >
           <span
@@ -158,7 +142,7 @@ export default function Home() {
             START NOW
           </span>
           <span className="text-sm tracking-[0.3em] text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
-            ↑ VOLVER AL INICIO
+            ↑ EMPIEZA A CALIFICAR
           </span>
         </button>
       </section>

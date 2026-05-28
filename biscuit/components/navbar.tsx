@@ -60,13 +60,25 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
   );
 
   useEffect(() => {
+    const handleOpenSearch = () => {
+      setIsSearchActive(true);
+      setTimeout(() => inputRef.current?.focus(), 50);
+    };
+
+    window.addEventListener("openSearchModal", handleOpenSearch);
+
     function handleClickOutside(e: MouseEvent) {
       if (profileRef.current && !profileRef.current.contains(e.target as Node)) {
         setIsProfileOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    
+    // CORRECCIÓN: Agregamos llaves {} para agrupar ambas limpiezas
+    return () => {
+      window.removeEventListener("openSearchModal", handleOpenSearch);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {

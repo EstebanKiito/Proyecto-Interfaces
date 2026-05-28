@@ -1,5 +1,4 @@
 "use client";
-import Navbar from "@/components/navbar";
 import React, { useState } from "react";
 import Link from "next/link";
 //import { motion } from "framer-motion"; // <-- Importamos Framer Motion
@@ -88,7 +87,6 @@ export default function ProfilePage() {
       className="bg-[#000000] min-h-screen text-white pt-24 pb-12 px-6 md:px-12 lg:px-24 selection:bg-[#E23C3C] selection:text-black"
     >
 
-      <Navbar/>
       {/* GRILLA PRINCIPAL DE 2 COLUMNAS (IZQUIERDA Y DERECHA) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-30 max-w-6xl mx-auto items-start">
         {/* COLUMNA IZQUIERDA */}
