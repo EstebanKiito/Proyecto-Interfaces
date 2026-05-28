@@ -89,7 +89,8 @@ export default function ProfilePage() {
                   );
 
                   return (
-                    <div
+                    <Link
+                      href={`/album/${review.album_id}`}
                       key={review.id}
                       className="flex flex-row items-center justify-between py-2 last:border-0 hover:bg-black/10 transition-colors px-2 rounded-lg group"
                     >
@@ -120,7 +121,7 @@ export default function ProfilePage() {
                           {review.rating.toFixed(1)}
                         </span>
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>
