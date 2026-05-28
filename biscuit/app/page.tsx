@@ -84,8 +84,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ---------------- NAVBAR ---------------- */}
-        <Navbar ref={navbarRef} />
 
         {/* ---------------- HERO TEXT ---------------- */}
         <div className="absolute left-12 top-1/2 -translate-y-1/2 z-10 flex flex-col gap-6">
@@ -148,7 +146,7 @@ export default function Home() {
       {/* ---------------- SECCIÓN FINAL: START NOW ---------------- */}
       <section className="relative w-full h-screen bg-[#050505] flex items-center justify-center">
         <button
-          onClick={handleStartNow}
+          onClick={() => window.dispatchEvent(new Event("openSearchModal"))}
           className="group relative flex flex-col items-center gap-4 cursor-pointer"
         >
           <span
@@ -158,7 +156,7 @@ export default function Home() {
             START NOW
           </span>
           <span className="text-sm tracking-[0.3em] text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
-            ↑ VOLVER AL INICIO
+            ↑ EMPIEZA A CALIFICAR
           </span>
         </button>
       </section>
