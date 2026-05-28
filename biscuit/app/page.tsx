@@ -1,14 +1,81 @@
 "use client";
 import Spline from '@splinetool/react-spline';
-import Navbar from '@/components/navbar';
+import { useEffect, useRef } from 'react';
+import Navbar, { NavbarHandle } from '@/components/navbar';
 
 export default function Home() {
+
+  const navbarRef = useRef<NavbarHandle>(null);
+
+
+  useEffect(() => {
+
+      let ticking = false;
+      const handleScroll = () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+      const section = document.getElementById('scroll-section');
+      const vinyl = document.getElementById('vinyl-element');
+      const text = document.getElementById('text-element');
+      
+
+      if (!section || !vinyl || !text) return;
+
+      const rect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // El progreso inicia cuando el tope de la sección llega arriba (0)
+      // y termina cuando bajamos una pantalla completa extra (windowHeight)
+      let progress = 0;
+      if (rect.top <= 0) {
+        progress = Math.abs(rect.top) / windowHeight;
+      }
+
+      // Limitamos el progreso estrictamente entre 0 y 1
+      progress = Math.max(0, Math.min(1, progress));
+
+      // 1. Matemáticas del Vinilo
+      // Entra desde la derecha (100vw) y llega al centro (0)
+      const translateX = (1 - progress) * 100;
+      const rotation = progress * 360;
+      vinyl.style.transform = `translateX(${translateX}vw) rotate(${rotation}deg)`;
+
+      // 2. Matemáticas del Texto
+      // Sube desde abajo y aparece gradualmente
+      const textTranslateY = (1 - progress) * 100;
+      const textOpacity = progress;
+      text.style.transform = `translate(-50%, calc(-50% + ${textTranslateY}px))`;
+      text.style.opacity = textOpacity.toString();
+
+      ticking = false;
+    });
+  ticking = true;
+}};
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Run once on mount
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleStartNow = () => {
+    // 1. Scroll al inicio
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+ 
+    // 2. Esperar a que termine el scroll y abrir el buscador de la navbar
+    setTimeout(() => {
+      navbarRef.current?.openSearch();
+    }, 800);
+  };
+
+
+
   return (
     <main className="relative w-full min-h-screen bg-[#050505] text-white font-sans">
       <section className="relative w-full h-screen overflow-hidden">
 
         {/* ---------------- CAPA 1: FONDO 3D ---------------- */}
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div id="spline-container" className="absolute inset-0 flex items-center justify-center">
           <div className="w-full h-full">
             <Spline
               scene="https://prod.spline.design/d4AyP6PVdmmGLKzX/scene.splinecode"
@@ -18,7 +85,7 @@ export default function Home() {
         </div>
 
         {/* ---------------- NAVBAR ---------------- */}
-        <Navbar />
+        <Navbar ref={navbarRef} />
 
         {/* ---------------- HERO TEXT ---------------- */}
         <div className="absolute left-12 top-1/2 -translate-y-1/2 z-10 flex flex-col gap-6">
@@ -37,10 +104,63 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full min-h-screen bg-[#0a0a0a] flex items-center justify-center border-t border-white/10">
-        <h2 className="text-4xl tracking-widest text-gray-500 font-light">
-          AQUÍ VA TU PRÓXIMA SECCIÓN
-        </h2>
+      {/* ---------------- SECCIÓN SCROLL CON VINILO (STICKY) ---------------- */}
+      <section
+        id="scroll-section"
+        className="relative w-full h-[200vh] bg-[#050505] border-t border-white/5"
+      >
+        {/* Contenedor Sticky */}
+        <div className="sticky top-0 w-full h-screen overflow-hidden flex flex-col items-center justify-center">
+
+          <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center justify-center h-full">
+
+            {/* El Vinilo */}
+            <img
+              id="vinyl-element"
+              src="images/pngegg.png"
+              alt="Vinilo rodando"
+              className="w-100 h-100 md:w-[5000px] md:h-[5000px] object-contain z-10"
+              style={{
+                willChange: "transform",
+                transform: "translateX(100vw) rotate(0deg)"
+              }}
+            />
+
+            {/* El Texto Ascendente */}
+            <div
+              id="text-element"
+              className="absolute top-1/2 left-1/2 z-20 flex flex-col items-center w-full"
+              style={{
+                willChange: "transform, opacity",
+                opacity: 0,
+                transform: "translate(-50%, calc(-50% + 100px))"
+              }}
+            >
+              <h2 className="text-6xl md:text-8xl font-black uppercase tracking-[0.1em] text-[#E23C3C] drop-shadow-2xl text-center">
+                TU NUEVA FORMA DE REGISTRAR TU MUSICA
+              </h2>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- SECCIÓN FINAL: START NOW ---------------- */}
+      <section className="relative w-full h-screen bg-[#050505] flex items-center justify-center">
+        <button
+          onClick={handleStartNow}
+          className="group relative flex flex-col items-center gap-4 cursor-pointer"
+        >
+          <span
+            className="text-[12vw] font-black uppercase tracking-tight text-white leading-none
+                       transition-colors duration-300 group-hover:text-[#E23C3C]"
+          >
+            START NOW
+          </span>
+          <span className="text-sm tracking-[0.3em] text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+            ↑ VOLVER AL INICIO
+          </span>
+        </button>
       </section>
     </main>
   );

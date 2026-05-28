@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Navbar from "@/components/navbar";
 
 // 1. IMPORTACIÓN DE DATOS REALES DESDE TUS ARCHIVOS JSON
 import currentUserData from "@/data/currentUser.json";
@@ -58,6 +59,8 @@ export default function ProfilePage() {
       id="main-page"
       className="bg-[#000000] min-h-screen text-white pt-24 pb-12 px-6 md:px-12 lg:px-24 selection:bg-[#E23C3C] selection:text-black"
     >
+
+      <Navbar/>
       {/* GRILLA PRINCIPAL DE 2 COLUMNAS (IZQUIERDA Y DERECHA) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-30 max-w-6xl mx-auto items-start">
         {/* COLUMNA IZQUIERDA: TITULO Y TOP RANKED     */}
@@ -70,7 +73,7 @@ export default function ProfilePage() {
           </h2>
 
           {/* NUEVO ENVOLTORIO: Agrupa la caja y el botón. Fija el ancho a 30rem aquí */}
-          <div className="flex flex-col w-[30rem]">
+          <div className="flex flex-col w-full">
             <div className="relative bg-[#8E0B0B] px-3 rounded-[1.5rem] flex flex-col h-[22rem] overflow-hidden w-full">
               <span className="absolute top-2 right-2 z-10 bg-[#470808] text-[#fdfdfd] font-[family-name:var(--font-bayon)] text-sm px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner">
                 TOP RATED
