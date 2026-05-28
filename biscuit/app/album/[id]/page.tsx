@@ -122,14 +122,12 @@ export default function Album() {
         <div className="grid grid-cols-1 md:grid-cols-[240px_1fr_240px] gap-10 mt-6">
           <div className="hidden md:block"></div>
           <div className="flex flex-col md:flex-row md:items-baseline gap-4 pb-4">
-            <h1 className="text-3xl md:text-4xl font-bold uppercase tracking-wide text-gray-100">
+            <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-bayon)] uppercase tracking-wide text-gray-100">
               {albumTitle}
             </h1>
             <div className="flex items-center gap-4 text-sm md:text-base font-semibold uppercase tracking-wider text-[#939090]">
-              <span className="hover:text-white cursor-pointer transition-colors">{artistName}</span>
+              <span className="hover:text-white cursor-pointer transition-colors font-[family-name:var(--font-bayon)]">{artistName}</span>
               <span>{releaseYear}</span>
-              <span className="text-gray-600">•</span>
-              <span>{totalTracks} Tracks</span>
             </div>
           </div>
           <div className="hidden md:block"></div>
@@ -162,7 +160,7 @@ export default function Album() {
                           {track.track_number}
                         </span>
                         <div className="flex flex-col">
-                          <span className="text-gray-200 text-sm font-medium group-hover:text-white transition-colors">
+                          <span className="text-gray-200 text-sm font-medium font-[family-name:var(--font-bayon)] group-hover:text-white transition-colors">
                             {track.name}
                           </span>
                           <span className="text-[#939090] text-[10px] uppercase flex items-center gap-1">
