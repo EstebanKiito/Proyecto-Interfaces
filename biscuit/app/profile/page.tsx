@@ -8,10 +8,13 @@ import reviewsData from "@/data/reviews.json";
 import albumsData from "@/data/albums.json";
 import playlistsData from "@/data/playlists.json";
 import RankingModal from "@/components/rankingModal";
+import PlaylistModal from "@/components/playlistModal";
 import noPhoto from "../../public/images/no-photo.jpg";
 
 export default function ProfilePage() {
   const [isRankingModalOpen, setIsRankingModalOpen] = useState(false);
+  const [selectedPlaylist, setSelectedPlaylist] = useState<any>(null);
+
   // Simulación de datos reales
   const user = currentUserData.users[0];
   const userReviews = reviewsData.reviews.filter(
@@ -441,6 +444,7 @@ export default function ProfilePage() {
               </div>
               {userPlaylists.map((playlist) => (
                 <div
+                  onClick={() => setSelectedPlaylist(playlist)}
                   key={playlist.id}
                   className="relative bg-[#111112] p-6 rounded-[2rem] border border-[#111112] hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-[24rem] shadow-xl group cursor-pointer"
                 >
@@ -505,6 +509,16 @@ export default function ProfilePage() {
           reviews={userReviews}
           albumsData={albumsData.albums.items}
           onClose={() => setIsRankingModalOpen(false)}
+        />
+      )}
+      {/* MODAL DE PLAYLIST SELECCIONADA */}
+      {selectedPlaylist && (
+        <PlaylistModal
+          usersData={currentUserData.users}
+          playlist={selectedPlaylist}
+          albumsData={albumsData.albums.items}
+          isOpen={!!selectedPlaylist}
+          onClose={() => setSelectedPlaylist(null)}
         />
       )}
     </main>
