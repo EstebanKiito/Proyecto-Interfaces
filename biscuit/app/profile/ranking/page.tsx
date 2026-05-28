@@ -1,46 +1,33 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 
-// Definimos qué datos necesita recibir el modal para funcionar
-interface RankingModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  reviews: any[]; // Aquí pasarás tu topRankedReviews
-  albumsData: any; // Aquí pasarás albumsData.albums.items
-}
+// 1. Importamos la data directamente como hicimos en profile/page.tsx
+import currentUserData from "@/data/currentUser.json";
+import reviewsData from "@/data/reviews.json";
+import albumsData from "@/data/albums.json";
 
-export default function RankingModal({
-  isOpen,
-  onClose,
-  reviews,
-  albumsData,
-}: RankingModalProps) {
-  // Si no está abierto, no renderizamos nada
-  if (!isOpen) return null;
+export default function RankingPage() {
+  // 2. Filtramos y preparamos la data del usuario actual
+  const user = currentUserData.users[0];
+  const userReviews = reviewsData.reviews.filter(
+    (review) => review.user_id === user.id,
+  );
 
   return (
-    // CONTENEDOR OVERLAY: Fondo oscuro semitransparente que cubre toda la pantalla
-    // El z-50 asegura que quede por encima del Navbar y todo lo demás
-    <div
-      onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-    >
-      {/* CAJA DEL MODAL */}
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="relative bg-[#111112] w-full max-w-3xl rounded-[2rem] border border-zinc-800 shadow-2xl flex flex-col max-h-[85vh] overflow-hidden"
-      >
-        {/* HEADER DEL MODAL */}
-        <div className="flex justify-between items-center p-6 border-b border-zinc-900 bg-[#8E0B0B]/20">
-          <h2 className="font-biscuit text-4xl text-[#E23C3C] tracking-wide uppercase leading-none mt-2">
+    // CONTENEDOR PRINCIPAL DE LA PÁGINA
+    <main className="min-h-screen bg-[#000000] pt-32 pb-12 px-6 md:px-12 lg:px-24 text-white">
+      {/* CAJA CENTRALIZADA PARA MANTENER LA LEGIBILIDAD */}
+      <div className="max-w-4xl mx-auto flex flex-col gap-8">
+        {/* HEADER DE LA VISTA */}
+        <div className="flex justify-between items-end border-b border-zinc-800 pb-6">
+          <h1 className="font-[family-name:var(--font-biscuit)] text-5xl md:text-6xl text-[#E23C3C] tracking-wide uppercase leading-none">
             ALL RANKED ALBUMS
-          </h2>
-          <button
-            onClick={onClose}
-            className="text-zinc-400 hover:text-white transition-colors p-2"
-            title="Cerrar"
+          </h1>
+
+          {/* BOTÓN PARA VOLVER AL PERFIL (Reemplaza al botón de cerrar el modal) */}
+          <Link
+            href="/profile"
+            className="text-zinc-400 hover:text-white transition-colors flex items-center gap-2 font-[family-name:var(--font-bayon)] tracking-widest text-lg mb-1"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -48,23 +35,24 @@ export default function RankingModal({
               viewBox="0 0 24 24"
               strokeWidth={2.5}
               stroke="currentColor"
-              className="w-8 h-8"
+              className="w-5 h-5"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
+                d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
               />
             </svg>
-          </button>
+            BACK TO PROFILE
+          </Link>
         </div>
 
-        {/* CUERPO SCROLLEABLE: Aquí va la lista completa de reseñas */}
-        <div className="flex flex-col p-6 overflow-y-auto gap-4 custom-scrollbar">
-          {[...reviews]
+        {/* LISTA COMPLETA DE RESEÑAS */}
+        <div className="flex flex-col gap-4">
+          {[...userReviews]
             .sort((a, b) => b.rating - a.rating)
             .map((review, index) => {
-              const albumDetail = albumsData.find(
+              const albumDetail = albumsData.albums.items.find(
                 (a: any) => a.id === review.album_id,
               );
               if (!albumDetail) return null;
@@ -72,11 +60,11 @@ export default function RankingModal({
               return (
                 <div
                   key={review.id}
-                  className="flex flex-col md:flex-row items-center justify-between p-4 bg-black/40 rounded-xl border border-zinc-900 hover:border-[#E23C3C]/50 transition-colors group gap-4"
+                  className="flex flex-col md:flex-row items-center justify-between p-4 bg-[#111112] rounded-xl border border-zinc-900 hover:border-[#E23C3C]/50 transition-colors group gap-4 shadow-lg"
                 >
                   {/* PARTE IZQUIERDA: Puesto, Foto, Título y Artista */}
                   <div className="flex items-center gap-6 w-full md:w-auto overflow-hidden">
-                    <span className="font-[family-name:var(--font-biscuit)] text-3xl text-zinc-600 group-hover:text-[#E23C3C] transition-colors w-8 text-center shrink-0">
+                    <span className="font-[family-name:var(--font-biscuit)] text-4xl text-zinc-600 group-hover:text-[#E23C3C] transition-colors w-10 text-center shrink-0">
                       {index + 1}
                     </span>
 
@@ -116,7 +104,7 @@ export default function RankingModal({
                   <div className="shrink-0 w-full md:w-auto flex justify-end">
                     <Link
                       href={`/album/${review.album_id}`}
-                      className="bg-[#111112] border border-zinc-700 text-zinc-300 font-[family-name:var(--font-bayon)] px-6 py-2.5 rounded-full tracking-widest text-sm hover:bg-[#E23C3C] hover:text-black hover:border-[#E23C3C] transition-all flex items-center gap-2"
+                      className="bg-black/40 border border-zinc-700 text-zinc-300 font-[family-name:var(--font-bayon)] px-6 py-2.5 rounded-full tracking-widest text-sm hover:bg-[#E23C3C] hover:text-black hover:border-[#E23C3C] transition-all flex items-center gap-2"
                     >
                       READ REVIEW
                       <svg
@@ -140,6 +128,6 @@ export default function RankingModal({
             })}
         </div>
       </div>
-    </div>
+    </main>
   );
 }
