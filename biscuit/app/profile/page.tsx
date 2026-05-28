@@ -1,14 +1,18 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import Link from "next/link";
 
 // 1. IMPORTACIÓN DE DATOS REALES DESDE TUS ARCHIVOS JSON
 import currentUserData from "@/data/currentUser.json";
 import reviewsData from "@/data/reviews.json";
 import albumsData from "@/data/albums.json";
 import playlistsData from "@/data/playlists.json";
+import PlaylistModal from "@/components/playlistModal";
 import noPhoto from "../../public/images/no-photo.jpg";
 
 export default function ProfilePage() {
+  const [selectedPlaylist, setSelectedPlaylist] = useState<any>(null);
+
   // Simulación de datos reales
   const user = currentUserData.users[0];
   const userReviews = reviewsData.reviews.filter(
@@ -83,7 +87,8 @@ export default function ProfilePage() {
                   );
 
                   return (
-                    <div
+                    <Link
+                      href={`/album/${review.album_id}`}
                       key={review.id}
                       className="flex flex-row items-center justify-between py-2 last:border-0 hover:bg-black/10 transition-colors px-2 rounded-lg group"
                     >
@@ -114,7 +119,7 @@ export default function ProfilePage() {
                           {review.rating.toFixed(1)}
                         </span>
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>
@@ -122,9 +127,12 @@ export default function ProfilePage() {
 
             {/* BOTÓN VIEW ALL: Ahora vive afuera de la caja roja, centrado con mt-4 (margen superior) */}
             <div className="flex justify-center mt-4">
-              <button className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer">
+              <Link
+                href="/profile/ranking"
+                className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer"
+              >
                 VIEW ALL
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -168,10 +176,13 @@ export default function ProfilePage() {
             {/* Caja de Stats Superiores (Reviews escritas y Favoritos en JSON) */}
             <div className="bg-[#111112] p-5 rounded-3xl grid grid-cols-2 gap-2 items-center text-center">
               <div className="border-r border-zinc-800 py-2">
-                <p className="font-[family-name:var(--font-biscuit)] text-4xl text-[#E23C3C] leading-none mb-1 cursor-pointer">
+                <Link
+                  href="/profile/ranking"
+                  className="font-[family-name:var(--font-biscuit)] text-4xl text-[#E23C3C] leading-none mb-1 cursor-pointer"
+                >
                   {userReviews.length}
-                </p>
-                <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase cursor-pointer">
+                </Link>
+                <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase ">
                   REVIEWS
                 </p>
               </div>
@@ -337,9 +348,10 @@ export default function ProfilePage() {
                 if (!album) return null;
 
                 return (
-                  <div
+                  <Link
                     key={albumId}
                     className="w-36 group/item cursor-pointer shrink-0"
+                    href={`/album/${albumId}`}
                   >
                     {/* Portada */}
                     <div className="w-36 h-36 overflow-hidden shadow-lg border-3 border-transparent group-hover/item:border-[#9c9c9c] transition-colors relative">
@@ -358,7 +370,7 @@ export default function ProfilePage() {
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>
@@ -428,6 +440,7 @@ export default function ProfilePage() {
               </div>
               {userPlaylists.map((playlist) => (
                 <div
+                  onClick={() => setSelectedPlaylist(playlist)}
                   key={playlist.id}
                   className="relative bg-[#111112] p-6 rounded-[2rem] border border-[#111112] hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-[24rem] shadow-xl group cursor-pointer"
                 >
@@ -485,6 +498,16 @@ export default function ProfilePage() {
           </div>
         </div>
       </section>
+      {/* MODAL DE PLAYLIST SELECCIONADA */}
+      {selectedPlaylist && (
+        <PlaylistModal
+          usersData={currentUserData.users}
+          playlist={selectedPlaylist}
+          albumsData={albumsData.albums.items}
+          isOpen={!!selectedPlaylist}
+          onClose={() => setSelectedPlaylist(null)}
+        />
+      )}
     </main>
   );
 }
