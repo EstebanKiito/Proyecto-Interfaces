@@ -111,7 +111,7 @@ export default function Album() {
   const bandBannerUrl = albumData.images[0].url;
 
   return (
-    <main className="relative min-h-screen bg-[#141414] text-white font-sans selection:bg-gray-700">
+    <main className="relative min-h-screen bg-[#141414] text-white font-[family-name:var(--font-bayon)] selection:bg-gray-700">
       
 
       {/* HEADER */}

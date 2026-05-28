@@ -1,10 +1,13 @@
 "use client";
-import { useState, useMemo, useTransition, useRef, useEffect } from "react";
+import { useState, useMemo, useTransition, useRef, useEffect, forwardRef, useImperativeHandle } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import albumsJson from "@/data/albums.json";
 import currentUserData from "@/data/currentUser.json";
 
+// — 1. Exportamos la interfaz para que el padre la conozca —
+export interface NavbarHandle {
+  openSearch: () => void;
+}
 
 // — tipos —
 interface Album {
@@ -16,14 +19,15 @@ interface Album {
 
 const user = currentUserData.users[0];
 
-// — usuario hardcodeado (reemplazar con auth real) —
+// — usuario hardcodeado —
 const MOCK_USER = {
   name: "Estebankito",
   handle: "@estebankito",
   avatar: user.avatar_url,
 };
 
-export default function Navbar() {
+// — 2. Envolvemos el componente en forwardRef —
+const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filterQuery, setFilterQuery] = useState("");
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -34,6 +38,14 @@ export default function Navbar() {
   const profileRef = useRef<HTMLDivElement>(null);
 
   const albumsData: Album[] = albumsJson.albums.items;
+
+  // — 3. Declaramos useImperativeHandle ANTES del return —
+  useImperativeHandle(ref, () => ({
+    openSearch: () => {
+      setIsSearchActive(true);
+      setTimeout(() => inputRef.current?.focus(), 50);
+    }
+  }));
 
   const filteredResults = useMemo(() =>
     albumsData.filter((album) => {
@@ -47,7 +59,6 @@ export default function Navbar() {
     [filterQuery, albumsData]
   );
 
-  // Cierra el dropdown de perfil si se hace clic fuera
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (profileRef.current && !profileRef.current.contains(e.target as Node)) {
@@ -60,8 +71,8 @@ export default function Navbar() {
 
   function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
     const val = e.target.value;
-    setSearchQuery(val);                          // urgente: input fluido
-    startTransition(() => setFilterQuery(val));   // no urgente: puede esperar
+    setSearchQuery(val);
+    startTransition(() => setFilterQuery(val));
   }
 
   function handleOverlayClick() {
@@ -187,7 +198,6 @@ export default function Navbar() {
                   height={36}
                   className="w-9 h-9 rounded-full object-cover ring-1 ring-white/20 group-hover:ring-white/50 transition-all duration-200"
                 />
-                {/* Punto verde "online" */}
                 <span className="absolute bottom-0 right-0 w-2 h-2 bg-green-400 rounded-full ring-1 ring-[#050505]" />
               </div>
             </button>
@@ -195,7 +205,6 @@ export default function Navbar() {
             {/* Dropdown de perfil */}
             {isProfileOpen && (
               <div className="absolute top-full mt-3 right-10 w-52 bg-[#111]/95 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50">
-                {/* Header del dropdown */}
                 <div className="px-4 py-3 border-b border-white/5 flex items-center gap-3">
                   <img
                     src={MOCK_USER.avatar}
@@ -208,7 +217,6 @@ export default function Navbar() {
                   </div>
                 </div>
 
-                {/* Opciones */}
                 <Link
                   href="/profile"
                   onClick={() => setIsProfileOpen(false)}
@@ -237,4 +245,8 @@ export default function Navbar() {
       </header>
     </>
   );
-}
+});
+
+// — 4. Exportación limpia —
+Navbar.displayName = "Navbar";
+export default Navbar;
