@@ -4,7 +4,7 @@
       "id": "rev_501",
       "user_id": "usr_01",
       "album_id": "mock05_abbeyroad",
-      "rating": 9.5,
+      "rating": 5,
       "review_text": "El mejor albúm de la historia, la musica nunca sonó tan perfecta como en Abbey Road. Cada canción es una obra maestra, desde la apertura con 'Come Together' hasta el cierre con 'The End'. La producción es impecable, y las armonías vocales son simplemente celestiales. Un viaje musical que nunca envejece.",
       "created_at": "2026-05-15T10:30:00Z",
       "likes": 1
@@ -13,7 +13,7 @@
       "id": "rev_502",
       "user_id": "usr_01",
       "album_id": "mock06_nevermind",
-      "rating": 8.7,
+      "rating": 4,
       "review_text": "Kurt Cobain mi padre, este disco es la viva muestra de la revolución grunge. 'Smells Like Teen Spirit' es un himno generacional.",
       "created_at": "2026-06-01T14:45:00Z",
       "likes": 0
@@ -22,7 +22,7 @@
       "id": "rev_503",
       "user_id": "usr_01",
       "album_id": "mock01_whatsgoingon",
-      "rating": 9.0,
+      "rating": 3,
       "review_text": "Marvin Gaye nos regala una obra maestra atemporal. 'What's Going On' es un llamado a la conciencia social envuelto en soul puro.",
       "created_at": "2026-06-10T09:20:00Z",
       "likes": 2
@@ -31,7 +31,7 @@
       "id": "rev_504",
       "user_id": "usr_01",
       "album_id": "mock02_petsounds",
-      "rating": 7,
+      "rating": 3,
       "review_text": "Brian Wilson y los Beach Boys nos regalan un álbum icónico que define la esencia del surf y el rock. 'Pet Sounds' es una obra maestra de la producción musical.",
       "created_at": "2026-06-15T16:30:00Z",
       "likes": 3
@@ -40,8 +40,8 @@
       "id": "rev_505",
       "user_id": "usr_01",
       "album_id": "mock20_kida",
-      "rating": 9.8,
-      "review_text": "Pink Floyd nos lleva a un viaje psicodélico con 'The Dark Side of the Moon'. Cada pista es una experiencia sonora única, y la producción es simplemente magistral.",
+      "rating": 4,
+      "review_text": "Radiohead nos lleva a un viaje psicodélico con 'The Dark Side of the Moon'. Cada pista es una experiencia sonora única, y la producción es simplemente magistral.",
       "created_at": "2026-06-20T11:00:00Z",
       "likes": 5
     },
@@ -49,8 +49,8 @@
       "id": "rev_506",
       "user_id": "usr_01",
       "album_id": "mock12_thriller",
-      "rating": 9.2,
-      "review_text": "'Led Zeppelin IV' es un clásico del rock que nunca pasa de moda. 'Stairway to Heaven' es una obra maestra que combina la energía del rock con la belleza de la música folk.",
+      "rating": 4,
+      "review_text": "Michael Jackson es un clásico del rock que nunca pasa de moda. 'Stairway to Heaven' es una obra maestra que combina la energía del rock con la belleza de la música folk.",
       "created_at": "2026-06-25T13:15:00Z",
       "likes": 4
     }

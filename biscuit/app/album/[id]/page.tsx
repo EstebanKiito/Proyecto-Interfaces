@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 // Importamos ambos JSON desde tu carpeta de datos
 import albumsJson from "@/data/albums.json";
 import tracksJson from "@/data/tracks.json";
+import reviewsJson from "@/data/reviews.json";
 
 // Función auxiliar para formatear los milisegundos a "M:SS"
 const formatDuration = (ms: number) => {
@@ -39,13 +40,47 @@ export default function Album() {
   const [isTrackModalOpen, setIsTrackModalOpen] = useState(false);
   const [selectedTrack, setSelectedTrack] = useState<any>(null);
 
-  // --- LÓGICA DE LOCALSTORAGE ---
+  // --- LÓGICA HÍBRIDA MEJORADA (JSON + LOCALSTORAGE) ---
   useEffect(() => {
+    // 1. Buscamos datos base en el JSON
+    const jsonReview = reviewsJson.reviews.find(
+      (r) => r.album_id === albumId && r.user_id === "usr_01" // O el ID que estés usando
+    );
+
+    // 2. Buscamos si el usuario guardó algo en LocalStorage
     const savedReviews = JSON.parse(localStorage.getItem("albumReviews") || "{}");
-    if (savedReviews[albumId]) {
+    const localReview = savedReviews[albumId];
+
+    // 3. Establecemos los valores por defecto desde el JSON
+    let finalRating = jsonReview ? jsonReview.rating : 0;
+    let finalText = jsonReview ? jsonReview.review_text : "";
+    let isReviewed = !!jsonReview;
+
+    // 4. Si hay datos en LocalStorage, estos SOBRESCRIBEN al JSON
+    if (localReview) {
+      isReviewed = true;
+      if (typeof localReview === "string") {
+        // Soporte para formato antiguo (solo string)
+        finalText = localReview;
+      } else {
+        // Formato nuevo (objeto con texto y rating)
+        finalText = localReview.review_text !== undefined ? localReview.review_text : finalText;
+        // Solo sobrescribimos el rating si realmente guardó uno nuevo en local
+        finalRating = localReview.rating !== undefined ? localReview.rating : finalRating;
+      }
+    }
+
+    // Aplicamos a los estados
+    setReviewText(finalText);
+    setRating(finalRating);
+    
+    if (isReviewed) {
       setHasReview(true);
-      setReviewText(savedReviews[albumId]);
-      setActiveActions((prev) => ({ ...prev, reviewed: true }));
+      setActiveActions((prev) => ({ 
+        ...prev, 
+        reviewed: true,
+        liked: jsonReview?.likes ? true : prev.liked 
+      }));
     }
 
     const savedTrackRatings = JSON.parse(localStorage.getItem("trackRatings") || "{}");
@@ -57,21 +92,49 @@ export default function Album() {
     setActiveActions((prev) => ({ ...prev, [action]: !prev[action] }));
   };
 
+  // NUEVA FUNCIÓN: Guarda las estrellas instantáneamente al hacer clic
+  const handleRatingChange = (newRating: number) => {
+    setRating(newRating); // Cambia visualmente
+    
+    // Lo guarda en local storage de inmediato
+    const savedReviews = JSON.parse(localStorage.getItem("albumReviews") || "{}");
+    const currentLocal = savedReviews[albumId];
+    
+    // Preservamos el texto que ya tuviera
+    let currentText = reviewText;
+    if (currentLocal && typeof currentLocal === "object") {
+      currentText = currentLocal.review_text || reviewText;
+    } else if (typeof currentLocal === "string") {
+      currentText = currentLocal;
+    }
+
+    savedReviews[albumId] = {
+      review_text: currentText,
+      rating: newRating
+    };
+    
+    localStorage.setItem("albumReviews", JSON.stringify(savedReviews));
+    setHasReview(true);
+    setActiveActions((prev) => ({ ...prev, reviewed: true }));
+  };
+
+  // Se ejecuta solo al apretar "Guardar/Actualizar" en el modal
   const handleReviewSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const savedReviews = JSON.parse(localStorage.getItem("albumReviews") || "{}");
-    savedReviews[albumId] = reviewText;
+    savedReviews[albumId] = {
+      review_text: reviewText,
+      rating: rating
+    };
     localStorage.setItem("albumReviews", JSON.stringify(savedReviews));
-    
     setHasReview(true);
     setActiveActions((prev) => ({ ...prev, reviewed: true }));
-    setIsReviewModalOpen(false); // Cierra el modal al guardar
+    setIsReviewModalOpen(false);
   };
 
   const rateTrack = (score: number) => {
     if (!selectedTrack) return;
     const newRatings = { ...trackRatings, [selectedTrack.id]: score };
-    
     setTrackRatings(newRatings);
     localStorage.setItem("trackRatings", JSON.stringify(newRatings));
     setIsTrackModalOpen(false);
@@ -246,7 +309,7 @@ export default function Album() {
                   {[1, 2, 3, 4, 5].map((star) => (
                     <button
                       key={star}
-                      onClick={() => setRating(star)}
+                      onClick={() => handleRatingChange(star)}
                       className={`text-2xl transition-all active:scale-90 ${
                         star <= rating 
                           ? "text-[#E23C3C] drop-shadow-[0_0_8px_rgba(226,60,60,0.4)]" 
@@ -330,7 +393,7 @@ export default function Album() {
                     <button
                       key={star}
                       type="button"
-                      onClick={() => setRating(star)}
+                      onClick={() => handleRatingChange(star)}
                       className={`text-3xl transition-all active:scale-90 ${
                         star <= rating
                           ? "text-[#E23C3C] drop-shadow-[0_0_8px_rgba(226,60,60,0.4)]"
