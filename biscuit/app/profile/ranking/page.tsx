@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 // 1. Importamos la data
@@ -7,20 +8,54 @@ import reviewsData from "@/data/reviews.json";
 import albumsData from "@/data/albums.json";
 
 export default function RankingPage() {
-  // 2. Filtramos la data del usuario actual
   const user = currentUserData.users[0];
 
-  // Reseñas del usuario
-  const userReviews = reviewsData.reviews.filter(
-    (review) => review.user_id === user.id,
+  // 1. ESTADO INICIAL: Cargamos el JSON por defecto
+  const [userReviews, setUserReviews] = useState<any[]>(
+    reviewsData.reviews.filter((review) => review.user_id === user.id)
   );
 
+  // 2. LÓGICA HÍBRIDA: Mezclamos el JSON con el LocalStorage
+  useEffect(() => {
+    const initialReviews = reviewsData.reviews.filter((r) => r.user_id === user.id);
+    const localReviewsRaw = JSON.parse(localStorage.getItem("albumReviews") || "{}");
+
+    let mergedReviews = [...initialReviews];
+
+    Object.keys(localReviewsRaw).forEach((albumId) => {
+      const localData = localReviewsRaw[albumId];
+      
+      const rating = typeof localData === 'string' ? 0 : (localData.rating || 0);
+      const reviewText = typeof localData === 'string' ? localData : localData.review_text;
+
+      const existingIndex = mergedReviews.findIndex((r) => r.album_id === albumId);
+
+      if (existingIndex >= 0) {
+        mergedReviews[existingIndex].rating = rating || mergedReviews[existingIndex].rating;
+        mergedReviews[existingIndex].review_text = reviewText;
+      } else {
+        mergedReviews.push({
+          id: `local_${albumId}`,
+          user_id: user.id,
+          album_id: albumId,
+          rating: rating,
+          review_text: reviewText,
+          created_at: new Date().toISOString(), // <-- Evita el error de TypeScript
+          likes: 0                              // <-- Evita el error de TypeScript
+        });
+      }
+    });
+
+    setUserReviews(mergedReviews);
+  }, [user.id]);
+
+  // 3. Cálculos dinámicos basados en el estado actualizado
   // Ordenamos y sacamos solo el TOP 5
   const top5Reviews = [...userReviews]
     .sort((a, b) => b.rating - a.rating)
     .slice(0, 5);
 
-  // 3. Combinamos Favoritos + Reseñados sin repetir IDs (Set)
+  // Combinamos Favoritos + Reseñados sin repetir IDs (Set)
   const collectionIds = Array.from(
     new Set([...user.favorite_albums, ...userReviews.map((r) => r.album_id)]),
   );
@@ -179,8 +214,6 @@ export default function RankingPage() {
                         </span>
                       </div>
                     ) : (
-                      // Si no tiene review (es solo favorito), podemos dejar el espacio
-                      // o poner un corazón discreto. Dejémoslo vacío según tu solicitud.
                       <span className="text-transparent">-</span>
                     )}
                   </div>
