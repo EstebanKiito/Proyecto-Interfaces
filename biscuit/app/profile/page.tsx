@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react"; // <-- Importamos useEffect
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 
@@ -18,22 +18,18 @@ const pageLoadVariant: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
-
 const hoverScaleVariant: Variants = {
   hover: { scale: 1.03, transition: { duration: 0.3, ease: "easeOut" } },
   tap: { scale: 0.98 },
 };
-
 const slideInRightVariant: Variants = {
   hidden: { opacity: 0, x: 60 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
-
 const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
 };
-
 const fadeInUpVariant: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -43,60 +39,67 @@ export default function ProfilePage() {
   const [selectedPlaylist, setSelectedPlaylist] = useState<any>(null);
   const user = currentUserData.users[0];
 
-  // 1. ESTADO INICIAL: Cargamos el JSON por defecto para evitar pantallas blancas
+  // 1. ESTADOS INICIALES BASADOS EN JSON
   const [userReviews, setUserReviews] = useState<any[]>(
     reviewsData.reviews.filter((review) => review.user_id === user.id)
   );
+  
+  const [userPlaylists, setUserPlaylists] = useState<any[]>(
+    playlistsData.playlists.filter((p) => p.owner_id === user.id)
+  );
 
-  // 2. LÓGICA HÍBRIDA: Mezclamos el JSON con el LocalStorage
+  // 2. LÓGICA HÍBRIDA: Mezclamos JSON + LocalStorage al cargar la página
   useEffect(() => {
+    // --- LECTURA DE RESEÑAS ---
     const initialReviews = reviewsData.reviews.filter((r) => r.user_id === user.id);
     const localReviewsRaw = JSON.parse(localStorage.getItem("albumReviews") || "{}");
-
     let mergedReviews = [...initialReviews];
 
     Object.keys(localReviewsRaw).forEach((albumId) => {
       const localData = localReviewsRaw[albumId];
-      
-      // Adaptador por si hay datos viejos (solo texto) o nuevos (objeto con rating)
       const rating = typeof localData === 'string' ? 0 : (localData.rating || 0);
       const reviewText = typeof localData === 'string' ? localData : localData.review_text;
-
       const existingIndex = mergedReviews.findIndex((r) => r.album_id === albumId);
 
       if (existingIndex >= 0) {
-        // Actualizamos las estrellas y texto si el disco ya estaba en el JSON
         mergedReviews[existingIndex].rating = rating || mergedReviews[existingIndex].rating;
         mergedReviews[existingIndex].review_text = reviewText;
       } else {
-        // Si es un disco que el usuario recién calificó, lo agregamos a la lista
         mergedReviews.push({
           id: `local_${albumId}`,
           user_id: user.id,
           album_id: albumId,
           rating: rating,
           review_text: reviewText,
-          created_at: new Date().toISOString(), 
-          likes: 0,
+          created_at: new Date().toISOString(),
+          likes: 0
         });
       }
     });
-
-    // Guardamos la lista definitiva
     setUserReviews(mergedReviews);
+
+    // --- LECTURA DE PLAYLISTS ---
+    const localPlaylistItems = JSON.parse(localStorage.getItem("playlistItems") || "{}");
+    const initialPlaylists = playlistsData.playlists.filter(p => p.owner_id === user.id);
+
+    const mergedPlaylists = initialPlaylists.map(playlist => {
+      // Si el usuario modificó esta playlist localmente, sobrescribimos los items
+      if (localPlaylistItems[playlist.id]) {
+        return { ...playlist, items: localPlaylistItems[playlist.id] };
+      }
+      return playlist;
+    });
+    
+    setUserPlaylists(mergedPlaylists);
+
   }, [user.id]);
 
-  // 3. Cálculos dinámicos (ahora responden a los cambios del estado)
+  // 3. Cálculos dinámicos
   const sortedReviews = [...userReviews].sort((a, b) => b.rating - a.rating);
   const topRankedReviews = sortedReviews.slice(0, 6);
 
-  const totalPlaylists = playlistsData.playlists.filter(
-    (p) => p.owner_id === user.id,
-  ).length;
-
-  const userPlaylists = playlistsData.playlists.filter(
-    (p) => p.owner_id === user.id,
-  );
+  // Ahora leemos el conteo directamente de nuestro estado reactivo
+  const totalPlaylists = userPlaylists.length;
 
   const carouselRef = React.useRef<HTMLDivElement>(null);
 
