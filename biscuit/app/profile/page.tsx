@@ -1,7 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // <-- Importamos useEffect
 import Link from "next/link";
-//import { motion } from "framer-motion"; // <-- Importamos Framer Motion
 import { motion, Variants } from "framer-motion";
 
 // IMPORTACIÓN DE DATOS REALES DESDE TUS ARCHIVOS JSON
@@ -42,12 +41,52 @@ const fadeInUpVariant: Variants = {
 
 export default function ProfilePage() {
   const [selectedPlaylist, setSelectedPlaylist] = useState<any>(null);
-
   const user = currentUserData.users[0];
-  const userReviews = reviewsData.reviews.filter(
-    (review) => review.user_id === user.id,
+
+  // 1. ESTADO INICIAL: Cargamos el JSON por defecto para evitar pantallas blancas
+  const [userReviews, setUserReviews] = useState<any[]>(
+    reviewsData.reviews.filter((review) => review.user_id === user.id)
   );
 
+  // 2. LÓGICA HÍBRIDA: Mezclamos el JSON con el LocalStorage
+  useEffect(() => {
+    const initialReviews = reviewsData.reviews.filter((r) => r.user_id === user.id);
+    const localReviewsRaw = JSON.parse(localStorage.getItem("albumReviews") || "{}");
+
+    let mergedReviews = [...initialReviews];
+
+    Object.keys(localReviewsRaw).forEach((albumId) => {
+      const localData = localReviewsRaw[albumId];
+      
+      // Adaptador por si hay datos viejos (solo texto) o nuevos (objeto con rating)
+      const rating = typeof localData === 'string' ? 0 : (localData.rating || 0);
+      const reviewText = typeof localData === 'string' ? localData : localData.review_text;
+
+      const existingIndex = mergedReviews.findIndex((r) => r.album_id === albumId);
+
+      if (existingIndex >= 0) {
+        // Actualizamos las estrellas y texto si el disco ya estaba en el JSON
+        mergedReviews[existingIndex].rating = rating || mergedReviews[existingIndex].rating;
+        mergedReviews[existingIndex].review_text = reviewText;
+      } else {
+        // Si es un disco que el usuario recién calificó, lo agregamos a la lista
+        mergedReviews.push({
+          id: `local_${albumId}`,
+          user_id: user.id,
+          album_id: albumId,
+          rating: rating,
+          review_text: reviewText,
+          created_at: new Date().toISOString(), 
+          likes: 0,
+        });
+      }
+    });
+
+    // Guardamos la lista definitiva
+    setUserReviews(mergedReviews);
+  }, [user.id]);
+
+  // 3. Cálculos dinámicos (ahora responden a los cambios del estado)
   const sortedReviews = [...userReviews].sort((a, b) => b.rating - a.rating);
   const topRankedReviews = sortedReviews.slice(0, 6);
 
