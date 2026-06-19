@@ -4,8 +4,6 @@ import { useEffect, useRef } from 'react';
 
 export default function Home() {
 
-
-
   useEffect(() => {
 
       let ticking = false;
