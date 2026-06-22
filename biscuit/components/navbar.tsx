@@ -106,8 +106,8 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
       />
 
       {/* ── Navbar ── */}
-      <header className="absolute top-0 w-full z-30 px-10 py-7">
-        <div className="grid grid-cols-3 items-center">
+<header className="absolute top-0 w-full z-30 px-10 py-1 bg-gradient-to-b from-black/95 via-black/60 to-transparent pointer-events-none">
+        <div className="grid grid-cols-3 items-center pointer-events-auto">
 
           {/* ── IZQUIERDA: Logo ── */}
           <Link
@@ -141,7 +141,7 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
                 value={searchQuery}
                 onChange={handleSearchChange}
                 onFocus={() => setIsSearchActive(true)}
-                className="bg-white/5 border border-white/10 focus:border-white/30 rounded-full text-white placeholder-gray-600 outline-none pl-9 pr-4 py-2 w-[220px] focus:w-[320px] transition-all duration-300 text-xs text-center uppercase tracking-widest cursor-text"
+                className="bg-white/5 border border-white/10 focus:border-white/30 rounded-full text-white placeholder-gray-200 outline-none pl-9 pr-4 py-2 w-[220px] focus:w-[320px] transition-all duration-300 text-xs text-center uppercase tracking-widest cursor-text"
               />
 
               {/* Spinner cuando está filtrando */}
