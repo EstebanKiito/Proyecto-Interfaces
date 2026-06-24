@@ -200,18 +200,32 @@ export default function LoginPage() {
     localUsers.push(newUser);
     localStorage.setItem("localRegisteredUsers", JSON.stringify(localUsers));
 
-    setRegSuccess("¡Registro exitoso! Ya puedes iniciar sesión con tu cuenta.");
+    setRegSuccess("¡Registro exitoso! Iniciando sesión...");
+    
+    // Create active session immediately
+    const sessionUser: SessionUser = {
+      id: newUser.id,
+      name: newUser.name,
+      username: newUser.username,
+      email: newUser.email,
+      avatar_url: newUser.avatar_url,
+      isAuthenticated: true
+    };
+
+    localStorage.setItem(SESSION_KEY, JSON.stringify(sessionUser));
+    window.dispatchEvent(new Event("sessionChanged"));
+
     // Clear registration form fields
     setRegName("");
     setRegUsername("");
     setRegEmail("");
     setRegPassword("");
     setRegConfirmPassword("");
-    // Switch tab to login
+
+    // Redirect to profile
     setTimeout(() => {
-      setActiveTab("login");
-      setLoginIdentifier(regUsername);
-    }, 1500);
+      router.push("/profile");
+    }, 1200);
   };
 
   // Handle Mock OAuth (Google / Facebook)
