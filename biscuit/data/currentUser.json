@@ -4,12 +4,13 @@
       "id": "usr_01",
       "name": "Esteban Ortega",
       "username": "Estebankito",
+      "password": "esteban123",
       "avatar_url": "/images/spike.png",
       "bio": "Estudiante de CS en Santiago. Coleccionista de vinilos, fan del rock clásico y obsesionado con el buen diseño.",
       "location": "Chile",
       "stats": {
         "albums_logged": 3,
-        "reviews_written": 1,
+        "reviews_written": 6,
         "followers": 15,
         "following": 24
       },
@@ -31,6 +32,51 @@
         "mock17_mbdtf",
         "mock18_highway61",
         "mock20_kida"
+      ]
+    },
+    
+    {
+      "id": "usr_02",
+      "name": "Vicente Cuitiño",
+      "username": "Mangofrapuccino",
+      "password": "vicente123",
+      "avatar_url": "/images/mango.jpg",
+      "bio": "Amante de la música y el diseño. Trabajo en Ria y soy profe de diseño de interfaces en la Universidad Catolica",
+      "location": "Chile",
+      "stats": {
+        "albums_logged": 5,
+        "reviews_written": 2,
+        "followers": 2,
+        "following": 1
+      },
+      "favorite_albums": [
+        "mock01_whatsgoingon",
+        "mock03_blue",
+        "mock04_illmatic",
+        "mock05_abbeyroad",
+        "mock09_bloodonthetracks",
+        "mock12_thriller",
+        "mock14_letitbleed",
+        "mock15_borntorun",
+        "mock17_mbdtf"
+      ]
+    },
+    {
+      "id": "usr_03",
+      "name": "Tomas Salbach",
+      "username": "JaviLopez",
+      "password": "tomasylossalbach67",
+      "avatar_url": "/images/javierlopez1.png",
+      "bio": "Diseñadora gráfica y melómana empedernida. Siempre buscando nuevos sonidos y experiencias visuales.",
+      "location": "Argentina",
+      "stats": {
+        "albums_logged": 1,
+        "reviews_written": 1,
+        "followers": 1,
+        "following": 0
+      },
+      "favorite_albums": [
+        "mock06_nevermind"
       ]
     }
   ]

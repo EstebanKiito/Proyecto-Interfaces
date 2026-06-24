@@ -3,6 +3,8 @@ import { useState, useMemo, useTransition, useRef, useEffect, forwardRef, useImp
 import Link from "next/link";
 import albumsJson from "@/data/albums.json";
 import currentUserData from "@/data/currentUser.json";
+import { useRouter } from "next/navigation";
+import { handleLogout, SESSION_KEY, SessionUser } from "@/lib/auth";
 
 // — 1. Exportamos la interfaz para que el padre la conozca —
 export interface NavbarHandle {
@@ -17,22 +19,15 @@ interface Album {
   images: { url: string }[];
 }
 
-const user = currentUserData.users[0];
-
-// — usuario hardcodeado —
-const MOCK_USER = {
-  name: "Estebankito",
-  handle: "@estebankito",
-  avatar: user.avatar_url,
-};
-
 // — 2. Envolvemos el componente en forwardRef —
 const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [filterQuery, setFilterQuery] = useState("");
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
+  const [session, setSession] = useState<SessionUser | null>(null);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
@@ -60,6 +55,26 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
   );
 
   useEffect(() => {
+    const checkSession = () => {
+      const activeSession = localStorage.getItem(SESSION_KEY);
+      if (activeSession) {
+        try {
+          const parsed = JSON.parse(activeSession) as SessionUser;
+          if (parsed && parsed.isAuthenticated) {
+            setSession(parsed);
+            return;
+          }
+        } catch (e) {
+          console.error("Error parsing session in navbar", e);
+        }
+      }
+      setSession(null);
+    };
+
+    checkSession();
+    window.addEventListener("sessionChanged", checkSession);
+    window.addEventListener("storage", checkSession);
+
     const handleOpenSearch = () => {
       setIsSearchActive(true);
       setTimeout(() => inputRef.current?.focus(), 50);
@@ -74,8 +89,9 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
     }
     document.addEventListener("mousedown", handleClickOutside);
     
-    // CORRECCIÓN: Agregamos llaves {} para agrupar ambas limpiezas
     return () => {
+      window.removeEventListener("sessionChanged", checkSession);
+      window.removeEventListener("storage", checkSession);
       window.removeEventListener("openSearchModal", handleOpenSearch);
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -193,66 +209,82 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
             )}
           </div>
 
-          {/* ── DERECHA: Perfil ── */}
-          <div className="flex justify-end" ref={profileRef}>
-            <button
-              onClick={() => setIsProfileOpen((prev) => !prev)}
-              className="flex items-center gap-3 group cursor-pointer"
-            >
-              <span className="text-gray-500 text-[11px] uppercase tracking-[0.2em] group-hover:text-gray-300 transition-colors duration-200 hidden sm:block">
-                {MOCK_USER.name}
-              </span>
+          {/* ── DERECHA: Perfil o Login ── */}
+          <div className="flex justify-end items-center" ref={profileRef}>
+            {session ? (
               <div className="relative">
-                <img
-                  src={MOCK_USER.avatar}
-                  alt={MOCK_USER.name}
-                  width={36}
-                  height={36}
-                  className="w-9 h-9 rounded-full object-cover ring-1 ring-white/20 group-hover:ring-white/50 transition-all duration-200"
-                />
-                <span className="absolute bottom-0 right-0 w-2 h-2 bg-green-400 rounded-full ring-1 ring-[#050505]" />
-              </div>
-            </button>
-
-            {/* Dropdown de perfil */}
-            {isProfileOpen && (
-              <div className="absolute top-full mt-3 right-10 w-52 bg-[#111]/95 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50">
-                <div className="px-4 py-3 border-b border-white/5 flex items-center gap-3">
-                  <img
-                    src={MOCK_USER.avatar}
-                    alt={MOCK_USER.name}
-                    className="w-8 h-8 rounded-full object-cover"
-                  />
-                  <div className="flex flex-col min-w-0">
-                    <span className="text-white text-xs font-semibold truncate">{MOCK_USER.name}</span>
-                    <span className="text-gray-500 text-[10px] truncate">{MOCK_USER.handle}</span>
-                  </div>
-                </div>
-
-                <Link
-                  href="/profile"
-                  onClick={() => setIsProfileOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition-colors text-xs uppercase tracking-widest border-b border-white/5"
+                <button
+                  onClick={() => setIsProfileOpen((prev) => !prev)}
+                  className="flex items-center gap-3 group cursor-pointer font-sans"
                 >
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <circle cx="12" cy="8" r="4" />
-                    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-                  </svg>
-                  My Profile
-                </Link>
-
-                <button className="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:text-red-400 hover:bg-white/5 transition-colors text-xs uppercase tracking-widest">
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                    <polyline points="16 17 21 12 16 7" />
-                    <line x1="21" y1="12" x2="9" y2="12" />
-                  </svg>
-                  Log out
+                  <span className="text-gray-500 text-[11px] uppercase tracking-[0.2em] group-hover:text-gray-300 transition-colors duration-200 hidden sm:block">
+                    {session.name}
+                  </span>
+                  <div className="relative">
+                    <img
+                      src={session.avatar_url}
+                      alt={session.name}
+                      width={36}
+                      height={36}
+                      className="w-9 h-9 rounded-full object-cover ring-1 ring-white/20 group-hover:ring-white/50 transition-all duration-200"
+                    />
+                    <span className="absolute bottom-0 right-0 w-2 h-2 bg-green-400 rounded-full ring-1 ring-[#050505]" />
+                  </div>
                 </button>
+
+                {/* Dropdown de perfil */}
+                {isProfileOpen && (
+                  <div className="absolute top-full mt-3 right-0 w-52 bg-[#111]/95 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 font-sans">
+                    <div className="px-4 py-3 border-b border-white/5 flex items-center gap-3">
+                      <img
+                        src={session.avatar_url}
+                        alt={session.name}
+                        className="w-8 h-8 rounded-full object-cover"
+                      />
+                      <div className="flex flex-col min-w-0">
+                        <span className="text-white text-xs font-semibold truncate text-left">{session.name}</span>
+                        <span className="text-gray-500 text-[10px] truncate text-left">@{session.username}</span>
+                      </div>
+                    </div>
+
+                    <Link
+                      href="/profile"
+                      onClick={() => setIsProfileOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition-colors text-xs uppercase tracking-widest border-b border-white/5"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                      </svg>
+                      My Profile
+                    </Link>
+
+                    <button
+                      onClick={() => {
+                        setIsProfileOpen(false);
+                        handleLogout(router);
+                      }}
+                      className="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:text-red-400 hover:bg-white/5 transition-colors text-xs uppercase tracking-widest cursor-pointer"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                      </svg>
+                      Log out
+                    </button>
+                  </div>
+                )}
               </div>
+            ) : (
+              <Link
+                href="/login"
+                className="text-gray-400 hover:text-white transition-all duration-200 font-(family-name:--font-bayon) text-sm font-semibold uppercase tracking-widest px-4 py-2 border border-white/10 hover:border-white/30 rounded-full bg-white/5 cursor-pointer"
+              >
+                Login
+              </Link>
             )}
           </div>
-
         </div>
       </header>
     </>

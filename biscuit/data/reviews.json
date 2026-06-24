@@ -25,7 +25,7 @@
       "rating": 3,
       "review_text": "Marvin Gaye nos regala una obra maestra atemporal. 'What's Going On' es un llamado a la conciencia social envuelto en soul puro.",
       "created_at": "2026-06-10T09:20:00Z",
-      "likes": 2
+      "likes": 0
     },
     {
       "id": "rev_504",
@@ -34,7 +34,7 @@
       "rating": 3,
       "review_text": "Brian Wilson y los Beach Boys nos regalan un álbum icónico que define la esencia del surf y el rock. 'Pet Sounds' es una obra maestra de la producción musical.",
       "created_at": "2026-06-15T16:30:00Z",
-      "likes": 3
+      "likes": 0
     },
     {
       "id": "rev_505",
@@ -43,7 +43,7 @@
       "rating": 4,
       "review_text": "Radiohead nos lleva a un viaje psicodélico con 'The Dark Side of the Moon'. Cada pista es una experiencia sonora única, y la producción es simplemente magistral.",
       "created_at": "2026-06-20T11:00:00Z",
-      "likes": 5
+      "likes": 0
     },
     {
       "id": "rev_506",
@@ -52,7 +52,25 @@
       "rating": 4,
       "review_text": "Michael Jackson es un clásico del rock que nunca pasa de moda. 'Stairway to Heaven' es una obra maestra que combina la energía del rock con la belleza de la música folk.",
       "created_at": "2026-06-25T13:15:00Z",
-      "likes": 4
+      "likes": 0
+    },
+    {
+      "id": "rev_507",
+      "user_id": "usr_02",
+      "album_id": "mock11_revolver",
+      "rating": 5,
+      "review_text": "Los Beatles nos regalan un álbum icónico que define la esencia del rock. 'Revolver' es una obra maestra de la producción musical.",
+      "created_at": "2026-06-30T17:45:00Z",
+      "likes": 1
+    },
+    {
+      "id": "rev_508",
+      "user_id": "usr_03",
+      "album_id": "mock06_nevermind",
+      "rating": 1,
+      "review_text": "No entiendo el hype con este disco, me parece sobrevalorado. Albúm totalmente sacado de la basura, ah espera, yo vivo ahí, entonces es normal que me guste, le daré otra oportunidad.",
+      "created_at": "2026-07-05T10:30:00Z",
+      "likes": 0
     }
   ]
 }

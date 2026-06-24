@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 // IMPORTACIÓN DE DATOS REALES DESDE TUS ARCHIVOS JSON
 import currentUserData from "@/data/currentUser.json";
@@ -36,20 +37,75 @@ const fadeInUpVariant: Variants = {
 };
 
 export default function ProfilePage() {
+  const router = useRouter();
   const [selectedPlaylist, setSelectedPlaylist] = useState<any>(null);
-  const user = currentUserData.users[0];
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
   // 1. ESTADOS INICIALES BASADOS EN JSON
-  const [userReviews, setUserReviews] = useState<any[]>(
-    reviewsData.reviews.filter((review) => review.user_id === user.id)
-  );
-  
-  const [userPlaylists, setUserPlaylists] = useState<any[]>(
-    playlistsData.playlists.filter((p) => p.owner_id === user.id)
-  );
+  const [userReviews, setUserReviews] = useState<any[]>([]);
+  const [userPlaylists, setUserPlaylists] = useState<any[]>([]);
 
-  // 2. LÓGICA HÍBRIDA: Mezclamos JSON + LocalStorage al cargar la página
+  // Effect to authenticate and load user session
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const activeSession = localStorage.getItem("activeSession");
+      if (!activeSession) {
+        router.push("/login");
+        return;
+      }
+      try {
+        const sessionData = JSON.parse(activeSession);
+        if (!sessionData || !sessionData.isAuthenticated) {
+          router.push("/login");
+          return;
+        }
+
+        // Find user details in static users
+        let fullUser = currentUserData.users.find((u) => u.id === sessionData.id);
+
+        // If not found in static users, look in locally registered users
+        if (!fullUser) {
+          const localUsersRaw = localStorage.getItem("localRegisteredUsers");
+          if (localUsersRaw) {
+            const localUsers = JSON.parse(localUsersRaw);
+            fullUser = localUsers.find((u: any) => u.id === sessionData.id);
+          }
+        }
+
+        // Fallback for OAuth mock user
+        if (!fullUser) {
+          fullUser = {
+            id: sessionData.id,
+            name: sessionData.name || "OAuth User",
+            username: sessionData.username || "oauth_user",
+            password: "",
+            avatar_url: sessionData.avatar_url || "/images/spike.png",
+            bio: sessionData.bio || "Usuario autenticado a través de OAuth en Biscuit.",
+            location: sessionData.location || "Internet",
+            stats: sessionData.stats || {
+              albums_logged: 0,
+              reviews_written: 0,
+              followers: 0,
+              following: 0
+            },
+            favorite_albums: sessionData.favorite_albums || []
+          };
+        }
+
+        setUser(fullUser);
+        setLoading(false);
+      } catch (e) {
+        console.error("Error setting up profile session", e);
+        router.push("/login");
+      }
+    }
+  }, [router]);
+
+  // Effect to merge reviews and playlists when user is loaded
+  useEffect(() => {
+    if (!user) return;
+
     // --- LECTURA DE RESEÑAS ---
     const initialReviews = reviewsData.reviews.filter((r) => r.user_id === user.id);
     const localReviewsRaw = JSON.parse(localStorage.getItem("albumReviews") || "{}");
@@ -83,7 +139,6 @@ export default function ProfilePage() {
     const initialPlaylists = playlistsData.playlists.filter(p => p.owner_id === user.id);
 
     const mergedPlaylists = initialPlaylists.map(playlist => {
-      // Si el usuario modificó esta playlist localmente, sobrescribimos los items
       if (localPlaylistItems[playlist.id]) {
         return { ...playlist, items: localPlaylistItems[playlist.id] };
       }
@@ -92,7 +147,7 @@ export default function ProfilePage() {
     
     setUserPlaylists(mergedPlaylists);
 
-  }, [user.id]);
+  }, [user]);
 
   // 3. Cálculos dinámicos
   const sortedReviews = [...userReviews].sort((a, b) => b.rating - a.rating);
@@ -118,6 +173,17 @@ export default function ProfilePage() {
       });
     }
   };
+
+  if (loading || !user) {
+    return (
+      <div className="min-h-screen bg-[#000000] text-white flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-white/20 border-t-[#E23C3C] rounded-full animate-spin"></div>
+          <p className="text-sm tracking-widest uppercase text-gray-400">Cargando colección...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     // Transformamos el <main> en <motion.main> para animar la carga inicial de la página
@@ -394,7 +460,7 @@ export default function ProfilePage() {
               className="h-[13rem] w-full flex items-center overflow-x-auto gap-6 scroll-smooth px-14 no-scrollbar"
               style={{ scrollbarWidth: "none" }}
             >
-              {user.favorite_albums.map((albumId) => {
+              {user.favorite_albums.map((albumId: string) => {
                 const album = albumsData.albums.items.find(
                   (item) => item.id === albumId,
                 );
