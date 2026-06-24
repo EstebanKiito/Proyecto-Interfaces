@@ -43,6 +43,36 @@
       "is_public": true,
       "type": "standard",
       "items": ["mock01_whatsgoingon"]
+    },
+    {
+      "id": "pl_106",
+      "owner_id": "usr_02",
+      "title": "To-Listen",
+      "description": "Discos que cambiaron la forma de entender la producción musical.",
+      "is_public": true,
+      "type": "tier_list",
+      "items": [
+        "mock01_whatsgoingon",
+        "mock02_petsounds",
+        "mock05_abbeyroad",
+        "mock06_nevermind",
+        "mock12_thriller"
+      ]
+    },
+    {
+      "id": "pl_107",
+      "owner_id": "usr_03",
+      "title": "To-Listen",
+      "description": "Discos que cambiaron la forma de entender la producción musical.",
+      "is_public": true,
+      "type": "tier_list",
+      "items": [
+        "mock01_whatsgoingon",
+        "mock02_petsounds",
+        "mock05_abbeyroad",
+        "mock06_nevermind",
+        "mock12_thriller"
+      ]
     }
   ]
 }
