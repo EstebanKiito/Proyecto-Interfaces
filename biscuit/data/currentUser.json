@@ -11,8 +11,8 @@
       "stats": {
         "albums_logged": 3,
         "reviews_written": 6,
-        "followers": 15,
-        "following": 24
+        "followers": 0,
+        "following": 0
       },
       "favorite_albums": [
         "mock01_whatsgoingon",
@@ -46,8 +46,8 @@
       "stats": {
         "albums_logged": 5,
         "reviews_written": 2,
-        "followers": 2,
-        "following": 1
+        "followers": 0,
+        "following": 0
       },
       "favorite_albums": [
         "mock01_whatsgoingon",
@@ -72,7 +72,7 @@
       "stats": {
         "albums_logged": 1,
         "reviews_written": 1,
-        "followers": 1,
+        "followers": 0,
         "following": 0
       },
       "favorite_albums": [
