@@ -10,6 +10,7 @@ import reviewsData from "@/data/reviews.json";
 import albumsData from "@/data/albums.json";
 import playlistsData from "@/data/playlists.json";
 import PlaylistModal from "@/components/playlistModal";
+import CreatePlaylistModal from "@/components/createPlaylistModal";
 import noPhoto from "../../public/images/no-photo.jpg";
 
 // ==========================================
@@ -39,6 +40,7 @@ const fadeInUpVariant: Variants = {
 export default function ProfilePage() {
   const router = useRouter();
   const [selectedPlaylist, setSelectedPlaylist] = useState<any>(null);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -173,7 +175,18 @@ export default function ProfilePage() {
       });
     }
     
-    setUserPlaylists(mergedPlaylists);
+    // Load user's custom playlists
+    const customPlaylistsKey = `customPlaylists_${user.id}`;
+    const customPlaylists = JSON.parse(localStorage.getItem(customPlaylistsKey) || "[]");
+    const mergedCustomPlaylists = customPlaylists.map((playlist: any) => {
+      if (localPlaylistItems[playlist.id]) {
+        return { ...playlist, items: localPlaylistItems[playlist.id] };
+      }
+      return playlist;
+    });
+
+    const combinedPlaylists = [...mergedPlaylists, ...mergedCustomPlaylists];
+    setUserPlaylists(combinedPlaylists);
 
     // --- LECTURA DE ALBUMS GUSTADOS (COLECCIÓN) ---
     const likedKey = `likedAlbums_${user.id}`;
@@ -566,7 +579,10 @@ export default function ProfilePage() {
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <motion.div variants={fadeInUpVariant}>
-                <div className="relative bg-[#111112] p-6 rounded-[2rem] border border-zinc-800 hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-[24rem] shadow-xl group cursor-pointer justify-center items-center">
+                <div 
+                  onClick={() => setIsCreateModalOpen(true)}
+                  className="relative bg-[#111112] p-6 rounded-[2rem] border border-zinc-800 hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-[24rem] shadow-xl group cursor-pointer justify-center items-center"
+                >
                   <div className="flex flex-col items-center justify-center h-full w-full gap-2 hover:scale-105 transition-transform duration-300">
                     <button className="w-16 h-16 bg-[#962828] group-hover:bg-[#E23C3C] transition-colors rounded-full flex items-center justify-center shadow-md z-10 cursor-pointer">
                       <svg
@@ -657,6 +673,20 @@ export default function ProfilePage() {
           albumsData={albumsData.albums.items}
           isOpen={!!selectedPlaylist}
           onClose={() => setSelectedPlaylist(null)}
+        />
+      )}
+
+      {isCreateModalOpen && (
+        <CreatePlaylistModal
+          isOpen={isCreateModalOpen}
+          onClose={() => setIsCreateModalOpen(false)}
+          currentUser={user}
+          collectionAlbums={collectionAlbums}
+          albumsData={albumsData.albums.items}
+          onPlaylistCreated={(newPlaylist) => {
+            setUserPlaylists((prev) => [...prev, newPlaylist]);
+            window.location.reload();
+          }}
         />
       )}
     </motion.main>

@@ -22,7 +22,27 @@ export default function PlaylistModal({
   if (!isOpen || !playlist) return null;
 
   // Hacemos el match para buscar al dueño de la playlist según el owner_id
-  const owner = usersData.find((u) => u.id === playlist.owner_id);
+  let owner = usersData.find((u) => u.id === playlist.owner_id);
+  if (!owner && typeof window !== "undefined") {
+    const activeSession = localStorage.getItem("activeSession");
+    if (activeSession) {
+      try {
+        const parsed = JSON.parse(activeSession);
+        if (parsed && parsed.id === playlist.owner_id) {
+          owner = parsed;
+        }
+      } catch (e) {}
+    }
+    if (!owner) {
+      const localUsersRaw = localStorage.getItem("localRegisteredUsers");
+      if (localUsersRaw) {
+        try {
+          const localUsers = JSON.parse(localUsersRaw);
+          owner = localUsers.find((u: any) => u.id === playlist.owner_id);
+        } catch (e) {}
+      }
+    }
+  }
 
   return (
     // CONTENEDOR OVERLAY: Cierra el modal al presionar fuera de la caja
