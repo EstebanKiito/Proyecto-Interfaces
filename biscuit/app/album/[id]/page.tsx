@@ -556,18 +556,35 @@ export default function Album() {
 
           <aside className="bg-[#111111] text-gray-200 rounded-lg shadow-2xl overflow-hidden flex flex-col border border-white/10">
             <div className="flex justify-around p-4 border-b border-white/10 bg-[#161616]">
-              {["reviewed", "liked", "listenlist"].map((action) => (
-                <button
-                  key={action}
-                  onClick={() => toggleAction(action as keyof typeof activeActions)}
-                  className={`flex flex-col items-center gap-2 transition-colors ${activeActions[action as keyof typeof activeActions] ? "text-[#E23C3C]" : "text-[#939090] hover:text-gray-300"}`}
-                >
-                  <div className={`w-8 h-8 rounded-full shadow-inner flex items-center justify-center ${activeActions[action as keyof typeof activeActions] ? "bg-[#8E0B0B]/40 text-[#E23C3C]" : "bg-[#222] text-[#939090]"}`}>
-                    <span className="text-xs">●</span>
-                  </div>
-                  <span className="text-[9px] uppercase font-bold tracking-widest">{action}</span>
-                </button>
-              ))}
+              {["reviewed", "liked", "listenlist"].map((action) => {
+                const isActive = activeActions[action as keyof typeof activeActions];
+                return (
+                  <button
+                    key={action}
+                    onClick={() => toggleAction(action as keyof typeof activeActions)}
+                    className={`flex flex-col items-center gap-2 transition-colors ${isActive ? "text-[#E23C3C]" : "text-[#939090] hover:text-gray-300"}`}
+                  >
+                    <div className={`w-8 h-8 rounded-full shadow-inner flex items-center justify-center ${isActive ? "bg-[#8E0B0B]/40 text-[#E23C3C]" : "bg-[#222] text-[#939090]"}`}>
+                      {action === "reviewed" && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-4 h-4">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                        </svg>
+                      )}
+                      {action === "liked" && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={isActive ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2.5" className="w-4 h-4">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                        </svg>
+                      )}
+                      {action === "listenlist" && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-4 h-4">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                      )}
+                    </div>
+                    <span className="text-[9px] uppercase font-bold tracking-widest">{action}</span>
+                  </button>
+                );
+              })}
             </div>
 
             <div className="p-6 flex flex-col items-center gap-4 bg-[#111]">
