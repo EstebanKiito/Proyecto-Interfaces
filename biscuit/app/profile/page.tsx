@@ -158,6 +158,20 @@ export default function ProfilePage() {
       }
       return playlist;
     });
+
+    const hasToListen = mergedPlaylists.some(p => p.title.toLowerCase() === "to-listen");
+    if (!hasToListen) {
+      const defaultToListenId = `pl_to_listen_${user.id}`;
+      mergedPlaylists.push({
+        id: defaultToListenId,
+        owner_id: user.id,
+        title: "To-Listen",
+        description: "Mis álbumes para escuchar más tarde.",
+        is_public: true,
+        type: "tier_list",
+        items: localPlaylistItems[defaultToListenId] || []
+      });
+    }
     
     setUserPlaylists(mergedPlaylists);
 

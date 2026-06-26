@@ -102,6 +102,19 @@ export default function Album() {
     // Cargar listas de reproducción del usuario
     if (userId) {
       const uPlaylists = playlistsJson.playlists.filter((p) => p.owner_id === userId);
+      // Inyectar To-Listen playlist por defecto si no está presente
+      const hasToListen = uPlaylists.some(p => p.title.toLowerCase() === "to-listen");
+      if (!hasToListen) {
+        uPlaylists.push({
+          id: `pl_to_listen_${userId}`,
+          owner_id: userId,
+          title: "To-Listen",
+          description: "Mis álbumes para escuchar más tarde.",
+          is_public: true,
+          type: "tier_list",
+          items: []
+        });
+      }
       setUserPlaylists(uPlaylists);
     } else {
       setUserPlaylists([]);
@@ -173,11 +186,27 @@ export default function Album() {
       }
     }
 
+    // Check if album is in to-listen playlist
+    let isInListenlist = false;
+    if (userId) {
+      const staticToListen = playlistsJson.playlists.find(
+        (p) => p.owner_id === userId && p.title.toLowerCase() === "to-listen"
+      );
+      const playlistId = staticToListen ? staticToListen.id : `pl_to_listen_${userId}`;
+      const playlistKey = `playlistItems_${userId}`;
+      const savedPlaylists = JSON.parse(localStorage.getItem(playlistKey) || "{}");
+      const currentItems = savedPlaylists[playlistId] || (staticToListen ? staticToListen.items : []);
+      if (currentItems.includes(albumId)) {
+        isInListenlist = true;
+      }
+    }
+
     setHasReview(isReviewed);
     setActiveActions((prev) => ({ 
       ...prev, 
       reviewed: isReviewed,
-      liked: isLiked
+      liked: isLiked,
+      listenlist: isInListenlist
     }));
 
     // 2. Calificaciones de canciones (específicas por usuario)
@@ -290,6 +319,31 @@ export default function Album() {
         updatedLiked = likedAlbums.filter((id) => id !== albumId);
       }
       localStorage.setItem(likedKey, JSON.stringify(updatedLiked));
+    }
+
+    if (action === "listenlist") {
+      const toListenPlaylist = userPlaylists.find(p => p.title.toLowerCase() === "to-listen");
+      if (toListenPlaylist) {
+        const playlistId = toListenPlaylist.id;
+        const playlistKey = `playlistItems_${currentUser.id}`;
+        const savedPlaylists = JSON.parse(localStorage.getItem(playlistKey) || "{}");
+        const currentItems = savedPlaylists[playlistId] || toListenPlaylist.items || [];
+        
+        let newItems;
+        if (nextVal) {
+          if (!currentItems.includes(albumId)) {
+            newItems = [...currentItems, albumId];
+          } else {
+            newItems = currentItems;
+          }
+        } else {
+          newItems = currentItems.filter((id: string) => id !== albumId);
+        }
+        
+        savedPlaylists[playlistId] = newItems;
+        localStorage.setItem(playlistKey, JSON.stringify(savedPlaylists));
+        setLocalPlaylists(savedPlaylists);
+      }
     }
   };
 
