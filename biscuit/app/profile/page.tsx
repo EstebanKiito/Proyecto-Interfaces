@@ -45,6 +45,7 @@ export default function ProfilePage() {
   // 1. ESTADOS INICIALES BASADOS EN JSON
   const [userReviews, setUserReviews] = useState<any[]>([]);
   const [userPlaylists, setUserPlaylists] = useState<any[]>([]);
+  const [collectionAlbums, setCollectionAlbums] = useState<string[]>([]);
 
   // Effect to authenticate and load user session
   useEffect(() => {
@@ -108,7 +109,7 @@ export default function ProfilePage() {
 
     // --- LECTURA DE RESEÑAS ---
     const initialReviews = reviewsData.reviews.filter((r) => r.user_id === user.id);
-    const localReviewsRaw = JSON.parse(localStorage.getItem("albumReviews") || "{}");
+    const localReviewsRaw = JSON.parse(localStorage.getItem(`albumReviews_${user.id}`) || "{}");
     let mergedReviews = [...initialReviews];
 
     Object.keys(localReviewsRaw).forEach((albumId) => {
@@ -135,7 +136,7 @@ export default function ProfilePage() {
     setUserReviews(mergedReviews);
 
     // --- LECTURA DE PLAYLISTS ---
-    const localPlaylistItems = JSON.parse(localStorage.getItem("playlistItems") || "{}");
+    const localPlaylistItems = JSON.parse(localStorage.getItem(`playlistItems_${user.id}`) || "{}");
     const initialPlaylists = playlistsData.playlists.filter(p => p.owner_id === user.id);
 
     const mergedPlaylists = initialPlaylists.map(playlist => {
@@ -146,6 +147,12 @@ export default function ProfilePage() {
     });
     
     setUserPlaylists(mergedPlaylists);
+
+    // --- LECTURA DE ALBUMS GUSTADOS (COLECCIÓN) ---
+    const likedKey = `likedAlbums_${user.id}`;
+    const likedAlbums: string[] = JSON.parse(localStorage.getItem(likedKey) || "[]");
+    const combined = Array.from(new Set([...user.favorite_albums, ...likedAlbums]));
+    setCollectionAlbums(combined);
 
   }, [user]);
 
@@ -326,7 +333,7 @@ export default function ProfilePage() {
                 }
               >
                 <p className="font-biscuit text-4xl text-[#ffffff] leading-none mb-1">
-                  {user.favorite_albums.length}
+                  {collectionAlbums.length}
                 </p>
                 <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase">
                   FAVORITES
@@ -460,7 +467,7 @@ export default function ProfilePage() {
               className="h-[13rem] w-full flex items-center overflow-x-auto gap-6 scroll-smooth px-14 no-scrollbar"
               style={{ scrollbarWidth: "none" }}
             >
-              {user.favorite_albums.map((albumId: string) => {
+              {collectionAlbums.map((albumId: string) => {
                 const album = albumsData.albums.items.find(
                   (item) => item.id === albumId,
                 );

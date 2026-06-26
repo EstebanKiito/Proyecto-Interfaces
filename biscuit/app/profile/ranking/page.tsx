@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 // 1. Importamos la data
 import currentUserData from "@/data/currentUser.json";
@@ -8,17 +9,75 @@ import reviewsData from "@/data/reviews.json";
 import albumsData from "@/data/albums.json";
 
 export default function RankingPage() {
-  const user = currentUserData.users[0];
+  const router = useRouter();
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-  // 1. ESTADO INICIAL: Cargamos el JSON por defecto
-  const [userReviews, setUserReviews] = useState<any[]>(
-    reviewsData.reviews.filter((review) => review.user_id === user.id)
-  );
+  // 1. ESTADO INICIAL: Estado de las reseñas del usuario
+  const [userReviews, setUserReviews] = useState<any[]>([]);
 
-  // 2. LÓGICA HÍBRIDA: Mezclamos el JSON con el LocalStorage
+  // Effect to authenticate and load user session
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const activeSession = localStorage.getItem("activeSession");
+      if (!activeSession) {
+        router.push("/login");
+        return;
+      }
+      try {
+        const sessionData = JSON.parse(activeSession);
+        if (!sessionData || !sessionData.isAuthenticated) {
+          router.push("/login");
+          return;
+        }
+
+        // Find user details in static users
+        let fullUser = currentUserData.users.find((u) => u.id === sessionData.id);
+
+        // If not found in static users, look in locally registered users
+        if (!fullUser) {
+          const localUsersRaw = localStorage.getItem("localRegisteredUsers");
+          if (localUsersRaw) {
+            const localUsers = JSON.parse(localUsersRaw);
+            fullUser = localUsers.find((u: any) => u.id === sessionData.id);
+          }
+        }
+
+        // Fallback for OAuth mock user
+        if (!fullUser) {
+          fullUser = {
+            id: sessionData.id,
+            name: sessionData.name || "OAuth User",
+            username: sessionData.username || "oauth_user",
+            password: "",
+            avatar_url: sessionData.avatar_url || "https://www.svgrepo.com/show/335455/profile-default.svg",
+            bio: sessionData.bio || "Usuario autenticado a través de OAuth en Biscuit.",
+            location: sessionData.location || "Internet",
+            stats: sessionData.stats || {
+              albums_logged: 0,
+              reviews_written: 0,
+              followers: 0,
+              following: 0
+            },
+            favorite_albums: sessionData.favorite_albums || []
+          };
+        }
+
+        setUser(fullUser);
+        setLoading(false);
+      } catch (e) {
+        console.error("Error setting up ranking page session", e);
+        router.push("/login");
+      }
+    }
+  }, [router]);
+
+  // Effect to merge reviews when user is loaded
+  useEffect(() => {
+    if (!user) return;
+
     const initialReviews = reviewsData.reviews.filter((r) => r.user_id === user.id);
-    const localReviewsRaw = JSON.parse(localStorage.getItem("albumReviews") || "{}");
+    const localReviewsRaw = JSON.parse(localStorage.getItem(`albumReviews_${user.id}`) || "{}");
 
     let mergedReviews = [...initialReviews];
 
@@ -40,14 +99,25 @@ export default function RankingPage() {
           album_id: albumId,
           rating: rating,
           review_text: reviewText,
-          created_at: new Date().toISOString(), // <-- Evita el error de TypeScript
-          likes: 0                              // <-- Evita el error de TypeScript
+          created_at: new Date().toISOString(),
+          likes: 0
         });
       }
     });
 
     setUserReviews(mergedReviews);
-  }, [user.id]);
+  }, [user]);
+
+  if (loading || !user) {
+    return (
+      <div className="min-h-screen bg-[#000000] text-white flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-white/20 border-t-[#E23C3C] rounded-full animate-spin"></div>
+          <p className="text-sm tracking-widest uppercase text-gray-400">Cargando colección...</p>
+        </div>
+      </div>
+    );
+  }
 
   // 3. Cálculos dinámicos basados en el estado actualizado
   // Ordenamos y sacamos solo el TOP 5
@@ -55,9 +125,14 @@ export default function RankingPage() {
     .sort((a, b) => b.rating - a.rating)
     .slice(0, 5);
 
-  // Combinamos Favoritos + Reseñados sin repetir IDs (Set)
+  // Combinamos Favoritos + Gustados sin repetir IDs (Set)
+  const likedKey = `likedAlbums_${user.id}`;
+  const likedAlbums: string[] = typeof window !== "undefined"
+    ? JSON.parse(localStorage.getItem(likedKey) || "[]")
+    : [];
+
   const collectionIds = Array.from(
-    new Set([...user.favorite_albums, ...userReviews.map((r) => r.album_id)]),
+    new Set([...user.favorite_albums, ...likedAlbums]),
   );
 
   return (
