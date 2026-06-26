@@ -103,6 +103,19 @@ export default function ProfilePage() {
     }
   }, [router]);
 
+  useEffect(() => {
+    if (loading) return;
+    if (window.location.hash !== "#discover-section") return;
+
+    const scrollToDiscover = () => {
+      document
+        .getElementById("discover-section")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    window.requestAnimationFrame(scrollToDiscover);
+  }, [loading, user]);
+
   // Effect to merge reviews and playlists when user is loaded
   useEffect(() => {
     if (!user) return;
