@@ -310,7 +310,7 @@ export default function ProfilePage() {
             <motion.div
               whileHover={{ scale: 1.05, rotate: 2 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-6 border-[#c9c9d2] shadow-[0_0_20px_rgba(255,255,255,0.1)] bg-[#111112]"
+              className="w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-4 border-[#1a1a1a] shadow-[0_0_20px_rgba(255,255,255,0.1)] bg-[#111112]"
             >
               <img
                 src={user.avatar_url}
