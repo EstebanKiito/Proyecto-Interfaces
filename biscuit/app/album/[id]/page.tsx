@@ -536,10 +536,12 @@ export default function Album() {
                       <section key={rev.id} className="bg-[#111111] rounded-lg shadow-xl border border-white/10 p-6 flex flex-col gap-3 relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-1 h-full bg-[#E23C3C]"></div>
                         <div className="flex items-center justify-between">
-                          <h3 className="text-[#939090] text-[10px] uppercase tracking-widest font-bold flex items-center gap-2">
-                            <span className="text-[#E23C3C] text-sm">✎</span> 
-                            {isMyReview ? "MY REVIEW" : `${rev.user_name.toUpperCase()}'S REVIEW`}
-                          </h3>
+                          <Link href={isMyReview ? "/profile" : `/profile/${rev.user_id}`} className="hover:underline cursor-pointer group/reviewHeader">
+                            <h3 className="text-[#939090] text-[10px] uppercase tracking-widest font-bold flex items-center gap-2 group-hover/reviewHeader:text-[#E23C3C] transition-colors">
+                              <span className="text-[#E23C3C] text-sm">✎</span> 
+                              {isMyReview ? "MY REVIEW" : `${rev.user_name.toUpperCase()}'S REVIEW`}
+                            </h3>
+                          </Link>
                           <div className="flex items-center gap-1 bg-black/40 px-2.5 py-1 rounded-full border border-white/5 font-[family-name:var(--font-bayon)] text-xs text-[#E23C3C]">
                             <span className="leading-none">★</span>
                             <span className="leading-none pt-0.5">{rev.rating.toFixed(1)}</span>

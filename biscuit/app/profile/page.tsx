@@ -11,6 +11,7 @@ import albumsData from "@/data/albums.json";
 import playlistsData from "@/data/playlists.json";
 import PlaylistModal from "@/components/playlistModal";
 import CreatePlaylistModal from "@/components/createPlaylistModal";
+import FriendsModal from "@/components/friendsModal";
 import noPhoto from "../../public/images/no-photo.jpg";
 
 // ==========================================
@@ -48,6 +49,10 @@ export default function ProfilePage() {
   const [userReviews, setUserReviews] = useState<any[]>([]);
   const [userPlaylists, setUserPlaylists] = useState<any[]>([]);
   const [collectionAlbums, setCollectionAlbums] = useState<string[]>([]);
+  const [followerCount, setFollowerCount] = useState(0);
+  const [followingCount, setFollowingCount] = useState(0);
+  const [isFriendsModalOpen, setIsFriendsModalOpen] = useState(false);
+  const [friendsModalMode, setFriendsModalMode] = useState<"followers" | "following">("followers");
 
   // Effect to authenticate and load user session
   useEffect(() => {
@@ -194,7 +199,21 @@ export default function ProfilePage() {
     const combined = Array.from(new Set([...user.favorite_albums, ...likedAlbums]));
     setCollectionAlbums(combined);
 
+    // --- LECTURA DE FOLLOWERS Y FOLLOWING ---
+    const followers = JSON.parse(localStorage.getItem(`followers_${user.id}`) || "[]");
+    const following = JSON.parse(localStorage.getItem(`following_${user.id}`) || "[]");
+    setFollowerCount(followers.length);
+    setFollowingCount(following.length);
+
   }, [user]);
+
+  const refreshRelations = () => {
+    if (!user) return;
+    const followers = JSON.parse(localStorage.getItem(`followers_${user.id}`) || "[]");
+    const following = JSON.parse(localStorage.getItem(`following_${user.id}`) || "[]");
+    setFollowerCount(followers.length);
+    setFollowingCount(following.length);
+  };
 
   // 3. Cálculos dinámicos
   const sortedReviews = [...userReviews].sort((a, b) => b.rating - a.rating);
@@ -398,22 +417,44 @@ export default function ProfilePage() {
                 LISTS
               </p>
             </div>
-            <div className="border-r border-zinc-800">
+            <div 
+              className="border-r border-zinc-800 hover:text-[#E23C3C] cursor-pointer transition-colors"
+              onClick={() => {
+                setFriendsModalMode("followers");
+                setIsFriendsModalOpen(true);
+              }}
+            >
               <p className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-wider">
-                {user.stats.followers}
+                {followerCount}
               </p>
               <p className="font-[family-name:var(--font-bayon)] text-xs text-[#ffffff] tracking-widest">
                 FOLLOWERS
               </p>
             </div>
-            <div>
+            <div
+              className="hover:text-[#E23C3C] cursor-pointer transition-colors"
+              onClick={() => {
+                setFriendsModalMode("following");
+                setIsFriendsModalOpen(true);
+              }}
+            >
               <p className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-wider">
-                {user.stats.following}
+                {followingCount}
               </p>
               <p className="font-[family-name:var(--font-bayon)] text-xs text-[#ffffff] tracking-widest">
                 FOLLOWING
               </p>
             </div>
+          </div>
+
+          {/* BOTÓN EDIT PROFILE */}
+          <div className="flex justify-center mt-2">
+            <button
+              onClick={() => alert("Editar perfil en desarrollo...")}
+              className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer"
+            >
+              EDIT PROFILE
+            </button>
           </div>
         </div>
       </div>
@@ -687,6 +728,17 @@ export default function ProfilePage() {
             setUserPlaylists((prev) => [...prev, newPlaylist]);
             window.location.reload();
           }}
+        />
+      )}
+
+      {isFriendsModalOpen && (
+        <FriendsModal
+          isOpen={isFriendsModalOpen}
+          onClose={() => setIsFriendsModalOpen(false)}
+          userId={user.id}
+          mode={friendsModalMode}
+          currentUserId={user.id}
+          onRelationsChanged={refreshRelations}
         />
       )}
     </motion.main>
