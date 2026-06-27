@@ -995,6 +995,266 @@
         ],
         "artists": [ { "id": "artMetal14", "name": "Black Sabbath", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal14" } ],
         "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal01_paranoid" }
+      },
+      {
+        "id": "mockJRock01_winningstrip",
+        "name": "勝訴ストリップ [Winning Strip]",
+        "album_type": "album",
+        "release_date": "2000-03-31",
+        "total_tracks": 13,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/1.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/1.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock01", "name": "椎名林檎 [Ringo Sheena]", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock01" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock01_winningstrip" }
+      },
+      {
+        "id": "mockJRock02_unhappyrefrain",
+        "name": "アンハッピーリフレイン [Unhappy Refrain]",
+        "album_type": "album",
+        "release_date": "2011-05-18",
+        "total_tracks": 15,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/2.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/2.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock02", "name": "wowaka", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock02" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock02_unhappyrefrain" }
+      },
+      {
+        "id": "mockJRock03_worldisyours",
+        "name": "ワールドイズユアーズ [World Is Yours]",
+        "album_type": "album",
+        "release_date": "2009-01-21",
+        "total_tracks": 6,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/3.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/3.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock03", "name": "MASS OF THE FERMENTING DREGS", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock03" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock03_worldisyours" }
+      },
+      {
+        "id": "mockJRock04_justamoment",
+        "name": "just A moment",
+        "album_type": "album",
+        "release_date": "2009-05-13",
+        "total_tracks": 10,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/4.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/4.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock04", "name": "凛として時雨 [Ling tosite sigure]", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock04" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock04_justamoment" }
+      },
+      {
+        "id": "mockJRock05_kessokuband",
+        "name": "結束バンド [Kessoku Band]",
+        "album_type": "album",
+        "release_date": "2022-12-25",
+        "total_tracks": 14,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/5.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/5.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock05", "name": "結束バンド [kessoku band]", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock05" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock05_kessokuband" }
+      },
+      {
+        "id": "mockJRock06_innocencemoratorium",
+        "name": "無罪モラトリアム [Innocence Moratorium]",
+        "album_type": "album",
+        "release_date": "1999-02-24",
+        "total_tracks": 11,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/6.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/6.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock01", "name": "椎名林檎 [Ringo Sheena]", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock01" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock06_innocencemoratorium" }
+      },
+      {
+        "id": "mockJRock07_inspirationisdead",
+        "name": "Inspiration is DEAD",
+        "album_type": "album",
+        "release_date": "2007-08-22",
+        "total_tracks": 9,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/7.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/7.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock04", "name": "凛として時雨 [Ling tosite sigure]", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock04" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock07_inspirationisdead" }
+      },
+      {
+        "id": "mockJRock08_motfd",
+        "name": "MASS OF THE FERMENTING DREGS",
+        "album_type": "album",
+        "release_date": "2008-01-16",
+        "total_tracks": 6,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/8.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/8.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock03", "name": "MASS OF THE FERMENTING DREGS", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock03" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock08_motfd" }
+      },
+      {
+        "id": "mockJRock09_fanclub",
+        "name": "ファンクラブ [Fanclub]",
+        "album_type": "album",
+        "release_date": "2006-03-15",
+        "total_tracks": 11,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/9.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/9.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock09", "name": "ASIAN KUNG-FU GENERATION", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock09" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock09_fanclub" }
+      },
+      {
+        "id": "mockJRock10_happybivouac",
+        "name": "HAPPY BIVOUAC",
+        "album_type": "album",
+        "release_date": "1999-12-02",
+        "total_tracks": 11,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/10.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/10.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock10", "name": "the pillows", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock10" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock10_happybivouac" }
+      },
+      {
+        "id": "mockJRock11_groovyindiansummer",
+        "name": "groovy indian summer",
+        "album_type": "album",
+        "release_date": "2002-09-21",
+        "total_tracks": 8,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/11.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/11.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock11", "name": "honeydip", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock11" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock11_groovyindiansummer" }
+      },
+      {
+        "id": "mockJRock12_sappukei",
+        "name": "SAPPUKEI",
+        "album_type": "album",
+        "release_date": "2000-07-19",
+        "total_tracks": 11,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/12.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/12.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock12", "name": "Number Girl", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock12" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock12_sappukei" }
+      },
+      {
+        "id": "mockJRock13_the",
+        "name": "T H E",
+        "album_type": "album",
+        "release_date": "2013-10-02",
+        "total_tracks": 14,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/13.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/13.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock13", "name": "tricot", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock13" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock13_the" }
+      },
+      {
+        "id": "mockJRock14_flowering",
+        "name": "flowering",
+        "album_type": "album",
+        "release_date": "2012-06-27",
+        "total_tracks": 9,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/14.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/14.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock14", "name": "TK from 凛として時雨 [TK from Ling tosite sigure]", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock14" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock14_flowering" }
+      },
+      {
+        "id": "mockJRock15_imperfect",
+        "name": "i'mperfect",
+        "album_type": "album",
+        "release_date": "2013-04-10",
+        "total_tracks": 9,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/15.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/15.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock04", "name": "凛として時雨 [Ling tosite sigure]", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock04" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock15_imperfect" }
+      },
+      {
+        "id": "mockJRock16_thatswhyigaveuponmusic",
+        "name": "だから僕は音楽を辞めた [That's Why I Gave Up on Music]",
+        "album_type": "album",
+        "release_date": "2019-04-10",
+        "total_tracks": 14,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/16.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/16.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock16", "name": "ヨルシカ [Yorushika]", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock16" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock16_thatswhyigaveuponmusic" }
+      },
+      {
+        "id": "mockJRock17_stillavirgin",
+        "name": "still a Sigure virgin?",
+        "album_type": "album",
+        "release_date": "2010-09-22",
+        "total_tracks": 9,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/17.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/17.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock04", "name": "凛として時雨 [Ling tosite sigure]", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock04" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock17_stillavirgin" }
+      },
+      {
+        "id": "mockJRock18_solfa",
+        "name": "ソルファ [Sol-Fa]",
+        "album_type": "album",
+        "release_date": "2004-10-20",
+        "total_tracks": 12,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/18.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/18.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock09", "name": "ASIAN KUNG-FU GENERATION", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock09" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock18_solfa" }
+      },
+      {
+        "id": "mockJRock19_adult",
+        "name": "大人 (アダルト) [Adult]",
+        "album_type": "album",
+        "release_date": "2006-01-25",
+        "total_tracks": 11,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/19.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/19.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock19", "name": "東京事変 [Tokyo Jihen]", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock19" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock19_adult" }
+      },
+      {
+        "id": "mockJRock20_littlebusters",
+        "name": "Little Busters!",
+        "album_type": "album",
+        "release_date": "1998-2-21",
+        "total_tracks": 12,
+        "images": [
+          { "height": 640, "url": "/images/jrock-albums/20.jpg", "width": 640 },
+          { "height": 300, "url": "/images/jrock-albums/20.jpg", "width": 300 }
+        ],
+        "artists": [ { "id": "artJRock20", "name": "the pillows", "type": "artist", "href": "https://api.spotify.com/v1/artists/artJRock20" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockJRock20_littlebusters" }
       }
     ]
   }

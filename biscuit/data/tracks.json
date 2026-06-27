@@ -2071,5 +2071,297 @@
       { "id": "m01_7", "track_number": 7, "name": "Rat Salad", "duration_ms": 150000, "artists": [{"name": "Black Sabbath"}] },
       { "id": "m01_8", "track_number": 8, "name": "Fairies Wear Boots", "duration_ms": 373000, "artists": [{"name": "Black Sabbath"}] }
     ]
+  },
+  "mockJRock01_winningstrip": {
+    "items": [
+      { "id": "tr01_01", "track_number": 1, "name": "虚言症", "duration_ms": 326000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr01_02", "track_number": 2, "name": "浴室", "duration_ms": 255000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr01_03", "track_number": 3, "name": "弁解ドビュッシー", "duration_ms": 196000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr01_04", "track_number": 4, "name": "ギブス", "duration_ms": 338000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr01_05", "track_number": 5, "name": "闇に降る雨", "duration_ms": 303000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr01_06", "track_number": 6, "name": "アイデンティティ", "duration_ms": 185000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr01_07", "track_number": 7, "name": "罪と罰", "duration_ms": 332000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr01_08", "track_number": 8, "name": "ストイシズム", "duration_ms": 106000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr01_09", "track_number": 9, "name": "月に負け犬", "duration_ms": 254000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr01_10", "track_number": 10, "name": "サカナ", "duration_ms": 223000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr01_11", "track_number": 11, "name": "病床パブリック", "duration_ms": 196000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr01_12", "track_number": 12, "name": "本能", "duration_ms": 254000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr01_13", "track_number": 13, "name": "依存症", "duration_ms": 383000, "artists": [{"name": "Ringo Sheena"}] }
+    ]
+  },
+  "mockJRock02_unhappyrefrain": {
+    "items": [
+      { "id": "tr02_01", "track_number": 1, "name": "アンハッピーリフレイン", "duration_ms": 226000, "artists": [{"name": "wowaka"}] },
+      { "id": "tr02_02", "track_number": 2, "name": "ローリンガール", "duration_ms": 190000, "artists": [{"name": "wowaka"}] },
+      { "id": "tr02_03", "track_number": 3, "name": "積み木の人形", "duration_ms": 171000, "artists": [{"name": "wowaka"}] },
+      { "id": "tr02_04", "track_number": 4, "name": "僕のサイノウ", "duration_ms": 283000, "artists": [{"name": "wowaka"}] },
+      { "id": "tr02_05", "track_number": 5, "name": "日常と地球の額縁", "duration_ms": 224000, "artists": [{"name": "wowaka"}] },
+      { "id": "tr02_06", "track_number": 6, "name": "テノヒラ", "duration_ms": 298000, "artists": [{"name": "wowaka"}] },
+      { "id": "tr02_07", "track_number": 7, "name": "とおせんぼ", "duration_ms": 209000, "artists": [{"name": "wowaka"}] },
+      { "id": "tr02_08", "track_number": 8, "name": "ラインアート", "duration_ms": 197000, "artists": [{"name": "wowaka"}] },
+      { "id": "tr02_09", "track_number": 9, "name": "裏表ラバーズ", "duration_ms": 183000, "artists": [{"name": "wowaka"}] },
+      { "id": "tr02_10", "track_number": 10, "name": "グレーゾーンにて。", "duration_ms": 160000, "artists": [{"name": "wowaka"}] },
+      { "id": "tr02_11", "track_number": 11, "name": "ずれていく", "duration_ms": 146000, "artists": [{"name": "wowaka"}] },
+      { "id": "tr02_12", "track_number": 12, "name": "リバシブルドール", "duration_ms": 218000, "artists": [{"name": "wowaka"}] },
+      { "id": "tr02_13", "track_number": 13, "name": "ワールズエンド・ダンスホール", "duration_ms": 211000, "artists": [{"name": "wowaka"}] },
+      { "id": "tr02_14", "track_number": 14, "name": "プリズムキューブ", "duration_ms": 201000, "artists": [{"name": "wowaka"}] }
+    ]
+  },
+  "mockJRock03_worldisyours": {
+    "items": [
+      { "id": "tr03_01", "track_number": 1, "name": "このスピードの先へ", "duration_ms": 204000, "artists": [{"name": "MASS OF THE FERMENTING DREGS"}] },
+      { "id": "tr03_02", "track_number": 2, "name": "青い、濃い、橙色の日", "duration_ms": 282000, "artists": [{"name": "MASS OF THE FERMENTING DREGS"}] },
+      { "id": "tr03_03", "track_number": 3, "name": "かくいうもの", "duration_ms": 243000, "artists": [{"name": "MASS OF THE FERMENTING DREGS"}] },
+      { "id": "tr03_04", "track_number": 4, "name": "She is inside, He is outside", "duration_ms": 173000, "artists": [{"name": "MASS OF THE FERMENTING DREGS"}] },
+      { "id": "tr03_05", "track_number": 5, "name": "なんなん", "duration_ms": 219000, "artists": [{"name": "MASS OF THE FERMENTING DREGS"}] },
+      { "id": "tr03_06", "track_number": 6, "name": "ワールドイズユアーズ", "duration_ms": 211000, "artists": [{"name": "MASS OF THE FERMENTING DREGS"}] }
+    ]
+  },
+  "mockJRock04_justamoment": {
+    "items": [
+      { "id": "tr04_01", "track_number": 1, "name": "ハカイヨノユメ", "duration_ms": 276000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr04_02", "track_number": 2, "name": "Hysteric phase show", "duration_ms": 215000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr04_03", "track_number": 3, "name": "Tremolo+A", "duration_ms": 236000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr04_04", "track_number": 4, "name": "JPOP Xfile", "duration_ms": 240000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr04_05", "track_number": 5, "name": "a 7days wonder", "duration_ms": 279000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr04_06", "track_number": 6, "name": "a over die", "duration_ms": 232000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr04_07", "track_number": 7, "name": "Telecastic fake show", "duration_ms": 267000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr04_08", "track_number": 8, "name": "seacret cm", "duration_ms": 245000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr04_09", "track_number": 9, "name": "moment a rhythm (Short Ver.)", "duration_ms": 436000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr04_10", "track_number": 10, "name": "mib126", "duration_ms": 322000, "artists": [{"name": "Ling tosite sigure"}] }
+    ]
+  },
+  "mockJRock05_kessokuband": {
+    "items": [
+      { "id": "tr05_01", "track_number": 1, "name": "青春コンプレックス", "duration_ms": 203000, "artists": [{"name": "Kessoku Band"}] },
+      { "id": "tr05_02", "track_number": 2, "name": "ひとりぼっち東京", "duration_ms": 232000, "artists": [{"name": "Kessoku Band"}] },
+      { "id": "tr05_03", "track_number": 3, "name": "Distortion!!", "duration_ms": 203000, "artists": [{"name": "Kessoku Band"}] },
+      { "id": "tr05_04", "track_number": 4, "name": "ひみつ基地", "duration_ms": 232000, "artists": [{"name": "Kessoku Band"}] },
+      { "id": "tr05_05", "track_number": 5, "name": "ギターと孤独と蒼い惑星", "duration_ms": 228000, "artists": [{"name": "Kessoku Band"}] },
+      { "id": "tr05_06", "track_number": 6, "name": "ラブソングが歌えない", "duration_ms": 188000, "artists": [{"name": "Kessoku Band"}] },
+      { "id": "tr05_07", "track_number": 7, "name": "あのバンド", "duration_ms": 213000, "artists": [{"name": "Kessoku Band"}] },
+      { "id": "tr05_08", "track_number": 8, "name": "カラカラ", "duration_ms": 265000, "artists": [{"name": "Kessoku Band"}] },
+      { "id": "tr05_09", "track_number": 9, "name": "小さな海", "duration_ms": 223000, "artists": [{"name": "Kessoku Band"}] },
+      { "id": "tr05_10", "track_number": 10, "name": "なにが悪い", "duration_ms": 227000, "artists": [{"name": "Kessoku Band"}] },
+      { "id": "tr05_11", "track_number": 11, "name": "忘れてやらない", "duration_ms": 223000, "artists": [{"name": "Kessoku Band"}] },
+      { "id": "tr05_12", "track_number": 12, "name": "星座になれたら", "duration_ms": 258000, "artists": [{"name": "Kessoku Band"}] },
+      { "id": "tr05_13", "track_number": 13, "name": "フラッシュバッカー", "duration_ms": 275000, "artists": [{"name": "Kessoku Band"}] },
+      { "id": "tr05_14", "track_number": 14, "name": "転がる岩、君に朝が降る", "duration_ms": 271000, "artists": [{"name": "Kessoku Band"}] }
+    ]
+  },
+  "mockJRock06_innocencemoratorium": {
+    "items": [
+      { "id": "tr06_01", "track_number": 1, "name": "正しい街", "duration_ms": 232000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr06_02", "track_number": 2, "name": "歌舞伎町の女王", "duration_ms": 173000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr06_03", "track_number": 3, "name": "丸の内サディスティック", "duration_ms": 235000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr06_04", "track_number": 4, "name": "幸福論 (悦楽編)", "duration_ms": 179000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr06_05", "track_number": 5, "name": "茜さす 帰路照らされど...", "duration_ms": 247000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr06_06", "track_number": 6, "name": "シドと白昼夢", "duration_ms": 243000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr06_07", "track_number": 7, "name": "積木遊び", "duration_ms": 203000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr06_08", "track_number": 8, "name": "ここでキスして。", "duration_ms": 259000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr06_09", "track_number": 9, "name": "同じ夜", "duration_ms": 218000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr06_10", "track_number": 10, "name": "警告", "duration_ms": 245000, "artists": [{"name": "Ringo Sheena"}] },
+      { "id": "tr06_11", "track_number": 11, "name": "モルヒネ", "duration_ms": 221000, "artists": [{"name": "Ringo Sheena"}] }
+    ]
+  },
+  "mockJRock07_inspirationisdead": {
+    "items": [
+      { "id": "tr07_01", "track_number": 1, "name": "nakano kill you", "duration_ms": 189000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr07_02", "track_number": 2, "name": "COOL J", "duration_ms": 236000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr07_03", "track_number": 3, "name": "DISCO FLIGHT", "duration_ms": 269000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr07_04", "track_number": 4, "name": "knife vacation", "duration_ms": 241000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr07_05", "track_number": 5, "name": "am", "duration_ms": 392000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr07_06", "track_number": 6, "name": "赤い誘惑", "duration_ms": 287000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr07_07", "track_number": 7, "name": "1/fの感触", "duration_ms": 284000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr07_08", "track_number": 8, "name": "i not crazy am you are", "duration_ms": 280000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr07_09", "track_number": 9, "name": "夕景の記憶", "duration_ms": 370000, "artists": [{"name": "Ling tosite sigure"}] }
+    ]
+  },
+  "mockJRock08_motfd": {
+    "items": [
+      { "id": "tr08_01", "track_number": 1, "name": "delusionalism", "duration_ms": 219000, "artists": [{"name": "MASS OF THE FERMENTING DREGS"}] },
+      { "id": "tr08_02", "track_number": 2, "name": "ハイライト", "duration_ms": 228000, "artists": [{"name": "MASS OF THE FERMENTING DREGS"}] },
+      { "id": "tr08_03", "track_number": 3, "name": "skabetty", "duration_ms": 284000, "artists": [{"name": "MASS OF THE FERMENTING DREGS"}] },
+      { "id": "tr08_04", "track_number": 4, "name": "エンドロール", "duration_ms": 565000, "artists": [{"name": "MASS OF THE FERMENTING DREGS"}] },
+      { "id": "tr08_05", "track_number": 5, "name": "I F A SURFER", "duration_ms": 218000, "artists": [{"name": "MASS OF THE FERMENTING DREGS"}] },
+      { "id": "tr08_06", "track_number": 6, "name": "ベアーズ", "duration_ms": 286000, "artists": [{"name": "MASS OF THE FERMENTING DREGS"}] }
+    ]
+  },
+  "mockJRock09_fanclub": {
+    "items": [
+      { "id": "tr09_01", "track_number": 1, "name": "暗号のワルツ", "duration_ms": 265000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr09_02", "track_number": 2, "name": "ワールドアパート", "duration_ms": 269000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr09_03", "track_number": 3, "name": "ブラックアウト", "duration_ms": 233000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr09_04", "track_number": 4, "name": "桜草", "duration_ms": 233000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr09_05", "track_number": 5, "name": "路地裏のうさぎ", "duration_ms": 167000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr09_06", "track_number": 6, "name": "ブルートレイン", "duration_ms": 259000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr09_07", "track_number": 7, "name": "真冬のダンス", "duration_ms": 205000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr09_08", "track_number": 8, "name": "バタフライ", "duration_ms": 283000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr09_09", "track_number": 9, "name": "センスレス", "duration_ms": 336000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr09_10", "track_number": 10, "name": "月光", "duration_ms": 381000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr09_11", "track_number": 11, "name": "タイトロープ", "duration_ms": 328000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] }
+    ]
+  },
+  "mockJRock10_happybivouac": {
+    "items": [
+      { "id": "tr10_01", "track_number": 1, "name": "HAPPY BIVOUAC", "duration_ms": 208000, "artists": [{"name": "the pillows"}] },
+      { "id": "tr10_02", "track_number": 2, "name": "RUSH", "duration_ms": 219000, "artists": [{"name": "the pillows"}] },
+      { "id": "tr10_03", "track_number": 3, "name": "LAST DINOSAUR", "duration_ms": 224000, "artists": [{"name": "the pillows"}] },
+      { "id": "tr10_04", "track_number": 4, "name": "カーニバル [CARNIVAL]", "duration_ms": 229000, "artists": [{"name": "the pillows"}] },
+      { "id": "tr10_05", "track_number": 5, "name": "Our love and peace", "duration_ms": 250000, "artists": [{"name": "the pillows"}] },
+      { "id": "tr10_06", "track_number": 6, "name": "Crazy Sunshine", "duration_ms": 247000, "artists": [{"name": "the pillows"}] },
+      { "id": "tr10_07", "track_number": 7, "name": "Back seat dog", "duration_ms": 239000, "artists": [{"name": "the pillows"}] },
+      { "id": "tr10_08", "track_number": 8, "name": "Kim deal", "duration_ms": 252000, "artists": [{"name": "the pillows"}] },
+      { "id": "tr10_09", "track_number": 9, "name": "Funny Bunny", "duration_ms": 217000, "artists": [{"name": "the pillows"}] },
+      { "id": "tr10_10", "track_number": 10, "name": "Beautiful morning with you", "duration_ms": 343000, "artists": [{"name": "the pillows"}] },
+      { "id": "tr10_11", "track_number": 11, "name": "Advice", "duration_ms": 134000, "artists": [{"name": "the pillows"}] }
+    ]
+  },
+  "mockJRock11_groovyindiansummer": {
+    "items": [
+      { "id": "tr11_01", "track_number": 1, "name": "prolo-wave", "duration_ms": 20000, "artists": [{"name": "honeydip"}] },
+      { "id": "tr11_02", "track_number": 2, "name": "The Breakfast Club", "duration_ms": 350000, "artists": [{"name": "honeydip"}] },
+      { "id": "tr11_03", "track_number": 3, "name": "Suicidal Summer Rider", "duration_ms": 298000, "artists": [{"name": "honeydip"}] },
+      { "id": "tr11_04", "track_number": 4, "name": "FLASHDANCE", "duration_ms": 414000, "artists": [{"name": "honeydip"}] },
+      { "id": "tr11_05", "track_number": 5, "name": "life goes on", "duration_ms": 336000, "artists": [{"name": "honeydip"}] },
+      { "id": "tr11_06", "track_number": 6, "name": "SUMMER 100", "duration_ms": 176000, "artists": [{"name": "honeydip"}] },
+      { "id": "tr11_07", "track_number": 7, "name": "semi-shigure", "duration_ms": 15000, "artists": [{"name": "honeydip"}] },
+      { "id": "tr11_08", "track_number": 8, "name": "Boy meets Girl", "duration_ms": 396000, "artists": [{"name": "honeydip"}] }
+    ]
+  },
+  "mockJRock12_sappukei": {
+    "items": [
+      { "id": "tr12_01", "track_number": 1, "name": "BRUTAL NUMBER GIRL", "duration_ms": 123000, "artists": [{"name": "Number Girl"}] },
+      { "id": "tr12_02", "track_number": 2, "name": "ZEGEN VS UNDERCOVER", "duration_ms": 163000, "artists": [{"name": "Number Girl"}] },
+      { "id": "tr12_03", "track_number": 3, "name": "SASU-YOU", "duration_ms": 160000, "artists": [{"name": "Number Girl"}] },
+      { "id": "tr12_04", "track_number": 4, "name": "URBAN GUITAR SAYONARA", "duration_ms": 250000, "artists": [{"name": "Number Girl"}] },
+      { "id": "tr12_05", "track_number": 5, "name": "ABSTRACT TRUTH", "duration_ms": 208000, "artists": [{"name": "Number Girl"}] },
+      { "id": "tr12_06", "track_number": 6, "name": "TATTOOあり", "duration_ms": 205000, "artists": [{"name": "Number Girl"}] },
+      { "id": "tr12_07", "track_number": 7, "name": "SAPPUKEI", "duration_ms": 227000, "artists": [{"name": "Number Girl"}] },
+      { "id": "tr12_08", "track_number": 8, "name": "U-REI", "duration_ms": 258000, "artists": [{"name": "Number Girl"}] },
+      { "id": "tr12_09", "track_number": 9, "name": "YARUSE NAKIO の BEAT", "duration_ms": 306000, "artists": [{"name": "Number Girl"}] },
+      { "id": "tr12_10", "track_number": 10, "name": "TRAMPOLINE GIRL", "duration_ms": 268000, "artists": [{"name": "Number Girl"}] },
+      { "id": "tr12_11", "track_number": 11, "name": "BRUTAL MAN", "duration_ms": 173000, "artists": [{"name": "Number Girl"}] }
+    ]
+  },
+  "mockJRock13_the": {
+    "items": [
+      { "id": "tr13_01", "track_number": 1, "name": "Pool Side", "duration_ms": 61000, "artists": [{"name": "tricot"}] },
+      { "id": "tr13_02", "track_number": 2, "name": "Pool", "duration_ms": 237000, "artists": [{"name": "tricot"}] },
+      { "id": "tr13_03", "track_number": 3, "name": "飛べ", "duration_ms": 235000, "artists": [{"name": "tricot"}] },
+      { "id": "tr13_04", "track_number": 4, "name": "おもてなし", "duration_ms": 206000, "artists": [{"name": "tricot"}] },
+      { "id": "tr13_05", "track_number": 5, "name": "Art Sick", "duration_ms": 302000, "artists": [{"name": "tricot"}] },
+      { "id": "tr13_06", "track_number": 6, "name": "C&C", "duration_ms": 188000, "artists": [{"name": "tricot"}] },
+      { "id": "tr13_07", "track_number": 7, "name": "おちゃんせんすぅす", "duration_ms": 168000, "artists": [{"name": "tricot"}] },
+      { "id": "tr13_08", "track_number": 8, "name": "初耳", "duration_ms": 238000, "artists": [{"name": "tricot"}] },
+      { "id": "tr13_09", "track_number": 9, "name": "99.974℃", "duration_ms": 261000, "artists": [{"name": "tricot"}] },
+      { "id": "tr13_10", "track_number": 10, "name": "タラッタラッタ", "duration_ms": 293000, "artists": [{"name": "tricot"}] },
+      { "id": "tr13_11", "track_number": 11, "name": "CGPP", "duration_ms": 226000, "artists": [{"name": "tricot"}] },
+      { "id": "tr13_12", "track_number": 12, "name": "Swimmer", "duration_ms": 267000, "artists": [{"name": "tricot"}] },
+      { "id": "tr13_13", "track_number": 13, "name": "おやすみ", "duration_ms": 210000, "artists": [{"name": "tricot"}] }
+    ]
+  },
+  "mockJRock14_flowering": {
+    "items": [
+      { "id": "tr14_01", "track_number": 1, "name": "flower", "duration_ms": 279000, "artists": [{"name": "TK from Ling tosite sigure"}] },
+      { "id": "tr14_02", "track_number": 2, "name": "Abnormal trick", "duration_ms": 241000, "artists": [{"name": "TK from Ling tosite sigure"}] },
+      { "id": "tr14_03", "track_number": 3, "name": "haze", "duration_ms": 238000, "artists": [{"name": "TK from Ling tosite sigure"}] },
+      { "id": "tr14_04", "track_number": 4, "name": "phase to phrase", "duration_ms": 209000, "artists": [{"name": "TK from Ling tosite sigure"}] },
+      { "id": "tr14_05", "track_number": 5, "name": "white silence (album version)", "duration_ms": 418000, "artists": [{"name": "TK from Ling tosite sigure"}] },
+      { "id": "tr14_06", "track_number": 6, "name": "12th laser", "duration_ms": 158000, "artists": [{"name": "TK from Ling tosite sigure"}] },
+      { "id": "tr14_07", "track_number": 7, "name": "film A moment (album version)", "duration_ms": 431000, "artists": [{"name": "TK from Ling tosite sigure"}] },
+      { "id": "tr14_08", "track_number": 8, "name": "daylily", "duration_ms": 155000, "artists": [{"name": "TK from Ling tosite sigure"}] },
+      { "id": "tr14_09", "track_number": 9, "name": "fourth", "duration_ms": 268000, "artists": [{"name": "TK from Ling tosite sigure"}] }
+    ]
+  },
+  "mockJRock15_imperfect": {
+    "items": [
+      { "id": "tr15_01", "track_number": 1, "name": "Beautiful Circus", "duration_ms": 196000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr15_02", "track_number": 2, "name": "abnormalize", "duration_ms": 216000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr15_03", "track_number": 3, "name": "Metamorphose", "duration_ms": 206000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr15_04", "track_number": 4, "name": "Filmsick Mystery", "duration_ms": 223000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr15_05", "track_number": 5, "name": "Sitai miss me", "duration_ms": 240000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr15_06", "track_number": 6, "name": "make up syndrome (album mix)", "duration_ms": 242000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr15_07", "track_number": 7, "name": "MONSTER", "duration_ms": 220000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr15_08", "track_number": 8, "name": "キミトオク", "duration_ms": 294000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr15_09", "track_number": 9, "name": "Missing ling", "duration_ms": 414000, "artists": [{"name": "Ling tosite sigure"}] }
+    ]
+  },
+  "mockJRock16_thatswhyigaveuponmusic": {
+    "items": [
+      { "id": "tr16_01", "track_number": 1, "name": "8/31", "duration_ms": 114000, "artists": [{"name": "ヨルシカ"}] },
+      { "id": "tr16_02", "track_number": 2, "name": "藍二乗", "duration_ms": 245000, "artists": [{"name": "ヨルシカ"}] },
+      { "id": "tr16_03", "track_number": 3, "name": "八月、某、月明かり", "duration_ms": 276000, "artists": [{"name": "ヨルシカ"}] },
+      { "id": "tr16_04", "track_number": 4, "name": "詩書きとコーヒー", "duration_ms": 247000, "artists": [{"name": "ヨルシカ"}] },
+      { "id": "tr16_05", "track_number": 5, "name": "7/13", "duration_ms": 98000, "artists": [{"name": "ヨルシカ"}] },
+      { "id": "tr16_06", "track_number": 6, "name": "踊ろうぜ", "duration_ms": 253000, "artists": [{"name": "ヨルシカ"}] },
+      { "id": "tr16_07", "track_number": 7, "name": "六月は雨上がりの街を書く", "duration_ms": 238000, "artists": [{"name": "ヨルシカ"}] },
+      { "id": "tr16_08", "track_number": 8, "name": "五月は花緑青の窓辺から", "duration_ms": 185000, "artists": [{"name": "ヨルシカ"}] },
+      { "id": "tr16_09", "track_number": 9, "name": "夜紛い", "duration_ms": 223000, "artists": [{"name": "ヨルシカ"}] },
+      { "id": "tr16_10", "track_number": 10, "name": "5/6", "duration_ms": 147000, "artists": [{"name": "ヨルシカ"}] },
+      { "id": "tr16_11", "track_number": 11, "name": "パレード", "duration_ms": 299000, "artists": [{"name": "ヨルシカ"}] },
+      { "id": "tr16_12", "track_number": 12, "name": "エルマ", "duration_ms": 219000, "artists": [{"name": "ヨルシカ"}] },
+      { "id": "tr16_13", "track_number": 13, "name": "4/10", "duration_ms": 170000, "artists": [{"name": "ヨルシカ"}] },
+      { "id": "tr16_14", "track_number": 14, "name": "だから僕は音楽を辞めた", "duration_ms": 242000, "artists": [{"name": "ヨルシカ"}] }
+    ]
+  },
+  "mockJRock17_stillavirgin": {
+    "items": [
+      { "id": "tr17_01", "track_number": 1, "name": "I was music", "duration_ms": 189000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr17_02", "track_number": 2, "name": "シークレットG", "duration_ms": 251000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr17_03", "track_number": 3, "name": "シャンディ", "duration_ms": 271000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr17_04", "track_number": 4, "name": "this is is this?", "duration_ms": 262000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr17_05", "track_number": 5, "name": "a symmetry", "duration_ms": 291000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr17_06", "track_number": 6, "name": "eF", "duration_ms": 288000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr17_07", "track_number": 7, "name": "Can you kill a secret?", "duration_ms": 189000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr17_08", "track_number": 8, "name": "replica", "duration_ms": 250000, "artists": [{"name": "Ling tosite sigure"}] },
+      { "id": "tr17_09", "track_number": 9, "name": "illusion is mine", "duration_ms": 244000, "artists": [{"name": "Ling tosite sigure"}] }
+    ]
+  },
+  "mockJRock18_solfa": {
+    "items": [
+      { "id": "tr18_01", "track_number": 1, "name": "振動覚", "duration_ms": 147000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr18_02", "track_number": 2, "name": "リライト", "duration_ms": 225000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr18_03", "track_number": 3, "name": "君の街まで", "duration_ms": 215000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr18_04", "track_number": 4, "name": "マイワールド", "duration_ms": 243000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr18_05", "track_number": 5, "name": "夜の向こう", "duration_ms": 192000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr18_06", "track_number": 6, "name": "ラストシーン", "duration_ms": 241000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr18_07", "track_number": 7, "name": "サイレン", "duration_ms": 324000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr18_08", "track_number": 8, "name": "Re:Re:", "duration_ms": 228000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr18_09", "track_number": 9, "name": "24時", "duration_ms": 211000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr18_10", "track_number": 10, "name": "真夜中と真昼の夢", "duration_ms": 261000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr18_11", "track_number": 11, "name": "海岸通り", "duration_ms": 280000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] },
+      { "id": "tr18_12", "track_number": 12, "name": "ループ & ループ", "duration_ms": 225000, "artists": [{"name": "ASIAN KUNG-FU GENERATION"}] }
+    ]
+  },
+  "mockJRock19_adult": {
+    "items": [
+      { "id": "tr19_01", "track_number": 1, "name": "秘密", "duration_ms": 232000, "artists": [{"name": "Tokyo Jihen"}] },
+      { "id": "tr19_02", "track_number": 2, "name": "喧嘩上等", "duration_ms": 142000, "artists": [{"name": "Tokyo Jihen"}] },
+      { "id": "tr19_03", "track_number": 3, "name": "化粧直し", "duration_ms": 303000, "artists": [{"name": "Tokyo Jihen"}] },
+      { "id": "tr19_04", "track_number": 4, "name": "スーパースター", "duration_ms": 269000, "artists": [{"name": "Tokyo Jihen"}] },
+      { "id": "tr19_05", "track_number": 5, "name": "修羅場 adult ver.", "duration_ms": 282000, "artists": [{"name": "Tokyo Jihen"}] },
+      { "id": "tr19_06", "track_number": 6, "name": "雪国", "duration_ms": 259000, "artists": [{"name": "Tokyo Jihen"}] },
+      { "id": "tr19_07", "track_number": 7, "name": "歌舞伎", "duration_ms": 119000, "artists": [{"name": "Tokyo Jihen"}] },
+      { "id": "tr19_08", "track_number": 8, "name": "ブラックアウト", "duration_ms": 246000, "artists": [{"name": "Tokyo Jihen"}] },
+      { "id": "tr19_09", "track_number": 9, "name": "黄昏泣き", "duration_ms": 208000, "artists": [{"name": "Tokyo Jihen"}] },
+      { "id": "tr19_10", "track_number": 10, "name": "透明人間", "duration_ms": 270000, "artists": [{"name": "Tokyo Jihen"}] },
+      { "id": "tr19_11", "track_number": 11, "name": "手紙", "duration_ms": 324000, "artists": [{"name": "Tokyo Jihen"}] }
+    ]
+  },
+  "mockJRock20_hokagoteatimeii": {
+    "items": [
+      { "id": "tr20_01", "track_number": 1, "name": "Hello, Welcome to Bubbletown's Happy Zoo", "duration_ms": 140000, "artists": [{"name": "Ho-kago Tea Time"}] },
+      { "id": "tr20_02", "track_number": 2, "name": "アナザーモーニング", "duration_ms": 275000, "artists": [{"name": "Ho-kago Tea Time"}] },
+      { "id": "tr20_03", "track_number": 3, "name": "ONE LIFE (album mix)", "duration_ms": 244000, "artists": [{"name": "Ho-kago Tea Time"}] },
+      { "id": "tr20_04", "track_number": 4, "name": "THAT HOUSE", "duration_ms": 260000, "artists": [{"name": "Ho-kago Tea Time"}] },
+      { "id": "tr20_05", "track_number": 5, "name": "like a lovesong (album version)", "duration_ms": 183000, "artists": [{"name": "Ho-kago Tea Time"}] },
+      { "id": "tr20_06", "track_number": 6, "name": "Nowhere", "duration_ms": 306000, "artists": [{"name": "Ho-kago Tea Time"}] },
+      { "id": "tr20_07", "track_number": 7, "name": "HYBRID RAINBOW", "duration_ms": 240000, "artists": [{"name": "Ho-kago Tea Time"}] },
+      { "id": "tr20_08", "track_number": 8, "name": "Blues Drive Monster", "duration_ms": 205000, "artists": [{"name": "Ho-kago Tea Time"}] },
+      { "id": "tr20_09", "track_number": 9, "name": "パトリシア (album version)", "duration_ms": 294000, "artists": [{"name": "Ho-kago Tea Time"}] },
+      { "id": "tr20_10", "track_number": 10, "name": "Black Sheep", "duration_ms": 206000, "artists": [{"name": "Ho-kago Tea Time"}] },
+      { "id": "tr20_11", "track_number": 11, "name": "LITTLE BUSTERS", "duration_ms": 220000, "artists": [{"name": "Ho-kago Tea Time"}] }
+    ]
   }
 }
