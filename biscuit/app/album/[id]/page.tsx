@@ -294,7 +294,6 @@ export default function Album() {
             </div>
 
             <div className="flex flex-col text-xs font-medium border-t border-white/10 text-[#939090] bg-[#161616]">
-              <button className="py-3 hover:bg-white/5 border-b border-white/10 transition-colors hover:text-white">Show your activity</button>
               <button 
                 onClick={() => setIsReviewModalOpen(true)}
                 className="py-3 hover:bg-white/5 border-b border-white/10 transition-colors text-[#E23C3C] hover:text-[#E23C3C]/80 bg-[#470808]/50 hover:bg-[#8E0B0B]/50"
