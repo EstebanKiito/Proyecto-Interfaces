@@ -10,6 +10,8 @@ import reviewsData from "@/data/reviews.json";
 import albumsData from "@/data/albums.json";
 import playlistsData from "@/data/playlists.json";
 import PlaylistModal from "@/components/playlistModal";
+import CreatePlaylistModal from "@/components/createPlaylistModal";
+import FriendsModal from "@/components/friendsModal";
 import noPhoto from "../../public/images/no-photo.jpg";
 
 // ==========================================
@@ -39,12 +41,18 @@ const fadeInUpVariant: Variants = {
 export default function ProfilePage() {
   const router = useRouter();
   const [selectedPlaylist, setSelectedPlaylist] = useState<any>(null);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   // 1. ESTADOS INICIALES BASADOS EN JSON
   const [userReviews, setUserReviews] = useState<any[]>([]);
   const [userPlaylists, setUserPlaylists] = useState<any[]>([]);
+  const [collectionAlbums, setCollectionAlbums] = useState<string[]>([]);
+  const [followerCount, setFollowerCount] = useState(0);
+  const [followingCount, setFollowingCount] = useState(0);
+  const [isFriendsModalOpen, setIsFriendsModalOpen] = useState(false);
+  const [friendsModalMode, setFriendsModalMode] = useState<"followers" | "following">("followers");
 
   // Effect to authenticate and load user session
   useEffect(() => {
@@ -102,13 +110,26 @@ export default function ProfilePage() {
     }
   }, [router]);
 
+  useEffect(() => {
+    if (loading) return;
+    if (window.location.hash !== "#discover-section") return;
+
+    const scrollToDiscover = () => {
+      document
+        .getElementById("discover-section")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    window.requestAnimationFrame(scrollToDiscover);
+  }, [loading, user]);
+
   // Effect to merge reviews and playlists when user is loaded
   useEffect(() => {
     if (!user) return;
 
     // --- LECTURA DE RESEÑAS ---
     const initialReviews = reviewsData.reviews.filter((r) => r.user_id === user.id);
-    const localReviewsRaw = JSON.parse(localStorage.getItem("albumReviews") || "{}");
+    const localReviewsRaw = JSON.parse(localStorage.getItem(`albumReviews_${user.id}`) || "{}");
     let mergedReviews = [...initialReviews];
 
     Object.keys(localReviewsRaw).forEach((albumId) => {
@@ -135,7 +156,7 @@ export default function ProfilePage() {
     setUserReviews(mergedReviews);
 
     // --- LECTURA DE PLAYLISTS ---
-    const localPlaylistItems = JSON.parse(localStorage.getItem("playlistItems") || "{}");
+    const localPlaylistItems = JSON.parse(localStorage.getItem(`playlistItems_${user.id}`) || "{}");
     const initialPlaylists = playlistsData.playlists.filter(p => p.owner_id === user.id);
 
     const mergedPlaylists = initialPlaylists.map(playlist => {
@@ -144,10 +165,55 @@ export default function ProfilePage() {
       }
       return playlist;
     });
+
+    const hasToListen = mergedPlaylists.some(p => p.title.toLowerCase() === "to-listen");
+    if (!hasToListen) {
+      const defaultToListenId = `pl_to_listen_${user.id}`;
+      mergedPlaylists.push({
+        id: defaultToListenId,
+        owner_id: user.id,
+        title: "To-Listen",
+        description: "Mis álbumes para escuchar más tarde.",
+        is_public: true,
+        type: "tier_list",
+        items: localPlaylistItems[defaultToListenId] || []
+      });
+    }
     
-    setUserPlaylists(mergedPlaylists);
+    // Load user's custom playlists
+    const customPlaylistsKey = `customPlaylists_${user.id}`;
+    const customPlaylists = JSON.parse(localStorage.getItem(customPlaylistsKey) || "[]");
+    const mergedCustomPlaylists = customPlaylists.map((playlist: any) => {
+      if (localPlaylistItems[playlist.id]) {
+        return { ...playlist, items: localPlaylistItems[playlist.id] };
+      }
+      return playlist;
+    });
+
+    const combinedPlaylists = [...mergedPlaylists, ...mergedCustomPlaylists];
+    setUserPlaylists(combinedPlaylists);
+
+    // --- LECTURA DE ALBUMS GUSTADOS (COLECCIÓN) ---
+    const likedKey = `likedAlbums_${user.id}`;
+    const likedAlbums: string[] = JSON.parse(localStorage.getItem(likedKey) || "[]");
+    const combined = Array.from(new Set([...user.favorite_albums, ...likedAlbums]));
+    setCollectionAlbums(combined);
+
+    // --- LECTURA DE FOLLOWERS Y FOLLOWING ---
+    const followers = JSON.parse(localStorage.getItem(`followers_${user.id}`) || "[]");
+    const following = JSON.parse(localStorage.getItem(`following_${user.id}`) || "[]");
+    setFollowerCount(followers.length);
+    setFollowingCount(following.length);
 
   }, [user]);
+
+  const refreshRelations = () => {
+    if (!user) return;
+    const followers = JSON.parse(localStorage.getItem(`followers_${user.id}`) || "[]");
+    const following = JSON.parse(localStorage.getItem(`following_${user.id}`) || "[]");
+    setFollowerCount(followers.length);
+    setFollowingCount(following.length);
+  };
 
   // 3. Cálculos dinámicos
   const sortedReviews = [...userReviews].sort((a, b) => b.rating - a.rating);
@@ -276,7 +342,7 @@ export default function ProfilePage() {
             <motion.div
               whileHover={{ scale: 1.05, rotate: 2 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-6 border-[#c9c9d2] shadow-[0_0_20px_rgba(255,255,255,0.1)] bg-[#111112]"
+              className="w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-4 border-[#1a1a1a] shadow-[0_0_20px_rgba(255,255,255,0.1)] bg-[#111112]"
             >
               <img
                 src={user.avatar_url}
@@ -326,7 +392,7 @@ export default function ProfilePage() {
                 }
               >
                 <p className="font-biscuit text-4xl text-[#ffffff] leading-none mb-1">
-                  {user.favorite_albums.length}
+                  {collectionAlbums.length}
                 </p>
                 <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase">
                   FAVORITES
@@ -351,22 +417,44 @@ export default function ProfilePage() {
                 LISTS
               </p>
             </div>
-            <div className="border-r border-zinc-800">
+            <div 
+              className="border-r border-zinc-800 hover:text-[#E23C3C] cursor-pointer transition-colors"
+              onClick={() => {
+                setFriendsModalMode("followers");
+                setIsFriendsModalOpen(true);
+              }}
+            >
               <p className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-wider">
-                {user.stats.followers}
+                {followerCount}
               </p>
               <p className="font-[family-name:var(--font-bayon)] text-xs text-[#ffffff] tracking-widest">
                 FOLLOWERS
               </p>
             </div>
-            <div>
+            <div
+              className="hover:text-[#E23C3C] cursor-pointer transition-colors"
+              onClick={() => {
+                setFriendsModalMode("following");
+                setIsFriendsModalOpen(true);
+              }}
+            >
               <p className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-wider">
-                {user.stats.following}
+                {followingCount}
               </p>
               <p className="font-[family-name:var(--font-bayon)] text-xs text-[#ffffff] tracking-widest">
                 FOLLOWING
               </p>
             </div>
+          </div>
+
+          {/* BOTÓN EDIT PROFILE */}
+          <div className="flex justify-center mt-2">
+            <button
+              onClick={() => alert("Editar perfil en desarrollo...")}
+              className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer"
+            >
+              EDIT PROFILE
+            </button>
           </div>
         </div>
       </div>
@@ -460,7 +548,7 @@ export default function ProfilePage() {
               className="h-[13rem] w-full flex items-center overflow-x-auto gap-6 scroll-smooth px-14 no-scrollbar"
               style={{ scrollbarWidth: "none" }}
             >
-              {user.favorite_albums.map((albumId: string) => {
+              {collectionAlbums.map((albumId: string) => {
                 const album = albumsData.albums.items.find(
                   (item) => item.id === albumId,
                 );
@@ -532,7 +620,10 @@ export default function ProfilePage() {
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <motion.div variants={fadeInUpVariant}>
-                <div className="relative bg-[#111112] p-6 rounded-[2rem] border border-zinc-800 hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-[24rem] shadow-xl group cursor-pointer justify-center items-center">
+                <div 
+                  onClick={() => setIsCreateModalOpen(true)}
+                  className="relative bg-[#111112] p-6 rounded-[2rem] border border-zinc-800 hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-[24rem] shadow-xl group cursor-pointer justify-center items-center"
+                >
                   <div className="flex flex-col items-center justify-center h-full w-full gap-2 hover:scale-105 transition-transform duration-300">
                     <button className="w-16 h-16 bg-[#962828] group-hover:bg-[#E23C3C] transition-colors rounded-full flex items-center justify-center shadow-md z-10 cursor-pointer">
                       <svg
@@ -623,6 +714,31 @@ export default function ProfilePage() {
           albumsData={albumsData.albums.items}
           isOpen={!!selectedPlaylist}
           onClose={() => setSelectedPlaylist(null)}
+        />
+      )}
+
+      {isCreateModalOpen && (
+        <CreatePlaylistModal
+          isOpen={isCreateModalOpen}
+          onClose={() => setIsCreateModalOpen(false)}
+          currentUser={user}
+          collectionAlbums={collectionAlbums}
+          albumsData={albumsData.albums.items}
+          onPlaylistCreated={(newPlaylist) => {
+            setUserPlaylists((prev) => [...prev, newPlaylist]);
+            window.location.reload();
+          }}
+        />
+      )}
+
+      {isFriendsModalOpen && (
+        <FriendsModal
+          isOpen={isFriendsModalOpen}
+          onClose={() => setIsFriendsModalOpen(false)}
+          userId={user.id}
+          mode={friendsModalMode}
+          currentUserId={user.id}
+          onRelationsChanged={refreshRelations}
         />
       )}
     </motion.main>

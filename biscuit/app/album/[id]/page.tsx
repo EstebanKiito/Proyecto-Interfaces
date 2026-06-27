@@ -7,7 +7,8 @@ import { useParams } from "next/navigation";
 import albumsJson from "@/data/albums.json";
 import tracksJson from "@/data/tracks.json";
 import reviewsJson from "@/data/reviews.json";
-import playlistsJson from "@/data/playlists.json"; // <-- Añadido
+import playlistsJson from "@/data/playlists.json";
+import currentUserData from "@/data/currentUser.json";
 
 const formatDuration = (ms: number) => {
   const minutes = Math.floor(ms / 60000);
@@ -23,6 +24,7 @@ export default function Album() {
   const albumTracks = (tracksJson as Record<string, any>)[albumId]?.items || [];
 
   // --- ESTADOS DE LA UI Y DATOS LOCALES ---
+  const [currentUser, setCurrentUser] = useState<any>(null);
   const [rating, setRating] = useState(0);
   const [activeActions, setActiveActions] = useState({
     reviewed: false,
@@ -38,64 +40,321 @@ export default function Album() {
   const [isTrackModalOpen, setIsTrackModalOpen] = useState(false);
   const [selectedTrack, setSelectedTrack] = useState<any>(null);
 
-  // --- NUEVOS ESTADOS PARA PLAYLISTS ---
+  // --- PLAYLISTS Y REVIEWS COMPILADOS ---
   const [isPlaylistModalOpen, setIsPlaylistModalOpen] = useState(false);
   const [localPlaylists, setLocalPlaylists] = useState<Record<string, string[]>>({});
-  const userPlaylists = playlistsJson.playlists.filter((p) => p.owner_id === "usr_01");
+  const [userPlaylists, setUserPlaylists] = useState<any[]>([]);
+  const [albumReviewsList, setAlbumReviewsList] = useState<any[]>([]);
 
-  // --- LÓGICA HÍBRIDA MEJORADA (JSON + LOCALSTORAGE) ---
-  useEffect(() => {
-    // 1. Reseñas
-    const jsonReview = reviewsJson.reviews.find(
-      (r) => r.album_id === albumId && r.user_id === "usr_01"
-    );
-    const savedReviews = JSON.parse(localStorage.getItem("albumReviews") || "{}");
-    const localReview = savedReviews[albumId];
+  // Helper function to update the reviews list in real time in the UI
+  const updateReviewsListState = (newRating: number, newText: string) => {
+    if (!currentUser) return;
+    setAlbumReviewsList((prev) => {
+      const existingIdx = prev.findIndex((r) => r.user_id === currentUser.id);
+      const updatedReview = {
+        id: `local_${currentUser.id}_${albumId}`,
+        user_id: currentUser.id,
+        user_name: currentUser.name,
+        username: currentUser.username,
+        rating: newRating,
+        review_text: newText
+      };
 
-    let finalRating = jsonReview ? jsonReview.rating : 0;
-    let finalText = jsonReview ? jsonReview.review_text : "";
-    let isReviewed = !!jsonReview;
-
-    if (localReview) {
-      isReviewed = true;
-      if (typeof localReview === "string") {
-        finalText = localReview;
+      if (existingIdx >= 0) {
+        const copy = [...prev];
+        if (newText.trim()) {
+          copy[existingIdx] = updatedReview;
+        } else {
+          // If text is cleared, remove from list
+          copy.splice(existingIdx, 1);
+        }
+        return copy;
       } else {
-        finalText = localReview.review_text !== undefined ? localReview.review_text : finalText;
-        finalRating = localReview.rating !== undefined ? localReview.rating : finalRating;
+        if (newText.trim()) {
+          return [...prev, updatedReview];
+        }
+        return prev;
+      }
+    });
+  };
+
+  // --- LÓGICA HÍBRIDA MEJORADA (JSON + LOCALSTORAGE SEGREGADO) ---
+  useEffect(() => {
+    // 0. Obtener usuario de la sesión activa
+    let userSession = null;
+    if (typeof window !== "undefined") {
+      const activeSession = localStorage.getItem("activeSession");
+      if (activeSession) {
+        try {
+          const parsed = JSON.parse(activeSession);
+          if (parsed && parsed.isAuthenticated) {
+            userSession = parsed;
+            setCurrentUser(parsed);
+          }
+        } catch (e) {
+          console.error("Error parsing session in album page", e);
+        }
+      }
+    }
+
+    const userId = userSession ? userSession.id : null;
+
+    // Cargar listas de reproducción del usuario
+    if (userId) {
+      const uPlaylists = playlistsJson.playlists.filter((p) => p.owner_id === userId);
+      // Inyectar To-Listen playlist por defecto si no está presente
+      const hasToListen = uPlaylists.some(p => p.title.toLowerCase() === "to-listen");
+      if (!hasToListen) {
+        uPlaylists.push({
+          id: `pl_to_listen_${userId}`,
+          owner_id: userId,
+          title: "To-Listen",
+          description: "Mis álbumes para escuchar más tarde.",
+          is_public: true,
+          type: "tier_list",
+          items: []
+        });
+      }
+      setUserPlaylists(uPlaylists);
+    } else {
+      setUserPlaylists([]);
+    }
+
+    // 1. Reseña del usuario actual activa en la sesión
+    let isReviewed = false;
+    let finalRating = 0;
+    let finalText = "";
+
+    if (userId) {
+      // Buscar reseña estática del JSON
+      const jsonReview = reviewsJson.reviews.find(
+        (r) => r.album_id === albumId && r.user_id === userId
+      );
+      if (jsonReview) {
+        finalRating = jsonReview.rating;
+        finalText = jsonReview.review_text;
+        isReviewed = true;
+      }
+
+      // Buscar reseña local de este usuario en particular
+      const savedReviews = JSON.parse(localStorage.getItem(`albumReviews_${userId}`) || "{}");
+      const localReview = savedReviews[albumId];
+
+      if (localReview) {
+        isReviewed = true;
+        if (typeof localReview === "string") {
+          finalText = localReview;
+        } else {
+          finalText = localReview.review_text !== undefined ? localReview.review_text : finalText;
+          finalRating = localReview.rating !== undefined ? localReview.rating : finalRating;
+        }
       }
     }
 
     setReviewText(finalText);
     setRating(finalRating);
     
-    if (isReviewed) {
-      setHasReview(true);
-      setActiveActions((prev) => ({ 
-        ...prev, 
-        reviewed: true,
-        liked: jsonReview?.likes ? true : prev.liked 
-      }));
+    // Check if album is liked
+    let isLiked = false;
+    if (userId) {
+      // 1. Check static favorite albums
+      const staticUser = currentUserData.users.find((u) => u.id === userId);
+      if (staticUser && staticUser.favorite_albums.includes(albumId)) {
+        isLiked = true;
+      }
+
+      // 2. Check local registered user favorite_albums
+      if (!staticUser) {
+        const localUsersRaw = localStorage.getItem("localRegisteredUsers");
+        if (localUsersRaw) {
+          try {
+            const localUsers = JSON.parse(localUsersRaw);
+            const localUser = localUsers.find((u: any) => u.id === userId);
+            if (localUser && localUser.favorite_albums && localUser.favorite_albums.includes(albumId)) {
+              isLiked = true;
+            }
+          } catch (e) {
+            console.error(e);
+          }
+        }
+      }
+
+      // 3. Check liked albums key
+      const likedAlbums = JSON.parse(localStorage.getItem(`likedAlbums_${userId}`) || "[]");
+      if (likedAlbums.includes(albumId)) {
+        isLiked = true;
+      }
     }
 
-    // 2. Canciones
-    const savedTrackRatings = JSON.parse(localStorage.getItem("trackRatings") || "{}");
+    // Check if album is in to-listen playlist
+    let isInListenlist = false;
+    if (userId) {
+      const staticToListen = playlistsJson.playlists.find(
+        (p) => p.owner_id === userId && p.title.toLowerCase() === "to-listen"
+      );
+      const playlistId = staticToListen ? staticToListen.id : `pl_to_listen_${userId}`;
+      const playlistKey = `playlistItems_${userId}`;
+      const savedPlaylists = JSON.parse(localStorage.getItem(playlistKey) || "{}");
+      const currentItems = savedPlaylists[playlistId] || (staticToListen ? staticToListen.items : []);
+      if (currentItems.includes(albumId)) {
+        isInListenlist = true;
+      }
+    }
+
+    setHasReview(isReviewed);
+    setActiveActions((prev) => ({ 
+      ...prev, 
+      reviewed: isReviewed,
+      liked: isLiked,
+      listenlist: isInListenlist
+    }));
+
+    // 2. Calificaciones de canciones (específicas por usuario)
+    const trackRatingsKey = userId ? `trackRatings_${userId}` : "trackRatings";
+    const savedTrackRatings = JSON.parse(localStorage.getItem(trackRatingsKey) || "{}");
     setTrackRatings(savedTrackRatings);
 
-    // 3. Playlists (Cargar lo que el usuario ha modificado localmente)
-    const savedPlaylists = JSON.parse(localStorage.getItem("playlistItems") || "{}");
+    // 3. Playlists local (específicas por usuario)
+    const playlistItemsKey = userId ? `playlistItems_${userId}` : "playlistItems";
+    const savedPlaylists = JSON.parse(localStorage.getItem(playlistItemsKey) || "{}");
     setLocalPlaylists(savedPlaylists);
+
+    // 4. Compilar lista de reseñas de TODOS los usuarios para este álbum
+    const compiledReviews: any[] = [];
+    const allUsers = [...currentUserData.users];
+    
+    if (userSession && !allUsers.some((u) => u.id === userSession.id)) {
+      allUsers.push(userSession);
+    }
+
+    if (typeof window !== "undefined") {
+      const localUsersRaw = localStorage.getItem("localRegisteredUsers");
+      if (localUsersRaw) {
+        try {
+          const localUsers = JSON.parse(localUsersRaw);
+          localUsers.forEach((lu: any) => {
+            if (!allUsers.some((u) => u.id === lu.id)) {
+              allUsers.push(lu);
+            }
+          });
+        } catch (e) {
+          console.error("Error loading localRegisteredUsers", e);
+        }
+      }
+    }
+
+    allUsers.forEach((u) => {
+      // Buscar reseña en JSON estático
+      const staticRev = reviewsJson.reviews.find(
+        (r) => r.album_id === albumId && r.user_id === u.id
+      );
+
+      // Buscar reseña en localStorage de este usuario particular
+      let localRev = null;
+      if (typeof window !== "undefined") {
+        const userReviewsRaw = localStorage.getItem(`albumReviews_${u.id}`);
+        if (userReviewsRaw) {
+          try {
+            const userReviews = JSON.parse(userReviewsRaw);
+            if (userReviews[albumId]) {
+              localRev = userReviews[albumId];
+            }
+          } catch (e) {
+            console.error(e);
+          }
+        }
+      }
+
+      let ratingVal = staticRev ? staticRev.rating : 0;
+      let textVal = staticRev ? staticRev.review_text : "";
+      const exists = !!staticRev || !!localRev;
+
+      if (localRev) {
+        if (typeof localRev === "string") {
+          textVal = localRev;
+        } else {
+          if (localRev.review_text !== undefined) textVal = localRev.review_text;
+          if (localRev.rating !== undefined) ratingVal = localRev.rating;
+        }
+      }
+
+      if (exists && textVal.trim()) {
+        compiledReviews.push({
+          id: staticRev ? staticRev.id : `local_${u.id}_${albumId}`,
+          user_id: u.id,
+          user_name: u.name,
+          username: u.username,
+          rating: ratingVal,
+          review_text: textVal
+        });
+      }
+    });
+
+    setAlbumReviewsList(compiledReviews);
 
   }, [albumId]);
 
   // --- MANEJADORES DE EVENTOS ---
   const toggleAction = (action: keyof typeof activeActions) => {
-    setActiveActions((prev) => ({ ...prev, [action]: !prev[action] }));
+    if (!currentUser) {
+      alert("Por favor inicia sesión para realizar esta acción.");
+      return;
+    }
+    
+    const nextVal = !activeActions[action];
+    setActiveActions((prev) => ({ ...prev, [action]: nextVal }));
+
+    if (action === "liked") {
+      const likedKey = `likedAlbums_${currentUser.id}`;
+      const likedAlbums: string[] = JSON.parse(localStorage.getItem(likedKey) || "[]");
+      
+      let updatedLiked;
+      if (nextVal) {
+        if (!likedAlbums.includes(albumId)) {
+          updatedLiked = [...likedAlbums, albumId];
+        } else {
+          updatedLiked = likedAlbums;
+        }
+      } else {
+        updatedLiked = likedAlbums.filter((id) => id !== albumId);
+      }
+      localStorage.setItem(likedKey, JSON.stringify(updatedLiked));
+    }
+
+    if (action === "listenlist") {
+      const toListenPlaylist = userPlaylists.find(p => p.title.toLowerCase() === "to-listen");
+      if (toListenPlaylist) {
+        const playlistId = toListenPlaylist.id;
+        const playlistKey = `playlistItems_${currentUser.id}`;
+        const savedPlaylists = JSON.parse(localStorage.getItem(playlistKey) || "{}");
+        const currentItems = savedPlaylists[playlistId] || toListenPlaylist.items || [];
+        
+        let newItems;
+        if (nextVal) {
+          if (!currentItems.includes(albumId)) {
+            newItems = [...currentItems, albumId];
+          } else {
+            newItems = currentItems;
+          }
+        } else {
+          newItems = currentItems.filter((id: string) => id !== albumId);
+        }
+        
+        savedPlaylists[playlistId] = newItems;
+        localStorage.setItem(playlistKey, JSON.stringify(savedPlaylists));
+        setLocalPlaylists(savedPlaylists);
+      }
+    }
   };
 
   const handleRatingChange = (newRating: number) => {
+    if (!currentUser) {
+      alert("Por favor inicia sesión para calificar.");
+      return;
+    }
     setRating(newRating);
-    const savedReviews = JSON.parse(localStorage.getItem("albumReviews") || "{}");
+    const reviewsKey = `albumReviews_${currentUser.id}`;
+    const savedReviews = JSON.parse(localStorage.getItem(reviewsKey) || "{}");
     const currentLocal = savedReviews[albumId];
     
     let currentText = reviewText;
@@ -106,32 +365,51 @@ export default function Album() {
     }
 
     savedReviews[albumId] = { review_text: currentText, rating: newRating };
-    localStorage.setItem("albumReviews", JSON.stringify(savedReviews));
+    localStorage.setItem(reviewsKey, JSON.stringify(savedReviews));
     setHasReview(true);
     setActiveActions((prev) => ({ ...prev, reviewed: true }));
+
+    // Update real-time reviews list
+    updateReviewsListState(newRating, currentText);
   };
 
   const handleReviewSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const savedReviews = JSON.parse(localStorage.getItem("albumReviews") || "{}");
+    if (!currentUser) {
+      alert("Por favor inicia sesión para escribir una reseña.");
+      return;
+    }
+    const reviewsKey = `albumReviews_${currentUser.id}`;
+    const savedReviews = JSON.parse(localStorage.getItem(reviewsKey) || "{}");
     savedReviews[albumId] = { review_text: reviewText, rating: rating };
-    localStorage.setItem("albumReviews", JSON.stringify(savedReviews));
+    localStorage.setItem(reviewsKey, JSON.stringify(savedReviews));
     setHasReview(true);
     setActiveActions((prev) => ({ ...prev, reviewed: true }));
     setIsReviewModalOpen(false);
+
+    // Update real-time reviews list
+    updateReviewsListState(rating, reviewText);
   };
 
   const rateTrack = (score: number) => {
     if (!selectedTrack) return;
+    if (!currentUser) {
+      alert("Por favor inicia sesión para calificar pistas.");
+      return;
+    }
+    const trackRatingsKey = `trackRatings_${currentUser.id}`;
     const newRatings = { ...trackRatings, [selectedTrack.id]: score };
     setTrackRatings(newRatings);
-    localStorage.setItem("trackRatings", JSON.stringify(newRatings));
+    localStorage.setItem(trackRatingsKey, JSON.stringify(newRatings));
     setIsTrackModalOpen(false);
     setSelectedTrack(null);
   };
 
-  // NUEVO: Función para agregar/quitar el disco de una playlist
   const handleTogglePlaylist = (playlistId: string) => {
+    if (!currentUser) {
+      alert("Por favor inicia sesión para agregar a listas.");
+      return;
+    }
     // Busca si ya editamos esta lista localmente, o toma la base del JSON
     const currentItems = localPlaylists[playlistId] || 
       userPlaylists.find(p => p.id === playlistId)?.items || [];
@@ -148,7 +426,7 @@ export default function Album() {
     // Actualizamos el estado y el localStorage
     const updatedPlaylists = { ...localPlaylists, [playlistId]: newItems };
     setLocalPlaylists(updatedPlaylists);
-    localStorage.setItem("playlistItems", JSON.stringify(updatedPlaylists));
+    localStorage.setItem(`playlistItems_${currentUser.id}`, JSON.stringify(updatedPlaylists));
   };
 
   const albumTrackIds = albumTracks.map((t: any) => t.id);
@@ -221,7 +499,14 @@ export default function Album() {
                       <div className="flex items-center gap-4">
                         <span className="text-[#939090] text-xs font-mono">{formatDuration(track.duration_ms)}</span>
                         <button
-                          onClick={() => { setSelectedTrack(track); setIsTrackModalOpen(true); }}
+                          onClick={() => {
+                            if (!currentUser) {
+                              alert("Por favor inicia sesión para calificar pistas.");
+                              return;
+                            }
+                            setSelectedTrack(track);
+                            setIsTrackModalOpen(true);
+                          }}
                           className={`w-7 h-7 rounded-md flex items-center justify-center text-xs font-bold transition-colors border ${
                             trackRatings[track.id] ? "bg-[#470808] text-[#E23C3C] border-[#962828]" : "bg-[#222] text-[#939090] border-white/5 hover:text-white hover:bg-[#333]"
                           }`}
@@ -238,31 +523,70 @@ export default function Album() {
               </div>
             </section>
 
-            {hasReview && reviewText && (
-              <section className="bg-[#111111] rounded-lg shadow-xl border border-white/10 p-6 flex flex-col gap-3 relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-1 h-full bg-[#E23C3C]"></div>
-                <h3 className="text-[#939090] text-[10px] uppercase tracking-widest font-bold flex items-center gap-2">
-                  <span className="text-[#E23C3C] text-sm">✎</span> My Review
-                </h3>
-                <p className="text-gray-200 text-sm leading-relaxed italic whitespace-pre-wrap pl-2">"{reviewText}"</p>
-              </section>
+            {/* SECCIÓN DE RESEÑAS COMPILADAS DE TODOS LOS USUARIOS */}
+            {albumReviewsList.length > 0 && (
+              <div className="flex flex-col gap-6 w-full">
+                <h2 className="font-[family-name:var(--font-bayon)] text-xl text-[#939090] tracking-widest uppercase border-b border-zinc-900 pb-2">
+                  Reviews ({albumReviewsList.length})
+                </h2>
+                <div className="flex flex-col gap-4">
+                  {albumReviewsList.map((rev) => {
+                    const isMyReview = currentUser && rev.user_id === currentUser.id;
+                    return (
+                      <section key={rev.id} className="bg-[#111111] rounded-lg shadow-xl border border-white/10 p-6 flex flex-col gap-3 relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-1 h-full bg-[#E23C3C]"></div>
+                        <div className="flex items-center justify-between">
+                          <Link href={isMyReview ? "/profile" : `/profile/${rev.user_id}`} className="hover:underline cursor-pointer group/reviewHeader">
+                            <h3 className="text-[#939090] text-[10px] uppercase tracking-widest font-bold flex items-center gap-2 group-hover/reviewHeader:text-[#E23C3C] transition-colors">
+                              <span className="text-[#E23C3C] text-sm">✎</span> 
+                              {isMyReview ? "MY REVIEW" : `${rev.user_name.toUpperCase()}'S REVIEW`}
+                            </h3>
+                          </Link>
+                          <div className="flex items-center gap-1 bg-black/40 px-2.5 py-1 rounded-full border border-white/5 font-[family-name:var(--font-bayon)] text-xs text-[#E23C3C]">
+                            <span className="leading-none">★</span>
+                            <span className="leading-none pt-0.5">{rev.rating.toFixed(1)}</span>
+                          </div>
+                        </div>
+                        <p className="text-gray-200 text-sm leading-relaxed italic whitespace-pre-wrap pl-2">"{rev.review_text}"</p>
+                      </section>
+                    );
+                  })}
+                </div>
+              </div>
             )}
           </div>
 
           <aside className="bg-[#111111] text-gray-200 rounded-lg shadow-2xl overflow-hidden flex flex-col border border-white/10">
             <div className="flex justify-around p-4 border-b border-white/10 bg-[#161616]">
-              {["reviewed", "liked", "listenlist"].map((action) => (
-                <button
-                  key={action}
-                  onClick={() => toggleAction(action as keyof typeof activeActions)}
-                  className={`flex flex-col items-center gap-2 transition-colors ${activeActions[action as keyof typeof activeActions] ? "text-[#E23C3C]" : "text-[#939090] hover:text-gray-300"}`}
-                >
-                  <div className={`w-8 h-8 rounded-full shadow-inner flex items-center justify-center ${activeActions[action as keyof typeof activeActions] ? "bg-[#8E0B0B]/40 text-[#E23C3C]" : "bg-[#222] text-[#939090]"}`}>
-                    <span className="text-xs">●</span>
-                  </div>
-                  <span className="text-[9px] uppercase font-bold tracking-widest">{action}</span>
-                </button>
-              ))}
+              {["reviewed", "liked", "listenlist"].map((action) => {
+                const isActive = activeActions[action as keyof typeof activeActions];
+                return (
+                  <button
+                    key={action}
+                    onClick={() => toggleAction(action as keyof typeof activeActions)}
+                    className={`flex flex-col items-center gap-2 transition-colors ${isActive ? "text-[#E23C3C]" : "text-[#939090] hover:text-gray-300"}`}
+                  >
+                    <div className={`w-8 h-8 rounded-full shadow-inner flex items-center justify-center ${isActive ? "bg-[#8E0B0B]/40 text-[#E23C3C]" : "bg-[#222] text-[#939090]"}`}>
+                      {action === "reviewed" && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-4 h-4">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                        </svg>
+                      )}
+                      {action === "liked" && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={isActive ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2.5" className="w-4 h-4">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                        </svg>
+                      )}
+                      {action === "listenlist" && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-4 h-4">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                      )}
+                    </div>
+                    <span className="text-[9px] uppercase font-bold tracking-widest">{action}</span>
+                  </button>
+                );
+              })}
             </div>
 
             <div className="p-6 flex flex-col items-center gap-4 bg-[#111]">
@@ -294,16 +618,33 @@ export default function Album() {
             </div>
 
             <div className="flex flex-col text-xs font-medium border-t border-white/10 text-[#939090] bg-[#161616]">
-              <button className="py-3 hover:bg-white/5 border-b border-white/10 transition-colors hover:text-white">Show your activity</button>
+              <Link 
+                href="/profile#discover-section" 
+                className="py-3 hover:bg-white/5 border-b border-white/10 transition-colors hover:text-white text-center"
+              >
+                Watch on your profile
+              </Link>
               <button 
-                onClick={() => setIsReviewModalOpen(true)}
+                onClick={() => {
+                  if (!currentUser) {
+                    alert("Por favor inicia sesión para agregar o editar reseñas.");
+                    return;
+                  }
+                  setIsReviewModalOpen(true);
+                }}
                 className="py-3 hover:bg-white/5 border-b border-white/10 transition-colors text-[#E23C3C] hover:text-[#E23C3C]/80 bg-[#470808]/50 hover:bg-[#8E0B0B]/50"
               >
                 {hasReview ? "Edit review..." : "Log / Add review..."}
               </button>
               {/* BOTÓN CONECTADO AL NUEVO MODAL DE PLAYLIST */}
               <button 
-                onClick={() => setIsPlaylistModalOpen(true)}
+                onClick={() => {
+                  if (!currentUser) {
+                    alert("Por favor inicia sesión para agregar este álbum a tus listas.");
+                    return;
+                  }
+                  setIsPlaylistModalOpen(true);
+                }}
                 className="py-3 hover:bg-white/5 transition-colors hover:text-white"
               >
                 Add to lists...
@@ -405,35 +746,39 @@ export default function Album() {
               </p>
             </div>
             <div className="flex flex-col gap-3 max-h-[50vh] overflow-y-auto custom-scrollbar pr-2">
-              {userPlaylists.map(playlist => {
-                const currentItems = localPlaylists[playlist.id] || playlist.items;
-                const isInPlaylist = currentItems.includes(albumId);
-                
-                return (
-                  <button
-                    key={playlist.id}
-                    onClick={() => handleTogglePlaylist(playlist.id)}
-                    className={`flex items-center justify-between p-4 rounded-xl border transition-all ${
-                      isInPlaylist
-                        ? "bg-[#8E0B0B]/30 border-[#E23C3C] text-white"
-                        : "bg-black/30 border-zinc-800 hover:border-zinc-500 text-zinc-300"
-                    }`}
-                  >
-                    <span className="font-[family-name:var(--font-bayon)] text-xl tracking-wider uppercase">
-                      {playlist.title}
-                    </span>
-                    {isInPlaylist ? (
-                      <svg className="w-6 h-6 text-[#E23C3C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    ) : (
-                      <svg className="w-6 h-6 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                      </svg>
-                    )}
-                  </button>
-                )
-              })}
+              {userPlaylists.length > 0 ? (
+                userPlaylists.map(playlist => {
+                  const currentItems = localPlaylists[playlist.id] || playlist.items;
+                  const isInPlaylist = currentItems.includes(albumId);
+                  
+                  return (
+                    <button
+                      key={playlist.id}
+                      onClick={() => handleTogglePlaylist(playlist.id)}
+                      className={`flex items-center justify-between p-4 rounded-xl border transition-all ${
+                        isInPlaylist
+                          ? "bg-[#8E0B0B]/30 border-[#E23C3C] text-white"
+                          : "bg-black/30 border-zinc-800 hover:border-zinc-500 text-zinc-300"
+                      }`}
+                    >
+                      <span className="font-[family-name:var(--font-bayon)] text-xl tracking-wider uppercase">
+                        {playlist.title}
+                      </span>
+                      {isInPlaylist ? (
+                        <svg className="w-6 h-6 text-[#E23C3C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        <svg className="w-6 h-6 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                        </svg>
+                      )}
+                    </button>
+                  );
+                })
+              ) : (
+                <p className="text-center text-zinc-500 text-xs uppercase tracking-widest py-4">No tienes listas creadas</p>
+              )}
             </div>
           </div>
         </div>

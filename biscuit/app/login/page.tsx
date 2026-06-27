@@ -185,7 +185,7 @@ export default function LoginPage() {
       username: regUsername,
       email: regEmail,
       password: regPassword,
-      avatar_url: "/images/spike.png",
+      avatar_url: "https://www.svgrepo.com/show/335455/profile-default.svg",
       bio: "¡Hola! Soy un nuevo melómano coleccionista en Biscuit.",
       location: "Desconocida",
       stats: {
@@ -239,7 +239,7 @@ export default function LoginPage() {
         name: provider === "google" ? "Google User" : "Facebook User",
         username: provider === "google" ? "google_user" : "facebook_user",
         email: provider === "google" ? "google.user@gmail.com" : "facebook.user@outlook.com",
-        avatar_url: "/images/spike.png", // Fallback avatar from JSON assets
+        avatar_url: "https://www.svgrepo.com/show/335455/profile-default.svg", // Fallback avatar from JSON assets
         isAuthenticated: true,
         bio: `Usuario autenticado a través de ${provider === "google" ? "Google" : "Facebook"}.`,
         location: "Internet",
@@ -253,6 +253,33 @@ export default function LoginPage() {
       };
 
       localStorage.setItem(SESSION_KEY, JSON.stringify(mockOauthUser));
+
+      // Save OAuth user mock in localRegisteredUsers so their reviews are visible to other logged in users
+      const localUsersRaw = localStorage.getItem("localRegisteredUsers");
+      let localUsers: any[] = [];
+      if (localUsersRaw) {
+        try {
+          localUsers = JSON.parse(localUsersRaw);
+        } catch (e) {
+          console.error("Error parsing localRegisteredUsers during OAuth", e);
+        }
+      }
+      if (!localUsers.some((u: any) => u.id === mockOauthUser.id)) {
+        localUsers.push({
+          id: mockOauthUser.id,
+          name: mockOauthUser.name,
+          username: mockOauthUser.username,
+          email: mockOauthUser.email,
+          avatar_url: mockOauthUser.avatar_url,
+          password: "",
+          bio: mockOauthUser.bio,
+          location: mockOauthUser.location,
+          stats: mockOauthUser.stats,
+          favorite_albums: mockOauthUser.favorite_albums
+        });
+        localStorage.setItem("localRegisteredUsers", JSON.stringify(localUsers));
+      }
+
       window.dispatchEvent(new Event("sessionChanged"));
       setOauthProvider(null);
       router.push("/profile");
