@@ -1660,5 +1660,416 @@
         "artists": [{ "name": "Radiohead" }]
       }
     ]
+  },
+  "mockMetal30_korn": {
+    "items": [
+      { "id": "m30_1", "track_number": 1, "name": "Blind", "duration_ms": 259000, "artists": [{"name": "Korn"}] },
+      { "id": "m30_2", "track_number": 2, "name": "Ball Tongue", "duration_ms": 269000, "artists": [{"name": "Korn"}] },
+      { "id": "m30_3", "track_number": 3, "name": "Need To", "duration_ms": 241000, "artists": [{"name": "Korn"}] },
+      { "id": "m30_4", "track_number": 4, "name": "Clown", "duration_ms": 276000, "artists": [{"name": "Korn"}] },
+      { "id": "m30_5", "track_number": 5, "name": "Divine", "duration_ms": 171000, "artists": [{"name": "Korn"}] },
+      { "id": "m30_6", "track_number": 6, "name": "Faget", "duration_ms": 349000, "artists": [{"name": "Korn"}] },
+      { "id": "m30_7", "track_number": 7, "name": "Shoots and Ladders", "duration_ms": 322000, "artists": [{"name": "Korn"}] },
+      { "id": "m30_8", "track_number": 8, "name": "Predictable", "duration_ms": 272000, "artists": [{"name": "Korn"}] },
+      { "id": "m30_9", "track_number": 9, "name": "Fake", "duration_ms": 291000, "artists": [{"name": "Korn"}] },
+      { "id": "m30_10", "track_number": 10, "name": "Lies", "duration_ms": 202000, "artists": [{"name": "Korn"}] },
+      { "id": "m30_11", "track_number": 11, "name": "Helmet in the Bush", "duration_ms": 242000, "artists": [{"name": "Korn"}] },
+      { "id": "m30_12", "track_number": 12, "name": "Daddy", "duration_ms": 1051000, "artists": [{"name": "Korn"}] }
+    ]
+  },
+  "mockMetal29_chaosad": {
+    "items": [
+      { "id": "m29_1", "track_number": 1, "name": "Refuse/Resist", "duration_ms": 199000, "artists": [{"name": "Sepultura"}] },
+      { "id": "m29_2", "track_number": 2, "name": "Territory", "duration_ms": 287000, "artists": [{"name": "Sepultura"}] },
+      { "id": "m29_3", "track_number": 3, "name": "Slave New World", "duration_ms": 175000, "artists": [{"name": "Sepultura"}] },
+      { "id": "m29_4", "track_number": 4, "name": "Amen", "duration_ms": 267000, "artists": [{"name": "Sepultura"}] },
+      { "id": "m29_5", "track_number": 5, "name": "Nomad", "duration_ms": 299000, "artists": [{"name": "Sepultura"}] },
+      { "id": "m29_6", "track_number": 6, "name": "We Who Are Not as Others", "duration_ms": 222000, "artists": [{"name": "Sepultura"}] },
+      { "id": "m29_7", "track_number": 7, "name": "Manifest", "duration_ms": 289000, "artists": [{"name": "Sepultura"}] },
+      { "id": "m29_8", "track_number": 8, "name": "The Hunt", "duration_ms": 239000, "artists": [{"name": "Sepultura"}] },
+      { "id": "m29_9", "track_number": 9, "name": "Clenched Fist", "duration_ms": 298000, "artists": [{"name": "Sepultura"}] },
+      { "id": "m29_10", "track_number": 10, "name": "Biotech Is Godzilla", "duration_ms": 112000, "artists": [{"name": "Sepultura"}] },
+      { "id": "m29_11", "track_number": 11, "name": "Propaganda", "duration_ms": 213000, "artists": [{"name": "Sepultura"}] },
+      { "id": "m29_12", "track_number": 12, "name": "Kaiowas", "duration_ms": 223000, "artists": [{"name": "Sepultura"}] }
+    ]
+  },
+  "mockMetal28_morbidtales": {
+    "items": [
+      { "id": "m28_1", "track_number": 1, "name": "Into the Crypts of Rays", "duration_ms": 219000, "artists": [{"name": "Celtic Frost"}] },
+      { "id": "m28_2", "track_number": 2, "name": "Visions of Mortality", "duration_ms": 289000, "artists": [{"name": "Celtic Frost"}] },
+      { "id": "m28_3", "track_number": 3, "name": "Dethroned Emperor", "duration_ms": 277000, "artists": [{"name": "Celtic Frost"}] },
+      { "id": "m28_4", "track_number": 4, "name": "Morbid Tales", "duration_ms": 209000, "artists": [{"name": "Celtic Frost"}] },
+      { "id": "m28_5", "track_number": 5, "name": "Procreation (Of the Wicked)", "duration_ms": 244000, "artists": [{"name": "Celtic Frost"}] },
+      { "id": "m28_6", "track_number": 6, "name": "Return to the Eve", "duration_ms": 245000, "artists": [{"name": "Celtic Frost"}] }
+    ]
+  },
+  "mockMetal27_toxicity": {
+    "items": [
+      { "id": "m27_1", "track_number": 1, "name": "Prison Song", "duration_ms": 201000, "artists": [{"name": "System of a Down"}] },
+      { "id": "m27_2", "track_number": 2, "name": "Needles", "duration_ms": 193000, "artists": [{"name": "System of a Down"}] },
+      { "id": "m27_3", "track_number": 3, "name": "Deer Dance", "duration_ms": 175000, "artists": [{"name": "System of a Down"}] },
+      { "id": "m27_4", "track_number": 4, "name": "Jet Pilot", "duration_ms": 126000, "artists": [{"name": "System of a Down"}] },
+      { "id": "m27_5", "track_number": 5, "name": "X", "duration_ms": 118000, "artists": [{"name": "System of a Down"}] },
+      { "id": "m27_6", "track_number": 6, "name": "Chop Suey!", "duration_ms": 210000, "artists": [{"name": "System of a Down"}] },
+      { "id": "m27_7", "track_number": 7, "name": "Bounce", "duration_ms": 114000, "artists": [{"name": "System of a Down"}] },
+      { "id": "m27_8", "track_number": 8, "name": "Forest", "duration_ms": 240000, "artists": [{"name": "System of a Down"}] },
+      { "id": "m27_9", "track_number": 9, "name": "ATWA", "duration_ms": 176000, "artists": [{"name": "System of a Down"}] },
+      { "id": "m27_10", "track_number": 10, "name": "Science", "duration_ms": 162000, "artists": [{"name": "System of a Down"}] },
+      { "id": "m27_11", "track_number": 11, "name": "Shimmy", "duration_ms": 111000, "artists": [{"name": "System of a Down"}] },
+      { "id": "m27_12", "track_number": 12, "name": "Toxicity", "duration_ms": 218000, "artists": [{"name": "System of a Down"}] },
+      { "id": "m27_13", "track_number": 13, "name": "Psycho", "duration_ms": 225000, "artists": [{"name": "System of a Down"}] },
+      { "id": "m27_14", "track_number": 14, "name": "Aerials", "duration_ms": 371000, "artists": [{"name": "System of a Down"}] }
+    ]
+  },
+  "mockMetal26_dirt": {
+    "items": [
+      { "id": "m26_1", "track_number": 1, "name": "Them Bones", "duration_ms": 150000, "artists": [{"name": "Alice in Chains"}] },
+      { "id": "m26_2", "track_number": 2, "name": "Dam That River", "duration_ms": 189000, "artists": [{"name": "Alice in Chains"}] },
+      { "id": "m26_3", "track_number": 3, "name": "Rain When I Die", "duration_ms": 361000, "artists": [{"name": "Alice in Chains"}] },
+      { "id": "m26_4", "track_number": 4, "name": "Down in a Hole", "duration_ms": 338000, "artists": [{"name": "Alice in Chains"}] },
+      { "id": "m26_5", "track_number": 5, "name": "Sickman", "duration_ms": 329000, "artists": [{"name": "Alice in Chains"}] },
+      { "id": "m26_6", "track_number": 6, "name": "Rooster", "duration_ms": 371000, "artists": [{"name": "Alice in Chains"}] },
+      { "id": "m26_7", "track_number": 7, "name": "Junkhead", "duration_ms": 309000, "artists": [{"name": "Alice in Chains"}] },
+      { "id": "m26_8", "track_number": 8, "name": "Dirt", "duration_ms": 316000, "artists": [{"name": "Alice in Chains"}] },
+      { "id": "m26_9", "track_number": 9, "name": "God Smack", "duration_ms": 230000, "artists": [{"name": "Alice in Chains"}] },
+      { "id": "m26_10", "track_number": 10, "name": "Iron Gland", "duration_ms": 43000, "artists": [{"name": "Alice in Chains"}] },
+      { "id": "m26_11", "track_number": 11, "name": "Hate to Feel", "duration_ms": 316000, "artists": [{"name": "Alice in Chains"}] },
+      { "id": "m26_12", "track_number": 12, "name": "Angry Chair", "duration_ms": 287000, "artists": [{"name": "Alice in Chains"}] },
+      { "id": "m26_13", "track_number": 13, "name": "Would?", "duration_ms": 207000, "artists": [{"name": "Alice in Chains"}] }
+    ]
+  },
+  "mockMetal25_metallica": {
+    "items": [
+      { "id": "m25_1", "track_number": 1, "name": "Enter Sandman", "duration_ms": 331000, "artists": [{"name": "Metallica"}] },
+      { "id": "m25_2", "track_number": 2, "name": "Sad but True", "duration_ms": 324000, "artists": [{"name": "Metallica"}] },
+      { "id": "m25_3", "track_number": 3, "name": "Holier Than Thou", "duration_ms": 227000, "artists": [{"name": "Metallica"}] },
+      { "id": "m25_4", "track_number": 4, "name": "The Unforgiven", "duration_ms": 387000, "artists": [{"name": "Metallica"}] },
+      { "id": "m25_5", "track_number": 5, "name": "Wherever I May Roam", "duration_ms": 404000, "artists": [{"name": "Metallica"}] },
+      { "id": "m25_6", "track_number": 6, "name": "Don't Tread on Me", "duration_ms": 240000, "artists": [{"name": "Metallica"}] },
+      { "id": "m25_7", "track_number": 7, "name": "Through the Never", "duration_ms": 244000, "artists": [{"name": "Metallica"}] },
+      { "id": "m25_8", "track_number": 8, "name": "Nothing Else Matters", "duration_ms": 388000, "artists": [{"name": "Metallica"}] },
+      { "id": "m25_9", "track_number": 9, "name": "Of Wolf and Man", "duration_ms": 256000, "artists": [{"name": "Metallica"}] },
+      { "id": "m25_10", "track_number": 10, "name": "The God That Failed", "duration_ms": 308000, "artists": [{"name": "Metallica"}] },
+      { "id": "m25_11", "track_number": 11, "name": "My Friend of Misery", "duration_ms": 409000, "artists": [{"name": "Metallica"}] },
+      { "id": "m25_12", "track_number": 12, "name": "The Struggle Within", "duration_ms": 233000, "artists": [{"name": "Metallica"}] }
+    ]
+  },
+  "mockMetal24_ratm": {
+    "items": [
+      { "id": "m24_1", "track_number": 1, "name": "Bombtrack", "duration_ms": 244000, "artists": [{"name": "Rage Against the Machine"}] },
+      { "id": "m24_2", "track_number": 2, "name": "Killing in the Name", "duration_ms": 314000, "artists": [{"name": "Rage Against the Machine"}] },
+      { "id": "m24_3", "track_number": 3, "name": "Take the Power Back", "duration_ms": 337000, "artists": [{"name": "Rage Against the Machine"}] },
+      { "id": "m24_4", "track_number": 4, "name": "Settle for Nothing", "duration_ms": 288000, "artists": [{"name": "Rage Against the Machine"}] },
+      { "id": "m24_5", "track_number": 5, "name": "Bullet in the Head", "duration_ms": 309000, "artists": [{"name": "Rage Against the Machine"}] },
+      { "id": "m24_6", "track_number": 6, "name": "Know Your Enemy", "duration_ms": 295000, "artists": [{"name": "Rage Against the Machine"}] },
+      { "id": "m24_7", "track_number": 7, "name": "Wake Up", "duration_ms": 364000, "artists": [{"name": "Rage Against the Machine"}] },
+      { "id": "m24_8", "track_number": 8, "name": "Fistful of Steel", "duration_ms": 331000, "artists": [{"name": "Rage Against the Machine"}] },
+      { "id": "m24_9", "track_number": 9, "name": "Township Rebellion", "duration_ms": 324000, "artists": [{"name": "Rage Against the Machine"}] },
+      { "id": "m24_10", "track_number": 10, "name": "Freedom", "duration_ms": 366000, "artists": [{"name": "Rage Against the Machine"}] }
+    ]
+  },
+  "mockMetal23_danzig": {
+    "items": [
+      { "id": "m23_1", "track_number": 1, "name": "Twist of Cain", "duration_ms": 257000, "artists": [{"name": "Danzig"}] },
+      { "id": "m23_2", "track_number": 2, "name": "Not of This World", "duration_ms": 222000, "artists": [{"name": "Danzig"}] },
+      { "id": "m23_3", "track_number": 3, "name": "She Rides", "duration_ms": 310000, "artists": [{"name": "Danzig"}] },
+      { "id": "m23_4", "track_number": 4, "name": "Soul on Fire", "duration_ms": 276000, "artists": [{"name": "Danzig"}] },
+      { "id": "m23_5", "track_number": 5, "name": "Am I Demon", "duration_ms": 297000, "artists": [{"name": "Danzig"}] },
+      { "id": "m23_6", "track_number": 6, "name": "Mother", "duration_ms": 204000, "artists": [{"name": "Danzig"}] },
+      { "id": "m23_7", "track_number": 7, "name": "Possession", "duration_ms": 236000, "artists": [{"name": "Danzig"}] },
+      { "id": "m23_8", "track_number": 8, "name": "End of Time", "duration_ms": 242000, "artists": [{"name": "Danzig"}] },
+      { "id": "m23_9", "track_number": 9, "name": "The Hunter", "duration_ms": 211000, "artists": [{"name": "Danzig"}] },
+      { "id": "m23_10", "track_number": 10, "name": "Evil Thing", "duration_ms": 196000, "artists": [{"name": "Danzig"}] }
+    ]
+  },
+  "mockMetal22_toofastforlove": {
+    "items": [
+      { "id": "m22_1", "track_number": 1, "name": "Live Wire", "duration_ms": 194000, "artists": [{"name": "Mötley Crüe"}] },
+      { "id": "m22_2", "track_number": 2, "name": "Come On and Dance", "duration_ms": 167000, "artists": [{"name": "Mötley Crüe"}] },
+      { "id": "m22_3", "track_number": 3, "name": "Public Enemy #1", "duration_ms": 262000, "artists": [{"name": "Mötley Crüe"}] },
+      { "id": "m22_4", "track_number": 4, "name": "Merry-Go-Round", "duration_ms": 202000, "artists": [{"name": "Mötley Crüe"}] },
+      { "id": "m22_5", "track_number": 5, "name": "Take Me to the Top", "duration_ms": 223000, "artists": [{"name": "Mötley Crüe"}] },
+      { "id": "m22_6", "track_number": 6, "name": "Piece of Your Action", "duration_ms": 279000, "artists": [{"name": "Mötley Crüe"}] },
+      { "id": "m22_7", "track_number": 7, "name": "Starry Eyes", "duration_ms": 268000, "artists": [{"name": "Mötley Crüe"}] },
+      { "id": "m22_8", "track_number": 8, "name": "Too Fast for Love", "duration_ms": 202000, "artists": [{"name": "Mötley Crüe"}] },
+      { "id": "m22_9", "track_number": 9, "name": "On With the Show", "duration_ms": 247000, "artists": [{"name": "Mötley Crüe"}] },
+      { "id": "m22_10", "track_number": 10, "name": "Toast of the Town (Bonus Track)", "duration_ms": 215000, "artists": [{"name": "Mötley Crüe"}] }
+    ]
+  },
+  "mockMetal21_andjusticeforall": {
+    "items": [
+      { "id": "m21_1", "track_number": 1, "name": "Blackened", "duration_ms": 402000, "artists": [{"name": "Metallica"}] },
+      { "id": "m21_2", "track_number": 2, "name": "...And Justice for All", "duration_ms": 586000, "artists": [{"name": "Metallica"}] },
+      { "id": "m21_3", "track_number": 3, "name": "Eye of the Beholder", "duration_ms": 385000, "artists": [{"name": "Metallica"}] },
+      { "id": "m21_4", "track_number": 4, "name": "One", "duration_ms": 447000, "artists": [{"name": "Metallica"}] },
+      { "id": "m21_5", "track_number": 5, "name": "The Shortest Straw", "duration_ms": 395000, "artists": [{"name": "Metallica"}] },
+      { "id": "m21_6", "track_number": 6, "name": "Harvester of Sorrow", "duration_ms": 345000, "artists": [{"name": "Metallica"}] },
+      { "id": "m21_7", "track_number": 7, "name": "The Frayed Ends of Sanity", "duration_ms": 464000, "artists": [{"name": "Metallica"}] },
+      { "id": "m21_8", "track_number": 8, "name": "To Live Is to Die", "duration_ms": 588000, "artists": [{"name": "Metallica"}] },
+      { "id": "m21_9", "track_number": 9, "name": "Dyers Eve", "duration_ms": 313000, "artists": [{"name": "Metallica"}] }
+    ]
+  },
+  "mockMetal20_amongtheliving": {
+    "items": [
+      { "id": "m20_1", "track_number": 1, "name": "Among the Living", "duration_ms": 316000, "artists": [{"name": "Anthrax"}] },
+      { "id": "m20_2", "track_number": 2, "name": "Caught in a Mosh", "duration_ms": 300000, "artists": [{"name": "Anthrax"}] },
+      { "id": "m20_3", "track_number": 3, "name": "I Am the Law", "duration_ms": 357000, "artists": [{"name": "Anthrax"}] },
+      { "id": "m20_4", "track_number": 4, "name": "Efilnikufesin (N.F.L.)", "duration_ms": 294000, "artists": [{"name": "Anthrax"}] },
+      { "id": "m20_5", "track_number": 5, "name": "A Skeleton in the Closet", "duration_ms": 332000, "artists": [{"name": "Anthrax"}] },
+      { "id": "m20_6", "track_number": 6, "name": "Indians", "duration_ms": 340000, "artists": [{"name": "Anthrax"}] },
+      { "id": "m20_7", "track_number": 7, "name": "One World", "duration_ms": 356000, "artists": [{"name": "Anthrax"}] },
+      { "id": "m20_8", "track_number": 8, "name": "A.D.I. / Horror of It All", "duration_ms": 469000, "artists": [{"name": "Anthrax"}] },
+      { "id": "m20_9", "track_number": 9, "name": "Imitation of Life", "duration_ms": 250000, "artists": [{"name": "Anthrax"}] }
+    ]
+  },
+  "mockMetal19_rustinpeace": {
+    "items": [
+      { "id": "m19_1", "track_number": 1, "name": "Holy Wars... The Punishment Due", "duration_ms": 392000, "artists": [{"name": "Megadeth"}] },
+      { "id": "m19_2", "track_number": 2, "name": "Hangar 18", "duration_ms": 311000, "artists": [{"name": "Megadeth"}] },
+      { "id": "m19_3", "track_number": 3, "name": "Take No Prisoners", "duration_ms": 207000, "artists": [{"name": "Megadeth"}] },
+      { "id": "m19_4", "track_number": 4, "name": "Five Magics", "duration_ms": 339000, "artists": [{"name": "Megadeth"}] },
+      { "id": "m19_5", "track_number": 5, "name": "Poison Was the Cure", "duration_ms": 176000, "artists": [{"name": "Megadeth"}] },
+      { "id": "m19_6", "track_number": 6, "name": "Lucretia", "duration_ms": 236000, "artists": [{"name": "Megadeth"}] },
+      { "id": "m19_7", "track_number": 7, "name": "Tornado of Souls", "duration_ms": 319000, "artists": [{"name": "Megadeth"}] },
+      { "id": "m19_8", "track_number": 8, "name": "Dawn Patrol", "duration_ms": 111000, "artists": [{"name": "Megadeth"}] },
+      { "id": "m19_9", "track_number": 9, "name": "Rust in Peace... Polaris", "duration_ms": 344000, "artists": [{"name": "Megadeth"}] }
+    ]
+  },
+  "mockMetal18_aenima": {
+    "items": [
+      { "id": "m18_1", "track_number": 1, "name": "Stinkfist", "duration_ms": 311000, "artists": [{"name": "Tool"}] },
+      { "id": "m18_2", "track_number": 2, "name": "Eulogy", "duration_ms": 508000, "artists": [{"name": "Tool"}] },
+      { "id": "m18_3", "track_number": 3, "name": "H.", "duration_ms": 367000, "artists": [{"name": "Tool"}] },
+      { "id": "m18_4", "track_number": 4, "name": "Useful Idiot", "duration_ms": 38000, "artists": [{"name": "Tool"}] },
+      { "id": "m18_5", "track_number": 5, "name": "Forty Six & 2", "duration_ms": 364000, "artists": [{"name": "Tool"}] },
+      { "id": "m18_6", "track_number": 6, "name": "Message to Harry Manback", "duration_ms": 113000, "artists": [{"name": "Tool"}] },
+      { "id": "m18_7", "track_number": 7, "name": "Hooker With a Penis", "duration_ms": 273000, "artists": [{"name": "Tool"}] },
+      { "id": "m18_8", "track_number": 8, "name": "Intermission", "duration_ms": 56000, "artists": [{"name": "Tool"}] },
+      { "id": "m18_9", "track_number": 9, "name": "jimmy", "duration_ms": 324000, "artists": [{"name": "Tool"}] },
+      { "id": "m18_10", "track_number": 10, "name": "Die Eier von Satan", "duration_ms": 137000, "artists": [{"name": "Tool"}] },
+      { "id": "m18_11", "track_number": 11, "name": "Pushit", "duration_ms": 595000, "artists": [{"name": "Tool"}] },
+      { "id": "m18_12", "track_number": 12, "name": "Cesaro Summability", "duration_ms": 86000, "artists": [{"name": "Tool"}] },
+      { "id": "m18_13", "track_number": 13, "name": "Ænema", "duration_ms": 403000, "artists": [{"name": "Tool"}] },
+      { "id": "m18_14", "track_number": 14, "name": "(-) Ions", "duration_ms": 240000, "artists": [{"name": "Tool"}] },
+      { "id": "m18_15", "track_number": 15, "name": "Third Eye", "duration_ms": 827000, "artists": [{"name": "Tool"}] }
+    ]
+  },
+  "mockMetal17_melissa": {
+    "items": [
+      { "id": "m17_1", "track_number": 1, "name": "Evil", "duration_ms": 285000, "artists": [{"name": "Mercyful Fate"}] },
+      { "id": "m17_2", "track_number": 2, "name": "Curse of the Pharaohs", "duration_ms": 237000, "artists": [{"name": "Mercyful Fate"}] },
+      { "id": "m17_3", "track_number": 3, "name": "Into the Coven", "duration_ms": 311000, "artists": [{"name": "Mercyful Fate"}] },
+      { "id": "m17_4", "track_number": 4, "name": "At the Sound of the Demon Bell", "duration_ms": 323000, "artists": [{"name": "Mercyful Fate"}] },
+      { "id": "m17_5", "track_number": 5, "name": "Black Funeral", "duration_ms": 170000, "artists": [{"name": "Mercyful Fate"}] },
+      { "id": "m17_6", "track_number": 6, "name": "Satan's Fall", "duration_ms": 689000, "artists": [{"name": "Mercyful Fate"}] },
+      { "id": "m17_7", "track_number": 7, "name": "Melissa", "duration_ms": 400000, "artists": [{"name": "Mercyful Fate"}] }
+    ]
+  },
+  "mockMetal16_holydiver": {
+    "items": [
+      { "id": "m16_1", "track_number": 1, "name": "Stand Up and Shout", "duration_ms": 195000, "artists": [{"name": "Dio"}] },
+      { "id": "m16_2", "track_number": 2, "name": "Holy Diver", "duration_ms": 351000, "artists": [{"name": "Dio"}] },
+      { "id": "m16_3", "track_number": 3, "name": "Gypsy", "duration_ms": 219000, "artists": [{"name": "Dio"}] },
+      { "id": "m16_4", "track_number": 4, "name": "Caught in the Middle", "duration_ms": 251000, "artists": [{"name": "Dio"}] },
+      { "id": "m16_5", "track_number": 5, "name": "Don't Talk to Strangers", "duration_ms": 293000, "artists": [{"name": "Dio"}] },
+      { "id": "m16_6", "track_number": 6, "name": "Straight Through the Heart", "duration_ms": 272000, "artists": [{"name": "Dio"}] },
+      { "id": "m16_7", "track_number": 7, "name": "Invisible", "duration_ms": 324000, "artists": [{"name": "Dio"}] },
+      { "id": "m16_8", "track_number": 8, "name": "Rainbow in the Dark", "duration_ms": 255000, "artists": [{"name": "Dio"}] },
+      { "id": "m16_9", "track_number": 9, "name": "Shame on the Night", "duration_ms": 320000, "artists": [{"name": "Dio"}] }
+    ]
+  },
+  "mockMetal15_diaryofamadman": {
+    "items": [
+      { "id": "m15_1", "track_number": 1, "name": "Over the Mountain", "duration_ms": 271000, "artists": [{"name": "Ozzy Osbourne"}] },
+      { "id": "m15_2", "track_number": 2, "name": "Flying High Again", "duration_ms": 284000, "artists": [{"name": "Ozzy Osbourne"}] },
+      { "id": "m15_3", "track_number": 3, "name": "You Can't Kill Rock and Roll", "duration_ms": 419000, "artists": [{"name": "Ozzy Osbourne"}] },
+      { "id": "m15_4", "track_number": 4, "name": "Believer", "duration_ms": 317000, "artists": [{"name": "Ozzy Osbourne"}] },
+      { "id": "m15_5", "track_number": 5, "name": "Little Dolls", "duration_ms": 338000, "artists": [{"name": "Ozzy Osbourne"}] },
+      { "id": "m15_6", "track_number": 6, "name": "Tonight", "duration_ms": 350000, "artists": [{"name": "Ozzy Osbourne"}] },
+      { "id": "m15_7", "track_number": 7, "name": "S.A.T.O.", "duration_ms": 247000, "artists": [{"name": "Ozzy Osbourne"}] },
+      { "id": "m15_8", "track_number": 8, "name": "Diary of a Madman", "duration_ms": 374000, "artists": [{"name": "Ozzy Osbourne"}] }
+    ]
+  },
+  "mockMetal14_vol4": {
+    "items": [
+      { "id": "m14_1", "track_number": 1, "name": "Wheels of Confusion / The Straightener", "duration_ms": 494000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m14_2", "track_number": 2, "name": "Tomorrow's Dream", "duration_ms": 192000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m14_3", "track_number": 3, "name": "Changes", "duration_ms": 286000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m14_4", "track_number": 4, "name": "FX", "duration_ms": 103000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m14_5", "track_number": 5, "name": "Supernaut", "duration_ms": 284000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m14_6", "track_number": 6, "name": "Snowblind", "duration_ms": 331000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m14_7", "track_number": 7, "name": "Cornucopia", "duration_ms": 234000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m14_8", "track_number": 8, "name": "Laguna Sunrise", "duration_ms": 172000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m14_9", "track_number": 9, "name": "St. Vitus Dance", "duration_ms": 149000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m14_10", "track_number": 10, "name": "Under the Sun / Every Day Comes and Goes", "duration_ms": 352000, "artists": [{"name": "Black Sabbath"}] }
+    ]
+  },
+  "mockMetal13_ironmaiden": {
+    "items": [
+      { "id": "m13_1", "track_number": 1, "name": "Prowler", "duration_ms": 235000, "artists": [{"name": "Iron Maiden"}] },
+      { "id": "m13_2", "track_number": 2, "name": "Remember Tomorrow", "duration_ms": 327000, "artists": [{"name": "Iron Maiden"}] },
+      { "id": "m13_3", "track_number": 3, "name": "Running Free", "duration_ms": 196000, "artists": [{"name": "Iron Maiden"}] },
+      { "id": "m13_4", "track_number": 4, "name": "Phantom of the Opera", "duration_ms": 440000, "artists": [{"name": "Iron Maiden"}] },
+      { "id": "m13_5", "track_number": 5, "name": "Transylvania", "duration_ms": 245000, "artists": [{"name": "Iron Maiden"}] },
+      { "id": "m13_6", "track_number": 6, "name": "Strange World", "duration_ms": 345000, "artists": [{"name": "Iron Maiden"}] },
+      { "id": "m13_7", "track_number": 7, "name": "Charlotte the Harlot", "duration_ms": 252000, "artists": [{"name": "Iron Maiden"}] },
+      { "id": "m13_8", "track_number": 8, "name": "Iron Maiden", "duration_ms": 215000, "artists": [{"name": "Iron Maiden"}] }
+    ]
+  },
+  "mockMetal12_screamingforvengeance": {
+    "items": [
+      { "id": "m12_1", "track_number": 1, "name": "The Hellion", "duration_ms": 41000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m12_2", "track_number": 2, "name": "Electric Eye", "duration_ms": 219000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m12_3", "track_number": 3, "name": "Riding on the Wind", "duration_ms": 190000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m12_4", "track_number": 4, "name": "Bloodstone", "duration_ms": 231000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m12_5", "track_number": 5, "name": "(Take These) Chains", "duration_ms": 187000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m12_6", "track_number": 6, "name": "Pain and Pleasure", "duration_ms": 257000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m12_7", "track_number": 7, "name": "Screaming for Vengeance", "duration_ms": 283000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m12_8", "track_number": 8, "name": "You've Got Another Thing Comin'", "duration_ms": 309000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m12_9", "track_number": 9, "name": "Fever", "duration_ms": 320000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m12_10", "track_number": 10, "name": "Devil's Child", "duration_ms": 288000, "artists": [{"name": "Judas Priest"}] }
+    ]
+  },
+  "mockMetal11_ridethelightning": {
+    "items": [
+      { "id": "m11_1", "track_number": 1, "name": "Fight Fire with Fire", "duration_ms": 285000, "artists": [{"name": "Metallica"}] },
+      { "id": "m11_2", "track_number": 2, "name": "Ride the Lightning", "duration_ms": 396000, "artists": [{"name": "Metallica"}] },
+      { "id": "m11_3", "track_number": 3, "name": "For Whom the Bell Tolls", "duration_ms": 309000, "artists": [{"name": "Metallica"}] },
+      { "id": "m11_4", "track_number": 4, "name": "Fade to Black", "duration_ms": 417000, "artists": [{"name": "Metallica"}] },
+      { "id": "m11_5", "track_number": 5, "name": "Trapped Under Ice", "duration_ms": 244000, "artists": [{"name": "Metallica"}] },
+      { "id": "m11_6", "track_number": 6, "name": "Escape", "duration_ms": 264000, "artists": [{"name": "Metallica"}] },
+      { "id": "m11_7", "track_number": 7, "name": "Creeping Death", "duration_ms": 396000, "artists": [{"name": "Metallica"}] },
+      { "id": "m11_8", "track_number": 8, "name": "The Call of Ktulu", "duration_ms": 533000, "artists": [{"name": "Metallica"}] }
+    ]
+  },
+  "mockMetal10_vulgardisplay": {
+    "items": [
+      { "id": "m10_1", "track_number": 1, "name": "Mouth for War", "duration_ms": 237000, "artists": [{"name": "Pantera"}] },
+      { "id": "m10_2", "track_number": 2, "name": "A New Level", "duration_ms": 237000, "artists": [{"name": "Pantera"}] },
+      { "id": "m10_3", "track_number": 3, "name": "Walk", "duration_ms": 315000, "artists": [{"name": "Pantera"}] },
+      { "id": "m10_4", "track_number": 4, "name": "Fucking Hostile", "duration_ms": 169000, "artists": [{"name": "Pantera"}] },
+      { "id": "m10_5", "track_number": 5, "name": "This Love", "duration_ms": 392000, "artists": [{"name": "Pantera"}] },
+      { "id": "m10_6", "track_number": 6, "name": "Rise", "duration_ms": 276000, "artists": [{"name": "Pantera"}] },
+      { "id": "m10_7", "track_number": 7, "name": "No Good (Attack the Radical)", "duration_ms": 290000, "artists": [{"name": "Pantera"}] },
+      { "id": "m10_8", "track_number": 8, "name": "Live in a Hole", "duration_ms": 300000, "artists": [{"name": "Pantera"}] },
+      { "id": "m10_9", "track_number": 9, "name": "Regular People (Conceit)", "duration_ms": 327000, "artists": [{"name": "Pantera"}] },
+      { "id": "m10_10", "track_number": 10, "name": "By Demons Be Driven", "duration_ms": 279000, "artists": [{"name": "Pantera"}] },
+      { "id": "m10_11", "track_number": 11, "name": "Hollow", "duration_ms": 345000, "artists": [{"name": "Pantera"}] }
+    ]
+  },
+  "mockMetal09_blizzardofozz": {
+    "items": [
+      { "id": "m09_1", "track_number": 1, "name": "I Don't Know", "duration_ms": 313000, "artists": [{"name": "Ozzy Osbourne"}] },
+      { "id": "m09_2", "track_number": 2, "name": "Crazy Train", "duration_ms": 296000, "artists": [{"name": "Ozzy Osbourne"}] },
+      { "id": "m09_3", "track_number": 3, "name": "Goodbye to Romance", "duration_ms": 333000, "artists": [{"name": "Ozzy Osbourne"}] },
+      { "id": "m09_4", "track_number": 4, "name": "Dee", "duration_ms": 49000, "artists": [{"name": "Ozzy Osbourne"}] },
+      { "id": "m09_5", "track_number": 5, "name": "Suicide Solution", "duration_ms": 257000, "artists": [{"name": "Ozzy Osbourne"}] },
+      { "id": "m09_6", "track_number": 6, "name": "Mr. Crowley", "duration_ms": 295000, "artists": [{"name": "Ozzy Osbourne"}] },
+      { "id": "m09_7", "track_number": 7, "name": "No Bone Movies", "duration_ms": 232000, "artists": [{"name": "Ozzy Osbourne"}] },
+      { "id": "m09_8", "track_number": 8, "name": "Revelation (Mother Earth)", "duration_ms": 369000, "artists": [{"name": "Ozzy Osbourne"}] },
+      { "id": "m09_9", "track_number": 9, "name": "Steal Away (The Night)", "duration_ms": 208000, "artists": [{"name": "Ozzy Osbourne"}] }
+    ]
+  },
+  "mockMetal08_peacesells": {
+    "items": [
+      { "id": "m08_1", "track_number": 1, "name": "Wake Up Dead", "duration_ms": 220000, "artists": [{"name": "Megadeth"}] },
+      { "id": "m08_2", "track_number": 2, "name": "The Conjuring", "duration_ms": 302000, "artists": [{"name": "Megadeth"}] },
+      { "id": "m08_3", "track_number": 3, "name": "Peace Sells", "duration_ms": 242000, "artists": [{"name": "Megadeth"}] },
+      { "id": "m08_4", "track_number": 4, "name": "Devils Island", "duration_ms": 305000, "artists": [{"name": "Megadeth"}] },
+      { "id": "m08_5", "track_number": 5, "name": "Good Mourning / Black Friday", "duration_ms": 399000, "artists": [{"name": "Megadeth"}] },
+      { "id": "m08_6", "track_number": 6, "name": "Bad Omen", "duration_ms": 243000, "artists": [{"name": "Megadeth"}] },
+      { "id": "m08_7", "track_number": 7, "name": "I Ain't Superstitious", "duration_ms": 165000, "artists": [{"name": "Megadeth"}] },
+      { "id": "m08_8", "track_number": 8, "name": "My Last Words", "duration_ms": 287000, "artists": [{"name": "Megadeth"}] }
+    ]
+  },
+  "mockMetal07_nosleep": {
+    "items": [
+      { "id": "m07_1", "track_number": 1, "name": "Ace of Spades", "duration_ms": 181000, "artists": [{"name": "Motörhead"}] },
+      { "id": "m07_2", "track_number": 2, "name": "Stay Clean", "duration_ms": 170000, "artists": [{"name": "Motörhead"}] },
+      { "id": "m07_3", "track_number": 3, "name": "Metropolis", "duration_ms": 211000, "artists": [{"name": "Motörhead"}] },
+      { "id": "m07_4", "track_number": 4, "name": "The Hammer", "duration_ms": 185000, "artists": [{"name": "Motörhead"}] },
+      { "id": "m07_5", "track_number": 5, "name": "Iron Horse / Born to Lose", "duration_ms": 238000, "artists": [{"name": "Motörhead"}] },
+      { "id": "m07_6", "track_number": 6, "name": "No Class", "duration_ms": 154000, "artists": [{"name": "Motörhead"}] },
+      { "id": "m07_7", "track_number": 7, "name": "Overkill", "duration_ms": 313000, "artists": [{"name": "Motörhead"}] },
+      { "id": "m07_8", "track_number": 8, "name": "(We Are) The Road Crew", "duration_ms": 211000, "artists": [{"name": "Motörhead"}] },
+      { "id": "m07_9", "track_number": 9, "name": "Capricorn", "duration_ms": 280000, "artists": [{"name": "Motörhead"}] },
+      { "id": "m07_10", "track_number": 10, "name": "Bomber", "duration_ms": 204000, "artists": [{"name": "Motörhead"}] },
+      { "id": "m07_11", "track_number": 11, "name": "Motörhead", "duration_ms": 287000, "artists": [{"name": "Motörhead"}] }
+    ]
+  },
+  "mockMetal06_reigninblood": {
+    "items": [
+      { "id": "m06_1", "track_number": 1, "name": "Angel of Death", "duration_ms": 291000, "artists": [{"name": "Slayer"}] },
+      { "id": "m06_2", "track_number": 2, "name": "Piece by Piece", "duration_ms": 122000, "artists": [{"name": "Slayer"}] },
+      { "id": "m06_3", "track_number": 3, "name": "Necrophobic", "duration_ms": 100000, "artists": [{"name": "Slayer"}] },
+      { "id": "m06_4", "track_number": 4, "name": "Altar of Sacrifice", "duration_ms": 170000, "artists": [{"name": "Slayer"}] },
+      { "id": "m06_5", "track_number": 5, "name": "Jesus Saves", "duration_ms": 174000, "artists": [{"name": "Slayer"}] },
+      { "id": "m06_6", "track_number": 6, "name": "Criminally Insane", "duration_ms": 143000, "artists": [{"name": "Slayer"}] },
+      { "id": "m06_7", "track_number": 7, "name": "Reborn", "duration_ms": 131000, "artists": [{"name": "Slayer"}] },
+      { "id": "m06_8", "track_number": 8, "name": "Epidemic", "duration_ms": 143000, "artists": [{"name": "Slayer"}] },
+      { "id": "m06_9", "track_number": 9, "name": "Postmortem", "duration_ms": 207000, "artists": [{"name": "Slayer"}] },
+      { "id": "m06_10", "track_number": 10, "name": "Raining Blood", "duration_ms": 254000, "artists": [{"name": "Slayer"}] }
+    ]
+  },
+  "mockMetal05_masterofreality": {
+    "items": [
+      { "id": "m05_1", "track_number": 1, "name": "Sweet Leaf", "duration_ms": 305000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m05_2", "track_number": 2, "name": "After Forever", "duration_ms": 327000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m05_3", "track_number": 3, "name": "Embryo", "duration_ms": 28000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m05_4", "track_number": 4, "name": "Children of the Grave", "duration_ms": 315000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m05_5", "track_number": 5, "name": "Orchid", "duration_ms": 91000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m05_6", "track_number": 6, "name": "Lord of This World", "duration_ms": 322000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m05_7", "track_number": 7, "name": "Solitude", "duration_ms": 302000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m05_8", "track_number": 8, "name": "Into the Void", "duration_ms": 371000, "artists": [{"name": "Black Sabbath"}] }
+    ]
+  },
+  "mockMetal04_numberofthebeast": {
+    "items": [
+      { "id": "m04_1", "track_number": 1, "name": "Invaders", "duration_ms": 203000, "artists": [{"name": "Iron Maiden"}] },
+      { "id": "m04_2", "track_number": 2, "name": "Children of the Damned", "duration_ms": 275000, "artists": [{"name": "Iron Maiden"}] },
+      { "id": "m04_3", "track_number": 3, "name": "The Prisoner", "duration_ms": 363000, "artists": [{"name": "Iron Maiden"}] },
+      { "id": "m04_4", "track_number": 4, "name": "22 Acacia Avenue", "duration_ms": 398000, "artists": [{"name": "Iron Maiden"}] },
+      { "id": "m04_5", "track_number": 5, "name": "The Number of the Beast", "duration_ms": 291000, "artists": [{"name": "Iron Maiden"}] },
+      { "id": "m04_6", "track_number": 6, "name": "Run to the Hills", "duration_ms": 233000, "artists": [{"name": "Iron Maiden"}] },
+      { "id": "m04_7", "track_number": 7, "name": "Gangland", "duration_ms": 229000, "artists": [{"name": "Iron Maiden"}] },
+      { "id": "m04_8", "track_number": 8, "name": "Hallowed Be Thy Name", "duration_ms": 432000, "artists": [{"name": "Iron Maiden"}] }
+    ]
+  },
+  "mockMetal03_britishsteel": {
+    "items": [
+      { "id": "m03_1", "track_number": 1, "name": "Rapid Fire", "duration_ms": 248000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m03_2", "track_number": 2, "name": "Metal Gods", "duration_ms": 240000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m03_3", "track_number": 3, "name": "Breaking the Law", "duration_ms": 155000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m03_4", "track_number": 4, "name": "Grinder", "duration_ms": 238000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m03_5", "track_number": 5, "name": "United", "duration_ms": 215000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m03_6", "track_number": 6, "name": "You Don't Have to Be Old to Be Wise", "duration_ms": 304000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m03_7", "track_number": 7, "name": "Living After Midnight", "duration_ms": 211000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m03_8", "track_number": 8, "name": "The Rage", "duration_ms": 284000, "artists": [{"name": "Judas Priest"}] },
+      { "id": "m03_9", "track_number": 9, "name": "Steeler", "duration_ms": 270000, "artists": [{"name": "Judas Priest"}] }
+    ]
+  },
+  "mockMetal02_masterofpuppets": {
+    "items": [
+      { "id": "m02_1", "track_number": 1, "name": "Battery", "duration_ms": 312000, "artists": [{"name": "Metallica"}] },
+      { "id": "m02_2", "track_number": 2, "name": "Master of Puppets", "duration_ms": 515000, "artists": [{"name": "Metallica"}] },
+      { "id": "m02_3", "track_number": 3, "name": "The Thing That Should Not Be", "duration_ms": 396000, "artists": [{"name": "Metallica"}] },
+      { "id": "m02_4", "track_number": 4, "name": "Welcome Home (Sanitarium)", "duration_ms": 387000, "artists": [{"name": "Metallica"}] },
+      { "id": "m02_5", "track_number": 5, "name": "Disposable Heroes", "duration_ms": 496000, "artists": [{"name": "Metallica"}] },
+      { "id": "m02_6", "track_number": 6, "name": "Leper Messiah", "duration_ms": 340000, "artists": [{"name": "Metallica"}] },
+      { "id": "m02_7", "track_number": 7, "name": "Orion", "duration_ms": 507000, "artists": [{"name": "Metallica"}] },
+      { "id": "m02_8", "track_number": 8, "name": "Damage, Inc.", "duration_ms": 332000, "artists": [{"name": "Metallica"}] }
+    ]
+  },
+  "mockMetal01_paranoid": {
+    "items": [
+      { "id": "m01_1", "track_number": 1, "name": "War Pigs / Luke's Wall", "duration_ms": 474000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m01_2", "track_number": 2, "name": "Paranoid", "duration_ms": 168000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m01_3", "track_number": 3, "name": "Planet Caravan", "duration_ms": 272000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m01_4", "track_number": 4, "name": "Iron Man", "duration_ms": 356000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m01_5", "track_number": 5, "name": "Electric Funeral", "duration_ms": 293000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m01_6", "track_number": 6, "name": "Hand of Doom", "duration_ms": 428000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m01_7", "track_number": 7, "name": "Rat Salad", "duration_ms": 150000, "artists": [{"name": "Black Sabbath"}] },
+      { "id": "m01_8", "track_number": 8, "name": "Fairies Wear Boots", "duration_ms": 373000, "artists": [{"name": "Black Sabbath"}] }
+    ]
   }
 }

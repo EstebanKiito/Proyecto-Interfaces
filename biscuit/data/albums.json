@@ -605,6 +605,396 @@
         "external_urls": {
           "spotify": "https://open.spotify.com/album/mock20_kida"
         }
+      },
+      {
+        "id": "mockMetal30_korn",
+        "name": "Korn",
+        "album_type": "album",
+        "release_date": "1994-10-11",
+        "total_tracks": 12,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/korn-d1b40976-e338-4885-bd67-a9d05967c0a7.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/korn-d1b40976-e338-4885-bd67-a9d05967c0a7.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal30", "name": "Korn", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal30" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal30_korn" }
+      },
+      {
+        "id": "mockMetal29_chaosad",
+        "name": "Chaos A.D.",
+        "album_type": "album",
+        "release_date": "1993-09-02",
+        "total_tracks": 12,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/sepultura-959daf10-07a7-4665-ba97-c3456e3779fe.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/sepultura-959daf10-07a7-4665-ba97-c3456e3779fe.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal29", "name": "Sepultura", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal29" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal29_chaosad" }
+      },
+      {
+        "id": "mockMetal28_morbidtales",
+        "name": "Morbid Tales",
+        "album_type": "album",
+        "release_date": "1984-11-01",
+        "total_tracks": 6,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/celtic-frost-98746425-bccf-4832-9870-fd640208c161.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/celtic-frost-98746425-bccf-4832-9870-fd640208c161.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal28", "name": "Celtic Frost", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal28" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal28_morbidtales" }
+      },
+      {
+        "id": "mockMetal27_toxicity",
+        "name": "Toxicity",
+        "album_type": "album",
+        "release_date": "2001-09-04",
+        "total_tracks": 14,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/system-of-down-a05dfda7-83e7-4d26-8019-0de842c2aff5.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/system-of-down-a05dfda7-83e7-4d26-8019-0de842c2aff5.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal27", "name": "System of a Down", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal27" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal27_toxicity" }
+      },
+      {
+        "id": "mockMetal26_dirt",
+        "name": "Dirt",
+        "album_type": "album",
+        "release_date": "1992-09-29",
+        "total_tracks": 13,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/alice-in-chains-dirt-a495466c-700f-47b7-85d7-40d3d514d947.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/alice-in-chains-dirt-a495466c-700f-47b7-85d7-40d3d514d947.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal26", "name": "Alice in Chains", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal26" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal26_dirt" }
+      },
+      {
+        "id": "mockMetal25_metallica",
+        "name": "Metallica",
+        "album_type": "album",
+        "release_date": "1991-08-12",
+        "total_tracks": 12,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-black-c5a252f5-8db3-4ff4-b454-5009da9a2d22.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-black-c5a252f5-8db3-4ff4-b454-5009da9a2d22.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal25", "name": "Metallica", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal25" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal25_metallica" }
+      },
+      {
+        "id": "mockMetal24_ratm",
+        "name": "Rage Against the Machine",
+        "album_type": "album",
+        "release_date": "1992-11-03",
+        "total_tracks": 10,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/ratm-1ad8c1bb-c476-42e2-9e00-a35c72febb12.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/ratm-1ad8c1bb-c476-42e2-9e00-a35c72febb12.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal24", "name": "Rage Against the Machine", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal24" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal24_ratm" }
+      },
+      {
+        "id": "mockMetal23_danzig",
+        "name": "Danzig",
+        "album_type": "album",
+        "release_date": "1988-08-30",
+        "total_tracks": 10,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/danzig-180417e0-c57b-438b-b499-e0062a80bee4.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/danzig-180417e0-c57b-438b-b499-e0062a80bee4.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal23", "name": "Danzig", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal23" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal23_danzig" }
+      },
+      {
+        "id": "mockMetal22_toofastforlove",
+        "name": "Too Fast for Love",
+        "album_type": "album",
+        "release_date": "1981-11-10",
+        "total_tracks": 10,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/motley-crue-98581784-73be-4f52-b536-8419fd7b2f9f.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/motley-crue-98581784-73be-4f52-b536-8419fd7b2f9f.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal22", "name": "Mötley Crüe", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal22" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal22_toofastforlove" }
+      },
+      {
+        "id": "mockMetal21_andjusticeforall",
+        "name": "...And Justice for All",
+        "album_type": "album",
+        "release_date": "1988-08-25",
+        "total_tracks": 9,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-justice-b7b80ecf-6b19-411f-b988-a81ac9817f23.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-justice-b7b80ecf-6b19-411f-b988-a81ac9817f23.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal25", "name": "Metallica", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal25" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal21_andjusticeforall" }
+      },
+      {
+        "id": "mockMetal20_amongtheliving",
+        "name": "Among the Living",
+        "album_type": "album",
+        "release_date": "1987-03-22",
+        "total_tracks": 9,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/anthrax-among-living-482cec04-1878-4b9d-b349-76f799d2e2f5.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/anthrax-among-living-482cec04-1878-4b9d-b349-76f799d2e2f5.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal20", "name": "Anthrax", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal20" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal20_amongtheliving" }
+      },
+      {
+        "id": "mockMetal19_rustinpeace",
+        "name": "Rust in Peace",
+        "album_type": "album",
+        "release_date": "1990-09-24",
+        "total_tracks": 9,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/megadeth-rust-peace-7c1efaee-7e9f-42d5-a6af-1f843a42a34d.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/megadeth-rust-peace-7c1efaee-7e9f-42d5-a6af-1f843a42a34d.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal19", "name": "Megadeth", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal19" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal19_rustinpeace" }
+      },
+      {
+        "id": "mockMetal18_aenima",
+        "name": "Ænima",
+        "album_type": "album",
+        "release_date": "1996-09-17",
+        "total_tracks": 15,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/tool-fb9d03e8-f512-46f4-9d37-e12ac495c8f8.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/tool-fb9d03e8-f512-46f4-9d37-e12ac495c8f8.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal18", "name": "Tool", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal18" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal18_aenima" }
+      },
+      {
+        "id": "mockMetal17_melissa",
+        "name": "Melissa",
+        "album_type": "album",
+        "release_date": "1983-10-30",
+        "total_tracks": 7,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/mercyful-fate-74657cee-adc3-486d-9955-af54059c05cd.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/mercyful-fate-74657cee-adc3-486d-9955-af54059c05cd.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal17", "name": "Mercyful Fate", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal17" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal17_melissa" }
+      },
+      {
+        "id": "mockMetal16_holydiver",
+        "name": "Holy Diver",
+        "album_type": "album",
+        "release_date": "1983-05-25",
+        "total_tracks": 9,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/dio-holy-diver-57849827-0ecf-4555-b8e8-eb77ff932301.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/dio-holy-diver-57849827-0ecf-4555-b8e8-eb77ff932301.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal16", "name": "Dio", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal16" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal16_holydiver" }
+      },
+      {
+        "id": "mockMetal15_diaryofamadman",
+        "name": "Diary of a Madman",
+        "album_type": "album",
+        "release_date": "1981-11-07",
+        "total_tracks": 8,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/ozzy-diary-madman-f84f7d3e-cc6c-4eb1-8a9d-756117b2a6be.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/ozzy-diary-madman-f84f7d3e-cc6c-4eb1-8a9d-756117b2a6be.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal15", "name": "Ozzy Osbourne", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal15" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal15_diaryofamadman" }
+      },
+      {
+        "id": "mockMetal14_vol4",
+        "name": "Vol. 4",
+        "album_type": "album",
+        "release_date": "1972-09-25",
+        "total_tracks": 10,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-vol4-cdd9f0f9-9c31-4483-a427-00d3525f334f.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-vol4-cdd9f0f9-9c31-4483-a427-00d3525f334f.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal14", "name": "Black Sabbath", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal14" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal14_vol4" }
+      },
+      {
+        "id": "mockMetal13_ironmaiden",
+        "name": "Iron Maiden",
+        "album_type": "album",
+        "release_date": "1980-04-14",
+        "total_tracks": 8,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/iron-maiden-f5d6d58e-8833-4c1f-a6e6-1643600d4a8f.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/iron-maiden-f5d6d58e-8833-4c1f-a6e6-1643600d4a8f.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal13", "name": "Iron Maiden", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal13" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal13_ironmaiden" }
+      },
+      {
+        "id": "mockMetal12_screamingforvengeance",
+        "name": "Screaming for Vengeance",
+        "album_type": "album",
+        "release_date": "1982-07-17",
+        "total_tracks": 10,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/judas-priest-vengeance-98856d7c-6e0d-47ba-ad5c-01a60752860b.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/judas-priest-vengeance-98856d7c-6e0d-47ba-ad5c-01a60752860b.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal12", "name": "Judas Priest", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal12" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal12_screamingforvengeance" }
+      },
+      {
+        "id": "mockMetal11_ridethelightning",
+        "name": "Ride the Lightning",
+        "album_type": "album",
+        "release_date": "1984-07-27",
+        "total_tracks": 8,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-lightning-ebbf6890-49d2-4746-ab85-11f37cdde6a2.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-lightning-ebbf6890-49d2-4746-ab85-11f37cdde6a2.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal25", "name": "Metallica", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal25" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal11_ridethelightning" }
+      },
+      {
+        "id": "mockMetal10_vulgardisplay",
+        "name": "Vulgar Display of Power",
+        "album_type": "album",
+        "release_date": "1992-02-25",
+        "total_tracks": 11,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/pantera-vulgar-display-5807cdb0-365d-470b-9fdf-61d28245df04.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/pantera-vulgar-display-5807cdb0-365d-470b-9fdf-61d28245df04.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal10", "name": "Pantera", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal10" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal10_vulgardisplay" }
+      },
+      {
+        "id": "mockMetal09_blizzardofozz",
+        "name": "Blizzard of Ozz",
+        "album_type": "album",
+        "release_date": "1980-09-20",
+        "total_tracks": 9,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/ozzy-blizzard-5001666b-350c-44dc-8857-6de41cdc16c8.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/ozzy-blizzard-5001666b-350c-44dc-8857-6de41cdc16c8.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal15", "name": "Ozzy Osbourne", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal15" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal09_blizzardofozz" }
+      },
+      {
+        "id": "mockMetal08_peacesells",
+        "name": "Peace Sells... but Who's Buying?",
+        "album_type": "album",
+        "release_date": "1986-09-19",
+        "total_tracks": 8,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/megadeth-peace-sells-55f91e7d-bde4-4fd1-afd3-11f3ca2fd144.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/megadeth-peace-sells-55f91e7d-bde4-4fd1-afd3-11f3ca2fd144.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal19", "name": "Megadeth", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal19" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal08_peacesells" }
+      },
+      {
+        "id": "mockMetal07_nosleep",
+        "name": "No Sleep 'til Hammersmith",
+        "album_type": "album",
+        "release_date": "1981-06-27",
+        "total_tracks": 11,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/motorhead-8ff05f09-c640-4217-900b-84010f9cbf65.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/motorhead-8ff05f09-c640-4217-900b-84010f9cbf65.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal07", "name": "Motörhead", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal07" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal07_nosleep" }
+      },
+      {
+        "id": "mockMetal06_reigninblood",
+        "name": "Reign in Blood",
+        "album_type": "album",
+        "release_date": "1986-10-07",
+        "total_tracks": 10,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/slayer-34a7ef2f-1f37-4581-bc52-555ac79cc1a2.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/slayer-34a7ef2f-1f37-4581-bc52-555ac79cc1a2.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal06", "name": "Slayer", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal06" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal06_reigninblood" }
+      },
+      {
+        "id": "mockMetal05_masterofreality",
+        "name": "Master of Reality",
+        "album_type": "album",
+        "release_date": "1971-07-21",
+        "total_tracks": 8,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-568262b3-8b0b-464d-91f6-61e0b91d32c2.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-568262b3-8b0b-464d-91f6-61e0b91d32c2.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal14", "name": "Black Sabbath", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal14" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal05_masterofreality" }
+      },
+      {
+        "id": "mockMetal04_numberofthebeast",
+        "name": "The Number of the Beast",
+        "album_type": "album",
+        "release_date": "1982-03-22",
+        "total_tracks": 8,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/iron-maiden-number-beast-ade03a59-4678-4bad-a3c1-9a11071fd8e6.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/iron-maiden-number-beast-ade03a59-4678-4bad-a3c1-9a11071fd8e6.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal13", "name": "Iron Maiden", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal13" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal04_numberofthebeast" }
+      },
+      {
+        "id": "mockMetal03_britishsteel",
+        "name": "British Steel",
+        "album_type": "album",
+        "release_date": "1980-04-14",
+        "total_tracks": 9,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/judas-priest-british-steel-7f438dcd-f35c-4326-a8e9-f3089d79fed9.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/judas-priest-british-steel-7f438dcd-f35c-4326-a8e9-f3089d79fed9.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal12", "name": "Judas Priest", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal12" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal03_britishsteel" }
+      },
+      {
+        "id": "mockMetal02_masterofpuppets",
+        "name": "Master of Puppets",
+        "album_type": "album",
+        "release_date": "1986-03-03",
+        "total_tracks": 8,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-puppets-d7382ca6-9e72-4770-b2f5-8b57922d57fb.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-puppets-d7382ca6-9e72-4770-b2f5-8b57922d57fb.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal25", "name": "Metallica", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal25" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal02_masterofpuppets" }
+      },
+      {
+        "id": "mockMetal01_paranoid",
+        "name": "Paranoid",
+        "album_type": "album",
+        "release_date": "1970-09-18",
+        "total_tracks": 8,
+        "images": [
+          { "height": 640, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-paranoid-3bcd9090-b0e9-4d81-9210-eca983ae320d.jpg?w=1280", "width": 640 },
+          { "height": 300, "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-paranoid-3bcd9090-b0e9-4d81-9210-eca983ae320d.jpg?w=1280", "width": 300 }
+        ],
+        "artists": [ { "id": "artMetal14", "name": "Black Sabbath", "type": "artist", "href": "https://api.spotify.com/v1/artists/artMetal14" } ],
+        "external_urls": { "spotify": "https://open.spotify.com/album/mockMetal01_paranoid" }
       }
     ]
   }
