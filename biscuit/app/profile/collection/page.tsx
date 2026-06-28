@@ -159,9 +159,16 @@ function CollectionContent() {
     <main className="min-h-screen bg-[#000000] pt-32 pb-12 text-white">
       {/* HEADER */}
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-end border-b border-zinc-800 pb-6 mb-10">
-        <h1 className="font-[family-name:var(--font-biscuit)] text-4xl md:text-5xl text-[#E23C3C] tracking-wide uppercase leading-none">
-          {targetUser.username.toUpperCase()}’S COLLECTION
-        </h1>
+        <div className="flex items-center gap-4">
+          <img
+            src={targetUser.avatar_url || "https://www.svgrepo.com/show/335455/profile-default.svg"}
+            alt={targetUser.name}
+            className="w-14 h-14 rounded-full object-cover border-2 border-zinc-800 shadow-md shrink-0"
+          />
+          <h1 className="font-[family-name:var(--font-bayon)] text-2xl md:text-3xl text-[#dad6d6] tracking-wide uppercase leading-none pt-1">
+            {targetUser.username.toUpperCase()}’S COLLECTION
+          </h1>
+        </div>
 
         <Link
           href={isOwner ? "/profile" : `/profile/${targetUser.id}`}

@@ -639,12 +639,14 @@ export default function Album() {
             </div>
 
             <div className="flex flex-col text-xs font-medium border-t border-white/10 text-[#939090] bg-[#161616]">
-              <Link 
-                href="/profile#discover-section" 
-                className="py-3 hover:bg-white/5 border-b border-white/10 transition-colors hover:text-white text-center"
-              >
-                Watch on your profile
-              </Link>
+              {(activeActions.liked || activeActions.reviewed) && (
+                <Link 
+                  href="/profile#discover-section" 
+                  className="py-3 hover:bg-white/5 border-b border-white/10 transition-colors hover:text-white text-center"
+                >
+                  Watch on your profile
+                </Link>
+              )}
               <button 
                 onClick={() => {
                   if (!currentUser) {
