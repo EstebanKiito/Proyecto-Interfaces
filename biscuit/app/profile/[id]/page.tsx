@@ -360,18 +360,18 @@ export default function TargetProfilePage() {
       className="bg-[#000000] min-h-screen text-white pt-24 pb-12 px-6 md:px-12 lg:px-24 selection:bg-[#E23C3C] selection:text-black"
     >
       {/* MAIN 2-COLUMN GRID */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-30 max-w-6xl mx-auto items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-20 max-w-6xl mx-auto items-start">
         
         {/* LEFT COLUMN */}
-        <div className="flex flex-col w-full mt-10">
-          <h1 className="font-biscuit text-5xl xl:text-7xl text-[#ffffff] uppercase m-0 p-0 leading-tight">
+        <div className="flex flex-col w-full mt-10 order-2 lg:order-1">
+          <h1 className="font-biscuit text-3xl md:text-5xl xl:text-7xl text-[#ffffff] uppercase m-0 p-0 leading-tight break-words max-w-full">
             {targetUser.username}'s
           </h1>
-          <h2 className="font-biscuit text-4xl xl:text-7xl text-[#E23C3C] tracking-wide uppercase leading-none mb-5">
+          <h2 className="font-biscuit text-2xl md:text-4xl xl:text-7xl text-[#E23C3C] tracking-wide uppercase leading-none mb-5">
             COLLECTION
           </h2>
 
-          <div className="flex flex-col w-[30rem]">
+          <div className="flex flex-col w-full max-w-[30rem] mx-auto lg:mx-0">
             <motion.div
               variants={hoverScaleVariant}
               whileHover="hover"
@@ -440,13 +440,13 @@ export default function TargetProfilePage() {
           </div>
         </div>
 
-        {/* RIGHT COLUMN */}
-        <div className="flex flex-col gap-4">
+        {/* RIGHT COLUMN (Aparece arriba en mobile) */}
+        <div className="flex flex-col gap-4 order-1 lg:order-2">
           <div className="w-full flex flex-col items-center justify-center">
             <motion.div
               whileHover={{ scale: 1.05, rotate: 2 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-6 border-[#c9c9d2] shadow-[0_0_20px_rgba(255,255,255,0.1)] bg-[#111112] mb-4"
+              className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-6 border-[#c9c9d2] shadow-[0_0_20px_rgba(255,255,255,0.1)] bg-[#111112] mb-4"
             >
               <img
                 src={targetUser.avatar_url}
@@ -460,27 +460,27 @@ export default function TargetProfilePage() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-[#111112] p-5 rounded-3xl flex flex-col justify-between">
+          <div className="grid grid-cols-2 gap-3 md:gap-4">
+            <div className="bg-[#111112] p-3 md:p-5 rounded-3xl flex flex-col justify-between min-h-[9rem] md:min-h-0">
               <div>
-                <h3 className="font-[family-name:var(--font-bayon)] text-lg text-[#ffffff] tracking-widest mb-2">
+                <h3 className="font-[family-name:var(--font-bayon)] text-xs md:text-lg text-[#ffffff] tracking-widest mb-1 md:mb-2">
                   BIOGRAPHY
                 </h3>
-                <p className="text-sm font-medium text-zinc-400 leading-relaxed">
+                <p className="text-[11px] md:text-sm font-medium text-zinc-400 leading-relaxed line-clamp-4 md:line-clamp-none">
                   {targetUser.bio}
                 </p>
               </div>
-              <span className="text-xs text-zinc-600 font-[family-name:var(--font-bayon)] tracking-wider block mt-4 uppercase">
+              <span className="text-[9px] md:text-xs text-zinc-600 font-[family-name:var(--font-bayon)] tracking-wider block mt-2 uppercase">
                 LOCATION: {targetUser.location}
               </span>
             </div>
 
-            <div className="bg-[#111112] p-5 rounded-3xl grid grid-cols-2 gap-2 items-center text-center">
+            <div className="bg-[#111112] p-3 md:p-5 rounded-3xl grid grid-cols-2 gap-1 md:gap-2 items-center text-center">
               <div className="border-r border-zinc-800 py-2 hover:bg-white/5 transition-colors rounded-l-xl">
-                <div className="font-[family-name:var(--font-biscuit)] text-4xl text-[#E23C3C] leading-none mb-1">
+                <div className="font-[family-name:var(--font-biscuit)] text-2xl md:text-4xl text-[#E23C3C] leading-none mb-1">
                   {userReviews.length}
                 </div>
-                <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase">
+                <p className="font-[family-name:var(--font-bayon)] text-[9px] md:text-xs text-zinc-500 tracking-widest uppercase">
                   REVIEWS
                 </p>
               </div>
@@ -492,17 +492,17 @@ export default function TargetProfilePage() {
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                <p className="font-biscuit text-4xl text-[#ffffff] leading-none mb-1">
+                <p className="font-biscuit text-2xl md:text-4xl text-[#ffffff] leading-none mb-1">
                   {collectionAlbums.length}
                 </p>
-                <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase">
+                <p className="font-[family-name:var(--font-bayon)] text-[9px] md:text-xs text-zinc-500 tracking-widest uppercase">
                   FAVORITES
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="p-2 grid grid-cols-3 text-center shadow-md px-30">
+          <div className="p-2 grid grid-cols-3 text-center shadow-md px-2 sm:px-12 md:px-20 lg:px-30">
             <div
               className="border-r border-zinc-800 hover:text-[#E23C3C] transition-colors cursor-pointer"
               onClick={() =>
@@ -511,10 +511,10 @@ export default function TargetProfilePage() {
                   ?.scrollIntoView({ behavior: "smooth" })
               }
             >
-              <p className="font-(family-name:--font-bayon) text-2xl tracking-wider">
+              <p className="font-(family-name:--font-bayon) text-lg md:text-2xl tracking-wider">
                 {totalPlaylists}
               </p>
-              <p className="font-(family-name:--font-bayon) text-xs tracking-widest">
+              <p className="font-(family-name:--font-bayon) text-[10px] md:text-xs tracking-widest">
                 SHELVES
               </p>
             </div>
@@ -527,10 +527,10 @@ export default function TargetProfilePage() {
                 setIsFriendsModalOpen(true);
               }}
             >
-              <p className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-wider">
+              <p className="font-[family-name:var(--font-bayon)] text-lg md:text-2xl text-white tracking-wider">
                 {followerCount}
               </p>
-              <p className="font-[family-name:var(--font-bayon)] text-xs text-[#ffffff] tracking-widest">
+              <p className="font-[family-name:var(--font-bayon)] text-[10px] md:text-xs text-[#ffffff] tracking-widest">
                 FOLLOWERS
               </p>
             </div>
@@ -543,10 +543,10 @@ export default function TargetProfilePage() {
                 setIsFriendsModalOpen(true);
               }}
             >
-              <p className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-wider">
+              <p className="font-[family-name:var(--font-bayon)] text-lg md:text-2xl text-white tracking-wider">
                 {followingCount}
               </p>
-              <p className="font-[family-name:var(--font-bayon)] text-xs text-[#ffffff] tracking-widest">
+              <p className="font-[family-name:var(--font-bayon)] text-[10px] md:text-xs text-[#ffffff] tracking-widest">
                 FOLLOWING
               </p>
             </div>
@@ -557,7 +557,7 @@ export default function TargetProfilePage() {
             {!isOwner ? (
               <button
                 onClick={handleFollowToggle}
-                className={`font-[family-name:var(--font-bayon)] text-sm md:text-base px-8 py-2 rounded-full tracking-widest uppercase transition-all shadow-md cursor-pointer border ${
+                className={`font-[family-name:var(--font-bayon)] text-xs md:text-base px-8 py-2 rounded-full tracking-widest uppercase transition-all shadow-md cursor-pointer border font-bold ${
                   isFollowing
                     ? "bg-transparent text-[#E23C3C] border-[#E23C3C] hover:bg-[#8E0B0B]/20"
                     : "bg-[#E23C3C] text-black border-[#E23C3C] hover:bg-[#8E0B0B] hover:text-white"
@@ -665,7 +665,7 @@ export default function TargetProfilePage() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.1 }}
                 ref={carouselRef}
-                className="h-[13rem] w-full flex items-center overflow-x-auto gap-6 scroll-smooth px-14 no-scrollbar"
+                className="h-[10rem] md:h-[13rem] w-full flex items-center overflow-x-auto gap-4 md:gap-6 scroll-smooth px-4 md:px-14 no-scrollbar"
                 style={{ scrollbarWidth: "none" }}
               >
                 {collectionAlbums.map((albumId: string) => {
@@ -678,20 +678,20 @@ export default function TargetProfilePage() {
                     <motion.div
                       variants={slideInRightVariant}
                       key={albumId}
-                      className="w-36 group/item cursor-pointer shrink-0"
+                      className="w-28 md:w-36 group/item cursor-pointer shrink-0"
                     >
                       <Link href={`/album/${albumId}`}>
-                        <div className="w-36 h-36 overflow-hidden shadow-lg border-3 border-transparent group-hover/item:border-[#E23C3C] transition-colors relative">
+                        <div className="w-28 h-28 md:w-36 md:h-36 overflow-hidden shadow-lg border-3 border-transparent group-hover/item:border-[#E23C3C] transition-colors relative">
                           <img
                             src={album.images[0]?.url || noPhoto.src}
                             alt={album.name}
                             className="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-500"
                           />
                           <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300">
-                            <p className="font-[family-name:var(--font-bayon)] text-lg text-white tracking-wide truncate px-2 text-center w-full">
+                            <p className="font-[family-name:var(--font-bayon)] text-sm md:text-lg text-white tracking-wide truncate px-2 text-center w-full">
                               {album.name}
                             </p>
-                            <p className="font-sans text-xs text-[#E23C3C] truncate px-2 text-center w-full">
+                            <p className="font-sans text-[10px] md:text-xs text-[#E23C3C] truncate px-2 text-center w-full">
                               {album.artists[0]?.name}
                             </p>
                           </div>
@@ -742,7 +742,7 @@ export default function TargetProfilePage() {
           </div>
 
           <div>
-            <div className="font-[family-name:var(--font-biscuit)] text-6xl text-[#E23C3C] tracking-wide uppercase leading-none justify-end flex mt-12 mb-4">
+            <div className="font-[family-name:var(--font-biscuit)] text-3xl md:text-5xl lg:text-6xl text-[#E23C3C] tracking-wide uppercase leading-none justify-end flex mt-12 mb-4">
               <div className="text-[#ffffff] mr-4">{targetUser.username}'s </div>
               SHELVES
             </div>
@@ -763,7 +763,7 @@ export default function TargetProfilePage() {
                 <motion.div variants={fadeInUpVariant}>
                   <div
                     onClick={() => setIsCreateModalOpen(true)}
-                    className="relative bg-[#111112] p-6 rounded-[2rem] border border-zinc-800 hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-[24rem] shadow-xl group cursor-pointer justify-center items-center"
+                    className="relative bg-[#111112] p-6 rounded-[2rem] border border-zinc-800 hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-full max-w-[24rem] mx-auto md:w-auto md:max-w-none shadow-xl group cursor-pointer justify-center items-center"
                   >
                     <div className="flex flex-col items-center justify-center h-full w-full gap-2 hover:scale-105 transition-transform duration-300">
                       <button className="w-16 h-16 bg-[#962828] group-hover:bg-[#E23C3C] transition-colors rounded-full flex items-center justify-center shadow-md z-10 cursor-pointer">
@@ -792,7 +792,7 @@ export default function TargetProfilePage() {
                   key={playlist.id}
                   onClick={() => setSelectedPlaylist(playlist)}
                 >
-                  <div className="relative bg-[#111112] p-6 rounded-[2rem] border border-[#111112] hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-[24rem] shadow-xl group cursor-pointer hover:-translate-y-2">
+                  <div className="relative bg-[#111112] p-6 rounded-[2rem] border border-[#111112] hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-full max-w-[24rem] mx-auto md:w-auto md:max-w-none shadow-xl group cursor-pointer hover:-translate-y-2">
                     <div className="w-full text-left">
                       <h3 className="font-[family-name:var(--font-bayon)] text-xl text-white uppercase leading-none text-center">
                         {playlist.title}

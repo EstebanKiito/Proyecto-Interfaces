@@ -5,6 +5,7 @@ import albumsJson from "@/data/albums.json";
 import currentUserData from "@/data/currentUser.json";
 import { useRouter, usePathname } from "next/navigation";
 import { handleLogout, SESSION_KEY, SessionUser } from "@/lib/auth";
+import { motion, AnimatePresence } from "framer-motion";
 
 // — 1. Exportamos la interfaz para que el padre la conozca —
 export interface NavbarHandle {
@@ -60,6 +61,7 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
   const [filterQuery, setFilterQuery] = useState("");
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [session, setSession] = useState<SessionUser | null>(null);
 
@@ -123,6 +125,14 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
 
     return merged;
   }, []);
+
+  // Close mobile hamburger menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setIsSearchActive(false);
+    setSearchQuery("");
+    startTransition(() => setFilterQuery(""));
+  }, [pathname]);
 
   const filteredAlbums = useMemo(() => {
     if (!filterQuery.trim()) return [];
@@ -199,27 +209,27 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
 
   return (
     <>
-      {/* ── Overlay blur cuando la búsqueda está activa ── */}
+      {/* ── Overlay blur cuando la búsqueda o el menú móvil está activo ── */}
       <div
         className={`fixed inset-0 z-20 transition-all duration-500 ease-in-out ${
-          isSearchActive
-            ? "backdrop-blur-md bg-black/40 opacity-100 pointer-events-auto"
+          isSearchActive || isMobileMenuOpen
+            ? "backdrop-blur-md bg-black/60 opacity-100 pointer-events-auto"
             : "backdrop-blur-none bg-transparent opacity-0 pointer-events-none"
         }`}
         onClick={handleOverlayClick}
       />
 
       {/* ── Navbar ── */}
-<header className="absolute top-[0.7rem] w-full z-30 px-10 py-1 bg-gradient-to-b from-black/95 via-black/60 to-transparent pointer-events-none">
-        <div className="grid grid-cols-3 items-center pointer-events-auto">
+      <header className="absolute top-[0.7rem] w-full z-30 px-6 md:px-10 py-1 bg-gradient-to-b from-black/95 via-black/60 to-transparent pointer-events-none">
+        <div className="flex justify-between items-center pointer-events-auto max-w-7xl mx-auto">
 
-          {/* ── IZQUIERDA: Logo ── */}
+          {/* Logo (Siempre a la izquierda) */}
           {!(!session && pathname === "/") ? (
             <Link
               href="/"
               className="flex items-center gap-3 group w-fit"
             >
-              <span className="mt-1 text-4xl font-biscuit tracking-[0.12em] group-hover:tracking-[0.15em]  transition-all duration-300">
+              <span className="mt-1 text-3xl md:text-4xl font-biscuit tracking-[0.12em] group-hover:tracking-[0.15em] transition-all duration-300">
                 Biscuit
               </span>
             </Link>
@@ -227,9 +237,9 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
             <div className="w-fit h-10" />
           )}
 
-          {/* ── CENTRO: Searchbar ── */}
+          {/* ── CENTRO: Searchbar (Solo en Desktop) ── */}
           {pathname !== "/login" ? (
-            <div className="flex flex-col items-center relative">
+            <div className="hidden md:flex flex-col items-center relative">
               <div className="relative flex items-center">
                 {/* Icono lupa */}
                 <svg
@@ -259,7 +269,7 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
                 )}
               </div>
 
-              {/* Resultados */}
+              {/* Resultados (Desktop) */}
               {isSearchActive && (
                 <div
                   className={`absolute top-full mt-3 w-[320px] bg-[#111]/95 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden flex flex-col z-50 shadow-2xl transition-opacity duration-150 ${
@@ -267,7 +277,7 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
                   }`}
                 >
                   {searchQuery.trim() === "" ? (
-                    // SUGERENCIAS DE LA PÁGINA (VACÍA / NUEVO USUARIO)
+                    // SUGERENCIAS
                     <div className="flex flex-col text-left">
                       <div className="px-4 py-2.5 border-b border-white/10 bg-white/5 font-[family-name:var(--font-bayon)] text-[10px] text-gray-400 uppercase tracking-widest font-semibold">
                         Sugerencias de la semana
@@ -410,11 +420,11 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
               )}
             </div>
           ) : (
-            <div />
+            <div className="hidden md:block" />
           )}
 
-          {/* ── DERECHA: Perfil o Login ── */}
-          <div className="flex justify-end items-center" ref={profileRef}>
+          {/* ── DERECHA: Perfil o Login (Solo en Desktop) ── */}
+          <div className="hidden md:flex justify-end items-center" ref={profileRef}>
             {session ? (
               <div className="relative">
                 <button
@@ -489,7 +499,269 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
               </Link>
             )}
           </div>
+
+          {/* ── MOBILE: Botón de Hamburguesa (Solo en Mobile/Tablet) ── */}
+          <div className="flex md:hidden items-center">
+            <button
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              className="text-white hover:text-red-500 focus:outline-none p-2 cursor-pointer z-50"
+            >
+              {isMobileMenuOpen ? (
+                /* Icono cerrar */
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                /* Icono hamburguesa */
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
+
         </div>
+
+        {/* ── MOBILE: Menú Desplegable Slide-Down ── */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="absolute top-full left-0 w-full bg-[#111112]/95 backdrop-blur-md border-b border-white/10 px-6 py-6 flex flex-col gap-6 pointer-events-auto shadow-2xl z-40"
+            >
+              {/* Mobile Search input */}
+              {pathname !== "/login" && (
+                <div className="flex flex-col relative w-full">
+                  <div className="relative flex items-center w-full">
+                    <svg
+                      className="absolute left-3 w-4 h-4 text-gray-500 pointer-events-none"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      viewBox="0 0 24 24"
+                    >
+                      <circle cx="11" cy="11" r="8" />
+                      <path d="m21 21-4.35-4.35" />
+                    </svg>
+
+                    <input
+                      type="text"
+                      placeholder="SEARCH ALBUMS OR USERS"
+                      value={searchQuery}
+                      onChange={handleSearchChange}
+                      onFocus={() => setIsSearchActive(true)}
+                      className="bg-white/5 border border-white/10 focus:border-[#E23C3C] rounded-full text-white placeholder-gray-500 outline-none pl-10 pr-4 py-2.5 w-full transition-all duration-300 text-xs text-center uppercase tracking-widest cursor-text"
+                    />
+
+                    {isPending && (
+                      <div className="absolute right-3 w-3 h-3 border border-white/30 border-t-white/80 rounded-full animate-spin" />
+                    )}
+                  </div>
+
+                  {/* Resultados Mobile Dropdown */}
+                  {isSearchActive && (
+                    <div
+                      className={`mt-2 w-full bg-[#161617] border border-white/10 rounded-2xl overflow-hidden flex flex-col z-50 shadow-xl ${
+                        isPending ? "opacity-50" : "opacity-100"
+                      }`}
+                    >
+                      {searchQuery.trim() === "" ? (
+                        // SUGERENCIAS
+                        <div className="flex flex-col text-left">
+                          <div className="px-4 py-2 border-b border-white/5 bg-white/5 font-[family-name:var(--font-bayon)] text-[9px] text-gray-400 uppercase tracking-widest font-semibold">
+                            Sugerencias de la semana
+                          </div>
+                          <div className="max-h-[220px] overflow-y-auto">
+                            {SUGGESTED_ALBUMS.map((album) => (
+                              <Link
+                                key={album.id}
+                                href={`/album/${album.id}`}
+                                onClick={() => {
+                                  setIsMobileMenuOpen(false);
+                                  setIsSearchActive(false);
+                                  setSearchQuery("");
+                                  startTransition(() => setFilterQuery(""));
+                                }}
+                                className="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 cursor-pointer transition-colors border-b border-white/5 last:border-0"
+                              >
+                                <img
+                                  src={album.images[0].url}
+                                  alt={album.name}
+                                  className="w-8 h-8 object-cover rounded-md flex-shrink-0"
+                                />
+                                <div className="flex flex-col text-left min-w-0">
+                                  <span className="text-white text-xs font-semibold truncate">
+                                    {album.name}
+                                  </span>
+                                  <span className="text-[#E23C3C] text-[9px] uppercase tracking-wider truncate">
+                                    {album.artists[0].name}
+                                  </span>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      ) : (
+                        // BÚSQUEDA REAL
+                        <>
+                          <div className="flex border-b border-white/5 text-[9px] uppercase tracking-wider font-semibold font-[family-name:var(--font-bayon)] bg-white/5">
+                            <button
+                              type="button"
+                              onClick={() => setActiveSearchTab("albums")}
+                              className={`flex-1 py-2 text-center transition-all ${
+                                activeSearchTab === "albums"
+                                  ? "bg-white/5 text-white border-b border-[#E23C3C]"
+                                  : "text-gray-500"
+                              }`}
+                            >
+                              Álbumes ({filteredAlbums.length})
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setActiveSearchTab("users")}
+                              className={`flex-1 py-2 text-center transition-all ${
+                                activeSearchTab === "users"
+                                  ? "bg-white/5 text-white border-b border-[#E23C3C]"
+                                  : "text-gray-500"
+                              }`}
+                            >
+                              Usuarios ({filteredUsers.length})
+                            </button>
+                          </div>
+
+                          <div className="max-h-[220px] overflow-y-auto">
+                            {activeSearchTab === "albums" ? (
+                              filteredAlbums.length > 0 ? (
+                                filteredAlbums.map((album) => (
+                                  <Link
+                                    key={album.id}
+                                    href={`/album/${album.id}`}
+                                    onClick={() => {
+                                      setIsMobileMenuOpen(false);
+                                      setIsSearchActive(false);
+                                      setSearchQuery("");
+                                      startTransition(() => setFilterQuery(""));
+                                    }}
+                                    className="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 cursor-pointer transition-colors border-b border-white/5 last:border-0"
+                                  >
+                                    <img
+                                      src={album.images[0].url}
+                                      alt={album.name}
+                                      className="w-8 h-8 object-cover rounded-md flex-shrink-0"
+                                    />
+                                    <div className="flex flex-col text-left min-w-0">
+                                      <span className="text-white text-xs font-semibold truncate">
+                                        {album.name}
+                                      </span>
+                                      <span className="text-gray-500 text-[9px] uppercase tracking-wider truncate">
+                                        {album.artists[0].name}
+                                      </span>
+                                    </div>
+                                  </Link>
+                                ))
+                              ) : (
+                                <div className="p-4 text-center text-gray-600 text-[9px] uppercase tracking-widest">
+                                  No se encontraron álbumes
+                                </div>
+                              )
+                            ) : (
+                              filteredUsers.length > 0 ? (
+                                filteredUsers.map((user) => {
+                                  const isSelf = session && session.id === user.id;
+                                  const profilePath = isSelf ? "/profile" : `/profile/${user.id}`;
+                                  return (
+                                    <Link
+                                      key={user.id}
+                                      href={profilePath}
+                                      onClick={() => {
+                                        setIsMobileMenuOpen(false);
+                                        setIsSearchActive(false);
+                                        setSearchQuery("");
+                                        startTransition(() => setFilterQuery(""));
+                                      }}
+                                      className="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 cursor-pointer transition-colors border-b border-white/5 last:border-0"
+                                    >
+                                      <img
+                                        src={user.avatar_url || "/images/spike.png"}
+                                        alt={user.name}
+                                        className="w-8 h-8 object-cover rounded-full flex-shrink-0"
+                                      />
+                                      <div className="flex flex-col text-left min-w-0">
+                                        <span className="text-white text-xs font-semibold truncate">
+                                          {user.name}
+                                        </span>
+                                        <span className="text-[#E23C3C] text-[9px] truncate">
+                                          @{user.username} {isSelf && <span className="text-zinc-500 text-[8px] uppercase tracking-widest">(Tú)</span>}
+                                        </span>
+                                      </div>
+                                    </Link>
+                                  );
+                                })
+                              ) : (
+                                <div className="p-4 text-center text-gray-600 text-[9px] uppercase tracking-widest">
+                                  No se encontraron usuarios
+                                </div>
+                              )
+                            )}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Mobile Navigation links */}
+              <div className="flex flex-col text-center divide-y divide-white/5 font-[family-name:var(--font-bayon)] tracking-[0.2em] uppercase text-sm">
+                {session ? (
+                  <>
+                    <div className="flex items-center justify-center gap-3 py-3 pb-5">
+                      <img
+                        src={session.avatar_url}
+                        alt={session.name}
+                        className="w-8 h-8 rounded-full object-cover ring-1 ring-white/20"
+                      />
+                      <div className="flex flex-col min-w-0 text-left">
+                        <span className="text-white text-xs font-semibold truncate">{session.name}</span>
+                        <span className="text-gray-500 text-[10px] truncate">@{session.username}</span>
+                      </div>
+                    </div>
+
+                    <Link
+                      href="/profile"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="py-4 text-zinc-300 hover:text-white transition-colors"
+                    >
+                      My Profile
+                    </Link>
+
+                    <button
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        handleLogout(router);
+                      }}
+                      className="py-4 text-red-500 hover:text-red-400 transition-colors w-full text-center cursor-pointer"
+                    >
+                      Log out
+                    </button>
+                  </>
+                ) : (
+                  <Link
+                    href="/login"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="py-4 text-[#E23C3C] hover:text-red-400 transition-colors"
+                  >
+                    Login
+                  </Link>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
       </header>
     </>
   );

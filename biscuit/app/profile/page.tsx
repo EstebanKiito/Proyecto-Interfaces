@@ -305,17 +305,17 @@ export default function ProfilePage() {
     >
 
       {/* GRILLA PRINCIPAL DE 2 COLUMNAS (IZQUIERDA Y DERECHA) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-30 max-w-6xl mx-auto items-start">
-        {/* COLUMNA IZQUIERDA */}
-        <div className="flex flex-col w-full mt-10">
-          <h1 className="font-biscuit text-5xl xl:text-7xl text-[#ffffff] uppercase m-0 p-0 leading-tight">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-20 max-w-6xl mx-auto items-start">
+        {/* COLUMNA IZQUIERDA (Aparece abajo en mobile) */}
+        <div className="flex flex-col w-full mt-10 order-2 lg:order-1">
+          <h1 className="font-biscuit text-4xl md:text-5xl xl:text-7xl text-[#ffffff] uppercase m-0 p-0 leading-tight max-w-full">
             {user.username}'s
           </h1>
-          <h2 className="font-biscuit text-4xl xl:text-7xl text-[#E23C3C] tracking-wide uppercase leading-none mb-5">
+          <h2 className="font-biscuit text-4xl md:text-4xl xl:text-7xl text-[#E23C3C] tracking-wide uppercase leading-none mb-5">
             COLLECTION
           </h2>
 
-          <div className="flex flex-col w-[30rem]">
+          <div className="flex flex-col w-full max-w-[30rem] mx-auto lg:mx-0">
             {/* Animación Hover en la caja del Ranking */}
             <motion.div
               variants={hoverScaleVariant}
@@ -391,14 +391,14 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* COLUMNA DERECHA */}
-        <div className="flex flex-col gap-4">
+        {/* COLUMNA DERECHA (Aparece arriba en mobile) */}
+        <div className="flex flex-col gap-4 order-1 lg:order-2">
           <div className="w-full flex justify-center lg:justify-center">
             {/* Animación Hover en el Avatar y rotación sutil */}
             <motion.div
               whileHover={{ scale: 1.05, rotate: 2 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-4 border-[#1a1a1a] shadow-[0_0_20px_rgba(255,255,255,0.1)] bg-[#111112]"
+              className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-4 border-[#1a1a1a] shadow-[0_0_20px_rgba(255,255,255,0.1)] bg-[#111112]"
             >
               <img
                 src={user.avatar_url}
@@ -412,30 +412,30 @@ export default function ProfilePage() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-[#111112] p-5 rounded-3xl flex flex-col justify-between">
+          <div className="grid grid-cols-2 gap-3 md:gap-4">
+            <div className="bg-[#111112] p-3 md:p-5 rounded-3xl flex flex-col justify-between min-h-[9rem] md:min-h-0">
               <div>
-                <h3 className="font-[family-name:var(--font-bayon)] text-lg text-[#ffffff] tracking-widest mb-2">
-                  BIOGRAPHY
+                <h3 className="font-[family-name:var(--font-bayon)] text-xs md:text-lg text-[#ffffff] tracking-widest mb-1 md:mb-2">
+                   BIOGRAPHY
                 </h3>
-                <p className=" text-sm font-medium text-zinc-400 leading-relaxed">
+                <p className="text-[11px] md:text-sm font-medium text-zinc-400 leading-relaxed line-clamp-4 md:line-clamp-none">
                   {user.bio}
                 </p>
               </div>
-              <span className="text-xs text-zinc-600 font-[family-name:var(--font-bayon)] tracking-wider block mt-4 uppercase">
+              <span className="text-[9px] md:text-xs text-zinc-600 font-[family-name:var(--font-bayon)] tracking-wider block mt-2 uppercase">
                 LOCATION: {user.location}
               </span>
             </div>
 
-            <div className="bg-[#111112] p-5 rounded-3xl grid grid-cols-2 gap-2 items-center text-center">
+            <div className="bg-[#111112] p-3 md:p-5 rounded-3xl grid grid-cols-2 gap-1 md:gap-2 items-center text-center">
               <div className="border-r border-zinc-800 py-2 hover:bg-white/5 transition-colors rounded-l-xl">
                 <Link
                   href="/profile/ranking"
-                  className="font-[family-name:var(--font-biscuit)] text-4xl text-[#E23C3C] leading-none mb-1 cursor-pointer block"
+                  className="font-[family-name:var(--font-biscuit)] text-2xl md:text-4xl text-[#E23C3C] leading-none mb-1 cursor-pointer block"
                 >
                   {userReviews.length}
                 </Link>
-                <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase ">
+                <p className="font-[family-name:var(--font-bayon)] text-[9px] md:text-xs text-zinc-500 tracking-widest uppercase">
                   REVIEWS
                 </p>
               </div>
@@ -447,17 +447,17 @@ export default function ProfilePage() {
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                <p className="font-biscuit text-4xl text-[#ffffff] leading-none mb-1">
+                <p className="font-biscuit text-2xl md:text-4xl text-[#ffffff] leading-none mb-1">
                   {collectionAlbums.length}
                 </p>
-                <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 tracking-widest uppercase">
+                <p className="font-[family-name:var(--font-bayon)] text-[9px] md:text-xs text-zinc-500 tracking-widest uppercase">
                   FAVORITES
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="p-2 grid grid-cols-3 text-center shadow-md px-30">
+          <div className="p-2 grid grid-cols-3 text-center shadow-md px-2 sm:px-12 md:px-20 lg:px-30">
             <div
               className="border-r border-zinc-800 hover:text-[#E23C3C] transition-colors cursor-pointer"
               onClick={() =>
@@ -466,10 +466,10 @@ export default function ProfilePage() {
                   ?.scrollIntoView({ behavior: "smooth" })
               }
             >
-              <p className="font-(family-name:--font-bayon) text-2xl tracking-wider">
+              <p className="font-(family-name:--font-bayon) text-lg md:text-2xl tracking-wider">
                 {totalPlaylists}
               </p>
-              <p className="font-(family-name:--font-bayon) text-xs tracking-widest">
+              <p className="font-(family-name:--font-bayon) text-[10px] md:text-xs tracking-widest">
                 SHELVES
               </p>
             </div>
@@ -480,10 +480,10 @@ export default function ProfilePage() {
                 setIsFriendsModalOpen(true);
               }}
             >
-              <p className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-wider">
+              <p className="font-[family-name:var(--font-bayon)] text-lg md:text-2xl text-white tracking-wider">
                 {followerCount}
               </p>
-              <p className="font-[family-name:var(--font-bayon)] text-xs text-[#ffffff] tracking-widest">
+              <p className="font-[family-name:var(--font-bayon)] text-[10px] md:text-xs text-[#ffffff] tracking-widest">
                 FOLLOWERS
               </p>
             </div>
@@ -494,10 +494,10 @@ export default function ProfilePage() {
                 setIsFriendsModalOpen(true);
               }}
             >
-              <p className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-wider">
+              <p className="font-[family-name:var(--font-bayon)] text-lg md:text-2xl text-white tracking-wider">
                 {followingCount}
               </p>
-              <p className="font-[family-name:var(--font-bayon)] text-xs text-[#ffffff] tracking-widest">
+              <p className="font-[family-name:var(--font-bayon)] text-[10px] md:text-xs text-[#ffffff] tracking-widest">
                 FOLLOWING
               </p>
             </div>
@@ -507,7 +507,7 @@ export default function ProfilePage() {
           <div className="flex justify-center mt-2">
             <button
               onClick={() => setIsEditProfileOpen(true)}
-              className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer"
+              className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-xs md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer font-bold"
             >
               EDITar perfil
             </button>
@@ -550,15 +550,15 @@ export default function ProfilePage() {
         className="min-h-screen flex mt-10 shadow-lg w-full"
       >
         <div className="mt-15 rounded-3xl shadow-lg flex flex-col w-full overflow-hidden">
-          <div className="font-biscuit text-6xl text-[#ffffff] tracking-wide uppercase leading-none ">
+          <div className="font-biscuit text-4xl md:text-5xl lg:text-6xl text-[#ffffff] tracking-wide uppercase leading-none ">
             MY
           </div>
           <div className="flex items-center gap-6 mb-4">
-            <div className="font-biscuit text-6xl text-[#E23C3C] tracking-wide uppercase leading-none ">
+            <div className="font-biscuit text-4xl md:text-5xl lg:text-6xl text-[#E23C3C] tracking-wide uppercase leading-none ">
               COLLECTION
             </div>
             <div
-              className="w-16 h-16 xl:w-20 xl:h-20 rounded-full overflow-hidden border-2 border-[#c9c9d2] shadow-xl bg-[#111112] cursor-pointer hover:border-[#5f5656] transition-colors"
+              className="w-8 h-8 xl:w-20 xl:h-20 rounded-full overflow-hidden border-2 border-[#c9c9d2] shadow-xl bg-[#111112] cursor-pointer hover:border-[#5f5656] transition-colors"
               onClick={() =>
                 document
                   .getElementById("main-page")
@@ -604,7 +604,7 @@ export default function ProfilePage() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.1 }}
                 ref={carouselRef}
-                className="h-[13rem] w-full flex items-center overflow-x-auto gap-6 scroll-smooth px-14 no-scrollbar"
+                className="h-[10rem] md:h-[13rem] w-full flex items-center overflow-x-auto gap-4 md:gap-6 scroll-smooth px-4 md:px-14 no-scrollbar"
                 style={{ scrollbarWidth: "none" }}
               >
                 {collectionAlbums.map((albumId: string) => {
@@ -617,20 +617,20 @@ export default function ProfilePage() {
                     <motion.div
                       variants={slideInRightVariant}
                       key={albumId}
-                      className="w-36 group/item cursor-pointer shrink-0"
+                      className="w-28 md:w-36 group/item cursor-pointer shrink-0"
                     >
                       <Link href={`/album/${albumId}`}>
-                        <div className="w-36 h-36 overflow-hidden shadow-lg border-3 border-transparent group-hover/item:border-[#E23C3C] transition-colors relative">
+                        <div className="w-28 h-28 md:w-36 md:h-36 overflow-hidden shadow-lg border-3 border-transparent group-hover/item:border-[#E23C3C] transition-colors relative">
                           <img
                             src={album.images[0]?.url || noPhoto.src}
                             alt={album.name}
                             className="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-500"
                           />
                           <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300">
-                            <p className="font-[family-name:var(--font-bayon)] text-lg text-white tracking-wide truncate px-2 text-center w-full">
+                            <p className="font-[family-name:var(--font-bayon)] text-sm md:text-lg text-white tracking-wide truncate px-2 text-center w-full">
                               {album.name}
                             </p>
-                            <p className="font-sans text-xs text-[#E23C3C] truncate px-2 text-center w-full">
+                            <p className="font-sans text-[10px] md:text-xs text-[#E23C3C] truncate px-2 text-center w-full">
                               {album.artists[0]?.name}
                             </p>
                           </div>
@@ -687,7 +687,7 @@ export default function ProfilePage() {
           </div>
 
           <div>
-            <div className="font-[family-name:var(--font-biscuit)] text-6xl text-[#E23C3C] tracking-wide uppercase leading-none justify-end flex mt-12 mb-4">
+            <div className="font-[family-name:var(--font-biscuit)] text-4xl md:text-5xl lg:text-6xl text-[#E23C3C] tracking-wide uppercase leading-none justify-end flex mt-12 mb-4">
               <div className="text-[#ffffff] mr-4">MY </div>
               SHELVES
             </div>
@@ -705,7 +705,7 @@ export default function ProfilePage() {
               <motion.div variants={fadeInUpVariant}>
                 <div 
                   onClick={() => setIsCreateModalOpen(true)}
-                  className="relative bg-[#111112] p-6 rounded-[2rem] border border-zinc-800 hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-[24rem] shadow-xl group cursor-pointer justify-center items-center"
+                  className="relative bg-[#111112] p-6 rounded-[2rem] border border-zinc-800 hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-full max-w-[24rem] mx-auto md:w-auto md:max-w-none shadow-xl group cursor-pointer justify-center items-center"
                 >
                   <div className="flex flex-col items-center justify-center h-full w-full gap-2 hover:scale-105 transition-transform duration-300">
                     <button className="w-16 h-16 bg-[#962828] group-hover:bg-[#E23C3C] transition-colors rounded-full flex items-center justify-center shadow-md z-10 cursor-pointer">
@@ -737,7 +737,7 @@ export default function ProfilePage() {
                   key={playlist.id}
                   onClick={() => setSelectedPlaylist(playlist)}
                 >
-                  <div className="relative bg-[#111112] p-6 rounded-[2rem] border border-[#111112] hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-[24rem] shadow-xl group cursor-pointer hover:-translate-y-2">
+                  <div className="relative bg-[#111112] p-6 rounded-[2rem] border border-[#111112] hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-full max-w-[24rem] mx-auto md:w-auto md:max-w-none shadow-xl group cursor-pointer hover:-translate-y-2">
                     <div className="w-full text-left">
                       <h3 className="font-[family-name:var(--font-bayon)] text-xl text-white uppercase leading-none text-center">
                         {playlist.title}
