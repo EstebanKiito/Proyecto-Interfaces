@@ -174,8 +174,17 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
     window.addEventListener("storage", checkSession);
 
     const handleOpenSearch = () => {
-      setIsSearchActive(true);
-      setTimeout(() => inputRef.current?.focus(), 50);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (window.innerWidth < 768) {
+        setIsMobileMenuOpen(true);
+        setTimeout(() => {
+          const mobileInput = document.querySelector('input[placeholder="SEARCH ALBUMS OR USERS"]') as HTMLInputElement;
+          if (mobileInput) mobileInput.focus();
+        }, 300);
+      } else {
+        setIsSearchActive(true);
+        setTimeout(() => inputRef.current?.focus(), 50);
+      }
     };
 
     window.addEventListener("openSearchModal", handleOpenSearch);
