@@ -164,7 +164,7 @@ export default function Home() {
     if (!session) return;
     const interval = setInterval(() => {
       setCurrentSlideIndex((prev) => (prev + 1) % SPOTLIGHT_SLIDES.length);
-    }, 7000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [session]);
 
@@ -282,11 +282,26 @@ export default function Home() {
           const section = document.getElementById('scroll-section');
           const vinyl = document.getElementById('vinyl-element');
           const text = document.getElementById('text-element');
+          const splineContainer = document.getElementById('spline-container');
 
-          if (!section || !vinyl || !text) return;
+          const windowHeight = window.innerHeight;
+          const scrollY = window.scrollY || window.pageYOffset;
+
+          // Optimización de rendimiento: Ocultar el lienzo 3D de Spline cuando se sale del viewport
+          if (splineContainer) {
+            if (scrollY > windowHeight - 50) {
+              splineContainer.style.display = 'none';
+            } else {
+              splineContainer.style.display = 'flex';
+            }
+          }
+
+          if (!section || !vinyl || !text) {
+            ticking = false;
+            return;
+          }
 
           const rect = section.getBoundingClientRect();
-          const windowHeight = window.innerHeight;
 
           let progress = 0;
           if (rect.top <= 0) {
