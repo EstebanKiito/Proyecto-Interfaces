@@ -12,6 +12,7 @@ import playlistsData from "@/data/playlists.json";
 import PlaylistModal from "@/components/playlistModal";
 import CreatePlaylistModal from "@/components/createPlaylistModal";
 import FriendsModal from "@/components/friendsModal";
+import EditProfileModal from "@/components/editProfileModal";
 import noPhoto from "../../public/images/no-photo.jpg";
 
 // ==========================================
@@ -53,6 +54,7 @@ export default function ProfilePage() {
   const [followerCount, setFollowerCount] = useState(0);
   const [followingCount, setFollowingCount] = useState(0);
   const [isFriendsModalOpen, setIsFriendsModalOpen] = useState(false);
+  const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
   const [friendsModalMode, setFriendsModalMode] = useState<"followers" | "following">("followers");
 
   // Effect to authenticate and load user session
@@ -79,6 +81,17 @@ export default function ProfilePage() {
           if (localUsersRaw) {
             const localUsers = JSON.parse(localUsersRaw);
             fullUser = localUsers.find((u: any) => u.id === sessionData.id);
+          }
+        }
+
+        // Apply local profile override if exists
+        if (fullUser) {
+          const overrideRaw = localStorage.getItem(`profileOverride_${fullUser.id}`);
+          if (overrideRaw) {
+            try {
+              const override = JSON.parse(overrideRaw);
+              fullUser = { ...fullUser, ...override };
+            } catch (e) {}
           }
         }
 
@@ -479,7 +492,7 @@ export default function ProfilePage() {
           {/* BOTÓN EDIT PROFILE */}
           <div className="flex justify-center mt-2">
             <button
-              onClick={() => alert("Editar perfil en desarrollo...")}
+              onClick={() => setIsEditProfileOpen(true)}
               className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer"
             >
               EDIT PROFILE
@@ -777,6 +790,18 @@ export default function ProfilePage() {
           mode={friendsModalMode}
           currentUserId={user.id}
           onRelationsChanged={refreshRelations}
+        />
+      )}
+
+      {isEditProfileOpen && (
+        <EditProfileModal
+          isOpen={isEditProfileOpen}
+          onClose={() => setIsEditProfileOpen(false)}
+          user={user}
+          onProfileUpdated={(updatedUser) => {
+            setUser(updatedUser);
+            window.location.reload();
+          }}
         />
       )}
     </motion.main>

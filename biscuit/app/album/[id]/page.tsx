@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
+import { motion } from "framer-motion";
 
 // Importamos los JSON desde tu carpeta de datos
 import albumsJson from "@/data/albums.json";
@@ -264,7 +265,20 @@ export default function Album() {
       }
     }
 
-    allUsers.forEach((u) => {
+    const overriddenUsers = allUsers.map((u) => {
+      if (typeof window !== "undefined") {
+        const overrideRaw = localStorage.getItem(`profileOverride_${u.id}`);
+        if (overrideRaw) {
+          try {
+            const override = JSON.parse(overrideRaw);
+            return { ...u, ...override };
+          } catch (e) {}
+        }
+      }
+      return u;
+    });
+
+    overriddenUsers.forEach((u) => {
       // Buscar reseña en JSON estático
       const staticRev = reviewsJson.reviews.find(
         (r) => r.album_id === albumId && r.user_id === u.id
@@ -487,7 +501,12 @@ export default function Album() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-[240px_1fr_240px] gap-10 mt-6">
           <div className="hidden md:block"></div>
-          <div className="flex flex-col md:flex-row md:items-baseline gap-4 pb-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="flex flex-col md:flex-row md:items-baseline gap-4 pb-4"
+          >
             <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-bayon)] uppercase tracking-wide text-gray-100">
               {albumTitle}
             </h1>
@@ -495,16 +514,26 @@ export default function Album() {
               <span className="hover:text-white cursor-pointer transition-colors font-[family-name:var(--font-bayon)]">{artistName}</span>
               <span>{releaseYear}</span>
             </div>
-          </div>
+          </motion.div>
           <div className="hidden md:block"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-[240px_1fr_240px] gap-10 items-start">
-          <aside className="relative md:-mt-40 z-20 flex flex-col gap-4">
+          <motion.aside
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="relative md:-mt-40 z-20 flex flex-col gap-4"
+          >
             <img src={coverUrl} alt={`Cover of ${albumTitle}`} className="w-full aspect-square object-cover rounded-md shadow-2xl border border-white/10" />
-          </aside>
+          </motion.aside>
 
-          <div className="flex flex-col gap-8 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            className="flex flex-col gap-8 w-full"
+          >
             <section className="bg-gradient-to-b from-[#1c1c1c] to-[#0a0a0a] rounded-lg shadow-xl border border-white/5 overflow-hidden">
               <div className="flex flex-col">
                 {albumTracks.length > 0 ? (
@@ -575,9 +604,14 @@ export default function Album() {
                 </div>
               </div>
             )}
-          </div>
+          </motion.div>
 
-          <aside className="bg-[#111111] text-gray-200 rounded-lg shadow-2xl overflow-hidden flex flex-col border border-white/10">
+          <motion.aside
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="bg-[#111111] text-gray-200 rounded-lg shadow-2xl overflow-hidden flex flex-col border border-white/10"
+          >
             <div className="flex justify-around p-4 border-b border-white/10 bg-[#161616]">
               {["reviewed", "liked", "listenlist"].map((action) => {
                 const isActive = activeActions[action as keyof typeof activeActions];
@@ -673,7 +707,7 @@ export default function Album() {
                 Add to lists...
               </button>
             </div>
-          </aside>
+          </motion.aside>
         </div>
       </div>
 

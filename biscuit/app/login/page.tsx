@@ -78,8 +78,18 @@ export default function LoginPage() {
       return;
     }
 
-    // 1. Check in hardcoded currentUserData
-    const staticUsers = currentUserData.users;
+    // 1. Check in hardcoded currentUserData (with local overrides merged)
+    const staticUsers = currentUserData.users.map((u) => {
+      const overrideRaw = localStorage.getItem(`profileOverride_${u.id}`);
+      if (overrideRaw) {
+        try {
+          const override = JSON.parse(overrideRaw);
+          return { ...u, ...override };
+        } catch (e) {}
+      }
+      return u;
+    });
+
     let foundUser = staticUsers.find(
       (u) =>
         u.username.toLowerCase() === loginIdentifier.toLowerCase() ||
@@ -92,7 +102,18 @@ export default function LoginPage() {
       if (localUsersRaw) {
         try {
           const localUsers = JSON.parse(localUsersRaw) as any[];
-          foundUser = localUsers.find(
+          const overriddenLocalUsers = localUsers.map((u: any) => {
+            const overrideRaw = localStorage.getItem(`profileOverride_${u.id}`);
+            if (overrideRaw) {
+              try {
+                const override = JSON.parse(overrideRaw);
+                return { ...u, ...override };
+              } catch (e) {}
+            }
+            return u;
+          });
+
+          foundUser = overriddenLocalUsers.find(
             (u) =>
               u.username.toLowerCase() === loginIdentifier.toLowerCase() ||
               u.email.toLowerCase() === loginIdentifier.toLowerCase()

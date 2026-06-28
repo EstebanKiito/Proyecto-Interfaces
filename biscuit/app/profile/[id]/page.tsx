@@ -131,6 +131,15 @@ export default function TargetProfilePage() {
       return;
     }
 
+    // Apply local profile override if exists
+    const overrideRaw = localStorage.getItem(`profileOverride_${fullUser.id}`);
+    if (overrideRaw) {
+      try {
+        const override = JSON.parse(overrideRaw);
+        fullUser = { ...fullUser, ...override };
+      } catch (e) {}
+    }
+
     setTargetUser(fullUser);
   }, [targetId]);
 
