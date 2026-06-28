@@ -43,7 +43,7 @@ function CatalogueCarousel({ title, albums }: { title: string; albums: any[] }) 
   return (
     <div className="relative group flex flex-col gap-3 py-6 px-12 overflow-hidden w-full">
       {/* Título de la sección */}
-      <h3 className="font-[family-name:var(--font-bayon)] text-2xl text-zinc-300 tracking-wider uppercase">
+      <h3 className="font-[family-name:var(--font-bayon)] text-3xl text-zinc-300 tracking-wider uppercase">
         {title}
       </h3>
 
@@ -139,7 +139,7 @@ const SPOTLIGHT_SLIDES = [
     title: "To Pimp a Butterfly",
     artist: "KENDRICK LAMAR",
     year: "2015",
-    tag: "★ MÁXIMA CALIFICACIÓN",
+    tag: "★ MÁXIMA CALIFICACION",
     description: "Una obra maestra que fusiona hip-hop, jazz libre, funk y poesía hablada para entregar una declaración social, política y personal sobre la cultura afroamericana moderna.",
     cover: "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-019-Kendrick-Lamar-To-Pimp-a-Butterfly.jpg?w=1000"
   },
@@ -164,7 +164,7 @@ export default function Home() {
     if (!session) return;
     const interval = setInterval(() => {
       setCurrentSlideIndex((prev) => (prev + 1) % SPOTLIGHT_SLIDES.length);
-    }, 6000);
+    }, 7000);
     return () => clearInterval(interval);
   }, [session]);
 
@@ -328,11 +328,10 @@ export default function Home() {
     );
   }
 
-  // VISTA CON SESIÓN ACTIVA (CATÁLOGO AL ESTILO NETFLIX)
+  // VISTA CON SESIÓN ACTIVA 
   if (session) {
     return (
       <main className="w-full min-h-screen bg-[#050505] text-white pt-20 pb-20 font-sans">
-        {/* BANNER SPOTLIGHT / HERO AL ESTILO NETFLIX */}
         {(() => {
           const activeSlide = SPOTLIGHT_SLIDES[currentSlideIndex];
           return (
@@ -400,7 +399,7 @@ export default function Home() {
                         href={`/album/${activeSlide.id}`}
                         className="bg-white text-black font-[family-name:var(--font-bayon)] text-xs md:text-sm px-6 py-2 rounded-full uppercase tracking-widest hover:bg-[#E23C3C] hover:text-white transition-all shadow-lg font-bold"
                       >
-                        Ver Álbum
+                        Ver Album
                       </Link>
                       <Link
                         href="/profile"
@@ -434,7 +433,7 @@ export default function Home() {
         })()}
 
         {/* SECCIÓN DE CARRUSELES */}
-        <div className="flex flex-col mt-4">
+        <div className="flex flex-col mt-4 gap-14 px-4 ">
           
           {/* ── 1. HISTORIAL: Continuar escuchando (Dinámico) ── */}
           {historyAlbums.length > 0 && (
@@ -447,7 +446,7 @@ export default function Home() {
           {/* ── 2. TU COLECCIÓN (Dinámico) ── */}
           {collectionAlbums.length > 0 && (
             <CatalogueCarousel
-              title="Tu Colección"
+              title="Tu Coleccion"
               albums={collectionAlbums}
             />
           )}
