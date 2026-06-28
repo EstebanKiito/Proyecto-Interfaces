@@ -197,7 +197,8 @@ export default function ProfilePage() {
     // --- LECTURA DE ALBUMS GUSTADOS (COLECCIÓN) ---
     const likedKey = `likedAlbums_${user.id}`;
     const likedAlbums: string[] = JSON.parse(localStorage.getItem(likedKey) || "[]");
-    const combined = Array.from(new Set([...user.favorite_albums, ...likedAlbums]));
+    const reviewedAlbumIds = mergedReviews.map((r) => r.album_id);
+    const combined = Array.from(new Set([...user.favorite_albums, ...likedAlbums, ...reviewedAlbumIds]));
     setCollectionAlbums(combined);
 
     // --- LECTURA DE FOLLOWERS Y FOLLOWING ---

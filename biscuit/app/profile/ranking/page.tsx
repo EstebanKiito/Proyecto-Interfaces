@@ -30,6 +30,14 @@ function RankingContent() {
   // Selector Modal state
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
   const [activeSlotIndex, setActiveSlotIndex] = useState<number | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Reset search term when modal opens/closes
+  useEffect(() => {
+    if (!isSelectorOpen) {
+      setSearchTerm("");
+    }
+  }, [isSelectorOpen]);
 
   // Authenticate current user session
   useEffect(() => {
@@ -477,24 +485,66 @@ function RankingContent() {
                 </button>
               </div>
 
+              {/* Search Bar */}
+              <div className="px-6 py-3 border-b border-zinc-900 bg-black/20">
+                <input
+                  type="text"
+                  placeholder="Search albums by name or artist..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full bg-black/40 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-zinc-700 focus:outline-none focus:border-[#E23C3C] transition-colors"
+                />
+              </div>
+
               {/* Modal scrollable album list */}
               <div className="flex flex-col p-6 overflow-y-auto gap-2">
                 {collectionAlbums.length === 0 ? (
                   <div className="text-center py-10 font-[family-name:var(--font-bayon)] text-zinc-500 uppercase tracking-widest">
                     Your collection is empty.
                   </div>
-                ) : (
-                  collectionAlbums.map((albumId) => {
+                ) : (() => {
+                  const filteredCollection = collectionAlbums.filter((albumId) => {
+                    const albumDetail = albumsData.albums.items.find(
+                      (a: any) => a.id === albumId
+                    );
+                    if (!albumDetail) return false;
+                    const term = searchTerm.toLowerCase();
+                    return (
+                      albumDetail.name.toLowerCase().includes(term) ||
+                      albumDetail.artists[0]?.name?.toLowerCase().includes(term)
+                    );
+                  });
+
+                  if (filteredCollection.length === 0) {
+                    return (
+                      <div className="text-center py-10 font-[family-name:var(--font-bayon)] text-zinc-600 uppercase tracking-widest text-xs">
+                        No albums match your search.
+                      </div>
+                    );
+                  }
+
+                  return filteredCollection.map((albumId) => {
                     const albumDetail = albumsData.albums.items.find(
                       (a: any) => a.id === albumId
                     );
                     if (!albumDetail) return null;
 
+                    const isAlreadySelected = top3.some(
+                      (id, idx) => id === albumId && idx !== activeSlotIndex
+                    );
+
                     return (
                       <div
                         key={albumId}
-                        onClick={() => selectAlbumForSlot(albumId)}
-                        className="flex items-center justify-between p-3 bg-black/40 border border-zinc-900 rounded-xl hover:border-zinc-700 transition-colors cursor-pointer group"
+                        onClick={() => {
+                          if (isAlreadySelected) return;
+                          selectAlbumForSlot(albumId);
+                        }}
+                        className={`flex items-center justify-between p-3 border rounded-xl transition-colors group ${
+                          isAlreadySelected
+                            ? "bg-zinc-950/20 border-zinc-950/30 opacity-40 cursor-not-allowed"
+                            : "bg-black/40 border-zinc-900 hover:border-zinc-700 cursor-pointer"
+                        }`}
                       >
                         <div className="flex items-center gap-3 overflow-hidden">
                           <img
@@ -513,14 +563,19 @@ function RankingContent() {
                         </div>
                         <button
                           type="button"
-                          className="bg-[#111112] border border-zinc-800 text-zinc-400 font-[family-name:var(--font-bayon)] text-[10px] px-4 py-2 rounded-full tracking-widest hover:bg-[#E23C3C] hover:text-black hover:border-[#E23C3C] transition-all uppercase font-bold"
+                          disabled={isAlreadySelected}
+                          className={`font-[family-name:var(--font-bayon)] text-[10px] px-4 py-2 rounded-full tracking-widest transition-all uppercase font-bold ${
+                            isAlreadySelected
+                              ? "bg-zinc-900 border border-[#111112] text-zinc-600"
+                              : "bg-[#111112] border border-zinc-800 text-zinc-400 hover:bg-[#E23C3C] hover:text-black hover:border-[#E23C3C] cursor-pointer"
+                          }`}
                         >
-                          Select
+                          {isAlreadySelected ? "Selected" : "Select"}
                         </button>
                       </div>
                     );
-                  })
-                )}
+                  });
+                })()}
               </div>
             </motion.div>
           </div>

@@ -121,10 +121,11 @@ function CollectionContent() {
     });
     setUserReviews(mergedReviews);
 
-    // Load collection albums (favorites + liked)
+    // Load collection albums (favorites + liked + reviewed)
     const likedKey = `likedAlbums_${targetUser.id}`;
     const likedAlbums: string[] = JSON.parse(localStorage.getItem(likedKey) || "[]");
-    const combined = Array.from(new Set([...targetUser.favorite_albums, ...likedAlbums]));
+    const reviewedAlbumIds = mergedReviews.map((r) => r.album_id);
+    const combined = Array.from(new Set([...targetUser.favorite_albums, ...likedAlbums, ...reviewedAlbumIds]));
     setCollectionAlbums(combined);
 
     setLoading(false);
