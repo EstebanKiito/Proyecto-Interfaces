@@ -122,7 +122,7 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
       />
 
       {/* ── Navbar ── */}
-<header className="absolute top-0 w-full z-30 px-10 py-1 bg-gradient-to-b from-black/95 via-black/60 to-transparent pointer-events-none">
+<header className="absolute top-[0.5rem] w-full z-30 px-10 py-1 bg-gradient-to-b from-black/95 via-black/60 to-transparent pointer-events-none">
         <div className="grid grid-cols-3 items-center pointer-events-auto">
 
           {/* ── IZQUIERDA: Logo ── */}

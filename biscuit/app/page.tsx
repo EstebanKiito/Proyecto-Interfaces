@@ -68,6 +68,8 @@ export default function Home() {
           </div>
         </div>
 
+        {/* CAPA DE SOMBRA DEGRADADA DE DERECHA A IZQUIERDA (FIGURA-FONDO GESTALT) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 from-[30%] via-black/20 via-[45%] to-transparent to-[100%] z-10 pointer-events-none" />
 
         {/* ---------------- HERO TEXT ---------------- */}
         <div className="absolute left-12 top-1/2 -translate-y-1/2 z-10 flex flex-col gap-6">
