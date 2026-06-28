@@ -186,7 +186,7 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
               href="/"
               className="flex items-center gap-3 group w-fit"
             >
-              <span className="text-4xl font-biscuit tracking-[0.12em] group-hover:tracking-[0.15em]  transition-all duration-300">
+              <span className="mt-1 text-4xl font-biscuit tracking-[0.12em] group-hover:tracking-[0.15em]  transition-all duration-300">
                 Biscuit
               </span>
             </Link>
