@@ -245,7 +245,7 @@ function RankingContent() {
             alt={targetUser.name}
             className="w-14 h-14 rounded-full object-cover border-2 border-zinc-800 shadow-md shrink-0"
           />
-          <h1 className="font-[family-name:var(--font-bayon)] text-2xl md:text-3xl text-[#E23C3C] tracking-widest uppercase leading-none pt-1">
+          <h1 className="font-[family-name:var(--font-bayon)] text-2xl md:text-3xl text-[#dad6d6] tracking-wide uppercase leading-none pt-1">
             {targetUser.username.toUpperCase()}’S RANKINGS
           </h1>
         </div>
