@@ -385,7 +385,7 @@ export default function ProfilePage() {
                 href="/profile/ranking"
                 className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer"
               >
-                VIEW ALL
+                VER RANKING
               </Link>
             </div>
           </div>
@@ -509,7 +509,7 @@ export default function ProfilePage() {
               onClick={() => setIsEditProfileOpen(true)}
               className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer"
             >
-              EDIT PROFILE
+              EDITar perfil
             </button>
           </div>
         </div>
@@ -682,7 +682,7 @@ export default function ProfilePage() {
               href="/profile/collection"
               className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer"
             >
-              VIEW COLLECTION
+              VER COLECCION
             </Link>
           </div>
 
