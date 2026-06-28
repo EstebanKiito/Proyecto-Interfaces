@@ -456,7 +456,7 @@ export default function ProfilePage() {
                 {totalPlaylists}
               </p>
               <p className="font-(family-name:--font-bayon) text-xs tracking-widest">
-                LISTS
+                SHELVES
               </p>
             </div>
             <div 
@@ -657,7 +657,7 @@ export default function ProfilePage() {
           <div>
             <div className="font-[family-name:var(--font-biscuit)] text-6xl text-[#E23C3C] tracking-wide uppercase leading-none justify-end flex mt-12 mb-4">
               <div className="text-[#ffffff] mr-4">MY </div>
-              PLAYLISTS
+              SHELVES
             </div>
           </div>
 
@@ -693,7 +693,7 @@ export default function ProfilePage() {
                       </svg>
                     </button>
                     <h3 className="font-[family-name:var(--font-bayon)] uppercase truncate leading-none text-center text-lg text-zinc-500 group-hover:text-white transition-colors tracking-widest mt-2">
-                      CREATE LIST
+                      CREATE A SHELF
                     </h3>
                   </div>
                 </div>

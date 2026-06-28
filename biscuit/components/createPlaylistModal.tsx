@@ -103,7 +103,7 @@ export default function CreatePlaylistModal({
         <div className="flex justify-between items-start p-6 border-b border-zinc-900 bg-[#8E0B0B]/10">
           <div className="flex flex-col gap-1 overflow-hidden">
             <h2 className="font-[family-name:var(--font-biscuit)] text-3xl md:text-4xl text-[#E23C3C] tracking-wide uppercase truncate leading-none mt-2">
-              CREATE PLAYLIST
+              CREATE SHELF
             </h2>
             <p className="font-[family-name:var(--font-bayon)] text-sm text-zinc-400 tracking-widest uppercase mt-1">
               CURATE YOUR SOUNDS
@@ -146,7 +146,7 @@ export default function CreatePlaylistModal({
             {/* TITLE FIELD */}
             <div className="flex flex-col">
               <label className="font-[family-name:var(--font-bayon)] text-sm text-zinc-400 tracking-widest uppercase mb-2">
-                Playlist Title <span className="text-[#E23C3C]">*</span>
+                Shelf Title <span className="text-[#E23C3C]">*</span>
               </label>
               <input
                 type="text"
@@ -166,7 +166,7 @@ export default function CreatePlaylistModal({
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Tell us about the vibe of this playlist..."
+                placeholder="Tell us about the vibe of this shelf..."
                 className="w-full bg-black/30 border border-zinc-800 rounded-xl p-4 text-white placeholder-zinc-600 focus:outline-none focus:border-[#E23C3C] transition-colors font-sans text-sm shadow-inner h-24 resize-none"
               />
             </div>
@@ -237,7 +237,7 @@ export default function CreatePlaylistModal({
               type="submit"
               className="w-full py-4 bg-[#a70f0f] hover:bg-[#E23C3C] text-black hover:text-white font-[family-name:var(--font-bayon)] text-lg tracking-widest rounded-full uppercase transition-all shadow-lg font-bold cursor-pointer"
             >
-              CREATE PLAYLIST
+              CREATE SHELF
             </button>
           </div>
         </form>

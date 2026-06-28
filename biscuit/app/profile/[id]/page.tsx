@@ -507,7 +507,7 @@ export default function TargetProfilePage() {
                 {totalPlaylists}
               </p>
               <p className="font-(family-name:--font-bayon) text-xs tracking-widest">
-                LISTS
+                SHELVES
               </p>
             </div>
             
@@ -724,7 +724,7 @@ export default function TargetProfilePage() {
           <div>
             <div className="font-[family-name:var(--font-biscuit)] text-6xl text-[#E23C3C] tracking-wide uppercase leading-none justify-end flex mt-12 mb-4">
               <div className="text-[#ffffff] mr-4">{targetUser.username}'s </div>
-              PLAYLISTS
+              SHELVES
             </div>
           </div>
 

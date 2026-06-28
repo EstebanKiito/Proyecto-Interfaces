@@ -583,8 +583,23 @@ export default function Album() {
                 <div className="flex flex-col gap-4">
                   {albumReviewsList.map((rev) => {
                     const isMyReview = currentUser && rev.user_id === currentUser.id;
+                    const handleCardClick = (e: React.MouseEvent) => {
+                      if ((e.target as HTMLElement).closest('a')) {
+                        return;
+                      }
+                      if (isMyReview) {
+                        setIsReviewModalOpen(true);
+                      }
+                    };
+
                     return (
-                      <section key={rev.id} className="bg-[#111111] rounded-lg shadow-xl border border-white/10 p-6 flex flex-col gap-3 relative overflow-hidden">
+                      <section
+                        key={rev.id}
+                        onClick={handleCardClick}
+                        className={`bg-[#111111] rounded-lg shadow-xl border border-white/10 p-6 flex flex-col gap-3 relative overflow-hidden transition-all ${
+                          isMyReview ? "cursor-pointer hover:border-[#E23C3C]/40 hover:bg-white/[0.02]" : ""
+                        }`}
+                      >
                         <div className="absolute top-0 left-0 w-1 h-full bg-[#E23C3C]"></div>
                         <div className="flex items-center justify-between">
                           <Link href={isMyReview ? "/profile" : `/profile/${rev.user_id}`} className="hover:underline cursor-pointer group/reviewHeader flex items-center gap-3">
@@ -710,7 +725,7 @@ export default function Album() {
                 }}
                 className="py-3 hover:bg-white/5 transition-colors hover:text-white"
               >
-                Add to lists...
+                Add to Shelves...
               </button>
             </div>
           </motion.aside>

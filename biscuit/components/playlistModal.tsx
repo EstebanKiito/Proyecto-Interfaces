@@ -161,7 +161,7 @@ export default function PlaylistModal({
         <div className="flex justify-between items-start p-6 border-b border-zinc-900 bg-[#8E0B0B]/10">
           <div className="flex flex-col gap-1 overflow-hidden">
             <h2 className="font-[family-name:var(--font-biscuit)] text-3xl md:text-4xl text-[#E23C3C] tracking-wide uppercase truncate leading-none mt-2">
-              {isEditing ? "EDIT PLAYLIST" : playlist.title}
+              {isEditing ? "EDIT SHELF" : playlist.title}
             </h2>
 
             {/* MATCH DEL DUEÑO: Muestra el nombre y username de quien la creó */}
@@ -219,7 +219,7 @@ export default function PlaylistModal({
               {/* TITLE FIELD */}
               <div className="flex flex-col">
                 <label className="font-[family-name:var(--font-bayon)] text-sm text-zinc-400 tracking-widest uppercase mb-2">
-                  Playlist Title <span className="text-[#E23C3C]">*</span>
+                  Shelf Title <span className="text-[#E23C3C]">*</span>
                 </label>
                 <input
                   type="text"
