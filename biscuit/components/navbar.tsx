@@ -410,7 +410,7 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
             ) : (
               <Link
                 href="/login"
-                className="text-gray-400 hover:text-white transition-all duration-200 font-(family-name:--font-bayon) text-sm font-semibold uppercase tracking-widest px-4 py-2 border border-white/10 hover:border-white/30 rounded-full bg-white/5 cursor-pointer"
+                className="text-gray-400 hover:text-white transition-all duration-200 font-(family-name:--font-bayon) text-sm  uppercase tracking-widest px-4 py-2 border border-white/10 hover:border-white/30 rounded-full bg-white/5 cursor-pointer"
               >
                 Login
               </Link>
