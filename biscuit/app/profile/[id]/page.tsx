@@ -364,7 +364,7 @@ export default function TargetProfilePage() {
         
         {/* LEFT COLUMN */}
         <div className="flex flex-col w-full mt-10 order-2 lg:order-1">
-          <h1 className="font-biscuit text-3xl md:text-5xl xl:text-7xl text-[#ffffff] uppercase m-0 p-0 leading-tight break-words max-w-full">
+          <h1 className="font-biscuit text-3xl md:text-5xl xl:text-7xl text-[#ffffff] uppercase m-0 p-0 leading-tight  max-w-full">
             {targetUser.username}'s
           </h1>
           <h2 className="font-biscuit text-2xl md:text-4xl xl:text-7xl text-[#E23C3C] tracking-wide uppercase leading-none mb-5">
