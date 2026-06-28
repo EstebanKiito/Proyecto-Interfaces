@@ -160,6 +160,11 @@ export default function LoginPage() {
       return;
     }
 
+    if (regUsername.trim().length > 12) {
+      setRegError("El nombre de usuario no puede superar los 12 caracteres.");
+      return;
+    }
+
     if (regPassword !== regConfirmPassword) {
       setRegError("Las contraseñas no coinciden.");
       return;
@@ -258,7 +263,7 @@ export default function LoginPage() {
       const mockOauthUser: SessionUser = {
         id: `usr_oauth_${provider}_${Math.floor(Math.random() * 10000)}`,
         name: provider === "google" ? "Google User" : "Facebook User",
-        username: provider === "google" ? "google_user" : "facebook_user",
+        username: provider === "google" ? "g_user" : "f_user",
         email: provider === "google" ? "google.user@gmail.com" : "facebook.user@outlook.com",
         avatar_url: "https://www.svgrepo.com/show/335455/profile-default.svg", // Fallback avatar from JSON assets
         isAuthenticated: true,
@@ -497,6 +502,7 @@ export default function LoginPage() {
                   required
                   value={regUsername}
                   onChange={(e) => setRegUsername(e.target.value)}
+                  maxLength={12}
                   className="w-full bg-white/5 border border-white/15 focus:border-[#E23C3C] rounded-xl px-4 py-2.5 text-sm outline-none transition-all placeholder-gray-600"
                   placeholder="ej. Estebankito"
                   disabled={oauthProvider !== null}

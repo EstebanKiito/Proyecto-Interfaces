@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
 // Importamos los JSON desde tu carpeta de datos
@@ -19,6 +19,7 @@ const formatDuration = (ms: number) => {
 
 export default function Album() {
   const params = useParams();
+  const router = useRouter();
   const albumId = params.id as string;
 
   const albumData = albumsJson.albums.items.find((a) => a.id === albumId);
@@ -344,7 +345,7 @@ export default function Album() {
   // --- MANEJADORES DE EVENTOS ---
   const toggleAction = (action: keyof typeof activeActions) => {
     if (!currentUser) {
-      alert("Por favor inicia sesión para realizar esta acción.");
+      router.push("/login");
       return;
     }
     
@@ -396,7 +397,7 @@ export default function Album() {
 
   const handleRatingChange = (newRating: number) => {
     if (!currentUser) {
-      alert("Por favor inicia sesión para calificar.");
+      router.push("/login");
       return;
     }
     setRating(newRating);
@@ -423,7 +424,7 @@ export default function Album() {
   const handleReviewSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!currentUser) {
-      alert("Por favor inicia sesión para escribir una reseña.");
+      router.push("/login");
       return;
     }
     const reviewsKey = `albumReviews_${currentUser.id}`;
@@ -441,7 +442,7 @@ export default function Album() {
   const rateTrack = (score: number) => {
     if (!selectedTrack) return;
     if (!currentUser) {
-      alert("Por favor inicia sesión para calificar pistas.");
+      router.push("/login");
       return;
     }
     const trackRatingsKey = `trackRatings_${currentUser.id}`;
@@ -454,7 +455,7 @@ export default function Album() {
 
   const handleTogglePlaylist = (playlistId: string) => {
     if (!currentUser) {
-      alert("Por favor inicia sesión para agregar a listas.");
+      router.push("/login");
       return;
     }
     // Busca si ya editamos esta lista localmente, o toma la base del JSON
@@ -563,7 +564,7 @@ export default function Album() {
                         <button
                           onClick={() => {
                             if (!currentUser) {
-                              alert("Por favor inicia sesión para calificar pistas.");
+                              router.push("/login");
                               return;
                             }
                             setSelectedTrack(track);
@@ -716,7 +717,7 @@ export default function Album() {
               <button 
                 onClick={() => {
                   if (!currentUser) {
-                    alert("Por favor inicia sesión para agregar o editar reseñas.");
+                    router.push("/login");
                     return;
                   }
                   setIsReviewModalOpen(true);
@@ -729,7 +730,7 @@ export default function Album() {
               <button 
                 onClick={() => {
                   if (!currentUser) {
-                    alert("Por favor inicia sesión para agregar este álbum a tus listas.");
+                    router.push("/login");
                     return;
                   }
                   setIsPlaylistModalOpen(true);

@@ -326,43 +326,57 @@ export default function ProfilePage() {
                 TOP RATED
               </span>
 
-              <div className="flex flex-col w-full font-[family-name:var(--font-bayon)] px-4 py-4">
-                {profileTop3.map((item, index) => {
-                  const albumDetail = item.albumDetail;
-                  if (!albumDetail) return null;
+              <div className="flex flex-col w-full font-[family-name:var(--font-bayon)] px-4 py-4 h-full justify-center">
+                {profileTop3.length > 0 ? (
+                  profileTop3.map((item, index) => {
+                    const albumDetail = item.albumDetail;
+                    if (!albumDetail) return null;
 
-                  return (
-                    <Link
-                      href={`/album/${item.albumId}`}
-                      key={item.albumId}
-                      className="flex flex-row items-center justify-between py-2 last:border-0 hover:bg-black/10 transition-colors px-2 rounded-lg group"
-                    >
-                      <div className="flex items-center gap-4 overflow-hidden ">
-                        <img
-                          src={albumDetail.images[0]?.url || noPhoto.src}
-                          alt={albumDetail.name || "Album Cover"}
-                          className="w-22 h-22 object-cover flex-shrink-0 shadow-md"
-                        />
-                        <div className="flex flex-col justify-center truncate">
-                          <p className="font-[family-name:var(--font-bayon)] text-sm text-[#fdfdfd]/70 truncate">
-                            {albumDetail.artists[0]?.name || "Unknown Artist"}
-                          </p>
-                          <p className="font-[family-name:var(--font-bayon)] text-[1.5rem] text-[#fdfdfd] uppercase tracking-wide truncate leading-tight">
-                            {albumDetail.name || "Unknown Album"}
-                          </p>
+                    return (
+                      <Link
+                        href={`/album/${item.albumId}`}
+                        key={item.albumId}
+                        className="flex flex-row items-center justify-between py-2 last:border-0 hover:bg-black/10 transition-colors px-2 rounded-lg group"
+                      >
+                        <div className="flex items-center gap-4 overflow-hidden ">
+                          <img
+                            src={albumDetail.images[0]?.url || noPhoto.src}
+                            alt={albumDetail.name || "Album Cover"}
+                            className="w-22 h-22 object-cover flex-shrink-0 shadow-md"
+                          />
+                          <div className="flex flex-col justify-center truncate">
+                            <p className="font-[family-name:var(--font-bayon)] text-sm text-[#fdfdfd]/70 truncate">
+                              {albumDetail.artists[0]?.name || "Unknown Artist"}
+                            </p>
+                            <p className="font-[family-name:var(--font-bayon)] text-[1.5rem] text-[#fdfdfd] uppercase tracking-wide truncate leading-tight">
+                              {albumDetail.name || "Unknown Album"}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="flex items-center gap-1 pl-4 flex-shrink-0">
-                        <span className="font-[family-name:var(--font-bayon)] text-2xl text-white mr-8 w-4 text-center group-hover:text-white transition-colors">
-                          #{index + 1}
-                        </span>
-                        <span className="font-[family-name:var(--font-bayon)] text-lg text-[#939090] tracking-wider">
-                          {item.rating.toFixed(1)}
-                        </span>
-                      </div>
+                        <div className="flex items-center gap-1 pl-4 flex-shrink-0">
+                          <span className="font-[family-name:var(--font-bayon)] text-2xl text-white mr-8 w-4 text-center group-hover:text-white transition-colors">
+                            #{index + 1}
+                          </span>
+                          <span className="font-[family-name:var(--font-bayon)] text-lg text-[#939090] tracking-wider">
+                            {item.rating.toFixed(1)}
+                          </span>
+                        </div>
+                      </Link>
+                    );
+                  })
+                ) : (
+                  <div className="flex flex-col items-center justify-center text-center p-6 gap-3">
+                    <p className="text-zinc-300 text-xs md:text-sm tracking-wide leading-relaxed font-sans font-medium max-w-[240px]">
+                      ¡Aún no tienes álbumes en tu Top 3! Reseña y califica discos para armar tu podio musical.
+                    </p>
+                    <Link
+                      href="/#discover-section"
+                      className="text-white text-lg tracking-widest uppercase hover:underline"
+                    >
+                      Explorar musica
                     </Link>
-                  );
-                })}
+                  </div>
+                )}
               </div>
             </motion.div>
 
@@ -371,7 +385,7 @@ export default function ProfilePage() {
                 href="/profile/ranking"
                 className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer"
               >
-                VIEW ALL
+                VER RANKING
               </Link>
             </div>
           </div>
@@ -495,7 +509,7 @@ export default function ProfilePage() {
               onClick={() => setIsEditProfileOpen(true)}
               className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer"
             >
-              EDIT PROFILE
+              EDITar perfil
             </button>
           </div>
         </div>
@@ -560,89 +574,107 @@ export default function ProfilePage() {
           </div>
 
           <div className="relative w-full group">
-            <button
-              onClick={() => handleCarouselScroll("left")}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#111112] border border-[#962828] text-[#E23C3C] hover:bg-[#E23C3C] hover:text-black transition-all flex items-center justify-center shadow-2xl cursor-pointer opacity-0 group-hover:opacity-100"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={3}
-                stroke="currentColor"
-                className="w-5 h-5"
+            {collectionAlbums.length > 0 && (
+              <button
+                onClick={() => handleCarouselScroll("left")}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#111112] border border-[#962828] text-[#E23C3C] hover:bg-[#E23C3C] hover:text-black transition-all flex items-center justify-center shadow-2xl cursor-pointer opacity-0 group-hover:opacity-100"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 19.5L8.25 12l7.5-7.5"
-                />
-              </svg>
-            </button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={3}
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 19.5L8.25 12l7.5-7.5"
+                  />
+                </svg>
+              </button>
+            )}
 
             {/* CARRUSEL ANIMADO: Aparecen desde la derecha uno por uno a medida que haces scroll en la página */}
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-              ref={carouselRef}
-              className="h-[13rem] w-full flex items-center overflow-x-auto gap-6 scroll-smooth px-14 no-scrollbar"
-              style={{ scrollbarWidth: "none" }}
-            >
-              {collectionAlbums.map((albumId: string) => {
-                const album = albumsData.albums.items.find(
-                  (item) => item.id === albumId,
-                );
-                if (!album) return null;
-
-                return (
-                  <motion.div
-                    variants={slideInRightVariant}
-                    key={albumId}
-                    className="w-36 group/item cursor-pointer shrink-0"
-                  >
-                    <Link href={`/album/${albumId}`}>
-                      <div className="w-36 h-36 overflow-hidden shadow-lg border-3 border-transparent group-hover/item:border-[#E23C3C] transition-colors relative">
-                        <img
-                          src={album.images[0]?.url || noPhoto.src}
-                          alt={album.name}
-                          className="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300">
-                          <p className="font-[family-name:var(--font-bayon)] text-lg text-white tracking-wide truncate px-2 text-center w-full">
-                            {album.name}
-                          </p>
-                          <p className="font-sans text-xs text-[#E23C3C] truncate px-2 text-center w-full">
-                            {album.artists[0]?.name}
-                          </p>
-                        </div>
-                      </div>
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-
-            <button
-              onClick={() => handleCarouselScroll("right")}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#111112] border border-[#962828] text-[#E23C3C] hover:bg-[#E23C3C] hover:text-black transition-all flex items-center justify-center shadow-2xl cursor-pointer opacity-0 group-hover:opacity-100"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={3}
-                stroke="currentColor"
-                className="w-5 h-5"
+            {collectionAlbums.length > 0 ? (
+              <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.1 }}
+                ref={carouselRef}
+                className="h-[13rem] w-full flex items-center overflow-x-auto gap-6 scroll-smooth px-14 no-scrollbar"
+                style={{ scrollbarWidth: "none" }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                />
-              </svg>
-            </button>
+                {collectionAlbums.map((albumId: string) => {
+                  const album = albumsData.albums.items.find(
+                    (item) => item.id === albumId,
+                  );
+                  if (!album) return null;
+
+                  return (
+                    <motion.div
+                      variants={slideInRightVariant}
+                      key={albumId}
+                      className="w-36 group/item cursor-pointer shrink-0"
+                    >
+                      <Link href={`/album/${albumId}`}>
+                        <div className="w-36 h-36 overflow-hidden shadow-lg border-3 border-transparent group-hover/item:border-[#E23C3C] transition-colors relative">
+                          <img
+                            src={album.images[0]?.url || noPhoto.src}
+                            alt={album.name}
+                            className="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300">
+                            <p className="font-[family-name:var(--font-bayon)] text-lg text-white tracking-wide truncate px-2 text-center w-full">
+                              {album.name}
+                            </p>
+                            <p className="font-sans text-xs text-[#E23C3C] truncate px-2 text-center w-full">
+                              {album.artists[0]?.name}
+                            </p>
+                          </div>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            ) : (
+              <div className="h-[13rem] w-full flex flex-col items-center justify-center text-center p-6 border border-dashed border-zinc-800 rounded-[2rem] bg-zinc-950/20 gap-3">
+                <p className="text-zinc-400 text-sm font-sans font-medium leading-relaxed max-w-md">
+                  ¡Tu colección está vacía! Explora álbumes, dales like o califícalos para empezar tu biblioteca personal.
+                </p>
+                <Link
+                  href="/"
+                  className="bg-white text-black font-[family-name:var(--font-bayon)] text-xs px-6 py-2 rounded-full uppercase tracking-wider hover:bg-[#E23C3C] hover:text-white transition-colors font-bold"
+                >
+                  Busca vinilos
+                </Link>
+              </div>
+            )}
+
+            {collectionAlbums.length > 0 && (
+              <button
+                onClick={() => handleCarouselScroll("right")}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#111112] border border-[#962828] text-[#E23C3C] hover:bg-[#E23C3C] hover:text-black transition-all flex items-center justify-center shadow-2xl cursor-pointer opacity-0 group-hover:opacity-100"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={3}
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                  />
+                </svg>
+              </button>
+            )}
           </div>
 
           <div className="flex justify-center mt-4">
@@ -650,7 +682,7 @@ export default function ProfilePage() {
               href="/profile/collection"
               className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer"
             >
-              VIEW COLLECTION
+              VER COLECCION
             </Link>
           </div>
 
@@ -713,25 +745,33 @@ export default function ProfilePage() {
                     </div>
 
                     <div className="flex flex-wrap items-center justify-center gap-4 my-auto max-w-[70%] mx-auto">
-                      {playlist.items
-                        .slice(0, 6)
-                        .map((albumId: string, index: number) => {
-                          const albumDetail = albumsData.albums.items.find(
-                            (a) => a.id === albumId,
-                          );
-                          return (
-                            <div
-                              key={index}
-                              className="w-14 h-14 xl:w-16 xl:h-16 flex-shrink-0 overflow-hidden shadow-md transition-transform duration-300 group-hover:-translate-y-1"
-                            >
-                              <img
-                                src={albumDetail?.images[0]?.url || noPhoto.src}
-                                alt={albumDetail?.name || "Album cover"}
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                          );
-                        })}
+                      {playlist.items.length > 0 ? (
+                        playlist.items
+                          .slice(0, 6)
+                          .map((albumId: string, index: number) => {
+                            const albumDetail = albumsData.albums.items.find(
+                              (a) => a.id === albumId,
+                            );
+                            return (
+                              <div
+                                key={index}
+                                className="w-14 h-14 xl:w-16 xl:h-16 flex-shrink-0 overflow-hidden shadow-md transition-transform duration-300 group-hover:-translate-y-1"
+                              >
+                                <img
+                                  src={albumDetail?.images[0]?.url || noPhoto.src}
+                                  alt={albumDetail?.name || "Album cover"}
+                                  className="w-full h-full object-cover"
+                                />
+                              </div>
+                            );
+                          })
+                      ) : (
+                        <div className="text-center py-2 px-4">
+                          <p className="text-zinc-500 text-[10px] uppercase tracking-wider leading-relaxed font-sans font-semibold">
+                            Esta lista está vacía. ¡Haz click aquí para añadir álbumes!
+                          </p>
+                        </div>
+                      )}
                     </div>
 
                     <button className="absolute bottom-6 right-6 w-12 h-12 bg-[#962828] group-hover:bg-[#E23C3C] transition-colors rounded-full flex items-center justify-center shadow-md z-10 cursor-pointer">
