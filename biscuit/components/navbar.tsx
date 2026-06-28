@@ -123,7 +123,7 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
       />
 
       {/* ── Navbar ── */}
-<header className="absolute top-[0.5rem] w-full z-30 px-10 py-1 bg-gradient-to-b from-black/95 via-black/60 to-transparent pointer-events-none">
+<header className="absolute top-[0.7rem] w-full z-30 px-10 py-1 bg-gradient-to-b from-black/95 via-black/60 to-transparent pointer-events-none">
         <div className="grid grid-cols-3 items-center pointer-events-auto">
 
           {/* ── IZQUIERDA: Logo ── */}
@@ -132,7 +132,7 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
               href="/"
               className="flex items-center gap-3 group w-fit"
             >
-              <span className="text-4xl font-biscuit tracking-[0.25em] group-hover:tracking-[0.3em] transition-all duration-300">
+              <span className="text-4xl font-biscuit tracking-[0.12em] group-hover:tracking-[0.15em]  transition-all duration-300">
                 Biscuit
               </span>
             </Link>
