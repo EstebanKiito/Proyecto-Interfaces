@@ -1,22 +1,37 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 
-// 1. Importamos la data
+import React, { useState, useEffect, Suspense } from "react";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+
+// IMPORT DATA
 import currentUserData from "@/data/currentUser.json";
 import reviewsData from "@/data/reviews.json";
 import albumsData from "@/data/albums.json";
 
-export default function RankingPage() {
+function RankingContent() {
   const router = useRouter();
-  const [user, setUser] = useState<any>(null);
+  const searchParams = useSearchParams();
+  const queryUserId = searchParams.get("userId");
+
+  const [currentUser, setCurrentUser] = useState<any>(null);
+  const [targetUser, setTargetUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  // 1. ESTADO INICIAL: Estado de las reseñas del usuario
+  // User reviews & Collection
   const [userReviews, setUserReviews] = useState<any[]>([]);
+  const [collectionAlbums, setCollectionAlbums] = useState<string[]>([]);
 
-  // Effect to authenticate and load user session
+  // Top 3 Custom state
+  const [top3, setTop3] = useState<string[]>(["", "", ""]);
+  const [comments, setComments] = useState<Record<string, string>>({});
+  
+  // Selector Modal state
+  const [isSelectorOpen, setIsSelectorOpen] = useState(false);
+  const [activeSlotIndex, setActiveSlotIndex] = useState<number | null>(null);
+
+  // Authenticate current user session
   useEffect(() => {
     if (typeof window !== "undefined") {
       const activeSession = localStorage.getItem("activeSession");
@@ -30,63 +45,73 @@ export default function RankingPage() {
           router.push("/login");
           return;
         }
-
-        // Find user details in static users
-        let fullUser = currentUserData.users.find((u) => u.id === sessionData.id);
-
-        // If not found in static users, look in locally registered users
-        if (!fullUser) {
-          const localUsersRaw = localStorage.getItem("localRegisteredUsers");
-          if (localUsersRaw) {
-            const localUsers = JSON.parse(localUsersRaw);
-            fullUser = localUsers.find((u: any) => u.id === sessionData.id);
-          }
-        }
-
-        // Fallback for OAuth mock user
-        if (!fullUser) {
-          fullUser = {
-            id: sessionData.id,
-            name: sessionData.name || "OAuth User",
-            username: sessionData.username || "oauth_user",
-            password: "",
-            avatar_url: sessionData.avatar_url || "https://www.svgrepo.com/show/335455/profile-default.svg",
-            bio: sessionData.bio || "Usuario autenticado a través de OAuth en Biscuit.",
-            location: sessionData.location || "Internet",
-            stats: sessionData.stats || {
-              albums_logged: 0,
-              reviews_written: 0,
-              followers: 0,
-              following: 0
-            },
-            favorite_albums: sessionData.favorite_albums || []
-          };
-        }
-
-        setUser(fullUser);
-        setLoading(false);
+        setCurrentUser(sessionData);
       } catch (e) {
-        console.error("Error setting up ranking page session", e);
+        console.error("Error authenticating current session", e);
         router.push("/login");
       }
     }
   }, [router]);
 
-  // Effect to merge reviews when user is loaded
+  // Load target user details based on query param or active session
   useEffect(() => {
-    if (!user) return;
+    if (typeof window === "undefined") return;
 
-    const initialReviews = reviewsData.reviews.filter((r) => r.user_id === user.id);
-    const localReviewsRaw = JSON.parse(localStorage.getItem(`albumReviews_${user.id}`) || "{}");
+    const userId = queryUserId || (currentUser ? currentUser.id : null);
+    if (!userId) return;
 
+    // Find user details in static users
+    let fullUser = currentUserData.users.find((u) => u.id === userId);
+
+    // Find in locally registered users
+    if (!fullUser) {
+      const localUsersRaw = localStorage.getItem("localRegisteredUsers");
+      if (localUsersRaw) {
+        try {
+          const localUsers = JSON.parse(localUsersRaw);
+          fullUser = localUsers.find((u: any) => u.id === userId);
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }
+
+    // Fallback to active session
+    if (!fullUser && currentUser && currentUser.id === userId) {
+      fullUser = {
+        id: currentUser.id,
+        name: currentUser.name || "OAuth User",
+        username: currentUser.username || "oauth_user",
+        password: "",
+        avatar_url: currentUser.avatar_url || "https://www.svgrepo.com/show/335455/profile-default.svg",
+        bio: currentUser.bio || "Usuario autenticado en Biscuit.",
+        location: currentUser.location || "Chile",
+        stats: currentUser.stats || { albums_logged: 0, reviews_written: 0, followers: 0, following: 0 },
+        favorite_albums: currentUser.favorite_albums || []
+      };
+    }
+
+    if (!fullUser) {
+      setLoading(false);
+      return;
+    }
+
+    setTargetUser(fullUser);
+  }, [queryUserId, currentUser]);
+
+  // Load reviews, collections, and custom top 3 rankings
+  useEffect(() => {
+    if (!targetUser) return;
+
+    // 1. Load reviews
+    const initialReviews = reviewsData.reviews.filter((r) => r.user_id === targetUser.id);
+    const localReviewsRaw = JSON.parse(localStorage.getItem(`albumReviews_${targetUser.id}`) || "{}");
     let mergedReviews = [...initialReviews];
 
     Object.keys(localReviewsRaw).forEach((albumId) => {
       const localData = localReviewsRaw[albumId];
-      
       const rating = typeof localData === 'string' ? 0 : (localData.rating || 0);
       const reviewText = typeof localData === 'string' ? localData : localData.review_text;
-
       const existingIndex = mergedReviews.findIndex((r) => r.album_id === albumId);
 
       if (existingIndex >= 0) {
@@ -95,7 +120,7 @@ export default function RankingPage() {
       } else {
         mergedReviews.push({
           id: `local_${albumId}`,
-          user_id: user.id,
+          user_id: targetUser.id,
           album_id: albumId,
           rating: rating,
           review_text: reviewText,
@@ -104,47 +129,114 @@ export default function RankingPage() {
         });
       }
     });
-
     setUserReviews(mergedReviews);
-  }, [user]);
 
-  if (loading || !user) {
+    // 2. Load collection albums (favorites + liked)
+    const likedKey = `likedAlbums_${targetUser.id}`;
+    const likedAlbums: string[] = JSON.parse(localStorage.getItem(likedKey) || "[]");
+    const combined = Array.from(new Set([...targetUser.favorite_albums, ...likedAlbums]));
+    setCollectionAlbums(combined);
+
+    // 3. Load custom Top 3
+    const customTop3Key = `customTop3_${targetUser.id}`;
+    let savedTop3: string[] = JSON.parse(localStorage.getItem(customTop3Key) || "[]");
+    const isOwnerUser = currentUser && currentUser.id === targetUser.id;
+
+    // Fallback prepopulate top 3 if empty
+    if (savedTop3.length === 0 && mergedReviews.length > 0) {
+      const top3Auto = [...mergedReviews]
+        .sort((a, b) => b.rating - a.rating)
+        .slice(0, 3)
+        .map((r) => r.album_id);
+
+      while (top3Auto.length < 3) {
+        top3Auto.push("");
+      }
+      savedTop3 = top3Auto;
+      if (isOwnerUser) {
+        localStorage.setItem(customTop3Key, JSON.stringify(top3Auto));
+      }
+    } else {
+      while (savedTop3.length < 3) {
+        savedTop3.push("");
+      }
+    }
+    setTop3(savedTop3);
+
+    // 4. Load top 3 comments
+    const commentsKey = `top3Comments_${targetUser.id}`;
+    const savedComments = JSON.parse(localStorage.getItem(commentsKey) || "{}");
+    setComments(savedComments);
+
+    setLoading(false);
+  }, [targetUser, currentUser]);
+
+  const isOwner = currentUser && targetUser && currentUser.id === targetUser.id;
+
+  // Sorting all reviews for the scroll list
+  const allRatedReviews = [...userReviews].sort((a, b) => b.rating - a.rating);
+
+  const selectAlbumForSlot = (albumId: string) => {
+    if (activeSlotIndex === null || !targetUser) return;
+
+    const updatedTop3 = [...top3];
+    updatedTop3[activeSlotIndex] = albumId;
+    setTop3(updatedTop3);
+
+    localStorage.setItem(`customTop3_${targetUser.id}`, JSON.stringify(updatedTop3));
+    setIsSelectorOpen(false);
+    setActiveSlotIndex(null);
+  };
+
+  const clearSlot = (index: number) => {
+    if (!targetUser) return;
+    const updatedTop3 = [...top3];
+    updatedTop3[index] = "";
+    setTop3(updatedTop3);
+    localStorage.setItem(`customTop3_${targetUser.id}`, JSON.stringify(updatedTop3));
+  };
+
+  const handleCommentChange = (albumId: string, text: string) => {
+    if (!targetUser) return;
+    const commentsKey = `top3Comments_${targetUser.id}`;
+    const savedComments = JSON.parse(localStorage.getItem(commentsKey) || "{}");
+    savedComments[albumId] = text;
+    localStorage.setItem(commentsKey, JSON.stringify(savedComments));
+    setComments(savedComments);
+  };
+
+  if (loading) {
     return (
       <div className="min-h-screen bg-[#000000] text-white flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-white/20 border-t-[#E23C3C] rounded-full animate-spin"></div>
-          <p className="text-sm tracking-widest uppercase text-gray-400">Cargando colección...</p>
+          <p className="text-sm tracking-widest uppercase text-gray-400">Loading ranking...</p>
         </div>
       </div>
     );
   }
 
-  // 3. Cálculos dinámicos basados en el estado actualizado
-  // Ordenamos y sacamos solo el TOP 5
-  const top5Reviews = [...userReviews]
-    .sort((a, b) => b.rating - a.rating)
-    .slice(0, 5);
-
-  // Combinamos Favoritos + Gustados sin repetir IDs (Set)
-  const likedKey = `likedAlbums_${user.id}`;
-  const likedAlbums: string[] = typeof window !== "undefined"
-    ? JSON.parse(localStorage.getItem(likedKey) || "[]")
-    : [];
-
-  const collectionIds = Array.from(
-    new Set([...user.favorite_albums, ...likedAlbums]),
-  );
+  if (!targetUser) {
+    return (
+      <div className="min-h-screen bg-[#000000] text-white flex flex-col items-center justify-center gap-4">
+        <h2 className="font-[family-name:var(--font-biscuit)] text-4xl text-[#E23C3C] tracking-wide uppercase">USER NOT FOUND</h2>
+        <Link href="/profile" className="bg-white text-black font-[family-name:var(--font-bayon)] text-sm px-6 py-2 rounded-full uppercase tracking-wider hover:bg-[#E23C3C] hover:text-black transition-colors">
+          Return to Profile
+        </Link>
+      </div>
+    );
+  }
 
   return (
-    <main className="min-h-screen bg-[#000000] pt-32 pb-12 px-6 md:px-12 lg:px-24 text-white">
-      {/* HEADER DE LA VISTA */}
-      <div className="max-w-7xl mx-auto flex justify-between items-end border-b border-zinc-800 pb-6 mb-10">
-        <h1 className="font-[family-name:var(--font-biscuit)] text-5xl md:text-5xl text-[#E23C3C] tracking-wide uppercase leading-none">
-          {user.username.toUpperCase()}’S COLLECTION
+    <main className="min-h-screen bg-[#000000] pt-32 pb-12 text-white">
+      {/* HEADER */}
+      <div className="max-w-6xl mx-auto px-6 flex justify-between items-end border-b border-zinc-800 pb-6 mb-10">
+        <h1 className="font-[family-name:var(--font-biscuit)] text-4xl md:text-5xl text-[#E23C3C] tracking-wide uppercase leading-none">
+          {targetUser.username.toUpperCase()}’S RANKINGS
         </h1>
 
         <Link
-          href="/profile"
+          href={isOwner ? "/profile" : `/profile/${targetUser.id}`}
           className="text-zinc-400 hover:text-white transition-colors flex items-center gap-2 font-[family-name:var(--font-bayon)] tracking-widest text-lg mb-1 group"
         >
           <svg
@@ -165,139 +257,287 @@ export default function RankingPage() {
         </Link>
       </div>
 
-      {/* CONTENEDOR PRINCIPAL DIVIDIDO EN 2 (1/3 y 2/3) */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-        {/* ========================================== */}
-        {/* LADO IZQUIERDO: TOP 5 ALBUMS               */}
-        {/* ========================================== */}
+      {/* TWO COLUMN WORKSPACE */}
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+        
+        {/* LEFT COLUMN: CUSTOM TOP 3 EDITABLE CARDS */}
         <div className="flex flex-col gap-6 lg:col-span-1">
           <h2 className="font-[family-name:var(--font-bayon)] text-2xl text-white tracking-widest uppercase border-b border-zinc-900 pb-2">
-            TOP 5 RATED
+            {isOwner ? "EDIT YOUR TOP 3" : "TOP 3 FAVORITES"}
           </h2>
 
-          <div className="flex flex-col gap-4">
-            {top5Reviews.map((review, index) => {
-              const albumDetail = albumsData.albums.items.find(
-                (a: any) => a.id === review.album_id,
-              );
-              if (!albumDetail) return null;
-
+          <div className="flex flex-col gap-6">
+            {top3.map((albumId, index) => {
+              const albumDetail = albumId
+                ? albumsData.albums.items.find((a: any) => a.id === albumId)
+                : null;
+              const reviewDetail = albumId
+                ? userReviews.find((r) => r.album_id === albumId)
+                : null;
+              
               return (
-                <Link
-                  href={`/album/${review.album_id}`}
-                  key={review.id}
-                  className="flex items-center gap-4 p-3 bg-[#111112] rounded-xl border border-zinc-900 hover:border-[#E23C3C]/50 transition-colors group shadow-lg"
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="bg-[#111112] border border-zinc-800 rounded-3xl p-5 flex flex-col gap-4 relative shadow-lg overflow-hidden"
                 >
-                  <span className="font-[family-name:var(--font-biscuit)] text-xl text-zinc-600 group-hover:text-[#E23C3C] transition-colors w-6 text-center shrink-0">
-                    {index + 1}
+                  {/* Slot Number Label */}
+                  <span className="absolute top-3 right-4 font-[family-name:var(--font-biscuit)] text-4xl text-[#E23C3C]/25 select-none leading-none">
+                    #{index + 1}
                   </span>
 
-                  <img
-                    src={
-                      albumDetail.images[0]?.url ||
-                      "https://via.placeholder.com/150"
-                    }
-                    alt={albumDetail.name}
-                    className="w-16 h-16 object-cover rounded-md shadow-lg"
-                  />
-
-                  <div className="flex flex-col justify-center truncate w-full">
-                    <p className="font-[family-name:var(--font-bayon)] text-xl text-white tracking-widest truncate leading-tight">
-                      {albumDetail.name}
-                    </p>
-                    <div className="flex items-center justify-between mt-1">
-                      <p className="font-sans text-xs text-zinc-400 truncate max-w-[100px]">
-                        {albumDetail.artists[0]?.name}
-                      </p>
-                      <div className="flex items-center gap-1">
-                        <svg
-                          className="w-3 h-3 text-[#E23C3C]"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <span className="font-[family-name:var(--font-bayon)] text-[#E23C3C] text-sm tracking-wider">
-                          {review.rating.toFixed(1)}
-                        </span>
+                  {albumDetail ? (
+                    <div className="flex flex-col gap-4">
+                      {/* Album details layout */}
+                      <div className="flex gap-4 items-center">
+                        <img
+                          src={albumDetail.images[0]?.url || "https://via.placeholder.com/150"}
+                          alt={albumDetail.name}
+                          className="w-20 h-20 object-cover rounded-xl shadow-md border border-zinc-950"
+                        />
+                        <div className="flex flex-col truncate w-[60%]">
+                          <p className="font-[family-name:var(--font-bayon)] text-xl text-white tracking-wider truncate uppercase leading-tight">
+                            {albumDetail.name}
+                          </p>
+                          <p className="font-sans text-xs text-zinc-400 truncate mt-1">
+                            {albumDetail.artists[0]?.name}
+                          </p>
+                          {reviewDetail && (
+                            <div className="flex items-center gap-1 mt-2">
+                              <span className="text-[#E23C3C] text-sm">★</span>
+                              <span className="font-[family-name:var(--font-bayon)] text-[#E23C3C] text-xs pt-0.5">
+                                {reviewDetail.rating.toFixed(1)}
+                              </span>
+                            </div>
+                          )}
+                        </div>
                       </div>
+
+                      {/* Custom comments/notes section */}
+                      <div className="flex flex-col bg-black/40 p-4 border border-zinc-900 rounded-2xl gap-1">
+                        <span className="font-[family-name:var(--font-bayon)] text-[9px] uppercase tracking-widest text-zinc-500">
+                          {isOwner ? "Write your comment/review:" : `Review Note:`}
+                        </span>
+                        {isOwner ? (
+                          <textarea
+                            value={comments[albumId] || ""}
+                            onChange={(e) => handleCommentChange(albumId, e.target.value)}
+                            placeholder="Add details about why this is in your Top 3..."
+                            className="bg-transparent border-0 font-sans text-xs text-zinc-300 placeholder-zinc-700 resize-none focus:outline-none h-16 w-full"
+                          />
+                        ) : (
+                          <p className="font-sans text-xs text-zinc-300 italic leading-relaxed whitespace-pre-wrap">
+                            {comments[albumId] || "\"No comment left for this album.\""}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Owner actions */}
+                      {isOwner && (
+                        <div className="flex gap-2 justify-end">
+                          <button
+                            onClick={() => {
+                              setActiveSlotIndex(index);
+                              setIsSelectorOpen(true);
+                            }}
+                            className="bg-zinc-800 text-zinc-300 hover:bg-[#E23C3C] hover:text-black font-[family-name:var(--font-bayon)] text-[10px] tracking-widest px-3 py-1 rounded-full uppercase transition-all font-bold cursor-pointer"
+                          >
+                            Change
+                          </button>
+                          <button
+                            onClick={() => clearSlot(index)}
+                            className="bg-transparent border border-zinc-800 text-zinc-500 hover:text-[#E23C3C] hover:border-[#E23C3C] font-[family-name:var(--font-bayon)] text-[10px] tracking-widest px-3 py-1 rounded-full uppercase transition-all font-bold cursor-pointer"
+                          >
+                            Clear
+                          </button>
+                        </div>
+                      )}
                     </div>
-                  </div>
-                </Link>
+                  ) : (
+                    /* Placeholder for empty slot */
+                    <div className="flex flex-col items-center justify-center py-8 border-2 border-dashed border-zinc-800 rounded-2xl bg-black/10">
+                      {isOwner ? (
+                        <button
+                          onClick={() => {
+                            setActiveSlotIndex(index);
+                            setIsSelectorOpen(true);
+                          }}
+                          className="flex flex-col items-center justify-center gap-2 group cursor-pointer"
+                        >
+                          <div className="w-10 h-10 bg-zinc-800 group-hover:bg-[#E23C3C] transition-colors rounded-full flex items-center justify-center shadow-md">
+                            <span className="text-xl text-black font-bold group-hover:text-black">+</span>
+                          </div>
+                          <span className="font-[family-name:var(--font-bayon)] text-xs text-zinc-500 group-hover:text-white tracking-widest uppercase transition-colors">
+                            Select Album
+                          </span>
+                        </button>
+                      ) : (
+                        <span className="font-[family-name:var(--font-bayon)] text-xs text-zinc-600 tracking-widest uppercase">
+                          Empty Slot
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </motion.div>
               );
             })}
           </div>
         </div>
 
-        {/* ========================================== */}
-        {/* LADO DERECHO: GRILLA DE COLECCIÓN COMPLETA */}
-        {/* ========================================== */}
+        {/* RIGHT COLUMN: LIST OF ALL RATED ALBUMS (SCROLLABLE) */}
         <div className="flex flex-col gap-6 lg:col-span-2">
           <h2 className="font-[family-name:var(--font-bayon)] text-2xl text-zinc-500 tracking-widest uppercase border-b border-zinc-900 pb-2">
-            FULL COLLECTION
+            ALL RATED ALBUMS ({allRatedReviews.length})
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-            {collectionIds.map((albumId) => {
-              const albumDetail = albumsData.albums.items.find(
-                (a: any) => a.id === albumId,
-              );
-              if (!albumDetail) return null;
+          <div className="flex flex-col gap-3 max-h-[75vh] overflow-y-auto pr-2 custom-scrollbar bg-black/10 rounded-2xl border border-zinc-900 p-4 shadow-inner">
+            {allRatedReviews.length === 0 ? (
+              <div className="text-center py-20 text-zinc-600 font-[family-name:var(--font-bayon)] text-lg tracking-widest uppercase">
+                No albums rated yet.
+              </div>
+            ) : (
+              allRatedReviews.map((review, index) => {
+                const albumDetail = albumsData.albums.items.find(
+                  (a: any) => a.id === review.album_id
+                );
+                if (!albumDetail) return null;
 
-              // Buscamos si este disco tiene un rating en las reseñas del usuario
-              const reviewForAlbum = userReviews.find(
-                (r) => r.album_id === albumId,
-              );
+                return (
+                  <Link
+                    href={`/album/${review.album_id}`}
+                    key={review.id}
+                    className="flex items-center justify-between p-4 bg-[#111112] border border-zinc-900 rounded-xl hover:border-[#E23C3C]/50 transition-colors group shadow-md"
+                  >
+                    {/* Index, Cover Cover, Details */}
+                    <div className="flex items-center gap-4 overflow-hidden w-[70%]">
+                      <span className="font-[family-name:var(--font-biscuit)] text-2xl text-zinc-600 group-hover:text-[#E23C3C] transition-colors w-8 text-center shrink-0">
+                        {index + 1}
+                      </span>
+                      <img
+                        src={albumDetail.images[0]?.url || "https://via.placeholder.com/150"}
+                        alt={albumDetail.name}
+                        className="w-14 h-14 object-cover rounded-lg shadow-md border border-zinc-950 shrink-0"
+                      />
+                      <div className="flex flex-col justify-center truncate">
+                        <p className="font-[family-name:var(--font-bayon)] text-xl text-white tracking-widest uppercase truncate leading-tight">
+                          {albumDetail.name}
+                        </p>
+                        <p className="font-sans text-xs text-zinc-400 truncate mt-0.5">
+                          {albumDetail.artists[0]?.name}
+                        </p>
+                      </div>
+                    </div>
 
-              return (
-                <Link
-                  href={`/album/${albumId}`}
-                  key={albumId}
-                  className="flex flex-col gap-2 group cursor-pointer"
-                >
-                  {/* Contenedor de la Portada */}
-                  <div className="w-full aspect-square overflow-hidden rounded-xl border-2 border-transparent group-hover:border-[#E23C3C] transition-colors relative shadow-lg">
-                    <img
-                      src={
-                        albumDetail.images[0]?.url ||
-                        "https://via.placeholder.com/150"
-                      }
-                      alt={albumDetail.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    {/* Overlay oscuro en hover con un ícono de ojo o "View" */}
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <span className="font-[family-name:var(--font-bayon)] text-white tracking-widest text-lg">
-                        VIEW
+                    {/* Rating Badge */}
+                    <div className="flex items-center gap-1.5 bg-black/40 px-3 py-1 rounded-full border border-zinc-800 shrink-0">
+                      <span className="text-[#E23C3C] text-xs">★</span>
+                      <span className="font-[family-name:var(--font-bayon)] text-[#E23C3C] text-sm tracking-wider leading-none pt-0.5">
+                        {review.rating.toFixed(1)}
                       </span>
                     </div>
-                  </div>
-
-                  {/* Contenedor Inferior: Solo Estrellas (Si existen) o espacio vacío */}
-                  <div className="flex justify-center items-center h-6">
-                    {reviewForAlbum ? (
-                      <div className="flex items-center gap-1 bg-[#111112] px-3 py-0.5 rounded-full border border-zinc-800">
-                        <svg
-                          className="w-3 h-3 text-[#E23C3C]"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <span className="font-[family-name:var(--font-bayon)] text-[#E23C3C] text-sm tracking-widest">
-                          {reviewForAlbum.rating.toFixed(1)}
-                        </span>
-                      </div>
-                    ) : (
-                      <span className="text-transparent">-</span>
-                    )}
-                  </div>
-                </Link>
-              );
-            })}
+                  </Link>
+                );
+              })
+            )}
           </div>
         </div>
       </div>
+
+      {/* ALBUM SELECTOR MODAL */}
+      <AnimatePresence>
+        {isSelectorOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative bg-[#111112] w-full max-w-lg rounded-[2rem] border border-zinc-800 shadow-2xl flex flex-col max-h-[70vh] overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="flex justify-between items-start p-6 border-b border-zinc-900 bg-[#8E0B0B]/10">
+                <div className="flex flex-col gap-1 overflow-hidden">
+                  <h3 className="font-[family-name:var(--font-biscuit)] text-2xl text-[#E23C3C] tracking-wide uppercase leading-none">
+                    Select Album for slot #{activeSlotIndex !== null ? activeSlotIndex + 1 : ""}
+                  </h3>
+                  <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-400 tracking-widest uppercase mt-1">
+                    CHOOSE FROM YOUR COLLECTION
+                  </p>
+                </div>
+                <button
+                  onClick={() => {
+                    setIsSelectorOpen(false);
+                    setActiveSlotIndex(null);
+                  }}
+                  className="text-zinc-500 hover:text-white transition-colors text-xl font-bold"
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* Modal scrollable album list */}
+              <div className="flex flex-col p-6 overflow-y-auto gap-2">
+                {collectionAlbums.length === 0 ? (
+                  <div className="text-center py-10 font-[family-name:var(--font-bayon)] text-zinc-500 uppercase tracking-widest">
+                    Your collection is empty.
+                  </div>
+                ) : (
+                  collectionAlbums.map((albumId) => {
+                    const albumDetail = albumsData.albums.items.find(
+                      (a: any) => a.id === albumId
+                    );
+                    if (!albumDetail) return null;
+
+                    return (
+                      <div
+                        key={albumId}
+                        onClick={() => selectAlbumForSlot(albumId)}
+                        className="flex items-center justify-between p-3 bg-black/40 border border-zinc-900 rounded-xl hover:border-zinc-700 transition-colors cursor-pointer group"
+                      >
+                        <div className="flex items-center gap-3 overflow-hidden">
+                          <img
+                            src={albumDetail.images[0]?.url || "https://via.placeholder.com/150"}
+                            alt={albumDetail.name}
+                            className="w-12 h-12 object-cover rounded-md border border-zinc-800 shrink-0"
+                          />
+                          <div className="flex flex-col truncate">
+                            <p className="font-[family-name:var(--font-bayon)] text-lg text-white tracking-widest uppercase truncate leading-tight">
+                              {albumDetail.name}
+                            </p>
+                            <p className="font-sans text-[10px] text-zinc-400 truncate">
+                              {albumDetail.artists[0]?.name}
+                            </p>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          className="bg-[#111112] border border-zinc-800 text-zinc-400 font-[family-name:var(--font-bayon)] text-[10px] px-4 py-2 rounded-full tracking-widest hover:bg-[#E23C3C] hover:text-black hover:border-[#E23C3C] transition-all uppercase font-bold"
+                        >
+                          Select
+                        </button>
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </main>
+  );
+}
+
+export default function RankingPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[#000000] text-white flex items-center justify-center">
+        <div className="w-12 h-12 border-4 border-white/20 border-t-[#E23C3C] rounded-full animate-spin"></div>
+      </div>
+    }>
+      <RankingContent />
+    </Suspense>
   );
 }
