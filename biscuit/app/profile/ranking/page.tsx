@@ -487,7 +487,7 @@ function RankingContent() {
                     Select Album for slot #{activeSlotIndex !== null ? activeSlotIndex + 1 : ""}
                   </h3>
                   <p className="font-[family-name:var(--font-bayon)] text-xs text-zinc-400 tracking-widest uppercase mt-1">
-                    CHOOSE FROM YOUR COLLECTION
+                    CHOOSE FROM ALL ALBUMS
                   </p>
                 </div>
                 <button
@@ -514,16 +514,9 @@ function RankingContent() {
 
               {/* Modal scrollable album list */}
               <div className="flex flex-col p-6 overflow-y-auto gap-2">
-                {collectionAlbums.length === 0 ? (
-                  <div className="text-center py-10 font-[family-name:var(--font-bayon)] text-zinc-500 uppercase tracking-widest">
-                    Your collection is empty.
-                  </div>
-                ) : (() => {
-                  const filteredCollection = collectionAlbums.filter((albumId) => {
-                    const albumDetail = albumsData.albums.items.find(
-                      (a: any) => a.id === albumId
-                    );
-                    if (!albumDetail) return false;
+                {(() => {
+                  const allAlbums = albumsData.albums.items;
+                  const filteredAlbums = allAlbums.filter((albumDetail) => {
                     const term = searchTerm.toLowerCase();
                     return (
                       albumDetail.name.toLowerCase().includes(term) ||
@@ -531,7 +524,7 @@ function RankingContent() {
                     );
                   });
 
-                  if (filteredCollection.length === 0) {
+                  if (filteredAlbums.length === 0) {
                     return (
                       <div className="text-center py-10 font-[family-name:var(--font-bayon)] text-zinc-600 uppercase tracking-widest text-xs">
                         No albums match your search.
@@ -539,12 +532,8 @@ function RankingContent() {
                     );
                   }
 
-                  return filteredCollection.map((albumId) => {
-                    const albumDetail = albumsData.albums.items.find(
-                      (a: any) => a.id === albumId
-                    );
-                    if (!albumDetail) return null;
-
+                  return filteredAlbums.map((albumDetail) => {
+                    const albumId = albumDetail.id;
                     const isAlreadySelected = top3.some(
                       (id, idx) => id === albumId && idx !== activeSlotIndex
                     );

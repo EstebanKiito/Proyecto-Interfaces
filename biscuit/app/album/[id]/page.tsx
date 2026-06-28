@@ -349,6 +349,11 @@ export default function Album() {
       return;
     }
     
+    if (action === "reviewed") {
+      setIsReviewModalOpen(true);
+      return;
+    }
+    
     const nextVal = !activeActions[action];
     setActiveActions((prev) => ({ ...prev, [action]: nextVal }));
 
