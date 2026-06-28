@@ -403,7 +403,7 @@ export default function LoginPage() {
                   value={loginIdentifier}
                   onChange={(e) => setLoginIdentifier(e.target.value)}
                   className="w-full bg-white/5 border border-white/15 focus:border-[#E23C3C] rounded-xl px-4 py-3 text-sm outline-none transition-all placeholder-gray-600"
-                  placeholder="ej. Estebankito"
+                  placeholder="ej. Ziqi Yan"
                   disabled={oauthProvider !== null}
                 />
               </div>
@@ -485,7 +485,7 @@ export default function LoginPage() {
                   value={regName}
                   onChange={(e) => setRegName(e.target.value)}
                   className="w-full bg-white/5 border border-white/15 focus:border-[#E23C3C] rounded-xl px-4 py-2.5 text-sm outline-none transition-all placeholder-gray-600"
-                  placeholder="ej. Esteban Ortega"
+                  placeholder="ej. Ziqi Yan"
                   disabled={oauthProvider !== null}
                 />
               </div>
@@ -504,7 +504,7 @@ export default function LoginPage() {
                   onChange={(e) => setRegUsername(e.target.value)}
                   maxLength={12}
                   className="w-full bg-white/5 border border-white/15 focus:border-[#E23C3C] rounded-xl px-4 py-2.5 text-sm outline-none transition-all placeholder-gray-600"
-                  placeholder="ej. Estebankito"
+                  placeholder="ej. Ziq777"
                   disabled={oauthProvider !== null}
                 />
               </div>
@@ -522,7 +522,7 @@ export default function LoginPage() {
                   value={regEmail}
                   onChange={(e) => setRegEmail(e.target.value)}
                   className="w-full bg-white/5 border border-white/15 focus:border-[#E23C3C] rounded-xl px-4 py-2.5 text-sm outline-none transition-all placeholder-gray-600"
-                  placeholder="ej. esteban@example.com"
+                  placeholder="ej. ziqi@example.com"
                   disabled={oauthProvider !== null}
                 />
               </div>
