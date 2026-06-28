@@ -55,6 +55,11 @@ export default function EditProfileModal({
       return;
     }
 
+    if (username.trim().length > 12) {
+      setError("Username cannot exceed 12 characters.");
+      return;
+    }
+
     try {
       // 1. Prepare updated user object
       const updatedUser = {
@@ -213,6 +218,7 @@ export default function EditProfileModal({
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  maxLength={12}
                   className="w-full bg-black/30 border border-zinc-800 rounded-xl p-4 pl-8 text-white focus:outline-none focus:border-[#E23C3C] transition-colors font-sans text-sm shadow-inner"
                   required
                 />
