@@ -101,21 +101,42 @@ export default function Album() {
 
     // Cargar listas de reproducción del usuario
     if (userId) {
-      const uPlaylists = playlistsJson.playlists.filter((p) => p.owner_id === userId);
-      // Inyectar To-Listen playlist por defecto si no está presente
-      const hasToListen = uPlaylists.some(p => p.title.toLowerCase() === "to-listen");
+      const localPlaylistItems = JSON.parse(localStorage.getItem(`playlistItems_${userId}`) || "{}");
+      const initialPlaylists = playlistsJson.playlists.filter((p) => p.owner_id === userId);
+
+      const mergedPlaylists = initialPlaylists.map(playlist => {
+        if (localPlaylistItems[playlist.id]) {
+          return { ...playlist, items: localPlaylistItems[playlist.id] };
+        }
+        return playlist;
+      });
+
+      const hasToListen = mergedPlaylists.some(p => p.title.toLowerCase() === "to-listen");
       if (!hasToListen) {
-        uPlaylists.push({
-          id: `pl_to_listen_${userId}`,
+        const defaultToListenId = `pl_to_listen_${userId}`;
+        mergedPlaylists.push({
+          id: defaultToListenId,
           owner_id: userId,
           title: "To-Listen",
           description: "Mis álbumes para escuchar más tarde.",
           is_public: true,
           type: "tier_list",
-          items: []
+          items: localPlaylistItems[defaultToListenId] || []
         });
       }
-      setUserPlaylists(uPlaylists);
+
+      // Load user's custom playlists
+      const customPlaylistsKey = `customPlaylists_${userId}`;
+      const customPlaylists = JSON.parse(localStorage.getItem(customPlaylistsKey) || "[]");
+      const mergedCustomPlaylists = customPlaylists.map((playlist: any) => {
+        if (localPlaylistItems[playlist.id]) {
+          return { ...playlist, items: localPlaylistItems[playlist.id] };
+        }
+        return playlist;
+      });
+
+      const combinedPlaylists = [...mergedPlaylists, ...mergedCustomPlaylists];
+      setUserPlaylists(combinedPlaylists);
     } else {
       setUserPlaylists([]);
     }
