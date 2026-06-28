@@ -148,6 +148,17 @@ export default function Album() {
     let finalText = "";
 
     if (userId) {
+      // Registrar en el historial de álbumes vistos (Continuar Escuchando)
+      try {
+        const historyKey = `lastViewedAlbums_${userId}`;
+        const history: string[] = JSON.parse(localStorage.getItem(historyKey) || "[]");
+        const filtered = history.filter((id) => id !== albumId);
+        filtered.unshift(albumId);
+        localStorage.setItem(historyKey, JSON.stringify(filtered.slice(0, 10)));
+      } catch (e) {
+        console.error("Error updating viewing history", e);
+      }
+
       // Buscar reseña estática del JSON
       const jsonReview = reviewsJson.reviews.find(
         (r) => r.album_id === albumId && r.user_id === userId
