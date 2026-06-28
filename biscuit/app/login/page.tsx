@@ -56,7 +56,7 @@ export default function LoginPage() {
         try {
           const parsed = JSON.parse(activeSession);
           if (parsed && parsed.isAuthenticated) {
-            router.push("/profile");
+            router.push("/");
             return;
           }
         } catch (e) {
@@ -146,7 +146,7 @@ export default function LoginPage() {
 
     localStorage.setItem(SESSION_KEY, JSON.stringify(sessionUser));
     window.dispatchEvent(new Event("sessionChanged"));
-    router.push("/profile");
+    router.push("/");
   };
 
   // Handle Simulated Register
@@ -243,9 +243,9 @@ export default function LoginPage() {
     setRegPassword("");
     setRegConfirmPassword("");
 
-    // Redirect to profile
+    // Redirect to home/landing
     setTimeout(() => {
-      router.push("/profile");
+      router.push("/");
     }, 1200);
   };
 
@@ -303,7 +303,7 @@ export default function LoginPage() {
 
       window.dispatchEvent(new Event("sessionChanged"));
       setOauthProvider(null);
-      router.push("/profile");
+      router.push("/");
     }, 1500);
   };
 
