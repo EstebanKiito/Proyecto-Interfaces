@@ -403,7 +403,7 @@ export default function LoginPage() {
                   value={loginIdentifier}
                   onChange={(e) => setLoginIdentifier(e.target.value)}
                   className="w-full bg-white/5 border border-white/15 focus:border-[#E23C3C] rounded-xl px-4 py-3 text-sm outline-none transition-all placeholder-gray-600"
-                  placeholder="ej. Ziqi Yan"
+                  placeholder="ej. ZiqiGod77"
                   disabled={oauthProvider !== null}
                 />
               </div>
