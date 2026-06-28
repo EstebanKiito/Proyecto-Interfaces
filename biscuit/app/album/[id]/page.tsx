@@ -319,6 +319,7 @@ export default function Album() {
           user_id: u.id,
           user_name: u.name,
           username: u.username,
+          avatar_url: u.avatar_url || "https://www.svgrepo.com/show/335455/profile-default.svg",
           rating: ratingVal,
           review_text: textVal
         });
@@ -586,7 +587,12 @@ export default function Album() {
                       <section key={rev.id} className="bg-[#111111] rounded-lg shadow-xl border border-white/10 p-6 flex flex-col gap-3 relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-1 h-full bg-[#E23C3C]"></div>
                         <div className="flex items-center justify-between">
-                          <Link href={isMyReview ? "/profile" : `/profile/${rev.user_id}`} className="hover:underline cursor-pointer group/reviewHeader">
+                          <Link href={isMyReview ? "/profile" : `/profile/${rev.user_id}`} className="hover:underline cursor-pointer group/reviewHeader flex items-center gap-3">
+                            <img
+                              src={rev.avatar_url}
+                              alt={rev.user_name}
+                              className="w-8 h-8 rounded-full object-cover border border-white/5"
+                            />
                             <h3 className="text-[#939090] text-[10px] uppercase tracking-widest font-bold flex items-center gap-2 group-hover/reviewHeader:text-[#E23C3C] transition-colors">
                               <span className="text-[#E23C3C] text-sm">✎</span> 
                               {isMyReview ? "MY REVIEW" : `${rev.user_name.toUpperCase()}'S REVIEW`}
