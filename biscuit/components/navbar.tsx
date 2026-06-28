@@ -195,113 +195,78 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
           )}
 
           {/* ── CENTRO: Searchbar ── */}
-          <div className="flex flex-col items-center relative">
-            <div className="relative flex items-center">
-              {/* Icono lupa */}
-              <svg
-                className="absolute left-3 w-3.5 h-3.5 text-gray-500 pointer-events-none"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-              >
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.35-4.35" />
-              </svg>
+          {pathname !== "/login" ? (
+            <div className="flex flex-col items-center relative">
+              <div className="relative flex items-center">
+                {/* Icono lupa */}
+                <svg
+                  className="absolute left-3 w-3.5 h-3.5 text-gray-500 pointer-events-none"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.35-4.35" />
+                </svg>
 
-              <input
-                ref={inputRef}
-                type="text"
-                placeholder="SEARCH"
-                value={searchQuery}
-                onChange={handleSearchChange}
-                onFocus={() => setIsSearchActive(true)}
-                className="bg-white/5 border border-white/10 focus:border-white/30 rounded-full text-white placeholder-gray-200 outline-none pl-9 pr-4 py-2 w-[220px] focus:w-[320px] transition-all duration-300 text-xs text-center uppercase tracking-widest cursor-text"
-              />
+                <input
+                  ref={inputRef}
+                  type="text"
+                  placeholder="SEARCH"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  onFocus={() => setIsSearchActive(true)}
+                  className="bg-white/5 border border-white/10 focus:border-white/30 rounded-full text-white placeholder-gray-200 outline-none pl-9 pr-4 py-2 w-[220px] focus:w-[320px] transition-all duration-300 text-xs text-center uppercase tracking-widest cursor-text"
+                />
 
-              {/* Spinner cuando está filtrando */}
-              {isPending && (
-                <div className="absolute right-3 w-3 h-3 border border-white/30 border-t-white/80 rounded-full animate-spin" />
-              )}
-            </div>
+                {/* Spinner cuando está filtrando */}
+                {isPending && (
+                  <div className="absolute right-3 w-3 h-3 border border-white/30 border-t-white/80 rounded-full animate-spin" />
+                )}
+              </div>
 
-            {/* Resultados */}
-            {isSearchActive && searchQuery.trim() !== "" && (
-              <div
-                className={`absolute top-full mt-3 w-[320px] bg-[#111]/95 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden flex flex-col z-50 shadow-2xl transition-opacity duration-150 ${
-                  isPending ? "opacity-50" : "opacity-100"
-                }`}
-              >
-                {/* Tabs de Selección */}
-                <div className="flex border-b border-white/10 text-[9px] uppercase tracking-wider font-semibold font-[family-name:var(--font-bayon)] bg-white/5">
-                  <button
-                    type="button"
-                    onClick={() => setActiveSearchTab("albums")}
-                    className={`flex-1 py-2.5 text-center transition-all ${
-                      activeSearchTab === "albums"
-                        ? "bg-white/10 text-white border-b-2 border-[#E23C3C]"
-                        : "text-gray-500 hover:text-white"
-                    }`}
-                  >
-                    Álbumes ({filteredAlbums.length})
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setActiveSearchTab("users")}
-                    className={`flex-1 py-2.5 text-center transition-all ${
-                      activeSearchTab === "users"
-                        ? "bg-white/10 text-white border-b-2 border-[#E23C3C]"
-                        : "text-gray-500 hover:text-white"
-                    }`}
-                  >
-                    Usuarios ({filteredUsers.length})
-                  </button>
-                </div>
+              {/* Resultados */}
+              {isSearchActive && searchQuery.trim() !== "" && (
+                <div
+                  className={`absolute top-full mt-3 w-[320px] bg-[#111]/95 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden flex flex-col z-50 shadow-2xl transition-opacity duration-150 ${
+                    isPending ? "opacity-50" : "opacity-100"
+                  }`}
+                >
+                  {/* Tabs de Selección */}
+                  <div className="flex border-b border-white/10 text-[9px] uppercase tracking-wider font-semibold font-[family-name:var(--font-bayon)] bg-white/5">
+                    <button
+                      type="button"
+                      onClick={() => setActiveSearchTab("albums")}
+                      className={`flex-1 py-2.5 text-center transition-all ${
+                        activeSearchTab === "albums"
+                          ? "bg-white/10 text-white border-b-2 border-[#E23C3C]"
+                          : "text-gray-500 hover:text-white"
+                      }`}
+                    >
+                      Álbumes ({filteredAlbums.length})
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setActiveSearchTab("users")}
+                      className={`flex-1 py-2.5 text-center transition-all ${
+                        activeSearchTab === "users"
+                          ? "bg-white/10 text-white border-b-2 border-[#E23C3C]"
+                          : "text-gray-500 hover:text-white"
+                      }`}
+                    >
+                      Usuarios ({filteredUsers.length})
+                    </button>
+                  </div>
 
-                {/* Contenedor de Resultados con Scroll */}
-                <div className="max-h-[300px] overflow-y-auto">
-                  {activeSearchTab === "albums" ? (
-                    filteredAlbums.length > 0 ? (
-                      filteredAlbums.map((album) => (
-                        <Link
-                          key={album.id}
-                          href={`/album/${album.id}`}
-                          onClick={() => {
-                            setIsSearchActive(false);
-                            setSearchQuery("");
-                            startTransition(() => setFilterQuery(""));
-                          }}
-                          className="flex items-center gap-3 px-4 py-3 hover:bg-white/8 cursor-pointer transition-colors border-b border-white/5 last:border-0"
-                        >
-                          <img
-                            src={album.images[0].url}
-                            alt={album.name}
-                            className="w-9 h-9 object-cover rounded-md flex-shrink-0"
-                          />
-                          <div className="flex flex-col text-left min-w-0">
-                            <span className="text-white text-xs font-semibold tracking-normal truncate">
-                              {album.name}
-                            </span>
-                            <span className="text-gray-500 text-[10px] uppercase tracking-wider truncate">
-                              {album.artists[0].name}
-                            </span>
-                          </div>
-                        </Link>
-                      ))
-                    ) : (
-                      <div className="p-5 text-center text-gray-600 text-[10px] uppercase tracking-widest">
-                        No se encontraron álbumes
-                      </div>
-                    )
-                  ) : (
-                    filteredUsers.length > 0 ? (
-                      filteredUsers.map((user) => {
-                        const isSelf = session && session.id === user.id;
-                        const profilePath = isSelf ? "/profile" : `/profile/${user.id}`;
-                        return (
+                  {/* Contenedor de Resultados con Scroll */}
+                  <div className="max-h-[300px] overflow-y-auto">
+                    {activeSearchTab === "albums" ? (
+                      filteredAlbums.length > 0 ? (
+                        filteredAlbums.map((album) => (
                           <Link
-                            key={user.id}
-                            href={profilePath}
+                            key={album.id}
+                            href={`/album/${album.id}`}
                             onClick={() => {
                               setIsSearchActive(false);
                               setSearchQuery("");
@@ -310,31 +275,70 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
                             className="flex items-center gap-3 px-4 py-3 hover:bg-white/8 cursor-pointer transition-colors border-b border-white/5 last:border-0"
                           >
                             <img
-                              src={user.avatar_url || "/images/spike.png"}
-                              alt={user.name}
-                              className="w-9 h-9 object-cover rounded-full flex-shrink-0"
+                              src={album.images[0].url}
+                              alt={album.name}
+                              className="w-9 h-9 object-cover rounded-md flex-shrink-0"
                             />
                             <div className="flex flex-col text-left min-w-0">
                               <span className="text-white text-xs font-semibold tracking-normal truncate">
-                                {user.name}
+                                {album.name}
                               </span>
-                              <span className="text-[#E23C3C] text-[10px] tracking-normal truncate">
-                                @{user.username} {isSelf && <span className="text-zinc-500 text-[9px] uppercase tracking-widest">(Tú)</span>}
+                              <span className="text-gray-500 text-[10px] uppercase tracking-wider truncate">
+                                {album.artists[0].name}
                               </span>
                             </div>
                           </Link>
-                        );
-                      })
+                        ))
+                      ) : (
+                        <div className="p-5 text-center text-gray-600 text-[10px] uppercase tracking-widest">
+                          No se encontraron álbumes
+                        </div>
+                      )
                     ) : (
-                      <div className="p-5 text-center text-gray-600 text-[10px] uppercase tracking-widest">
-                        No se encontraron usuarios
-                      </div>
-                    )
-                  )}
+                      filteredUsers.length > 0 ? (
+                        filteredUsers.map((user) => {
+                          const isSelf = session && session.id === user.id;
+                          const profilePath = isSelf ? "/profile" : `/profile/${user.id}`;
+                          return (
+                            <Link
+                              key={user.id}
+                              href={profilePath}
+                              onClick={() => {
+                                setIsSearchActive(false);
+                                setSearchQuery("");
+                                startTransition(() => setFilterQuery(""));
+                              }}
+                              className="flex items-center gap-3 px-4 py-3 hover:bg-white/8 cursor-pointer transition-colors border-b border-white/5 last:border-0"
+                            >
+                              <img
+                                src={user.avatar_url || "/images/spike.png"}
+                                alt={user.name}
+                                className="w-9 h-9 object-cover rounded-full flex-shrink-0"
+                              />
+                              <div className="flex flex-col text-left min-w-0">
+                                <span className="text-white text-xs font-semibold tracking-normal truncate">
+                                  {user.name}
+                                </span>
+                                <span className="text-[#E23C3C] text-[10px] tracking-normal truncate">
+                                  @{user.username} {isSelf && <span className="text-zinc-500 text-[9px] uppercase tracking-widest">(Tú)</span>}
+                                </span>
+                              </div>
+                            </Link>
+                          );
+                        })
+                      ) : (
+                        <div className="p-5 text-center text-gray-600 text-[10px] uppercase tracking-widest">
+                          No se encontraron usuarios
+                        </div>
+                      )
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          ) : (
+            <div />
+          )}
 
           {/* ── DERECHA: Perfil o Login ── */}
           <div className="flex justify-end items-center" ref={profileRef}>
