@@ -1,6 +1,7 @@
 "use client";
 import Spline from '@splinetool/react-spline';
 import { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Home() {
 
@@ -73,18 +74,33 @@ export default function Home() {
 
         {/* ---------------- HERO TEXT ---------------- */}
         <div className="absolute left-12 top-1/2 -translate-y-1/2 z-10 flex flex-col gap-6">
-          <h1 className="text-8xl font-biscuit tracking-wider uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+          <motion.h1
+            initial={{ opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 1 , ease: "easeOut" }}
+            className="text-8xl font-biscuit tracking-wider uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+          >
             BISCUIT
-          </h1>
-          <p className="text-2xl max-w-[280px] font-light tracking-widest leading-snug">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 1.8, ease: "easeOut" }}
+            className="text-2xl max-w-[280px] font-light tracking-widest leading-snug"
+          >
             MADE FOR TRUE MUSIC LOVERS
-          </p>
+          </motion.p>
         </div>
 
         <div className="absolute bottom-10 w-full text-center z-10">
-          <p className="text-sm tracking-[0.2em] text-gray-300">
+          <motion.p
+            initial={{ opacity: 0, y: 0 }}
+            animate={{ opacity: 1, y: -10 }}
+            transition={{ duration: 0.8, delay: 3, ease: "easeOut" }}
+            className="text-sm tracking-[0.2em] text-gray-300"
+          >
             SCROLL TO CONTINUE
-          </p>
+          </motion.p>
         </div>
       </section>
 
