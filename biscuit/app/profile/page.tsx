@@ -12,6 +12,7 @@ import playlistsData from "@/data/playlists.json";
 import PlaylistModal from "@/components/playlistModal";
 import CreatePlaylistModal from "@/components/createPlaylistModal";
 import FriendsModal from "@/components/friendsModal";
+import EditProfileModal from "@/components/editProfileModal";
 import noPhoto from "../../public/images/no-photo.jpg";
 
 // ==========================================
@@ -49,9 +50,11 @@ export default function ProfilePage() {
   const [userReviews, setUserReviews] = useState<any[]>([]);
   const [userPlaylists, setUserPlaylists] = useState<any[]>([]);
   const [collectionAlbums, setCollectionAlbums] = useState<string[]>([]);
+  const [profileTop3, setProfileTop3] = useState<any[]>([]);
   const [followerCount, setFollowerCount] = useState(0);
   const [followingCount, setFollowingCount] = useState(0);
   const [isFriendsModalOpen, setIsFriendsModalOpen] = useState(false);
+  const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
   const [friendsModalMode, setFriendsModalMode] = useState<"followers" | "following">("followers");
 
   // Effect to authenticate and load user session
@@ -78,6 +81,17 @@ export default function ProfilePage() {
           if (localUsersRaw) {
             const localUsers = JSON.parse(localUsersRaw);
             fullUser = localUsers.find((u: any) => u.id === sessionData.id);
+          }
+        }
+
+        // Apply local profile override if exists
+        if (fullUser) {
+          const overrideRaw = localStorage.getItem(`profileOverride_${fullUser.id}`);
+          if (overrideRaw) {
+            try {
+              const override = JSON.parse(overrideRaw);
+              fullUser = { ...fullUser, ...override };
+            } catch (e) {}
           }
         }
 
@@ -196,7 +210,8 @@ export default function ProfilePage() {
     // --- LECTURA DE ALBUMS GUSTADOS (COLECCIÓN) ---
     const likedKey = `likedAlbums_${user.id}`;
     const likedAlbums: string[] = JSON.parse(localStorage.getItem(likedKey) || "[]");
-    const combined = Array.from(new Set([...user.favorite_albums, ...likedAlbums]));
+    const reviewedAlbumIds = mergedReviews.map((r) => r.album_id);
+    const combined = Array.from(new Set([...user.favorite_albums, ...likedAlbums, ...reviewedAlbumIds]));
     setCollectionAlbums(combined);
 
     // --- LECTURA DE FOLLOWERS Y FOLLOWING ---
@@ -204,6 +219,34 @@ export default function ProfilePage() {
     const following = JSON.parse(localStorage.getItem(`following_${user.id}`) || "[]");
     setFollowerCount(followers.length);
     setFollowingCount(following.length);
+
+    // --- LECTURA DE CUSTOM TOP 3 ---
+    const customTop3Key = `customTop3_${user.id}`;
+    let savedTop3: string[] = JSON.parse(localStorage.getItem(customTop3Key) || "[]");
+    
+    if (savedTop3.length === 0 && mergedReviews.length > 0) {
+      savedTop3 = [...mergedReviews]
+        .sort((a, b) => b.rating - a.rating)
+        .slice(0, 3)
+        .map((r) => r.album_id);
+    }
+    
+    while (savedTop3.length < 3) {
+      savedTop3.push("");
+    }
+    
+    const resolvedTop3 = savedTop3.map((albumId) => {
+      if (!albumId) return null;
+      const albumDetail = albumsData.albums.items.find((a) => a.id === albumId);
+      const reviewDetail = mergedReviews.find((r) => r.album_id === albumId);
+      return {
+        albumId,
+        albumDetail,
+        rating: reviewDetail ? reviewDetail.rating : 0
+      };
+    }).filter(Boolean);
+    
+    setProfileTop3(resolvedTop3);
 
   }, [user]);
 
@@ -284,29 +327,28 @@ export default function ProfilePage() {
               </span>
 
               <div className="flex flex-col w-full font-[family-name:var(--font-bayon)] px-4 py-4">
-                {topRankedReviews.slice(0, 3).map((review, index) => {
-                  const albumDetail = albumsData.albums.items.find(
-                    (item) => item.id === review.album_id,
-                  );
+                {profileTop3.map((item, index) => {
+                  const albumDetail = item.albumDetail;
+                  if (!albumDetail) return null;
 
                   return (
                     <Link
-                      href={`/album/${review.album_id}`}
-                      key={review.id}
+                      href={`/album/${item.albumId}`}
+                      key={item.albumId}
                       className="flex flex-row items-center justify-between py-2 last:border-0 hover:bg-black/10 transition-colors px-2 rounded-lg group"
                     >
                       <div className="flex items-center gap-4 overflow-hidden ">
                         <img
-                          src={albumDetail?.images[0]?.url || noPhoto.src}
-                          alt={albumDetail?.name || "Album Cover"}
+                          src={albumDetail.images[0]?.url || noPhoto.src}
+                          alt={albumDetail.name || "Album Cover"}
                           className="w-22 h-22 object-cover flex-shrink-0 shadow-md"
                         />
                         <div className="flex flex-col justify-center truncate">
                           <p className="font-[family-name:var(--font-bayon)] text-sm text-[#fdfdfd]/70 truncate">
-                            {albumDetail?.artists[0]?.name || "Unknown Artist"}
+                            {albumDetail.artists[0]?.name || "Unknown Artist"}
                           </p>
                           <p className="font-[family-name:var(--font-bayon)] text-[1.5rem] text-[#fdfdfd] uppercase tracking-wide truncate leading-tight">
-                            {albumDetail?.name || "Unknown Album"}
+                            {albumDetail.name || "Unknown Album"}
                           </p>
                         </div>
                       </div>
@@ -315,7 +357,7 @@ export default function ProfilePage() {
                           #{index + 1}
                         </span>
                         <span className="font-[family-name:var(--font-bayon)] text-lg text-[#939090] tracking-wider">
-                          {review.rating.toFixed(1)}
+                          {item.rating.toFixed(1)}
                         </span>
                       </div>
                     </Link>
@@ -414,7 +456,7 @@ export default function ProfilePage() {
                 {totalPlaylists}
               </p>
               <p className="font-(family-name:--font-bayon) text-xs tracking-widest">
-                LISTS
+                SHELVES
               </p>
             </div>
             <div 
@@ -450,7 +492,7 @@ export default function ProfilePage() {
           {/* BOTÓN EDIT PROFILE */}
           <div className="flex justify-center mt-2">
             <button
-              onClick={() => alert("Editar perfil en desarrollo...")}
+              onClick={() => setIsEditProfileOpen(true)}
               className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer"
             >
               EDIT PROFILE
@@ -603,10 +645,19 @@ export default function ProfilePage() {
             </button>
           </div>
 
+          <div className="flex justify-center mt-4">
+            <Link
+              href="/profile/collection"
+              className="bg-[#ffffff] text-[#000000] font-[family-name:var(--font-bayon)] text-sm md:text-base px-5 py-1.5 rounded-full uppercase tracking-widest shadow-inner hover:bg-[#5c0d0d] hover:text-white transition-colors cursor-pointer"
+            >
+              VIEW COLLECTION
+            </Link>
+          </div>
+
           <div>
             <div className="font-[family-name:var(--font-biscuit)] text-6xl text-[#E23C3C] tracking-wide uppercase leading-none justify-end flex mt-12 mb-4">
               <div className="text-[#ffffff] mr-4">MY </div>
-              PLAYLISTS
+              SHELVES
             </div>
           </div>
 
@@ -642,7 +693,7 @@ export default function ProfilePage() {
                       </svg>
                     </button>
                     <h3 className="font-[family-name:var(--font-bayon)] uppercase truncate leading-none text-center text-lg text-zinc-500 group-hover:text-white transition-colors tracking-widest mt-2">
-                      CREATE LIST
+                      CREATE A SHELF
                     </h3>
                   </div>
                 </div>
@@ -739,6 +790,18 @@ export default function ProfilePage() {
           mode={friendsModalMode}
           currentUserId={user.id}
           onRelationsChanged={refreshRelations}
+        />
+      )}
+
+      {isEditProfileOpen && (
+        <EditProfileModal
+          isOpen={isEditProfileOpen}
+          onClose={() => setIsEditProfileOpen(false)}
+          user={user}
+          onProfileUpdated={(updatedUser) => {
+            setUser(updatedUser);
+            window.location.reload();
+          }}
         />
       )}
     </motion.main>

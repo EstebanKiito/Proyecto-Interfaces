@@ -3,7 +3,7 @@ import { useState, useMemo, useTransition, useRef, useEffect, forwardRef, useImp
 import Link from "next/link";
 import albumsJson from "@/data/albums.json";
 import currentUserData from "@/data/currentUser.json";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { handleLogout, SESSION_KEY, SessionUser } from "@/lib/auth";
 
 // — 1. Exportamos la interfaz para que el padre la conozca —
@@ -22,6 +22,7 @@ interface Album {
 // — 2. Envolvemos el componente en forwardRef —
 const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
   const router = useRouter();
+  const pathname = usePathname();
   const [searchQuery, setSearchQuery] = useState("");
   const [filterQuery, setFilterQuery] = useState("");
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -122,18 +123,22 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
       />
 
       {/* ── Navbar ── */}
-<header className="absolute top-0 w-full z-30 px-10 py-1 bg-gradient-to-b from-black/95 via-black/60 to-transparent pointer-events-none">
+<header className="absolute top-[0.7rem] w-full z-30 px-10 py-1 bg-gradient-to-b from-black/95 via-black/60 to-transparent pointer-events-none">
         <div className="grid grid-cols-3 items-center pointer-events-auto">
 
           {/* ── IZQUIERDA: Logo ── */}
-          <Link
-            href="/"
-            className="flex items-center gap-3 group w-fit"
-          >
-            <span className="text-4xl font-biscuit tracking-[0.25em] group-hover:tracking-[0.3em] transition-all duration-300">
-              Biscuit
-            </span>
-          </Link>
+          {!(!session && pathname === "/") ? (
+            <Link
+              href="/"
+              className="flex items-center gap-3 group w-fit"
+            >
+              <span className="text-4xl font-biscuit tracking-[0.12em] group-hover:tracking-[0.15em]  transition-all duration-300">
+                Biscuit
+              </span>
+            </Link>
+          ) : (
+            <div className="w-fit h-10" />
+          )}
 
           {/* ── CENTRO: Searchbar ── */}
           <div className="flex flex-col items-center relative">

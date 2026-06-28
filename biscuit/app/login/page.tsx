@@ -56,7 +56,7 @@ export default function LoginPage() {
         try {
           const parsed = JSON.parse(activeSession);
           if (parsed && parsed.isAuthenticated) {
-            router.push("/profile");
+            router.push("/");
             return;
           }
         } catch (e) {
@@ -78,8 +78,18 @@ export default function LoginPage() {
       return;
     }
 
-    // 1. Check in hardcoded currentUserData
-    const staticUsers = currentUserData.users;
+    // 1. Check in hardcoded currentUserData (with local overrides merged)
+    const staticUsers = currentUserData.users.map((u) => {
+      const overrideRaw = localStorage.getItem(`profileOverride_${u.id}`);
+      if (overrideRaw) {
+        try {
+          const override = JSON.parse(overrideRaw);
+          return { ...u, ...override };
+        } catch (e) {}
+      }
+      return u;
+    });
+
     let foundUser = staticUsers.find(
       (u) =>
         u.username.toLowerCase() === loginIdentifier.toLowerCase() ||
@@ -92,7 +102,18 @@ export default function LoginPage() {
       if (localUsersRaw) {
         try {
           const localUsers = JSON.parse(localUsersRaw) as any[];
-          foundUser = localUsers.find(
+          const overriddenLocalUsers = localUsers.map((u: any) => {
+            const overrideRaw = localStorage.getItem(`profileOverride_${u.id}`);
+            if (overrideRaw) {
+              try {
+                const override = JSON.parse(overrideRaw);
+                return { ...u, ...override };
+              } catch (e) {}
+            }
+            return u;
+          });
+
+          foundUser = overriddenLocalUsers.find(
             (u) =>
               u.username.toLowerCase() === loginIdentifier.toLowerCase() ||
               u.email.toLowerCase() === loginIdentifier.toLowerCase()
@@ -125,7 +146,7 @@ export default function LoginPage() {
 
     localStorage.setItem(SESSION_KEY, JSON.stringify(sessionUser));
     window.dispatchEvent(new Event("sessionChanged"));
-    router.push("/profile");
+    router.push("/");
   };
 
   // Handle Simulated Register
@@ -222,9 +243,9 @@ export default function LoginPage() {
     setRegPassword("");
     setRegConfirmPassword("");
 
-    // Redirect to profile
+    // Redirect to home/landing
     setTimeout(() => {
-      router.push("/profile");
+      router.push("/");
     }, 1200);
   };
 
@@ -282,7 +303,7 @@ export default function LoginPage() {
 
       window.dispatchEvent(new Event("sessionChanged"));
       setOauthProvider(null);
-      router.push("/profile");
+      router.push("/");
     }, 1500);
   };
 

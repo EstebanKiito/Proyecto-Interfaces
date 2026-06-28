@@ -1,0 +1,3148 @@
+{
+  "carousels": [
+    {
+      "id": "c0",
+      "title": "Recomendado para ti",
+      "albums": [
+        {
+          "id": "mockJRock09_fanclub",
+          "name": "ファンクラブ [Fanclub]",
+          "album_type": "album",
+          "release_date": "2006-03-15",
+          "total_tracks": 11,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/9.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/9.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock09",
+              "name": "ASIAN KUNG-FU GENERATION",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal19_rustinpeace",
+          "name": "Rust in Peace",
+          "album_type": "album",
+          "release_date": "1990-09-24",
+          "total_tracks": 9,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/megadeth-rust-peace-7c1efaee-7e9f-42d5-a6af-1f843a42a34d.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/megadeth-rust-peace-7c1efaee-7e9f-42d5-a6af-1f843a42a34d.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal19",
+              "name": "Megadeth",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal27_toxicity",
+          "name": "Toxicity",
+          "album_type": "album",
+          "release_date": "2001-09-04",
+          "total_tracks": 14,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/system-of-down-a05dfda7-83e7-4d26-8019-0de842c2aff5.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/system-of-down-a05dfda7-83e7-4d26-8019-0de842c2aff5.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal27",
+              "name": "System of a Down",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock18_solfa",
+          "name": "ソルファ [Sol-Fa]",
+          "album_type": "album",
+          "release_date": "2004-10-20",
+          "total_tracks": 12,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/18.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/18.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock09",
+              "name": "ASIAN KUNG-FU GENERATION",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal08_peacesells",
+          "name": "Peace Sells... but Who's Buying?",
+          "album_type": "album",
+          "release_date": "1986-09-19",
+          "total_tracks": 8,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/megadeth-peace-sells-55f91e7d-bde4-4fd1-afd3-11f3ca2fd144.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/megadeth-peace-sells-55f91e7d-bde4-4fd1-afd3-11f3ca2fd144.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal19",
+              "name": "Megadeth",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock19_tpab",
+          "name": "To Pimp a Butterfly",
+          "images": [
+            {
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-019-Kendrick-Lamar-To-Pimp-a-Butterfly.jpg?w=1000"
+            }
+          ],
+          "artists": [
+            {
+              "name": "Kendrick Lamar"
+            }
+          ]
+        },
+        {
+          "id": "mock10_miseducation",
+          "name": "The Miseducation of Lauryn Hill",
+          "images": [
+            {
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-010-Lauryn-Hill-MISEDUCATION.jpg?w=1000"
+            }
+          ],
+          "artists": [
+            {
+              "name": "Lauryn Hill"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal22_toofastforlove",
+          "name": "Too Fast for Love",
+          "images": [
+            {
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/motley-crue-98581784-73be-4f52-b536-8419fd7b2f9f.jpg?w=1280"
+            }
+          ],
+          "artists": [
+            {
+              "name": "Mötley Crüe"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal16_holydiver",
+          "name": "Holy Diver",
+          "images": [
+            {
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/dio-holy-diver-57849827-0ecf-4555-b8e8-eb77ff932301.jpg?w=1280"
+            }
+          ],
+          "artists": [
+            {
+              "name": "Dio"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock05_kessokuband",
+          "name": "結束バンド [Kessoku Band]",
+          "images": [
+            {
+              "url": "/images/jrock-albums/5.jpg"
+            }
+          ],
+          "artists": [
+            {
+              "name": "結束バンド [kessoku band]"
+            }
+          ]
+        },
+        {
+          "id": "mock20_kida",
+          "name": "Kid A",
+          "images": [
+            {
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-020-Radiohead-KID-A.jpg?w=1000"
+            }
+          ],
+          "artists": [
+            {
+              "name": "Radiohead"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal07_nosleep",
+          "name": "No Sleep 'til Hammersmith",
+          "images": [
+            {
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/motorhead-8ff05f09-c640-4217-900b-84010f9cbf65.jpg?w=1280"
+            }
+          ],
+          "artists": [
+            {
+              "name": "Motörhead"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c01",
+      "title": "Imprescindibles del Metal",
+      "albums": [
+        {
+          "id": "mockMetal01_paranoid",
+          "name": "Paranoid",
+          "album_type": "album",
+          "release_date": "1970-09-18",
+          "total_tracks": 8,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-paranoid-3bcd9090-b0e9-4d81-9210-eca983ae320d.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-paranoid-3bcd9090-b0e9-4d81-9210-eca983ae320d.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal14",
+              "name": "Black Sabbath",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal02_masterofpuppets",
+          "name": "Master of Puppets",
+          "album_type": "album",
+          "release_date": "1986-03-03",
+          "total_tracks": 8,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-puppets-d7382ca6-9e72-4770-b2f5-8b57922d57fb.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-puppets-d7382ca6-9e72-4770-b2f5-8b57922d57fb.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal25",
+              "name": "Metallica",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal04_numberofthebeast",
+          "name": "The Number of the Beast",
+          "album_type": "album",
+          "release_date": "1982-03-22",
+          "total_tracks": 8,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/iron-maiden-number-beast-ade03a59-4678-4bad-a3c1-9a11071fd8e6.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/iron-maiden-number-beast-ade03a59-4678-4bad-a3c1-9a11071fd8e6.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal13",
+              "name": "Iron Maiden",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal14_vol4",
+          "name": "Vol. 4",
+          "album_type": "album",
+          "release_date": "1972-09-25",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-vol4-cdd9f0f9-9c31-4483-a427-00d3525f334f.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-vol4-cdd9f0f9-9c31-4483-a427-00d3525f334f.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal14",
+              "name": "Black Sabbath",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal06_reigninblood",
+          "name": "Reign in Blood",
+          "album_type": "album",
+          "release_date": "1986-10-07",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/slayer-34a7ef2f-1f37-4581-bc52-555ac79cc1a2.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/slayer-34a7ef2f-1f37-4581-bc52-555ac79cc1a2.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal06",
+              "name": "Slayer",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal03_britishsteel",
+          "name": "British Steel",
+          "album_type": "album",
+          "release_date": "1980-04-14",
+          "total_tracks": 9,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/judas-priest-british-steel-7f438dcd-f35c-4326-a8e9-f3089d79fed9.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/judas-priest-british-steel-7f438dcd-f35c-4326-a8e9-f3089d79fed9.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal12",
+              "name": "Judas Priest",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal05_masterofreality",
+          "name": "Master of Reality",
+          "album_type": "album",
+          "release_date": "1971-07-21",
+          "total_tracks": 8,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-568262b3-8b0b-464d-91f6-61e0b91d32c2.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-568262b3-8b0b-464d-91f6-61e0b91d32c2.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal14",
+              "name": "Black Sabbath",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal07_nosleep",
+          "name": "No Sleep 'til Hammersmith",
+          "album_type": "album",
+          "release_date": "1981-06-27",
+          "total_tracks": 11,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/motorhead-8ff05f09-c640-4217-900b-84010f9cbf65.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/motorhead-8ff05f09-c640-4217-900b-84010f9cbf65.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal07",
+              "name": "Motörhead",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal08_peacesells",
+          "name": "Peace Sells... but Who's Buying?",
+          "album_type": "album",
+          "release_date": "1986-09-19",
+          "total_tracks": 8,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/megadeth-peace-sells-55f91e7d-bde4-4fd1-afd3-11f3ca2fd144.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/megadeth-peace-sells-55f91e7d-bde4-4fd1-afd3-11f3ca2fd144.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal19",
+              "name": "Megadeth",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal09_blizzardofozz",
+          "name": "Blizzard of Ozz",
+          "album_type": "album",
+          "release_date": "1980-09-20",
+          "total_tracks": 9,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/ozzy-blizzard-5001666b-350c-44dc-8857-6de41cdc16c8.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/ozzy-blizzard-5001666b-350c-44dc-8857-6de41cdc16c8.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal15",
+              "name": "Ozzy Osbourne",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal10_vulgardisplay",
+          "name": "Vulgar Display of Power",
+          "album_type": "album",
+          "release_date": "1992-02-25",
+          "total_tracks": 11,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/pantera-vulgar-display-5807cdb0-365d-470b-9fdf-61d28245df04.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/pantera-vulgar-display-5807cdb0-365d-470b-9fdf-61d28245df04.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal10",
+              "name": "Pantera",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal11_ridethelightning",
+          "name": "Ride the Lightning",
+          "album_type": "album",
+          "release_date": "1984-07-27",
+          "total_tracks": 8,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-lightning-ebbf6890-49d2-4746-ab85-11f37cdde6a2.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-lightning-ebbf6890-49d2-4746-ab85-11f37cdde6a2.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal25",
+              "name": "Metallica",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal12_screamingforvengeance",
+          "name": "Screaming for Vengeance",
+          "album_type": "album",
+          "release_date": "1982-07-17",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/judas-priest-vengeance-98856d7c-6e0d-47ba-ad5c-01a60752860b.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/judas-priest-vengeance-98856d7c-6e0d-47ba-ad5c-01a60752860b.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal12",
+              "name": "Judas Priest",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal13_ironmaiden",
+          "name": "Iron Maiden",
+          "album_type": "album",
+          "release_date": "1980-04-14",
+          "total_tracks": 8,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/iron-maiden-f5d6d58e-8833-4c1f-a6e6-1643600d4a8f.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/iron-maiden-f5d6d58e-8833-4c1f-a6e6-1643600d4a8f.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal13",
+              "name": "Iron Maiden",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal19_rustinpeace",
+          "name": "Rust in Peace",
+          "album_type": "album",
+          "release_date": "1990-09-24",
+          "total_tracks": 9,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/megadeth-rust-peace-7c1efaee-7e9f-42d5-a6af-1f843a42a34d.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/megadeth-rust-peace-7c1efaee-7e9f-42d5-a6af-1f843a42a34d.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal19",
+              "name": "Megadeth",
+              "type": "artist"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c02",
+      "title": "J-Rock Esencial",
+      "albums": [
+        {
+          "id": "mockJRock01_winningstrip",
+          "name": "勝訴ストリップ [Winning Strip]",
+          "album_type": "album",
+          "release_date": "2000-03-31",
+          "total_tracks": 13,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/1.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/1.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock01",
+              "name": "椎名林檎 [Ringo Sheena]",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock09_fanclub",
+          "name": "ファンクラブ [Fanclub]",
+          "album_type": "album",
+          "release_date": "2006-03-15",
+          "total_tracks": 11,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/9.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/9.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock09",
+              "name": "ASIAN KUNG-FU GENERATION",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock04_justamoment",
+          "name": "just A moment",
+          "album_type": "album",
+          "release_date": "2009-05-13",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/4.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/4.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock04",
+              "name": "凛として時雨 [Ling tosite sigure]",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock12_sappukei",
+          "name": "SAPPUKEI",
+          "album_type": "album",
+          "release_date": "2000-07-19",
+          "total_tracks": 11,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/12.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/12.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock12",
+              "name": "Number Girl",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock19_adult",
+          "name": "大人 (アダルト) [Adult]",
+          "album_type": "album",
+          "release_date": "2006-01-25",
+          "total_tracks": 11,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/19.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/19.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock19",
+              "name": "東京事変 [Tokyo Jihen]",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock18_solfa",
+          "name": "ソルファ [Sol-Fa]",
+          "images": [
+            {
+              "url": "/images/jrock-albums/18.jpg"
+            }
+          ],
+          "artists": [
+            {
+              "name": "ASIAN KUNG-FU GENERATION"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock02_unhappyrefrain",
+          "name": "アンハッピーリフレイン [Unhappy Refrain]",
+          "images": [
+            {
+              "url": "/images/jrock-albums/2.jpg"
+            }
+          ],
+          "artists": [
+            {
+              "name": "wowaka"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock04_justamoment",
+          "name": "just A moment",
+          "images": [
+            {
+              "url": "/images/jrock-albums/4.jpg"
+            }
+          ],
+          "artists": [
+            {
+              "name": "凛として時雨 [Ling tosite sigure]"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock06_innocencemoratorium",
+          "name": "無罪モラトリアム [Innocence Moratorium]",
+          "images": [
+            {
+              "url": "/images/jrock-albums/6.jpg"
+            }
+          ],
+          "artists": [
+            {
+              "name": "椎名林檎 [Ringo Sheena]"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock07_inspirationisdead",
+          "name": "Inspiration is DEAD",
+          "images": [
+            {
+              "url": "/images/jrock-albums/7.jpg"
+            }
+          ],
+          "artists": [
+            {
+              "name": "凛として時雨 [Ling tosite sigure]"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock17_stillavirgin",
+          "name": "still a Sigure virgin?",
+          "images": [
+            {
+              "url": "/images/jrock-albums/17.jpg"
+            }
+          ],
+          "artists": [
+            {
+              "name": "凛として時雨 [Ling tosite sigure]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c03",
+      "title": "Clásicos de Siempre",
+      "albums": [
+        {
+          "id": "mock05_abbeyroad",
+          "name": "Abbey Road",
+          "album_type": "album",
+          "release_date": "1969-09-26",
+          "total_tracks": 17,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-005-Beatles-ABBEY-ROAD.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-005-Beatles-ABBEY-ROAD.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art05",
+              "name": "The Beatles",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock07_rumours",
+          "name": "Rumours",
+          "album_type": "album",
+          "release_date": "1977-02-04",
+          "total_tracks": 11,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-007-Fleetwood-Mac-RUMOURS.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-007-Fleetwood-Mac-RUMOURS.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art07",
+              "name": "Fleetwood Mac",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock11_revolver",
+          "name": "Revolver",
+          "album_type": "album",
+          "release_date": "1966-08-05",
+          "total_tracks": 14,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-011-BeatlesREVOLVER-updated.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-011-BeatlesREVOLVER-updated.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art05",
+              "name": "The Beatles",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock13_exile",
+          "name": "Exile on Main St.",
+          "album_type": "album",
+          "release_date": "1972-05-12",
+          "total_tracks": 18,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-013-ArethaFrankNEVERLOVED-H.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-013-ArethaFrankNEVERLOVED-H.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art13",
+              "name": "The Rolling Stones",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock02_petsounds",
+          "name": "Pet Sounds",
+          "album_type": "album",
+          "release_date": "1966-05-16",
+          "total_tracks": 13,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-002-Beach-Boys-PET-SOUNDS-update.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-002-Beach-Boys-PET-SOUNDS-update.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art02",
+              "name": "The Beach Boys",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock03_blue",
+          "name": "Blue",
+          "images": [
+            {
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-003-JoniMitchell-BLUE-HR.jpg?w=1000"
+            }
+          ],
+          "artists": [
+            {
+              "name": "Joni Mitchell"
+            }
+          ]
+        },
+        {
+          "id": "mock04_songsinthekey",
+          "name": "Songs in the Key of Life",
+          "images": [
+            {
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-004-Stevie-Wonder-SONGS-IN-THE-KEY-OF-LIFE.jpg?w=1000"
+            }
+          ],
+          "artists": [
+            {
+              "name": "Stevie Wonder"
+            }
+          ]
+        },
+        {
+          "id": "mock07_rumours",
+          "name": "Rumours",
+          "images": [
+            {
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-007-Fleetwood-Mac-RUMOURS.jpg?w=1000"
+            }
+          ],
+          "artists": [
+            {
+              "name": "Fleetwood Mac"
+            }
+          ]
+        },
+        {
+          "id": "mock09_bloodonthetracks",
+          "name": "Blood on the Tracks",
+          "images": [
+            {
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-009-Bob-Dylan-BLOOD-ON-THE-TRACKS.jpg?w=1000"
+            }
+          ],
+          "artists": [
+            {
+              "name": "Bob Dylan"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c04",
+      "title": "Leyendas del Hip-Hop y R&B",
+      "albums": [
+        {
+          "id": "mock17_mbdtf",
+          "name": "My Beautiful Dark Twisted Fantasy",
+          "album_type": "album",
+          "release_date": "2010-11-22",
+          "total_tracks": 13,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-017-Kanye-My-Beautiful-Dark-Twisted-Fantasy.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-017-Kanye-My-Beautiful-Dark-Twisted-Fantasy.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art17",
+              "name": "Kanye West",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock19_tpab",
+          "name": "To Pimp a Butterfly",
+          "album_type": "album",
+          "release_date": "2015-03-15",
+          "total_tracks": 16,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-019-Kendrick-Lamar-To-Pimp-a-Butterfly.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-019-Kendrick-Lamar-To-Pimp-a-Butterfly.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art19",
+              "name": "Kendrick Lamar",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock10_miseducation",
+          "name": "The Miseducation of Lauryn Hill",
+          "album_type": "album",
+          "release_date": "1998-08-25",
+          "total_tracks": 16,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-010-Lauryn-Hill-MISEDUCATION.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-010-Lauryn-Hill-MISEDUCATION.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art10",
+              "name": "Lauryn Hill",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock01_whatsgoingon",
+          "name": "What's Going On",
+          "album_type": "album",
+          "release_date": "1971-05-21",
+          "total_tracks": 9,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-001-Marvin-Gaye-WHATS-GOING-ON.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-001-Marvin-Gaye-WHATS-GOING-ON.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art01",
+              "name": "Marvin Gaye",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock04_songsinthekey",
+          "name": "Songs in the Key of Life",
+          "album_type": "album",
+          "release_date": "1976-09-28",
+          "total_tracks": 21,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-004-Stevie-Wonder-SONGS-IN-THE-KEY-OF-LIFE.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-004-Stevie-Wonder-SONGS-IN-THE-KEY-OF-LIFE.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art04",
+              "name": "Stevie Wonder",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock08_purplerain",
+          "name": "Purple Rain",
+          "images": [
+            {
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-008-Prince-PURPLE-RAIN.jpg?w=1000"
+            }
+          ],
+          "artists": [
+            {
+              "name": "Prince and the Revolution"
+            }
+          ]
+        },
+        {
+          "id": "mock12_thriller",
+          "name": "Thriller",
+          "images": [
+            {
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-012-MichaelJacksonThriller.jpg?w=1000"
+            }
+          ],
+          "artists": [
+            {
+              "name": "Michael Jackson"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal24_ratm",
+          "name": "Rage Against the Machine",
+          "images": [
+            {
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/ratm-1ad8c1bb-c476-42e2-9e00-a35c72febb12.jpg?w=1280"
+            }
+          ],
+          "artists": [
+            {
+              "name": "Rage Against the Machine"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c05",
+      "title": "Alta Intensidad y Energía",
+      "albums": [
+        {
+          "id": "mockMetal24_ratm",
+          "name": "Rage Against the Machine",
+          "album_type": "album",
+          "release_date": "1992-11-03",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/ratm-1ad8c1bb-c476-42e2-9e00-a35c72febb12.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/ratm-1ad8c1bb-c476-42e2-9e00-a35c72febb12.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal24",
+              "name": "Rage Against the Machine",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal10_vulgardisplay",
+          "name": "Vulgar Display of Power",
+          "album_type": "album",
+          "release_date": "1992-02-25",
+          "total_tracks": 11,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/pantera-vulgar-display-5807cdb0-365d-470b-9fdf-61d28245df04.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/pantera-vulgar-display-5807cdb0-365d-470b-9fdf-61d28245df04.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal10",
+              "name": "Pantera",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal07_nosleep",
+          "name": "No Sleep 'til Hammersmith",
+          "album_type": "album",
+          "release_date": "1981-06-27",
+          "total_tracks": 11,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/motorhead-8ff05f09-c640-4217-900b-84010f9cbf65.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/motorhead-8ff05f09-c640-4217-900b-84010f9cbf65.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal07",
+              "name": "Motörhead",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal29_chaosad",
+          "name": "Chaos A.D.",
+          "album_type": "album",
+          "release_date": "1993-09-02",
+          "total_tracks": 12,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/sepultura-959daf10-07a7-4665-ba97-c3456e3779fe.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/sepultura-959daf10-07a7-4665-ba97-c3456e3779fe.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal29",
+              "name": "Sepultura",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal11_ridethelightning",
+          "name": "Ride the Lightning",
+          "album_type": "album",
+          "release_date": "1984-07-27",
+          "total_tracks": 8,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-lightning-ebbf6890-49d2-4746-ab85-11f37cdde6a2.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-lightning-ebbf6890-49d2-4746-ab85-11f37cdde6a2.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal25",
+              "name": "Metallica",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal06_reigninblood",
+          "name": "Reign in Blood",
+          "images": [
+            {
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/slayer-34a7ef2f-1f37-4581-bc52-555ac79cc1a2.jpg?w=1280"
+            }
+          ],
+          "artists": [
+            {
+              "name": "Slayer"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock12_sappukei",
+          "name": "SAPPUKEI",
+          "images": [
+            {
+              "url": "/images/jrock-albums/12.jpg"
+            }
+          ],
+          "artists": [
+            {
+              "name": "Number Girl"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal27_toxicity",
+          "name": "Toxicity",
+          "images": [
+            {
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/system-of-down-a05dfda7-83e7-4d26-8019-0de842c2aff5.jpg?w=1280"
+            }
+          ],
+          "artists": [
+            {
+              "name": "System of a Down"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal19_rustinpeace",
+          "name": "Rust in Peace",
+          "images": [
+            {
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/megadeth-rust-peace-7c1efaee-7e9f-42d5-a6af-1f843a42a34d.jpg?w=1280"
+            }
+          ],
+          "artists": [
+            {
+              "name": "Megadeth"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal02_masterofpuppets",
+          "name": "Master of Puppets",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-puppets-d7382ca6-9e72-4770-b2f5-8b57922d57fb.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-puppets-d7382ca6-9e72-4770-b2f5-8b57922d57fb.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_metallica",
+              "name": "Metallica",
+              "type": "artist"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c06",
+      "title": "Indie & Alternativo",
+      "albums": [
+        {
+          "id": "mock20_kida",
+          "name": "Kid A",
+          "album_type": "album",
+          "release_date": "2000-10-02",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-020-Radiohead-KID-A.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-020-Radiohead-KID-A.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art20",
+              "name": "Radiohead",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock06_nevermind",
+          "name": "Nevermind",
+          "album_type": "album",
+          "release_date": "1991-09-24",
+          "total_tracks": 12,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-006-Nirvana-NEVERMIND-HR.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-006-Nirvana-NEVERMIND-HR.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art06",
+              "name": "Nirvana",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock16_londoncalling",
+          "name": "London Calling",
+          "album_type": "album",
+          "release_date": "1979-12-14",
+          "total_tracks": 19,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/016-Clash-LONDON-CALLING.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/016-Clash-LONDON-CALLING.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art16",
+              "name": "The Clash",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock13_the",
+          "name": "T H E",
+          "album_type": "album",
+          "release_date": "2013-10-02",
+          "total_tracks": 14,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/13.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/13.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock13",
+              "name": "tricot",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock03_blue",
+          "name": "Blue",
+          "album_type": "album",
+          "release_date": "1971-06-22",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-003-JoniMitchell-BLUE-HR.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-003-JoniMitchell-BLUE-HR.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art03",
+              "name": "Joni Mitchell",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock10_happybivouac",
+          "name": "HAPPY BIVOUAC",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/10.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/10.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_thepillows",
+              "name": "the pillows",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock11_groovyindiansummer",
+          "name": "groovy indian summer",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/11.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/11.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_honeydip",
+              "name": "honeydip",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock16_thatswhyigaveuponmusic",
+          "name": "だから僕は音楽 te 辞めた [That's Why I Gave Up on Music]",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/16.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/16.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_yorushika",
+              "name": "ヨルシカ [Yorushika]",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock20_littlebusters",
+          "name": "Little Busters!",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/20.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/20.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_thepillows",
+              "name": "the pillows",
+              "type": "artist"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c07",
+      "title": "Magia Acústica y Cantautores",
+      "albums": [
+        {
+          "id": "mock09_bloodonthetracks",
+          "name": "Blood on the Tracks",
+          "album_type": "album",
+          "release_date": "1975-01-20",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-009-Bob-Dylan-BLOOD-ON-THE-TRACKS.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-009-Bob-Dylan-BLOOD-ON-THE-TRACKS.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art09",
+              "name": "Bob Dylan",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock18_highway61",
+          "name": "Highway 61 Revisited",
+          "album_type": "album",
+          "release_date": "1965-08-30",
+          "total_tracks": 9,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-018-Bob-Dylan-HWY-61-REVISITED-updated.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-018-Bob-Dylan-HWY-61-REVISITED-updated.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art09",
+              "name": "Bob Dylan",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock15_borntorun",
+          "name": "Born to Run",
+          "album_type": "album",
+          "release_date": "1975-08-25",
+          "total_tracks": 8,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-015-Public-Enemy-IT-TAKES-A-NATION-H.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-015-Public-Enemy-IT-TAKES-A-NATION-H.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art15",
+              "name": "Bruce Springsteen",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock16_thatswhyigaveuponmusic",
+          "name": "だから僕は音楽を辞めた [That's Why I Gave Up on Music]",
+          "album_type": "album",
+          "release_date": "2019-04-10",
+          "total_tracks": 14,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/16.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/16.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock16",
+              "name": "ヨルシカ [Yorushika]",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock02_unhappyrefrain",
+          "name": "アンハッピーリフレイン [Unhappy Refrain]",
+          "album_type": "album",
+          "release_date": "2011-05-18",
+          "total_tracks": 15,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/2.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/2.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock02",
+              "name": "wowaka",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock03_blue",
+          "name": "Blue",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-003-JoniMitchell-BLUE-HR.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-003-JoniMitchell-BLUE-HR.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_jonimitchell",
+              "name": "Joni Mitchell",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock07_rumours",
+          "name": "Rumours",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-007-Fleetwood-Mac-RUMOURS.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-007-Fleetwood-Mac-RUMOURS.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_fleetwoodmac",
+              "name": "Fleetwood Mac",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock02_petsounds",
+          "name": "Pet Sounds",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-002-Beach-Boys-PET-SOUNDS-update.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-002-Beach-Boys-PET-SOUNDS-update.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_thebeachboys",
+              "name": "The Beach Boys",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock13_exile",
+          "name": "Exile on Main St.",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-013-ArethaFrankNEVERLOVED-H.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-013-ArethaFrankNEVERLOVED-H.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_therollingstones",
+              "name": "The Rolling Stones",
+              "type": "artist"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c08",
+      "title": "Rock Pesado y Oscuro",
+      "albums": [
+        {
+          "id": "mockMetal30_korn",
+          "name": "Korn",
+          "album_type": "album",
+          "release_date": "1994-10-11",
+          "total_tracks": 12,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/korn-d1b40976-e338-4885-bd67-a9d05967c0a7.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/korn-d1b40976-e338-4885-bd67-a9d05967c0a7.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal30",
+              "name": "Korn",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal26_dirt",
+          "name": "Dirt",
+          "album_type": "album",
+          "release_date": "1992-09-29",
+          "total_tracks": 13,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/alice-in-chains-dirt-a495466c-700f-47b7-85d7-40d3d514d947.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/alice-in-chains-dirt-a495466c-700f-47b7-85d7-40d3d514d947.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal26",
+              "name": "Alice in Chains",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal18_aenima",
+          "name": "Ænima",
+          "album_type": "album",
+          "release_date": "1996-09-17",
+          "total_tracks": 15,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/tool-fb9d03e8-f512-46f4-9d37-e12ac495c8f8.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/tool-fb9d03e8-f512-46f4-9d37-e12ac495c8f8.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal18",
+              "name": "Tool",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal23_danzig",
+          "name": "Danzig",
+          "album_type": "album",
+          "release_date": "1988-08-30",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/danzig-180417e0-c57b-438b-b499-e0062a80bee4.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/danzig-180417e0-c57b-438b-b499-e0062a80bee4.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal23",
+              "name": "Danzig",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal28_morbidtales",
+          "name": "Morbid Tales",
+          "album_type": "album",
+          "release_date": "1984-11-01",
+          "total_tracks": 6,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/celtic-frost-98746425-bccf-4832-9870-fd640208c161.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/celtic-frost-98746425-bccf-4832-9870-fd640208c161.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal28",
+              "name": "Celtic Frost",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal01_paranoid",
+          "name": "Paranoid",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-paranoid-3bcd9090-b0e9-4d81-9210-eca983ae320d.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-paranoid-3bcd9090-b0e9-4d81-9210-eca983ae320d.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_blacksabbath",
+              "name": "Black Sabbath",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal05_masterofreality",
+          "name": "Master of Reality",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-568262b3-8b0b-464d-91f6-61e0b91d32c2.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-568262b3-8b0b-464d-91f6-61e0b91d32c2.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_blacksabbath",
+              "name": "Black Sabbath",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal14_vol4",
+          "name": "Vol. 4",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-vol4-cdd9f0f9-9c31-4483-a427-00d3525f334f.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-vol4-cdd9f0f9-9c31-4483-a427-00d3525f334f.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_blacksabbath",
+              "name": "Black Sabbath",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal17_melissa",
+          "name": "Melissa",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/mercyful-fate-74657cee-adc3-486d-9955-af54059c05cd.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/mercyful-fate-74657cee-adc3-486d-9955-af54059c05cd.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_mercyfulfate",
+              "name": "Mercyful Fate",
+              "type": "artist"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c09",
+      "title": "Joyas Ocultas del J-Rock",
+      "albums": [
+        {
+          "id": "mockJRock03_worldisyours",
+          "name": "ワールドイズユアーズ [World Is Yours]",
+          "album_type": "album",
+          "release_date": "2009-01-21",
+          "total_tracks": 6,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/3.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/3.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock03",
+              "name": "MASS OF THE FERMENTING DREGS",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock08_motfd",
+          "name": "MASS OF THE FERMENTING DREGS",
+          "album_type": "album",
+          "release_date": "2008-01-16",
+          "total_tracks": 6,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/8.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/8.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock03",
+              "name": "MASS OF THE FERMENTING DREGS",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock11_groovyindiansummer",
+          "name": "groovy indian summer",
+          "album_type": "album",
+          "release_date": "2002-09-21",
+          "total_tracks": 8,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/11.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/11.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock11",
+              "name": "honeydip",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock14_flowering",
+          "name": "flowering",
+          "album_type": "album",
+          "release_date": "2012-06-27",
+          "total_tracks": 9,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/14.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/14.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock14",
+              "name": "TK from 凛として時雨 [TK from Ling tosite sigure]",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock10_happybivouac",
+          "name": "HAPPY BIVOUAC",
+          "album_type": "album",
+          "release_date": "1999-12-02",
+          "total_tracks": 11,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/10.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/10.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock10",
+              "name": "the pillows",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock15_imperfect",
+          "name": "i'mperfect",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/15.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/15.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_lingtositesigure",
+              "name": "凛として時雨 [Ling tosite sigure]",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock13_the",
+          "name": "T H E",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/13.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/13.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_tricot",
+              "name": "tricot",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock20_littlebusters",
+          "name": "Little Busters!",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/20.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/20.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_thepillows",
+              "name": "the pillows",
+              "type": "artist"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c10",
+      "title": "Maestros del Pop y Groove",
+      "albums": [
+        {
+          "id": "mock12_thriller",
+          "name": "Thriller",
+          "album_type": "album",
+          "release_date": "1982-11-29",
+          "total_tracks": 9,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-012-MichaelJacksonThriller.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-012-MichaelJacksonThriller.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art12",
+              "name": "Michael Jackson",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock08_purplerain",
+          "name": "Purple Rain",
+          "album_type": "album",
+          "release_date": "1984-06-25",
+          "total_tracks": 9,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-008-Prince-PURPLE-RAIN.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-008-Prince-PURPLE-RAIN.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art08",
+              "name": "Prince and the Revolution",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock05_kessokuband",
+          "name": "結束バンド [Kessoku Band]",
+          "album_type": "album",
+          "release_date": "2022-12-25",
+          "total_tracks": 14,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/5.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/5.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock05",
+              "name": "結束バンド [kessoku band]",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock20_littlebusters",
+          "name": "Little Busters!",
+          "album_type": "album",
+          "release_date": "1998-2-21",
+          "total_tracks": 12,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/20.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/20.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock20",
+              "name": "the pillows",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock18_solfa",
+          "name": "ソルファ [Sol-Fa]",
+          "album_type": "album",
+          "release_date": "2004-10-20",
+          "total_tracks": 12,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/18.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/18.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artJRock09",
+              "name": "ASIAN KUNG-FU GENERATION",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock04_songsinthekey",
+          "name": "Songs in the Key of Life",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-004-Stevie-Wonder-SONGS-IN-THE-KEY-OF-LIFE.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-004-Stevie-Wonder-SONGS-IN-THE-KEY-OF-LIFE.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_steviewonder",
+              "name": "Stevie Wonder",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock01_whatsgoingon",
+          "name": "What's Going On",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-001-Marvin-Gaye-WHATS-GOING-ON.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-001-Marvin-Gaye-WHATS-GOING-ON.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_marvingaye",
+              "name": "Marvin Gaye",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock19_adult",
+          "name": "大人 (アダルト) [Adult]",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/19.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/19.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_tokyojihen",
+              "name": "東京事変 [Tokyo Jihen]",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock09_fanclub",
+          "name": "ファンクラブ [Fanclub]",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/9.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/9.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_asiankungfugeneration",
+              "name": "ASIAN KUNG-FU GENERATION",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock02_petsounds",
+          "name": "Pet Sounds",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-002-Beach-Boys-PET-SOUNDS-update.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-002-Beach-Boys-PET-SOUNDS-update.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_thebeachboys",
+              "name": "The Beach Boys",
+              "type": "artist"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c11",
+      "title": "Riffs Inolvidables",
+      "albums": [
+        {
+          "id": "mockMetal08_peacesells",
+          "name": "Peace Sells... but Who's Buying?",
+          "album_type": "album",
+          "release_date": "1986-09-19",
+          "total_tracks": 8,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/megadeth-peace-sells-55f91e7d-bde4-4fd1-afd3-11f3ca2fd144.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/megadeth-peace-sells-55f91e7d-bde4-4fd1-afd3-11f3ca2fd144.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal19",
+              "name": "Megadeth",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal25_metallica",
+          "name": "Metallica",
+          "album_type": "album",
+          "release_date": "1991-08-12",
+          "total_tracks": 12,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-black-c5a252f5-8db3-4ff4-b454-5009da9a2d22.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-black-c5a252f5-8db3-4ff4-b454-5009da9a2d22.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal25",
+              "name": "Metallica",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal05_masterofreality",
+          "name": "Master of Reality",
+          "album_type": "album",
+          "release_date": "1971-07-21",
+          "total_tracks": 8,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-568262b3-8b0b-464d-91f6-61e0b91d32c2.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/black-sabbath-568262b3-8b0b-464d-91f6-61e0b91d32c2.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal14",
+              "name": "Black Sabbath",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal12_screamingforvengeance",
+          "name": "Screaming for Vengeance",
+          "album_type": "album",
+          "release_date": "1982-07-17",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/judas-priest-vengeance-98856d7c-6e0d-47ba-ad5c-01a60752860b.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/judas-priest-vengeance-98856d7c-6e0d-47ba-ad5c-01a60752860b.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal12",
+              "name": "Judas Priest",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal03_britishsteel",
+          "name": "British Steel",
+          "album_type": "album",
+          "release_date": "1980-04-14",
+          "total_tracks": 9,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/judas-priest-british-steel-7f438dcd-f35c-4326-a8e9-f3089d79fed9.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/judas-priest-british-steel-7f438dcd-f35c-4326-a8e9-f3089d79fed9.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal12",
+              "name": "Judas Priest",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal04_numberofthebeast",
+          "name": "The Number of the Beast",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/iron-maiden-number-beast-ade03a59-4678-4bad-a3c1-9a11071fd8e6.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/iron-maiden-number-beast-ade03a59-4678-4bad-a3c1-9a11071fd8e6.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_ironmaiden",
+              "name": "Iron Maiden",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal13_ironmaiden",
+          "name": "Iron Maiden",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/iron-maiden-f5d6d58e-8833-4c1f-a6e6-1643600d4a8f.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/iron-maiden-f5d6d58e-8833-4c1f-a6e6-1643600d4a8f.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_ironmaiden",
+              "name": "Iron Maiden",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal15_diaryofamadman",
+          "name": "Diary of a Madman",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/ozzy-diary-madman-f84f7d3e-cc6c-4eb1-8a9d-756117b2a6be.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/ozzy-diary-madman-f84f7d3e-cc6c-4eb1-8a9d-756117b2a6be.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_ozzyosbourne",
+              "name": "Ozzy Osbourne",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal21_andjusticeforall",
+          "name": "...And Justice for All",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-justice-b7b80ecf-6b19-411f-b988-a81ac9817f23.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-justice-b7b80ecf-6b19-411f-b988-a81ac9817f23.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_metallica",
+              "name": "Metallica",
+              "type": "artist"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c12",
+      "title": "Favoritos de la Comunidad",
+      "albums": [
+        {
+          "id": "mockMetal22_toofastforlove",
+          "name": "Too Fast for Love",
+          "album_type": "album",
+          "release_date": "1981-11-10",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/motley-crue-98581784-73be-4f52-b536-8419fd7b2f9f.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/motley-crue-98581784-73be-4f52-b536-8419fd7b2f9f.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal22",
+              "name": "Mötley Crüe",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal20_amongtheliving",
+          "name": "Among the Living",
+          "album_type": "album",
+          "release_date": "1987-03-22",
+          "total_tracks": 9,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/anthrax-among-living-482cec04-1878-4b9d-b349-76f799d2e2f5.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/anthrax-among-living-482cec04-1878-4b9d-b349-76f799d2e2f5.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "artMetal20",
+              "name": "Anthrax",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock14_letitbleed",
+          "name": "Let It Bleed",
+          "album_type": "album",
+          "release_date": "1969-12-05",
+          "total_tracks": 9,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-014-Rolling-Stones-EXILE-ON-MAIN-ST.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-014-Rolling-Stones-EXILE-ON-MAIN-ST.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art13",
+              "name": "The Rolling Stones",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock06_nevermind",
+          "name": "Nevermind",
+          "album_type": "album",
+          "release_date": "1991-09-24",
+          "total_tracks": 12,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-006-Nirvana-NEVERMIND-HR.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-006-Nirvana-NEVERMIND-HR.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art06",
+              "name": "Nirvana",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock05_abbeyroad",
+          "name": "Abbey Road",
+          "album_type": "album",
+          "release_date": "1969-09-26",
+          "total_tracks": 17,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-005-Beatles-ABBEY-ROAD.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-005-Beatles-ABBEY-ROAD.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art05",
+              "name": "The Beatles",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal24_ratm",
+          "name": "Rage Against the Machine",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/ratm-1ad8c1bb-c476-42e2-9e00-a35c72febb12.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/ratm-1ad8c1bb-c476-42e2-9e00-a35c72febb12.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_rageagainstthemachine",
+              "name": "Rage Against the Machine",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock01_winningstrip",
+          "name": "勝訴ストリップ [Winning Strip]",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/1.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/1.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_ringosheena",
+              "name": "椎名林檎 [Ringo Sheena]",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockJRock02_unhappyrefrain",
+          "name": "アンハッピーリフレイン [Unhappy Refrain]",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "/images/jrock-albums/2.jpg",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "/images/jrock-albums/2.jpg",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_wowaka",
+              "name": "wowaka",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mock17_mbdtf",
+          "name": "My Beautiful Dark Twisted Fantasy",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-017-Kanye-My-Beautiful-Dark-Twisted-Fantasy.jpg?w=1000",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-017-Kanye-My-Beautiful-Dark-Twisted-Fantasy.jpg?w=1000",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_kanyewest",
+              "name": "Kanye West",
+              "type": "artist"
+            }
+          ]
+        },
+        {
+          "id": "mockMetal27_toxicity",
+          "name": "Toxicity",
+          "album_type": "album",
+          "release_date": "1990-01-01",
+          "total_tracks": 10,
+          "images": [
+            {
+              "height": 640,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/system-of-down-a05dfda7-83e7-4d26-8019-0de842c2aff5.jpg?w=1280",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://www.rollingstone.com/wp-content/uploads/2018/06/system-of-down-a05dfda7-83e7-4d26-8019-0de842c2aff5.jpg?w=1280",
+              "width": 300
+            }
+          ],
+          "artists": [
+            {
+              "id": "art_systemofadown",
+              "name": "System of a Down",
+              "type": "artist"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

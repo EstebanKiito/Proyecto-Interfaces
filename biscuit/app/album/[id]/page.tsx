@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
+import { motion } from "framer-motion";
 
 // Importamos los JSON desde tu carpeta de datos
 import albumsJson from "@/data/albums.json";
@@ -101,21 +102,42 @@ export default function Album() {
 
     // Cargar listas de reproducción del usuario
     if (userId) {
-      const uPlaylists = playlistsJson.playlists.filter((p) => p.owner_id === userId);
-      // Inyectar To-Listen playlist por defecto si no está presente
-      const hasToListen = uPlaylists.some(p => p.title.toLowerCase() === "to-listen");
+      const localPlaylistItems = JSON.parse(localStorage.getItem(`playlistItems_${userId}`) || "{}");
+      const initialPlaylists = playlistsJson.playlists.filter((p) => p.owner_id === userId);
+
+      const mergedPlaylists = initialPlaylists.map(playlist => {
+        if (localPlaylistItems[playlist.id]) {
+          return { ...playlist, items: localPlaylistItems[playlist.id] };
+        }
+        return playlist;
+      });
+
+      const hasToListen = mergedPlaylists.some(p => p.title.toLowerCase() === "to-listen");
       if (!hasToListen) {
-        uPlaylists.push({
-          id: `pl_to_listen_${userId}`,
+        const defaultToListenId = `pl_to_listen_${userId}`;
+        mergedPlaylists.push({
+          id: defaultToListenId,
           owner_id: userId,
           title: "To-Listen",
           description: "Mis álbumes para escuchar más tarde.",
           is_public: true,
           type: "tier_list",
-          items: []
+          items: localPlaylistItems[defaultToListenId] || []
         });
       }
-      setUserPlaylists(uPlaylists);
+
+      // Load user's custom playlists
+      const customPlaylistsKey = `customPlaylists_${userId}`;
+      const customPlaylists = JSON.parse(localStorage.getItem(customPlaylistsKey) || "[]");
+      const mergedCustomPlaylists = customPlaylists.map((playlist: any) => {
+        if (localPlaylistItems[playlist.id]) {
+          return { ...playlist, items: localPlaylistItems[playlist.id] };
+        }
+        return playlist;
+      });
+
+      const combinedPlaylists = [...mergedPlaylists, ...mergedCustomPlaylists];
+      setUserPlaylists(combinedPlaylists);
     } else {
       setUserPlaylists([]);
     }
@@ -126,6 +148,17 @@ export default function Album() {
     let finalText = "";
 
     if (userId) {
+      // Registrar en el historial de álbumes vistos (Continuar Escuchando)
+      try {
+        const historyKey = `lastViewedAlbums_${userId}`;
+        const history: string[] = JSON.parse(localStorage.getItem(historyKey) || "[]");
+        const filtered = history.filter((id) => id !== albumId);
+        filtered.unshift(albumId);
+        localStorage.setItem(historyKey, JSON.stringify(filtered.slice(0, 10)));
+      } catch (e) {
+        console.error("Error updating viewing history", e);
+      }
+
       // Buscar reseña estática del JSON
       const jsonReview = reviewsJson.reviews.find(
         (r) => r.album_id === albumId && r.user_id === userId
@@ -243,7 +276,20 @@ export default function Album() {
       }
     }
 
-    allUsers.forEach((u) => {
+    const overriddenUsers = allUsers.map((u) => {
+      if (typeof window !== "undefined") {
+        const overrideRaw = localStorage.getItem(`profileOverride_${u.id}`);
+        if (overrideRaw) {
+          try {
+            const override = JSON.parse(overrideRaw);
+            return { ...u, ...override };
+          } catch (e) {}
+        }
+      }
+      return u;
+    });
+
+    overriddenUsers.forEach((u) => {
       // Buscar reseña en JSON estático
       const staticRev = reviewsJson.reviews.find(
         (r) => r.album_id === albumId && r.user_id === u.id
@@ -284,6 +330,7 @@ export default function Album() {
           user_id: u.id,
           user_name: u.name,
           username: u.username,
+          avatar_url: u.avatar_url || "https://www.svgrepo.com/show/335455/profile-default.svg",
           rating: ratingVal,
           review_text: textVal
         });
@@ -466,7 +513,12 @@ export default function Album() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-[240px_1fr_240px] gap-10 mt-6">
           <div className="hidden md:block"></div>
-          <div className="flex flex-col md:flex-row md:items-baseline gap-4 pb-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="flex flex-col md:flex-row md:items-baseline gap-4 pb-4"
+          >
             <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-bayon)] uppercase tracking-wide text-gray-100">
               {albumTitle}
             </h1>
@@ -474,16 +526,26 @@ export default function Album() {
               <span className="hover:text-white cursor-pointer transition-colors font-[family-name:var(--font-bayon)]">{artistName}</span>
               <span>{releaseYear}</span>
             </div>
-          </div>
+          </motion.div>
           <div className="hidden md:block"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-[240px_1fr_240px] gap-10 items-start">
-          <aside className="relative md:-mt-40 z-20 flex flex-col gap-4">
+          <motion.aside
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="relative md:-mt-40 z-20 flex flex-col gap-4"
+          >
             <img src={coverUrl} alt={`Cover of ${albumTitle}`} className="w-full aspect-square object-cover rounded-md shadow-2xl border border-white/10" />
-          </aside>
+          </motion.aside>
 
-          <div className="flex flex-col gap-8 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            className="flex flex-col gap-8 w-full"
+          >
             <section className="bg-gradient-to-b from-[#1c1c1c] to-[#0a0a0a] rounded-lg shadow-xl border border-white/5 overflow-hidden">
               <div className="flex flex-col">
                 {albumTracks.length > 0 ? (
@@ -532,11 +594,31 @@ export default function Album() {
                 <div className="flex flex-col gap-4">
                   {albumReviewsList.map((rev) => {
                     const isMyReview = currentUser && rev.user_id === currentUser.id;
+                    const handleCardClick = (e: React.MouseEvent) => {
+                      if ((e.target as HTMLElement).closest('a')) {
+                        return;
+                      }
+                      if (isMyReview) {
+                        setIsReviewModalOpen(true);
+                      }
+                    };
+
                     return (
-                      <section key={rev.id} className="bg-[#111111] rounded-lg shadow-xl border border-white/10 p-6 flex flex-col gap-3 relative overflow-hidden">
+                      <section
+                        key={rev.id}
+                        onClick={handleCardClick}
+                        className={`bg-[#111111] rounded-lg shadow-xl border border-white/10 p-6 flex flex-col gap-3 relative overflow-hidden transition-all ${
+                          isMyReview ? "cursor-pointer hover:border-[#E23C3C]/40 hover:bg-white/[0.02]" : ""
+                        }`}
+                      >
                         <div className="absolute top-0 left-0 w-1 h-full bg-[#E23C3C]"></div>
                         <div className="flex items-center justify-between">
-                          <Link href={isMyReview ? "/profile" : `/profile/${rev.user_id}`} className="hover:underline cursor-pointer group/reviewHeader">
+                          <Link href={isMyReview ? "/profile" : `/profile/${rev.user_id}`} className="hover:underline cursor-pointer group/reviewHeader flex items-center gap-3">
+                            <img
+                              src={rev.avatar_url}
+                              alt={rev.user_name}
+                              className="w-8 h-8 rounded-full object-cover border border-white/5"
+                            />
                             <h3 className="text-[#939090] text-[10px] uppercase tracking-widest font-bold flex items-center gap-2 group-hover/reviewHeader:text-[#E23C3C] transition-colors">
                               <span className="text-[#E23C3C] text-sm">✎</span> 
                               {isMyReview ? "MY REVIEW" : `${rev.user_name.toUpperCase()}'S REVIEW`}
@@ -554,9 +636,14 @@ export default function Album() {
                 </div>
               </div>
             )}
-          </div>
+          </motion.div>
 
-          <aside className="bg-[#111111] text-gray-200 rounded-lg shadow-2xl overflow-hidden flex flex-col border border-white/10">
+          <motion.aside
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="bg-[#111111] text-gray-200 rounded-lg shadow-2xl overflow-hidden flex flex-col border border-white/10"
+          >
             <div className="flex justify-around p-4 border-b border-white/10 bg-[#161616]">
               {["reviewed", "liked", "listenlist"].map((action) => {
                 const isActive = activeActions[action as keyof typeof activeActions];
@@ -618,12 +705,14 @@ export default function Album() {
             </div>
 
             <div className="flex flex-col text-xs font-medium border-t border-white/10 text-[#939090] bg-[#161616]">
-              <Link 
-                href="/profile#discover-section" 
-                className="py-3 hover:bg-white/5 border-b border-white/10 transition-colors hover:text-white text-center"
-              >
-                Watch on your profile
-              </Link>
+              {(activeActions.liked || activeActions.reviewed) && (
+                <Link 
+                  href="/profile#discover-section" 
+                  className="py-3 hover:bg-white/5 border-b border-white/10 transition-colors hover:text-white text-center"
+                >
+                  Watch on your profile
+                </Link>
+              )}
               <button 
                 onClick={() => {
                   if (!currentUser) {
@@ -647,10 +736,10 @@ export default function Album() {
                 }}
                 className="py-3 hover:bg-white/5 transition-colors hover:text-white"
               >
-                Add to lists...
+                Add to Shelves...
               </button>
             </div>
-          </aside>
+          </motion.aside>
         </div>
       </div>
 
