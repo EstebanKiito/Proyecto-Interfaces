@@ -158,6 +158,7 @@ export default function Home() {
   const [session, setSession] = useState<SessionUser | null>(null);
   const [loading, setLoading] = useState(true);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [isBiscuitModalOpen, setIsBiscuitModalOpen] = useState(false);
 
   // Auto-rotar recomendación de la semana cada 5 segundos
   useEffect(() => {
@@ -636,9 +637,11 @@ export default function Home() {
             {/* El Vinilo */}
             <img
               id="vinyl-element"
+              onClick={() => setIsBiscuitModalOpen(true)}
               src="images/pngegg.png"
               alt="Vinilo rodando"
-              className="w-100 h-100 md:w-[800px] md:h-[5000px] object-contain z-10"
+              className="w-100 h-100 md:w-[800px] md:h-[5000px] object-contain z-10 cursor-pointer hover:[scale:1.1] transition-[scale] duration-300"
+              title="Haz click para descubrir qué significa Biscuit"
               style={{
                 willChange: "transform",
                 transform: "translateX(100vw) rotate(0deg)"
@@ -648,14 +651,15 @@ export default function Home() {
             {/* El Texto Ascendente */}
             <div
               id="text-element"
-              className="absolute top-1/2 left-1/2 z-20 flex flex-col items-center w-full"
+              onClick={() => setIsBiscuitModalOpen(true)}
+              className="absolute top-1/2 left-1/2 z-20 flex flex-col items-center w-full cursor-pointer group"
               style={{
                 willChange: "transform, opacity",
                 opacity: 0,
                 transform: "translate(-50%, calc(-50% + 100px))"
               }}
             >
-              <h2 className="text-6xl md:text-8xl font-black font-[family-name:var(--font-bayon)] uppercase tracking-[0.1em] text-[#E23C3C] drop-shadow-2xl text-center">
+              <h2 className="text-6xl md:text-8xl font-black font-[family-name:var(--font-bayon)] uppercase tracking-[0.1em] text-[#E23C3C] hover:text-[#2d2626] transition-colors duration-300 drop-shadow-2xl text-center">
                 YOUR NEW WAY OF COLLECTING MUSIC
               </h2>
             </div>
@@ -809,6 +813,57 @@ export default function Home() {
           </span>
         </button>
       </section>
+
+      {/* ── MODAL EXPLICATIVO DE BISCUIT ── */}
+      <AnimatePresence>
+        {isBiscuitModalOpen && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4"
+            onClick={() => setIsBiscuitModalOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative bg-[#111112] w-full max-w-5xl h-[85vh] md:h-[65vh] rounded-[2.5rem] border border-zinc-800 shadow-2xl flex flex-col md:flex-row overflow-hidden animate-in fade-in zoom-in duration-200"
+            >
+              {/* Botón de Cerrar */}
+              <button
+                onClick={() => setIsBiscuitModalOpen(false)}
+                className="absolute top-6 right-6 z-20 text-zinc-500 hover:text-white transition-colors text-2xl font-bold bg-black/50 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer"
+              >
+                ✕
+              </button>
+
+              {/* Columna Izquierda: Texto */}
+              <div className="flex-1 p-10 md:p-16 flex flex-col justify-center gap-6 text-left">
+                <span className="font-[family-name:var(--font-bayon)] text-[#E23C3C] text-sm uppercase tracking-[0.3em] font-semibold mt-6 md:mt-0">
+                  Materia Prima
+                </span>
+                <h2 className="font-[family-name:var(--font-biscuit)] text-6xl md:text-8xl text-white uppercase tracking-wider leading-none m-0 p-0">
+                  BISCUIT
+                </h2>
+                <div className="w-16 h-[2px] bg-[#E23C3C]" />
+                <p className="text-zinc-300 text-sm md:text-base leading-relaxed font-sans font-medium tracking-wide">
+                  Un <strong>biscuit</strong> es el bloque de PVC caliente antes de convertirse en música. Es la materia prima que, tras pasar por la prensa, se transforma en el vinilo que gira en tu tocadiscos. Pura pasión texturizada.
+                </p>
+              </div>
+
+              {/* Columna Derecha: Imagen */}
+              <div className="flex-1 relative h-64 md:h-full w-full">
+                <img
+                  src="/images/turntable.jpg"
+                  alt="Biscuit Turntable"
+                  className="w-full h-full object-cover filter grayscale contrast-125"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#111112] via-transparent to-transparent z-10 pointer-events-none" />
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
