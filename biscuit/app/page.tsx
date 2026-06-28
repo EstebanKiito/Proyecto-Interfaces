@@ -2,7 +2,7 @@
 
 import Spline from '@splinetool/react-spline';
 import React, { useEffect, useRef, useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
 // IMPORTACIÓN DE DATOS
@@ -62,16 +62,16 @@ function CatalogueCarousel({ title, albums }: { title: string; albums: any[] }) 
         {/* Lista horizontal */}
         <div
           ref={containerRef}
-          className="w-full flex items-center overflow-x-auto gap-6 scroll-smooth no-scrollbar py-2"
+          className="w-full flex items-center overflow-x-auto gap-8 scroll-smooth no-scrollbar py-2"
           style={{ scrollbarWidth: "none" }}
         >
           {albums.map((album, idx) => (
             <div
               key={`${album.id}-${idx}`}
-              className="w-40 group/item cursor-pointer shrink-0"
+              className="w-55 group/item cursor-pointer shrink-0"
             >
               <Link href={`/album/${album.id}`}>
-                <div className="w-40 h-40 overflow-hidden shadow-lg border-2 border-transparent group-hover/item:border-[#E23C3C] transition-colors relative rounded-md">
+                <div className="w-55 h-55 overflow-hidden shadow-lg border-2 border-transparent group-hover/item:border-[#E23C3C] transition-colors relative rounded-md">
                   <img
                     src={album.images?.[0]?.url || "https://www.svgrepo.com/show/335455/profile-default.svg"}
                     alt={album.name}
@@ -106,9 +106,67 @@ function CatalogueCarousel({ title, albums }: { title: string; albums: any[] }) 
   );
 }
 
+const SPOTLIGHT_SLIDES = [
+  {
+    id: "mockMetal02_masterofpuppets",
+    title: "Master of Puppets",
+    artist: "METALLICA",
+    year: "1986",
+    tag: "★ RECOMENDACIÓN DE LA SEMANA",
+    description: "Lanzado en 1986, esta legendaria obra maestra del thrash metal es considerada uno de los álbumes más influyentes y aclamados de todos los tiempos. Explora el tracklist completo, dale una calificación y escribe tu reseña.",
+    cover: "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-puppets-d7382ca6-9e72-4770-b2f5-8b57922d57fb.jpg?w=1280"
+  },
+  {
+    id: "mock07_rumours",
+    title: "Rumours",
+    artist: "FLEETWOOD MAC",
+    year: "1977",
+    tag: "★ CLÁSICO ATEMPORAL",
+    description: "El legendario éxito pop-rock de 1977 escrito en medio de turbulencias sentimentales de la banda. Un testimonio de sinergia musical, armonías vocales perfectas y emoción a flor de piel.",
+    cover: "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-007-Fleetwood-Mac-RUMOURS.jpg?w=1000"
+  },
+  {
+    id: "mockJRock16_thatswhyigaveuponmusic",
+    title: "[That's Why I Gave Up on Music]",
+    artist: "ヨルシカ [Yorushika]",
+    year: "2004",
+    tag: "★ J-ROCK ESENCIAL",
+    description: "El aclamado álbum de estudio de 2019 de Yorushika. Con guitarras enérgicas, melodías vibrantes y letras introspectivas que definieron un nuevo estándar en el J-Rock moderno, consolidando a la banda como un referente del género.",
+    cover: "/images/jrock-albums/16.jpg"
+  },
+  {
+    id: "mock19_tpab",
+    title: "To Pimp a Butterfly",
+    artist: "KENDRICK LAMAR",
+    year: "2015",
+    tag: "★ MÁXIMA CALIFICACIÓN",
+    description: "Una obra maestra que fusiona hip-hop, jazz libre, funk y poesía hablada para entregar una declaración social, política y personal sobre la cultura afroamericana moderna.",
+    cover: "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-019-Kendrick-Lamar-To-Pimp-a-Butterfly.jpg?w=1000"
+  },
+  {
+    id: "mockMetal26_dirt",
+    title: "Dirt",
+    artist: "ALICE IN CHAINS",
+    year: "1992",
+    tag: "★ PIEZA DE CULTO GRUNGE",
+    description: "El disco multiplatino insignia de Alice in Chains lanzado en 1992. Cargado de riffs pesados y una atmósfera oscura y melancólica, representa la cumbre creativa del sonido de Seattle.",
+    cover: "https://www.rollingstone.com/wp-content/uploads/2018/06/alice-in-chains-dirt-a495466c-700f-47b7-85d7-40d3d514d947.jpg?w=1280"
+  }
+];
+
 export default function Home() {
   const [session, setSession] = useState<SessionUser | null>(null);
   const [loading, setLoading] = useState(true);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+  // Auto-rotar recomendación de la semana cada 5 segundos
+  useEffect(() => {
+    if (!session) return;
+    const interval = setInterval(() => {
+      setCurrentSlideIndex((prev) => (prev + 1) % SPOTLIGHT_SLIDES.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [session]);
 
   // Historial y colecciones dinámicas cargadas del frontend
   const [historyAlbums, setHistoryAlbums] = useState<any[]>([]);
@@ -275,52 +333,105 @@ export default function Home() {
     return (
       <main className="w-full min-h-screen bg-[#050505] text-white pt-20 pb-20 font-sans">
         {/* BANNER SPOTLIGHT / HERO AL ESTILO NETFLIX */}
-        <section className="relative w-full h-[65vh] md:h-[75vh] flex items-center overflow-hidden border-b border-zinc-900 bg-black">
-          {/* Imagen de fondo gigantesca */}
-          <div className="absolute inset-0 grayscale-[40%] opacity-40">
-            <img
-              src="https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-puppets-d7382ca6-9e72-4770-b2f5-8b57922d57fb.jpg?w=1280"
-              alt="Metallica Spotlight Cover"
-              className="w-full h-full object-cover object-center scale-105"
-            />
-          </div>
+        {(() => {
+          const activeSlide = SPOTLIGHT_SLIDES[currentSlideIndex];
+          return (
+            <section className="relative w-full h-[70vh] flex items-center overflow-hidden border-b border-zinc-900 bg-black">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeSlide.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="absolute inset-0 w-full h-full flex items-center"
+                >
+                  {/* Imagen de fondo gigantesca */}
+                  <div className="absolute inset-0 grayscale-[40%] opacity-40">
+                    <img
+                      src={activeSlide.cover}
+                      alt={`${activeSlide.title} Spotlight Cover`}
+                      className="w-full h-full object-cover object-center scale-105"
+                    />
+                  </div>
 
-          {/* Degradado negro de fondo (Figura-Fondo) */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent z-10" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/40 to-transparent z-10" />
+                  {/* Degradado negro de fondo (Figura-Fondo) */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/40 to-transparent z-10" />
 
-          {/* Contenido en Spotlight */}
-          <div className="relative z-20 max-w-4xl px-12 flex flex-col gap-2 mt-20">
-            <span className="text-xs text-[#E23C3C] tracking-[0.3em] font-bold uppercase font-[family-name:var(--font-bayon)]">
-              ★ RECOMENDACIÓN DE LA SEMANA
-            </span>
-            <h1 className="text-5xl md:text-7xl font-bold font-[family-name:var(--font-bayon)] uppercase tracking-wide text-white drop-shadow-2xl">
-              Master of Puppets
-            </h1>
-            <p className="text-xl md:text-2xl text-zinc-300 font-semibold tracking-wider font-[family-name:var(--font-bayon)]">
-              METALLICA <span className="text-zinc-500 font-sans text-sm ml-2">1986</span>
-            </p>
-            <p className="max-w-xl text-zinc-400 text-sm leading-relaxed tracking-wide mt-2">
-              Lanzado en 1986, esta legendaria obra maestra del thrash metal es considerada uno de los álbumes más influyentes y aclamados de todos los tiempos. Explora el tracklist completo, dale una calificación y escribe tu reseña.
-            </p>
+                  {/* Contenido en Spotlight */}
+                  <div className="relative z-20 max-w-4xl px-12 flex flex-col gap-2 mt-8">
+                    <motion.span
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1, duration: 0.4 }}
+                      className="text-[10px] md:text-xs text-[#E23C3C] tracking-[0.3em] font-bold uppercase font-[family-name:var(--font-bayon)]"
+                    >
+                      {activeSlide.tag}
+                    </motion.span>
+                    <motion.h1
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2, duration: 0.4 }}
+                      className="text-4xl md:text-6xl font-bold font-[family-name:var(--font-bayon)] uppercase tracking-wide text-white drop-shadow-2xl leading-none"
+                    >
+                      {activeSlide.title}
+                    </motion.h1>
+                    <motion.p
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3, duration: 0.4 }}
+                      className="text-lg md:text-xl text-zinc-300 font-semibold tracking-wider font-[family-name:var(--font-bayon)]"
+                    >
+                      {activeSlide.artist} <span className="text-zinc-500 font-sans text-xs ml-2">{activeSlide.year}</span>
+                    </motion.p>
+                    <motion.p
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4, duration: 0.4 }}
+                      className="max-w-xl text-zinc-400 text-xs md:text-sm leading-relaxed tracking-wide mt-1 line-clamp-3 md:line-clamp-none"
+                    >
+                      {activeSlide.description}
+                    </motion.p>
 
-            {/* Acciones */}
-            <div className="flex gap-4 mt-6">
-              <Link
-                href="/album/mockMetal02_masterofpuppets"
-                className="bg-white text-black font-[family-name:var(--font-bayon)] text-sm md:text-base px-6 py-2.5 rounded-full uppercase tracking-widest hover:bg-[#E23C3C] hover:text-white transition-all shadow-lg font-bold"
-              >
-                Ver Álbum
-              </Link>
-              <Link
-                href="/profile"
-                className="bg-transparent border border-zinc-500 text-white font-[family-name:var(--font-bayon)] text-sm md:text-base px-6 py-2.5 rounded-full uppercase tracking-widest hover:bg-zinc-800 transition-all font-bold"
-              >
-                Mi Perfil
-              </Link>
-            </div>
-          </div>
-        </section>
+                    {/* Acciones */}
+                    <div className="flex gap-4 mt-6">
+                      <Link
+                        href={`/album/${activeSlide.id}`}
+                        className="bg-white text-black font-[family-name:var(--font-bayon)] text-xs md:text-sm px-6 py-2 rounded-full uppercase tracking-widest hover:bg-[#E23C3C] hover:text-white transition-all shadow-lg font-bold"
+                      >
+                        Ver Álbum
+                      </Link>
+                      <Link
+                        href="/profile"
+                        className="bg-transparent border border-zinc-500 text-white font-[family-name:var(--font-bayon)] text-xs md:text-sm px-6 py-2 rounded-full uppercase tracking-widest hover:bg-zinc-800 transition-all font-bold"
+                      >
+                        Mi Perfil
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Indicadores de posición de carrusel (5 líneas con animación de estirado/achicado) */}
+              <div className="absolute bottom-6 right-12 z-30 flex gap-2 py-2 items-center">
+                {SPOTLIGHT_SLIDES.map((_, idx) => (
+                  <motion.button
+                    key={idx}
+                    onClick={() => setCurrentSlideIndex(idx)}
+                    animate={{
+                      width: idx === currentSlideIndex ? 40 : 16,
+                      backgroundColor: idx === currentSlideIndex ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0.25)"
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    className="h-1.5 rounded-full cursor-pointer border-none outline-none"
+                    title={`Recomendación ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </section>
+          );
+        })()}
 
         {/* SECCIÓN DE CARRUSELES */}
         <div className="flex flex-col mt-4">
@@ -328,7 +439,7 @@ export default function Home() {
           {/* ── 1. HISTORIAL: Continuar escuchando (Dinámico) ── */}
           {historyAlbums.length > 0 && (
             <CatalogueCarousel
-              title="Continuar escuchando"
+              title="Continuar Escuchando"
               albums={historyAlbums}
             />
           )}
