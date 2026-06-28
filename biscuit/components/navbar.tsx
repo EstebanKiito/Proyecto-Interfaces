@@ -19,6 +19,39 @@ interface Album {
   images: { url: string }[];
 }
 
+const SUGGESTED_ALBUMS = [
+  {
+    id: "mockMetal02_masterofpuppets",
+    name: "Master of Puppets",
+    artists: [{ name: "Metallica" }],
+    images: [{ url: "https://www.rollingstone.com/wp-content/uploads/2018/06/metallica-puppets-d7382ca6-9e72-4770-b2f5-8b57922d57fb.jpg?w=1280" }]
+  },
+  {
+    id: "mock07_rumours",
+    name: "Rumours",
+    artists: [{ name: "Fleetwood Mac" }],
+    images: [{ url: "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-007-Fleetwood-Mac-RUMOURS.jpg?w=1000" }]
+  },
+  {
+    id: "mockJRock16_thatswhyigaveuponmusic",
+    name: "だかろ僕は音楽を辞めた [That's Why I Gave Up on Music]",
+    artists: [{ name: "ヨルシカ [Yorushika]" }],
+    images: [{ url: "/images/jrock-albums/16.jpg" }]
+  },
+  {
+    id: "mock19_tpab",
+    name: "To Pimp a Butterfly",
+    artists: [{ name: "Kendrick Lamar" }],
+    images: [{ url: "https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-019-Kendrick-Lamar-To-Pimp-a-Butterfly.jpg?w=1000" }]
+  },
+  {
+    id: "mockMetal26_dirt",
+    name: "Dirt",
+    artists: [{ name: "Alice in Chains" }],
+    images: [{ url: "https://www.rollingstone.com/wp-content/uploads/2018/06/alice-in-chains-dirt-a495466c-700f-47b7-85d7-40d3d514d947.jpg?w=1280" }]
+  }
+];
+
 // — 2. Envolvemos el componente en forwardRef —
 const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
   const router = useRouter();
@@ -227,43 +260,20 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
               </div>
 
               {/* Resultados */}
-              {isSearchActive && searchQuery.trim() !== "" && (
+              {isSearchActive && (
                 <div
                   className={`absolute top-full mt-3 w-[320px] bg-[#111]/95 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden flex flex-col z-50 shadow-2xl transition-opacity duration-150 ${
                     isPending ? "opacity-50" : "opacity-100"
                   }`}
                 >
-                  {/* Tabs de Selección */}
-                  <div className="flex border-b border-white/10 text-[9px] uppercase tracking-wider font-semibold font-[family-name:var(--font-bayon)] bg-white/5">
-                    <button
-                      type="button"
-                      onClick={() => setActiveSearchTab("albums")}
-                      className={`flex-1 py-2.5 text-center transition-all ${
-                        activeSearchTab === "albums"
-                          ? "bg-white/10 text-white border-b-2 border-[#E23C3C]"
-                          : "text-gray-500 hover:text-white"
-                      }`}
-                    >
-                      Álbumes ({filteredAlbums.length})
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setActiveSearchTab("users")}
-                      className={`flex-1 py-2.5 text-center transition-all ${
-                        activeSearchTab === "users"
-                          ? "bg-white/10 text-white border-b-2 border-[#E23C3C]"
-                          : "text-gray-500 hover:text-white"
-                      }`}
-                    >
-                      Usuarios ({filteredUsers.length})
-                    </button>
-                  </div>
-
-                  {/* Contenedor de Resultados con Scroll */}
-                  <div className="max-h-[300px] overflow-y-auto">
-                    {activeSearchTab === "albums" ? (
-                      filteredAlbums.length > 0 ? (
-                        filteredAlbums.map((album) => (
+                  {searchQuery.trim() === "" ? (
+                    // SUGERENCIAS DE LA PÁGINA (VACÍA / NUEVO USUARIO)
+                    <div className="flex flex-col text-left">
+                      <div className="px-4 py-2.5 border-b border-white/10 bg-white/5 font-[family-name:var(--font-bayon)] text-[10px] text-gray-400 uppercase tracking-widest font-semibold">
+                        Sugerencias de la semana
+                      </div>
+                      <div className="max-h-[300px] overflow-y-auto">
+                        {SUGGESTED_ALBUMS.map((album) => (
                           <Link
                             key={album.id}
                             href={`/album/${album.id}`}
@@ -283,56 +293,119 @@ const Navbar = forwardRef<NavbarHandle, {}>((props, ref) => {
                               <span className="text-white text-xs font-semibold tracking-normal truncate">
                                 {album.name}
                               </span>
-                              <span className="text-gray-500 text-[10px] uppercase tracking-wider truncate">
+                              <span className="text-[#E23C3C] text-[10px] uppercase tracking-wider truncate">
                                 {album.artists[0].name}
                               </span>
                             </div>
                           </Link>
-                        ))
-                      ) : (
-                        <div className="p-5 text-center text-gray-600 text-[10px] uppercase tracking-widest">
-                          No se encontraron álbumes
-                        </div>
-                      )
-                    ) : (
-                      filteredUsers.length > 0 ? (
-                        filteredUsers.map((user) => {
-                          const isSelf = session && session.id === user.id;
-                          const profilePath = isSelf ? "/profile" : `/profile/${user.id}`;
-                          return (
-                            <Link
-                              key={user.id}
-                              href={profilePath}
-                              onClick={() => {
-                                setIsSearchActive(false);
-                                setSearchQuery("");
-                                startTransition(() => setFilterQuery(""));
-                              }}
-                              className="flex items-center gap-3 px-4 py-3 hover:bg-white/8 cursor-pointer transition-colors border-b border-white/5 last:border-0"
-                            >
-                              <img
-                                src={user.avatar_url || "/images/spike.png"}
-                                alt={user.name}
-                                className="w-9 h-9 object-cover rounded-full flex-shrink-0"
-                              />
-                              <div className="flex flex-col text-left min-w-0">
-                                <span className="text-white text-xs font-semibold tracking-normal truncate">
-                                  {user.name}
-                                </span>
-                                <span className="text-[#E23C3C] text-[10px] tracking-normal truncate">
-                                  @{user.username} {isSelf && <span className="text-zinc-500 text-[9px] uppercase tracking-widest">(Tú)</span>}
-                                </span>
-                              </div>
-                            </Link>
-                          );
-                        })
-                      ) : (
-                        <div className="p-5 text-center text-gray-600 text-[10px] uppercase tracking-widest">
-                          No se encontraron usuarios
-                        </div>
-                      )
-                    )}
-                  </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    // RESULTADOS DE BÚSQUEDA REAL
+                    <>
+                      {/* Tabs de Selección */}
+                      <div className="flex border-b border-white/10 text-[9px] uppercase tracking-wider font-semibold font-[family-name:var(--font-bayon)] bg-white/5">
+                        <button
+                          type="button"
+                          onClick={() => setActiveSearchTab("albums")}
+                          className={`flex-1 py-2.5 text-center transition-all ${
+                            activeSearchTab === "albums"
+                              ? "bg-white/10 text-white border-b-2 border-[#E23C3C]"
+                              : "text-gray-500 hover:text-white"
+                          }`}
+                        >
+                          Álbumes ({filteredAlbums.length})
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setActiveSearchTab("users")}
+                          className={`flex-1 py-2.5 text-center transition-all ${
+                            activeSearchTab === "users"
+                              ? "bg-white/10 text-white border-b-2 border-[#E23C3C]"
+                              : "text-gray-500 hover:text-white"
+                          }`}
+                        >
+                          Usuarios ({filteredUsers.length})
+                        </button>
+                      </div>
+
+                      {/* Contenedor de Resultados con Scroll */}
+                      <div className="max-h-[300px] overflow-y-auto">
+                        {activeSearchTab === "albums" ? (
+                          filteredAlbums.length > 0 ? (
+                            filteredAlbums.map((album) => (
+                              <Link
+                                key={album.id}
+                                href={`/album/${album.id}`}
+                                onClick={() => {
+                                  setIsSearchActive(false);
+                                  setSearchQuery("");
+                                  startTransition(() => setFilterQuery(""));
+                                }}
+                                className="flex items-center gap-3 px-4 py-3 hover:bg-white/8 cursor-pointer transition-colors border-b border-white/5 last:border-0"
+                              >
+                                <img
+                                  src={album.images[0].url}
+                                  alt={album.name}
+                                  className="w-9 h-9 object-cover rounded-md flex-shrink-0"
+                                />
+                                <div className="flex flex-col text-left min-w-0">
+                                  <span className="text-white text-xs font-semibold tracking-normal truncate">
+                                    {album.name}
+                                  </span>
+                                  <span className="text-gray-500 text-[10px] uppercase tracking-wider truncate">
+                                    {album.artists[0].name}
+                                  </span>
+                                </div>
+                              </Link>
+                            ))
+                          ) : (
+                            <div className="p-5 text-center text-gray-600 text-[10px] uppercase tracking-widest">
+                              No se encontraron álbumes
+                            </div>
+                          )
+                        ) : (
+                          filteredUsers.length > 0 ? (
+                            filteredUsers.map((user) => {
+                              const isSelf = session && session.id === user.id;
+                              const profilePath = isSelf ? "/profile" : `/profile/${user.id}`;
+                              return (
+                                <Link
+                                  key={user.id}
+                                  href={profilePath}
+                                  onClick={() => {
+                                    setIsSearchActive(false);
+                                    setSearchQuery("");
+                                    startTransition(() => setFilterQuery(""));
+                                  }}
+                                  className="flex items-center gap-3 px-4 py-3 hover:bg-white/8 cursor-pointer transition-colors border-b border-white/5 last:border-0"
+                                >
+                                  <img
+                                    src={user.avatar_url || "/images/spike.png"}
+                                    alt={user.name}
+                                    className="w-9 h-9 object-cover rounded-full flex-shrink-0"
+                                  />
+                                  <div className="flex flex-col text-left min-w-0">
+                                    <span className="text-white text-xs font-semibold tracking-normal truncate">
+                                      {user.name}
+                                    </span>
+                                    <span className="text-[#E23C3C] text-[10px] tracking-normal truncate">
+                                      @{user.username} {isSelf && <span className="text-zinc-500 text-[9px] uppercase tracking-widest">(Tú)</span>}
+                                    </span>
+                                  </div>
+                                </Link>
+                              );
+                            })
+                          ) : (
+                            <div className="p-5 text-center text-gray-600 text-[10px] uppercase tracking-widest">
+                              No se encontraron usuarios
+                            </div>
+                          )
+                        )}
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
             </div>
