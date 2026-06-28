@@ -305,17 +305,17 @@ export default function ProfilePage() {
     >
 
       {/* GRILLA PRINCIPAL DE 2 COLUMNAS (IZQUIERDA Y DERECHA) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-30 max-w-6xl mx-auto items-start">
-        {/* COLUMNA IZQUIERDA */}
-        <div className="flex flex-col w-full mt-10">
-          <h1 className="font-biscuit text-5xl xl:text-7xl text-[#ffffff] uppercase m-0 p-0 leading-tight">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-20 max-w-6xl mx-auto items-start">
+        {/* COLUMNA IZQUIERDA (Aparece abajo en mobile) */}
+        <div className="flex flex-col w-full mt-10 order-2 lg:order-1">
+          <h1 className="font-biscuit text-4xl xl:text-7xl text-[#ffffff] uppercase m-0 p-0 leading-tight  max-w-full">
             {user.username}'s
           </h1>
           <h2 className="font-biscuit text-4xl xl:text-7xl text-[#E23C3C] tracking-wide uppercase leading-none mb-5">
             COLLECTION
           </h2>
 
-          <div className="flex flex-col w-[30rem]">
+          <div className="flex flex-col w-full max-w-[30rem] mx-auto lg:mx-0">
             {/* Animación Hover en la caja del Ranking */}
             <motion.div
               variants={hoverScaleVariant}
@@ -391,8 +391,8 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* COLUMNA DERECHA */}
-        <div className="flex flex-col gap-4">
+        {/* COLUMNA DERECHA (Aparece arriba en mobile) */}
+        <div className="flex flex-col gap-4 order-1 lg:order-2">
           <div className="w-full flex justify-center lg:justify-center">
             {/* Animación Hover en el Avatar y rotación sutil */}
             <motion.div
@@ -705,7 +705,7 @@ export default function ProfilePage() {
               <motion.div variants={fadeInUpVariant}>
                 <div 
                   onClick={() => setIsCreateModalOpen(true)}
-                  className="relative bg-[#111112] p-6 rounded-[2rem] border border-zinc-800 hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-[24rem] shadow-xl group cursor-pointer justify-center items-center"
+                  className="relative bg-[#111112] p-6 rounded-[2rem] border border-zinc-800 hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-full max-w-[24rem] mx-auto md:w-auto md:max-w-none shadow-xl group cursor-pointer justify-center items-center"
                 >
                   <div className="flex flex-col items-center justify-center h-full w-full gap-2 hover:scale-105 transition-transform duration-300">
                     <button className="w-16 h-16 bg-[#962828] group-hover:bg-[#E23C3C] transition-colors rounded-full flex items-center justify-center shadow-md z-10 cursor-pointer">
@@ -737,7 +737,7 @@ export default function ProfilePage() {
                   key={playlist.id}
                   onClick={() => setSelectedPlaylist(playlist)}
                 >
-                  <div className="relative bg-[#111112] p-6 rounded-[2rem] border border-[#111112] hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-[24rem] shadow-xl group cursor-pointer hover:-translate-y-2">
+                  <div className="relative bg-[#111112] p-6 rounded-[2rem] border border-[#111112] hover:border-[#E23C3C] transition-all duration-300 flex flex-col h-[16rem] w-full max-w-[24rem] mx-auto md:w-auto md:max-w-none shadow-xl group cursor-pointer hover:-translate-y-2">
                     <div className="w-full text-left">
                       <h3 className="font-[family-name:var(--font-bayon)] text-xl text-white uppercase leading-none text-center">
                         {playlist.title}

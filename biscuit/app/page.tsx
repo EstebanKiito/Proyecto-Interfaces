@@ -41,9 +41,9 @@ function CatalogueCarousel({ title, albums }: { title: string; albums: any[] }) 
   if (!albums || albums.length === 0) return null;
 
   return (
-    <div className="relative group flex flex-col gap-3 py-6 px-12 overflow-hidden w-full">
+    <div className="relative group flex flex-col gap-2 md:gap-3 py-4 md:py-6 px-4 md:px-12 overflow-hidden w-full">
       {/* Título de la sección */}
-      <h3 className="font-[family-name:var(--font-bayon)] text-3xl text-zinc-300 tracking-wider uppercase">
+      <h3 className="font-[family-name:var(--font-bayon)] text-xl md:text-3xl text-zinc-300 tracking-wider uppercase">
         {title}
       </h3>
 
@@ -52,9 +52,9 @@ function CatalogueCarousel({ title, albums }: { title: string; albums: any[] }) 
         {/* Flecha izquierda */}
         <button
           onClick={() => scroll("left")}
-          className="absolute left-2 z-20 w-10 h-10 rounded-full bg-black/70 border border-zinc-800 text-[#E23C3C] hover:bg-[#E23C3C] hover:text-black transition-all flex items-center justify-center cursor-pointer opacity-0 group-hover:opacity-100 shadow-lg font-bold"
+          className="absolute left-2 z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/70 border border-zinc-800 text-[#E23C3C] hover:bg-[#E23C3C] hover:text-black transition-all flex items-center justify-center cursor-pointer opacity-0 group-hover:opacity-100 shadow-lg font-bold"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-4 h-4 md:w-5 md:h-5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
           </svg>
         </button>
@@ -62,16 +62,16 @@ function CatalogueCarousel({ title, albums }: { title: string; albums: any[] }) 
         {/* Lista horizontal */}
         <div
           ref={containerRef}
-          className="w-full flex items-center overflow-x-auto gap-8 scroll-smooth no-scrollbar py-2"
+          className="w-full flex items-center overflow-x-auto gap-4 md:gap-8 scroll-smooth no-scrollbar py-2"
           style={{ scrollbarWidth: "none" }}
         >
           {albums.map((album, idx) => (
             <div
               key={`${album.id}-${idx}`}
-              className="w-55 group/item cursor-pointer shrink-0"
+              className="w-32 md:w-55 group/item cursor-pointer shrink-0"
             >
               <Link href={`/album/${album.id}`}>
-                <div className="w-55 h-55 overflow-hidden shadow-lg border-2 border-transparent group-hover/item:border-[#E23C3C] transition-colors relative rounded-md">
+                <div className="w-32 h-32 md:w-55 md:h-55 overflow-hidden shadow-lg border-2 border-transparent group-hover/item:border-[#E23C3C] transition-colors relative rounded-md">
                   <img
                     src={album.images?.[0]?.url || "https://www.svgrepo.com/show/335455/profile-default.svg"}
                     alt={album.name}
@@ -79,10 +79,10 @@ function CatalogueCarousel({ title, albums }: { title: string; albums: any[] }) 
                   />
                   {/* Overlay en hover */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/85 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 p-2">
-                    <p className="font-[family-name:var(--font-bayon)] text-base text-white tracking-wide truncate text-center w-full">
+                    <p className="font-[family-name:var(--font-bayon)] text-xs md:text-base text-white tracking-wide truncate text-center w-full">
                       {album.name}
                     </p>
-                    <p className="font-sans text-[11px] text-[#E23C3C] truncate text-center w-full mt-1">
+                    <p className="font-sans text-[9px] md:text-[11px] text-[#E23C3C] truncate text-center w-full mt-1">
                       {album.artists?.[0]?.name}
                     </p>
                   </div>
@@ -95,9 +95,9 @@ function CatalogueCarousel({ title, albums }: { title: string; albums: any[] }) 
         {/* Flecha derecha */}
         <button
           onClick={() => scroll("right")}
-          className="absolute right-2 z-20 w-10 h-10 rounded-full bg-black/70 border border-zinc-800 text-[#E23C3C] hover:bg-[#E23C3C] hover:text-black transition-all flex items-center justify-center cursor-pointer opacity-0 group-hover:opacity-100 shadow-lg font-bold"
+          className="absolute right-2 z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/70 border border-zinc-800 text-[#E23C3C] hover:bg-[#E23C3C] hover:text-black transition-all flex items-center justify-center cursor-pointer opacity-0 group-hover:opacity-100 shadow-lg font-bold"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-4 h-4 md:w-5 md:h-5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
           </svg>
         </button>
@@ -580,7 +580,7 @@ export default function Home() {
       <section className="relative w-full h-screen overflow-hidden">
 
         {/* ---------------- CAPA 1: FONDO 3D ---------------- */}
-        <div id="spline-container" className="absolute inset-0 flex items-center justify-center">
+        <div id="spline-container" className="absolute inset-0 flex items-center justify-center scale-[0.8] md:scale-100 transition-transform duration-500">
           <div className="w-full h-full">
             <Spline
               scene="https://prod.spline.design/d4AyP6PVdmmGLKzX/scene.splinecode"
@@ -592,13 +592,12 @@ export default function Home() {
         {/* CAPA DE SOMBRA DEGRADADA DE DERECHA A IZQUIERDA (FIGURA-FONDO GESTALT) */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 from-[30%] via-black/0 via-[45%] to-transparent to-[100%] z-10 pointer-events-none" />
 
-        {/* ---------------- HERO TEXT ---------------- */}
-        <div className="absolute left-12 top-1/2 -translate-y-1/2 z-10 flex flex-col gap-6">
+        <div className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 z-10 flex flex-col gap-4 md:gap-6 max-w-[90%] md:max-w-none">
           <motion.h1
             initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
-            className="text-8xl font-biscuit tracking-wider uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+            className="text-5xl sm:text-6xl md:text-8xl font-biscuit tracking-wider uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
           >
             BISCUIT
           </motion.h1>
@@ -606,18 +605,18 @@ export default function Home() {
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
-            className="text-2xl max-w-[280px] font-light tracking-widest leading-snug"
+            className="text-base sm:text-lg md:text-2xl max-w-[280px] font-light tracking-widest leading-snug"
           >
             MADE FOR TRUE MUSIC LOVERS
           </motion.p>
         </div>
 
-        <div className="absolute bottom-10 w-full text-center z-10">
+        <div className="absolute bottom-6 md:bottom-10 w-full text-center z-10">
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ repeat: Infinity, delay: 2, duration: 2 }}
-            className="text-sm tracking-[0.2em] text-gray-300"
+            className="text-[10px] md:text-sm tracking-[0.15em] md:tracking-[0.2em] text-gray-400 md:text-gray-300"
           >
             SCROLL TO CONTINUE
           </motion.p>
