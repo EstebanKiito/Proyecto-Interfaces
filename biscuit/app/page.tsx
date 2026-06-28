@@ -284,6 +284,15 @@ export default function Home() {
           const text = document.getElementById('text-element');
           const splineContainer = document.getElementById('spline-container');
 
+          // Elementos del nuevo carrusel parallax
+          const carouselSection = document.getElementById('scroll-carousel-section');
+          const card1 = document.getElementById('feature-card-1');
+          const card2 = document.getElementById('feature-card-2');
+          const card3 = document.getElementById('feature-card-3');
+          const dot1 = document.getElementById('feature-dot-1');
+          const dot2 = document.getElementById('feature-dot-2');
+          const dot3 = document.getElementById('feature-dot-3');
+
           const windowHeight = window.innerHeight;
           const scrollY = window.scrollY || window.pageYOffset;
 
@@ -296,29 +305,105 @@ export default function Home() {
             }
           }
 
-          if (!section || !vinyl || !text) {
-            ticking = false;
-            return;
+          // Animación 1: Vinilo rodando y texto ascendente
+          if (section && vinyl && text) {
+            const rect = section.getBoundingClientRect();
+            let progress = 0;
+            if (rect.top <= 0) {
+              progress = Math.abs(rect.top) / windowHeight;
+            }
+            progress = Math.max(0, Math.min(1, progress));
+
+            // Vinilo
+            const translateX = (1 - progress) * 100;
+            const rotation = progress * 360;
+            vinyl.style.transform = `translateX(${translateX}vw) rotate(${rotation}deg)`;
+
+            // Texto
+            const textTranslateY = (1 - progress) * 100;
+            const textOpacity = progress;
+            text.style.transform = `translate(-50%, calc(-50% + ${textTranslateY}px))`;
+            text.style.opacity = textOpacity.toString();
           }
 
-          const rect = section.getBoundingClientRect();
+          // Animación 2: Revelado secuencial tipo vinilo/parlante de tarjetas de características
+          if (carouselSection && card1 && card2 && card3) {
+            const cRect = carouselSection.getBoundingClientRect();
+            let carouselProgress = 0;
+            if (cRect.top <= 0) {
+              carouselProgress = Math.abs(cRect.top) / (windowHeight * 2); // Espacio scrolleable total es 200vh (300vh - 100vh)
+            }
+            carouselProgress = Math.max(0, Math.min(1, carouselProgress));
 
-          let progress = 0;
-          if (rect.top <= 0) {
-            progress = Math.abs(rect.top) / windowHeight;
+            // Card 1 Logic (Aparece 0.0 -> 0.1, Se queda -> 0.22, Desaparece -> 0.32)
+            let opacity1 = 0;
+            let translateY1 = 40;
+            if (carouselProgress >= 0 && carouselProgress < 0.1) {
+              const p = carouselProgress / 0.1;
+              opacity1 = p;
+              translateY1 = 40 - (p * 40);
+            } else if (carouselProgress >= 0.1 && carouselProgress <= 0.22) {
+              opacity1 = 1;
+              translateY1 = 0;
+            } else if (carouselProgress > 0.22 && carouselProgress <= 0.32) {
+              const p = (carouselProgress - 0.22) / 0.1;
+              opacity1 = 1 - p;
+              translateY1 = -p * 40;
+            }
+
+            // Card 2 Logic (Aparece 0.35 -> 0.45, Se queda -> 0.57, Desaparece -> 0.67)
+            let opacity2 = 0;
+            let translateY2 = 40;
+            if (carouselProgress > 0.35 && carouselProgress < 0.45) {
+              const p = (carouselProgress - 0.35) / 0.1;
+              opacity2 = p;
+              translateY2 = 40 - (p * 40);
+            } else if (carouselProgress >= 0.45 && carouselProgress <= 0.57) {
+              opacity2 = 1;
+              translateY2 = 0;
+            } else if (carouselProgress > 0.57 && carouselProgress <= 0.67) {
+              const p = (carouselProgress - 0.57) / 0.1;
+              opacity2 = 1 - p;
+              translateY2 = -p * 40;
+            }
+
+            // Card 3 Logic (Aparece 0.7 -> 0.8, Se queda -> 1.0)
+            let opacity3 = 0;
+            let translateY3 = 40;
+            if (carouselProgress > 0.7 && carouselProgress < 0.8) {
+              const p = (carouselProgress - 0.7) / 0.1;
+              opacity3 = p;
+              translateY3 = 40 - (p * 40);
+            } else if (carouselProgress >= 0.8) {
+              opacity3 = 1;
+              translateY3 = 0;
+            }
+
+            // Aplicar estilos a las tarjetas
+            card1.style.opacity = opacity1.toString();
+            card1.style.transform = `translateY(${translateY1}px)`;
+            card1.style.pointerEvents = opacity1 > 0.1 ? 'auto' : 'none';
+
+            card2.style.opacity = opacity2.toString();
+            card2.style.transform = `translateY(${translateY2}px)`;
+            card2.style.pointerEvents = opacity2 > 0.1 ? 'auto' : 'none';
+
+            card3.style.opacity = opacity3.toString();
+            card3.style.transform = `translateY(${translateY3}px)`;
+            card3.style.pointerEvents = opacity3 > 0.1 ? 'auto' : 'none';
+
+            // Actualizar indicadores (puntos de posición)
+            if (dot1 && dot2 && dot3) {
+              dot1.style.backgroundColor = (carouselProgress >= 0 && carouselProgress < 0.32) ? '#E23C3C' : 'rgba(255,255,255,0.15)';
+              dot1.style.transform = (carouselProgress >= 0 && carouselProgress < 0.32) ? 'scale(1.2)' : 'scale(1)';
+
+              dot2.style.backgroundColor = (carouselProgress >= 0.32 && carouselProgress < 0.67) ? '#E23C3C' : 'rgba(255,255,255,0.15)';
+              dot2.style.transform = (carouselProgress >= 0.32 && carouselProgress < 0.67) ? 'scale(1.2)' : 'scale(1)';
+
+              dot3.style.backgroundColor = (carouselProgress >= 0.67) ? '#E23C3C' : 'rgba(255,255,255,0.15)';
+              dot3.style.transform = (carouselProgress >= 0.67) ? 'scale(1.2)' : 'scale(1)';
+            }
           }
-          progress = Math.max(0, Math.min(1, progress));
-
-          // Vinilo
-          const translateX = (1 - progress) * 100;
-          const rotation = progress * 360;
-          vinyl.style.transform = `translateX(${translateX}vw) rotate(${rotation}deg)`;
-
-          // Texto
-          const textTranslateY = (1 - progress) * 100;
-          const textOpacity = progress;
-          text.style.transform = `translate(-50%, calc(-50% + ${textTranslateY}px))`;
-          text.style.opacity = textOpacity.toString();
 
           ticking = false;
         });
@@ -576,6 +661,134 @@ export default function Home() {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* ---------------- SECCIÓN SCROLL CON CARUSEL PARALLAX (STICKY) ---------------- */}
+      <section
+        id="scroll-carousel-section"
+        className="relative w-full h-[300vh] bg-[#050505] border-t border-white/5"
+      >
+        {/* Contenedor Sticky */}
+        <div className="sticky top-0 w-full h-screen overflow-hidden flex flex-col justify-center items-center px-8 md:px-24">
+          
+          <div className="max-w-xl w-full mb-10 text-center">
+            <span className="font-[family-name:var(--font-bayon)] text-[#E23C3C] text-sm md:text-base uppercase tracking-[0.3em] font-semibold">
+              FUNCIONES CLAVE
+            </span>
+            <h2 className="font-[family-name:var(--font-bayon)] text-4xl md:text-6xl text-white uppercase mt-2 tracking-wider">
+              WHY BISCUIT 
+            </h2>
+          </div>
+
+          {/* Contenedor de Tarjetas Apiladas (Absolute Stack) */}
+          <div className="relative w-full max-w-[600px] h-[400px] md:h-[460px] flex items-center justify-center">
+            
+            {/* Card 1 */}
+            <div
+              id="feature-card-1"
+              className="absolute bg-[#111112] border border-white/5 backdrop-blur-md rounded-[3rem] p-10 md:p-14 flex flex-col justify-between w-full h-full shadow-2xl overflow-hidden group hover:border-[#E23C3C]/40 transition-colors"
+              style={{
+                willChange: "transform, opacity",
+                opacity: 0,
+                transform: "translateY(40px)",
+                pointerEvents: "none"
+              }}
+            >
+              <div className="absolute -right-8 -top-8 w-24 h-24 bg-[#E23C3C]/10 rounded-full blur-xl group-hover:bg-[#E23C3C]/20 transition-all duration-500" />
+              <div className="flex flex-col gap-6">
+                <span className="font-[family-name:var(--font-bayon)] text-7xl md:text-8xl text-white/5 group-hover:text-[#E23C3C]/20 transition-colors duration-500 leading-none">
+                  01
+                </span>
+                <h3 className="font-[family-name:var(--font-bayon)] text-4xl md:text-5xl text-white uppercase tracking-wider leading-tight">
+                  Califica Musica
+                </h3>
+                <p className="text-zinc-400 text-sm md:text-base leading-relaxed font-sans font-medium">
+                  Califica tus álbumes y canciones favoritas. Deja reseñas detalladas de los lanzamientos que marcan tu vida y mantén un registro de tu evolución musical.
+                </p>
+              </div>
+              <div className="w-fit border-b border-[#E23C3C]/50 pb-1 text-[#E23C3C] font-[family-name:var(--font-bayon)] text-xs tracking-widest uppercase">
+                Calificar & Reseñar
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div
+              id="feature-card-2"
+              className="absolute bg-[#111112] border border-white/5 backdrop-blur-md rounded-[3rem] p-10 md:p-14 flex flex-col justify-between w-full h-full shadow-2xl overflow-hidden group hover:border-[#E23C3C]/40 transition-colors"
+              style={{
+                willChange: "transform, opacity",
+                opacity: 0,
+                transform: "translateY(40px)",
+                pointerEvents: "none"
+              }}
+            >
+              <div className="absolute -right-8 -top-8 w-24 h-24 bg-[#E23C3C]/10 rounded-full blur-xl group-hover:bg-[#E23C3C]/20 transition-all duration-500" />
+              <div className="flex flex-col gap-6">
+                <span className="font-[family-name:var(--font-bayon)] text-7xl md:text-8xl text-white/5 group-hover:text-[#E23C3C]/20 transition-colors duration-500 leading-none">
+                  02
+                </span>
+                <h3 className="font-[family-name:var(--font-bayon)] text-4xl md:text-5xl text-white uppercase tracking-wider leading-tight">
+                  Arma tu Repisa
+                </h3>
+                <p className="text-zinc-400 text-sm md:text-base leading-relaxed font-sans font-medium">
+                  Crea estanterías temáticas personalizadas (Shelves). Agrupa tus vinilos virtuales según su género, estado de ánimo o época para tener tu colección siempre organizada.
+                </p>
+              </div>
+              <div className="w-fit border-b border-[#E23C3C]/50 pb-1 text-[#E23C3C] font-[family-name:var(--font-bayon)] text-xs tracking-widest uppercase">
+                Organizar Colección
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div
+              id="feature-card-3"
+              className="absolute bg-[#111112] border border-white/5 backdrop-blur-md rounded-[3rem] p-10 md:p-14 flex flex-col justify-between w-full h-full shadow-2xl overflow-hidden group hover:border-[#E23C3C]/40 transition-colors"
+              style={{
+                willChange: "transform, opacity",
+                opacity: 0,
+                transform: "translateY(40px)",
+                pointerEvents: "none"
+              }}
+            >
+              <div className="absolute -right-8 -top-8 w-24 h-24 bg-[#E23C3C]/10 rounded-full blur-xl group-hover:bg-[#E23C3C]/20 transition-all duration-500" />
+              <div className="flex flex-col gap-6">
+                <span className="font-[family-name:var(--font-bayon)] text-7xl md:text-8xl text-white/5 group-hover:text-[#E23C3C]/20 transition-colors duration-500 leading-none">
+                  03
+                </span>
+                <h3 className="font-[family-name:var(--font-bayon)] text-4xl md:text-5xl text-white uppercase tracking-wider leading-tight">
+                  Comparte con Amigos
+                </h3>
+                <p className="text-zinc-400 text-sm md:text-base leading-relaxed font-sans font-medium">
+                  Busca a tus amigos dentro de la plataforma. Explora sus colecciones, revisa sus listas 'To-Listen', curiosea sus Top 3 y descubre nueva música a través de sus opiniones.
+                </p>
+              </div>
+              <div className="w-fit border-b border-[#E23C3C]/50 pb-1 text-[#E23C3C] font-[family-name:var(--font-bayon)] text-xs tracking-widest uppercase">
+                Red Social Musical
+              </div>
+            </div>
+
+          </div>
+
+          {/* Indicadores de Posición */}
+          <div className="flex gap-4 mt-10 justify-center">
+            <div
+              id="feature-dot-1"
+              className="w-3 h-3 rounded-full transition-all duration-300"
+              style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
+            />
+            <div
+              id="feature-dot-2"
+              className="w-3 h-3 rounded-full transition-all duration-300"
+              style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
+            />
+            <div
+              id="feature-dot-3"
+              className="w-3 h-3 rounded-full transition-all duration-300"
+              style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
+            />
+          </div>
+
         </div>
       </section>
 
